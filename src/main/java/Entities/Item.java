@@ -54,6 +54,7 @@ public class Item {
 
     @Override
     public String toString(){
-        return String.format("Item: %s%nInformation:%s%nLocation:%s%nProcessor:%s%n", id, itemInfo, location, processor);
+        return String.format("Item: %s%nInformation:%s%nLocation:%s%nProcessor:%s%nFee:%b%n",
+                id, itemInfo, location, processor, fee);
     }
 }
