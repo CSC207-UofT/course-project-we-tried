@@ -8,6 +8,8 @@ import java.util.Map;
 public class ItemManager {
     private Map<String, Item> imap = new HashMap<String, Item>();
 
+    public ItemManager(){}
+
     public void addItem(Item i){ // given string id, find Item and add to a vacant location
         // TODO: Check container capacity
         // TODO: Modify container map
