@@ -1,6 +1,5 @@
 ## Specification
 
-This file is for specification.
 
 Our program is a system for a delivery pickup station that receives and holds packages in storage until pickup. The station employees are users of the system, each with a unique username and password to log in. Each package (item) comes with an identification number, information about its sender and receiver, as well as the type of storage it requires. Based on this information, the system provides a suitable container for the user to store the package in.
 
