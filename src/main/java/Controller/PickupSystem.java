@@ -24,9 +24,13 @@ public class PickupSystem {
         return true;
     }
 
-    public void run(){
+    public void pickup(){
         // this will interact with the UI layer
         iman.removeItem("12345");
+    }
+
+    public void storeItem(){
+        // this will interact with the UI layer
     }
 
 }
