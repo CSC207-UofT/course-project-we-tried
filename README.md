@@ -1,5 +1,8 @@
 ## CSC207 Project Team \<We Tried>
 
+### Get to know our team
+
+
 ### Phase 0
 
 1. [Specification](https://github.com/CSC207-UofT/course-project-we-tried/blob/d2ab6b41e0b27541285ad83546ccf2b856be20cc/Specification.md)
