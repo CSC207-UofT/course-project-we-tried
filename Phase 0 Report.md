@@ -41,4 +41,4 @@ Moving on from phase 0, we have divided the workload as following:
 
 So far, our basic framework of the project is almost complete, including entities, use cases, controllers, and UIs. We have written first drafts of all our entity classes, code for a basic scenario walk-through for a pickup, as well as one unit test to remove an item. The implementation has been going smoothly and we are quite happy with our progress.
 
-An open question we have is regarding the abstraction layers, we are confused about how to add them and we’d really appreciate feedback on that.
+An open question we have is regarding the abstraction layers, we are confused about how to add them and we’d really appreciate feedback on that. We are also wondering how design patterns could be implemented in part of our project.
