@@ -6,5 +6,4 @@
 
 2. [CRC Model](https://github.com/CSC207-UofT/course-project-we-tried/blob/00fbe26cba3b525eb2890afcb5db31d9dd621db1/CRC/CRC.pdf)
 
-MD (Markdown) files use [Markdown formatting](https://guides.github.com/features/mastering-markdown/): 
-these look very much like .txt files, so you can write them in a very similar way.
+3. [Scenario Walkthrough](https://github.com/CSC207-UofT/course-project-we-tried/blob/00fbe26cba3b525eb2890afcb5db31d9dd621db1/Scenario%20Walk-through.md)
