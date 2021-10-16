@@ -34,6 +34,6 @@ The controller `PickupSystem` creates new `UserManager` and `ItemManager` instan
 
 The `ItemManager` calls _searchItem_ to search the item by its ID and return string that contains item location and needed storage fee.
 
-Then `ItemManager` will call removeItem to remove it from the system.
+Then `ItemManager` will call _removeItem_ to remove it from the system.
      
 
