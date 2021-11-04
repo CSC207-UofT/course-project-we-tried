@@ -1,18 +1,11 @@
-import Controller.ItemPropertiesIterator;
-import Controller.PickupSystem;
-import Entities.Item;
-import Entities.User;
-import UseCase.ItemManager;
+import UI.LoginPage;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.HashMap;
 
 public class DemoMain {
 
     public static void main(String[] args) {
-        List<String> i1_info = new ArrayList<String>(Arrays.asList("Sender: CSC", "Receiver: We_Tried", "Description: This is a package!"));
+        /*List<String> i1_info = new ArrayList<String>(Arrays.asList("Sender: CSC", "Receiver: We_Tried", "Description: This is a package!"));
         List<String> i2_info = new ArrayList<String>(Arrays.asList("Sender: CSC", "Receiver: We_Failed", "Description: This is not my package!"));
         User u1 = new User("user1", "123456");
         Item i1 = new Item("207", i1_info, "L01", u1.getUsername(),"L");
@@ -39,7 +32,12 @@ public class DemoMain {
             else if (option == 2){
                 System.out.println("Returning to the main menu...");
             }
-        }
-    }
+        }*/
+        HashMap<String, String> loginInfo = new HashMap<String, String>();
+        loginInfo.put("User1", "123");
+        loginInfo.put("User2", "456");
+        loginInfo.put("User3", "789");
 
+        LoginPage loginPage = new LoginPage(loginInfo);
+    }
 }
