@@ -29,8 +29,9 @@ public class LoginPage implements ActionListener {
         userIDField.setBounds(125,100,200,25);
         userPasswordField.setBounds(125,150,200,25);
 
-        messageLabel.setBounds(135, 250, 250, 35);
+        messageLabel.setBounds(140, 250, 250, 35);
         messageLabel.setFont(new Font(null,Font.PLAIN, 13));
+        messageLabel.setForeground(Color.lightGray);
 
         loginButton.setBounds(110,200,100,25);
         loginButton.setBorder(BorderFactory.createLineBorder(Color.white));
@@ -42,7 +43,6 @@ public class LoginPage implements ActionListener {
         registerButton.setBounds(220,200,100,25);
         registerButton.setBorder(BorderFactory.createLineBorder(Color.white));
         registerButton.setForeground(Color.white);
-        registerButton.setFocusable(false);
         registerButton.setFocusable(false);
         registerButton.addActionListener(this);
 
@@ -58,14 +58,14 @@ public class LoginPage implements ActionListener {
         frame.getContentPane().setBackground(Color.darkGray);
         frame.setSize(420, 420);
         frame.setLayout(null);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==registerButton) {
-            //userIDField.setText("");
-            //userPasswordField.setText("");
+            //todo: register userID and password
         }
         if(e.getSource()==loginButton) {
 
@@ -74,16 +74,12 @@ public class LoginPage implements ActionListener {
 
             if (loginInfo.containsKey(userID)) {
                 if (loginInfo.get(userID).equals(password)) {
-                    messageLabel.setForeground(Color.lightGray);
-                    messageLabel.setText("Login Successful");
                     frame.dispose();
-                    WelcomePage welcomePage = new WelcomePage(userID);
+                    MenuPage menuPage = new MenuPage(userID);
                 } else {
-                    messageLabel.setForeground(Color.lightGray);
-                    messageLabel.setText("Wrong Password");
+                    messageLabel.setText("Incorrect Password");
                 }
             } else {
-                messageLabel.setForeground(Color.lightGray);
                 messageLabel.setText("Username Not Found");
             }
         }
