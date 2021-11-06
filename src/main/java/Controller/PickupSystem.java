@@ -10,13 +10,17 @@ public class PickupSystem {
 
     public static boolean userLogin(String username, String pw){
         // login
+
         return true;
     }
 
-    public static boolean userRegister(String username, String pw){
+    public boolean userRegister(String username, String pw){
         // lookup username; if already exists, return false.
         // else call Usermanager.register
-        return true;
+        if(uman.lookupUser(username,pw) == false){ uman.register();
+
+        }
+        return false;
     }
 
     public boolean userLogout(){
@@ -24,13 +28,28 @@ public class PickupSystem {
         return true;
     }
 
-    public void pickup(){
+    public boolean pickup(String id){
         // this will interact with the UI layer
-        iman.removeItem("12345");
+        if(iman.searchItem(id) == null){
+            return false;
+        }
+        else{
+        iman.removeItem(id);
+        return true;
+        }
     }
 
-    public void storeItem(){
+    public boolean storeItem(Item i){
         // this will interact with the UI layer
+
+        if(iman.getvancancy() == false){
+            return false;
+        }
+        else{
+            iman.addItem(i);
+            return true;
+
+        }
     }
 
 }
