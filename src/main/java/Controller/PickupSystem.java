@@ -6,19 +6,22 @@ import UseCase.UserManager;
 public class PickupSystem {
     private UserManager uman = new UserManager();
     private ItemManager iman = new ItemManager();
-    private String currentUser = "";
+    private static String currentUser = "";
 
-    public static boolean userLogin(String username, String pw){
+    public boolean userLogin(String username, String pw){
         // login
-
+        if(uman.lookupUser(username,pw) == false){
+            return false;
+        }
         return true;
     }
 
     public boolean userRegister(String username, String pw){
         // lookup username; if already exists, return false.
         // else call Usermanager.register
-        if(uman.lookupUser(username,pw) == false){ uman.register();
-
+        if(uman.lookupUser(username,pw) == false){
+            uman.register();
+            return true;
         }
         return false;
     }
@@ -34,20 +37,27 @@ public class PickupSystem {
             return false;
         }
         else{
-        iman.removeItem(id);
+            iman.removeItem(id);
         return true;
         }
     }
 
-    public boolean storeItem(Item i){
+    public boolean storeItem(String id, List<String> info, String storageRequirement){
         // this will interact with the UI layer
-
-        if(iman.getvancancy() == false){
+        iman.createItem(String id, List<String> info, String storageRequirement);
+        if(iman.addItem(id,currentUser)==false){
             return false;
         }
-        else{
-            iman.addItem(i);
-            return true;
+        return true;
+
+
+//        if(iman.getvancancy() == false){
+//            return false;
+//        }
+//        else{
+//            Item i = iman.createItem(String id, List<String> info, String storageRequirement);
+//            iman.addItem(i);
+//            return true;
 
         }
     }
