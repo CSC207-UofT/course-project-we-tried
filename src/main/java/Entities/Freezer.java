@@ -10,10 +10,15 @@ public class Freezer implements Container{
     private int number_items;
     private int Vacancy;
 
-    public  Freezer( int number_items, int Vacancy){
+    public Freezer( int number_items, int Vacancy){
         this.number_items = number_items;
         this.Vacancy = Vacancy;
         this.fmap = new HashMap<String, Boolean>();
+    }
+
+    @Override
+    public void modifyMap(String location){
+        this.fmap.replace(location, false, true);
     }
 
 

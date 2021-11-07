@@ -28,6 +28,21 @@ public class Item {
         this.fee = false;
     }
 
+    /* Item needs a set location & set processor and record fee*/
+    public void setLocation(String location){
+        this.location = location;
+    }
+
+    public void setProcessor(String username){
+        this.processor = username;
+    }
+
+    public void setFee(int fee){
+        this.fee = true;
+    }
+
+    /*Above are all the new modifications*/
+
     public String getId() {
         return id;
     }
