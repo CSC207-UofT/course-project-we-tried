@@ -16,6 +16,7 @@ public class UserManager {
         return true;
     }
 
+
     public boolean lookupUser(String username, String pw){
         // look up the user in umap; if not found, return false
         return true;

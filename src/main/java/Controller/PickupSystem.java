@@ -8,6 +8,10 @@ public class PickupSystem {
     private ItemManager iman = new ItemManager();
     private static String currentUser = "";
 
+    public PickupSystem{
+
+    }
+
     public boolean userLogin(String username, String pw){
         // login
         if(uman.lookupUser(username,pw) == false){
@@ -49,6 +53,12 @@ public class PickupSystem {
             return false;
         }
         return true;
+
+    public boolean search() {
+
+        }
+
+        
 
 
 //        if(iman.getvancancy() == false){
