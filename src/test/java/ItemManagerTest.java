@@ -48,7 +48,7 @@ public class ItemManagerTest {
         ItemManager iman = new ItemManager();
         List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
         Item i = new Item("a", info, "l");
-        iman.addItem("a","alan");
+        ItemManager.addItem("a","alan");
         String location = i.getLocation();
         boolean fee = i.isFee();
         String processor = i.getProcessor();
