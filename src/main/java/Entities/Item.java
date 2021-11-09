@@ -1,5 +1,6 @@
 package Entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Item {
@@ -67,9 +68,16 @@ public class Item {
         return fee;
     }
 
-    @Override
-    public String toString(){
-        return String.format("Item: %s%nInformation:%s%nLocation:%s%nProcessor:%s%nFee:%b%n",
-                id, itemInfo, location, processor, fee);
+    public List<String> getInfo(){
+        List<String> ltlt = new ArrayList<>(8);
+        ltlt.add(this.id);
+        ltlt.add(this.itemInfo.get(0));
+        ltlt.add(this.itemInfo.get(1));
+        ltlt.add(this.itemInfo.get(2));
+        ltlt.add(this.location);
+        ltlt.add(this.processor);
+        ltlt.add(this.storageRequirement);
+
+        return ltlt;
     }
 }
