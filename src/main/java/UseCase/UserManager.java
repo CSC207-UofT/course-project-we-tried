@@ -38,11 +38,6 @@ public class UserManager {
         return true;
     }
 
-    public void adduser(User newUser){
-        // ??? similar to Register
-        umap.put(newUser.getUsername(), newUser);
-    }
-
     public static Map<String, User> GetUMap(String username, User user){
         return umap;
     }
