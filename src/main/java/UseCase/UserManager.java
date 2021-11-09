@@ -25,6 +25,8 @@ public class UserManager {
   
 
     public static boolean recordUser(String currentUser){
+        
+        
         return true;
     }
 
