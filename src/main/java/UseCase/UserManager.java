@@ -17,10 +17,7 @@ public class UserManager {
     }
 
 
-    public boolean lookupUser(String username, String pw){
-        // look up the user in umap; if not found, return false
-        return true;
-    }
+  
 
     public static boolean recordUser(String currentUser){
 
