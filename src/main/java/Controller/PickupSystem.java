@@ -4,7 +4,6 @@ import UseCase.ItemManager;
 import UseCase.UserManager;
 import java.util.List;
 public class PickupSystem {
-    private UserManager uman = new UserManager();
     private ItemManager iman = new ItemManager();
     private static String currentUser = "";
 
