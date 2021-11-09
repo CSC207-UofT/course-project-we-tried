@@ -35,14 +35,9 @@ public class PickupSystem {
         return true;
     }
 
-    public boolean pickup(String id){
+    public void pickup(String id){
         // this will interact with the UI layer
-        if(iman.searchItem(id) == null){
-            return false;
-        }
-        else{
-            iman.removeItem(id);
-        return true;
+        iman.removeItem(id);
         }
     }
 
