@@ -16,6 +16,11 @@ public class Refrigerator implements Container {
     }
 
     @Override
+    public void modifyMap(String location){
+        this.rmap.replace(location, false, true);
+    }
+
+    @Override
     public int getCapacity() {
         return this.capacity;
     }
