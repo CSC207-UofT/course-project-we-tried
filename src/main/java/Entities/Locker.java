@@ -1,6 +1,5 @@
 package Entities;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class Locker implements Container{
@@ -14,6 +13,12 @@ public class Locker implements Container{
         this.lmap= lmap;
         this.Vacancy = vacancy;
     }
+
+    @Override
+    public void modifyMap(String location){
+        this.lmap.replace(location, false, true);
+    }
+
 
     @Override
     public int getCapacity() {

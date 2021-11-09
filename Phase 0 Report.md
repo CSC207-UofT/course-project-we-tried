@@ -12,7 +12,7 @@ We have five entity classes,  User, Item, Locker, Freezer and Refrigerator in to
 
 Moreover, we have two use case classes, ItemManager and Usermanager. ItemManager can store and provide operations on items while the UserManager includes information of each created user(employee) and the corresponding items they are responsible for. 
 
-Besides, we have one controller, Pickupsystem, which calls the relevant use case class ItemManager or UserManager according to the input from the user interface. Lastly, we have two user interface classes, OperationUI and LoginUI. In OperationUI, the client can ask the system to pick up  or receive the packages while the LoginUI is used to login and logout users. In addition, our CRC model is inconsistent with the dependency inversion principle of the solid principles. Each outer layer class depends directly on the inside layer classes. In the future, we plan to add abstraction layers so both higher and lower layers can depend on abstractions.
+Besides, we have one controller, Pickupsystem, which calls the relevant use case class ItemManager or UserManager according to the input from the user interface. Lastly, we have two user interface classes, OperationUI and LoginUI. In OperationUI, the client can ask the system to pick up  or receive the packages while the LoginUI is used to login and logout users. In addition, our CRC model is consistent with the dependency inversion principle of the solid principles. Each outer layer class depends directly on the inside layer classes. In the future, we plan to add abstraction layers so both higher and lower layers can depend on abstractions.
 
 ### Scenario Walk-through
 We’ll go through two typical scenarios that provide specific examples of how our project works.
