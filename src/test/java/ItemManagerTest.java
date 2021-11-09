@@ -3,10 +3,8 @@ import static org.junit.Assert.*;
 import Entities.Item;
 import Entities.User;
 import UseCase.ItemManager;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
 
 
 public class ItemManagerTest {
@@ -38,8 +36,27 @@ public class ItemManagerTest {
     }
 
     @Test
-    public void testSearchItem() {
+    public void testSearchItem_no_item() {
+        ItemManager iman = new ItemManager();
+        List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
+        Item i = new Item("a", info, "l");
+        assertNull(iman.searchItem("a"));
+
     }
+    @Test
+    public void testSearchItem_exist_item(){
+        ItemManager iman = new ItemManager();
+        List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
+        Item i = new Item("a", info, "l");
+        ItemManager.addItem("a","alan");
+        String location = i.getLocation();
+        boolean fee = i.isFee();
+        String processor = i.getProcessor();
+        String line_seperator = System.lineSeparator();
+        String expect = "Item:a"+line_seperator+info+line_seperator+location+line_seperator+processor+line_seperator+fee;
+        assertEquals(expect,iman.searchItem("a"));
+    }
+
 
     @Test
     public void testGetStorageTime() {

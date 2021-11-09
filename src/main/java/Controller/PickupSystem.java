@@ -2,21 +2,33 @@ package Controller;
 
 import UseCase.ItemManager;
 import UseCase.UserManager;
-
+import java.util.List;
 public class PickupSystem {
     private UserManager uman = new UserManager();
     private ItemManager iman = new ItemManager();
-    private String currentUser = "";
+    private static String currentUser = "";
 
-    public static boolean userLogin(String username, String pw){
-        // login
-        return true;
+    public PickupSystem(){
+
     }
 
-    public static boolean userRegister(String username, String pw){
+    public boolean userLogin(String username, String pw){
+        // login
+        if(uman.lookupUser(username) == null){
+            return false;
+        }
+        return uman.pwVerify(username, pw);
+    }
+
+
+    public boolean userRegister(String username, String pw){
         // lookup username; if already exists, return false.
         // else call Usermanager.register
-        return true;
+        if(uman.lookupUser(username) == null){
+            uman.UserRegister(username,pw);
+            return true;
+        }
+        return false;
     }
 
     public boolean userLogout(){
@@ -24,13 +36,30 @@ public class PickupSystem {
         return true;
     }
 
-    public void pickup(){
+    public void pickup(String id){
         // this will interact with the UI layer
-        iman.removeItem("12345");
+        iman.removeItem(id);
+        }
+
+    public boolean storeItem(String id, List<String> info, String storageRequirement) {
+        // this will interact with the UI layer
+        iman.createItem(id,info,storageRequirement);
+        return iman.addItem(id, currentUser);
     }
 
-    public void storeItem(){
-        // this will interact with the UI layer
-    }
+    public String search(String id){
+        return iman.searchItem(id);
+        }
 
-}
+        
+
+
+//        if(iman.getvancancy() == false){
+//            return false;
+//        }
+//        else{
+//            Item i = iman.createItem(String id, List<String> info, String storageRequirement);
+//            iman.addItem(i);
+//            return true;
+
+        }
