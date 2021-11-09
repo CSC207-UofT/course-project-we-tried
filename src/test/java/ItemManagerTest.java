@@ -30,7 +30,7 @@ public class ItemManagerTest {
         User u = new User("test_user", "123456");
         List<String> i_info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
         Item i = new Item("test_id", i_info, "L01", u.getUsername(),"L");
-        iman.addItem("test_id","alan");
+        iman.addItem(i);
         assertEquals(i.getLocation(), iman.removeItem(i.getId()));
         assertNull(iman.searchItem(i.getId()));
     }
