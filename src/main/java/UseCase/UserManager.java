@@ -16,7 +16,12 @@ public class UserManager {
         return true;
     }
 
-
+     public User lookupUser(String username){
+        // look up and return the user in umap; if not found, return null
+        if (umap.containsKey(username)){
+            return umap.get(username);
+        }
+        return null;
   
 
     public static boolean recordUser(String currentUser){
