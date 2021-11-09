@@ -73,7 +73,7 @@ public class ItemManager {
         return location;
     }
 
-    public String searchItem(String id){
+    public List<String> searchItem(String id){
         if(imap.get(id) == null){
             return null;
         }
