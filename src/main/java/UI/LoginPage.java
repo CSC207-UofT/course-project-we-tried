@@ -19,6 +19,7 @@ public class LoginPage implements ActionListener {
     private JLabel userPasswordLabel = new JLabel(password);
     private JLabel messageLabel = new JLabel();
     private PickupSystem pickupSystem = new PickupSystem();
+    private LoginController loginController = new LoginController();
 
     public LoginPage(){
 
@@ -67,14 +68,12 @@ public class LoginPage implements ActionListener {
         String password = String.valueOf(userPasswordField.getPassword());
 
         if(e.getSource()==registerButton) {
-            //todo: register userID and password
-            pickupSystem.userRegister(userID, password);
+            LoginController.userRegister(userID, password);
         }
         if(e.getSource()==loginButton) {
-            //todo: user login pickupSystem
-            if (pickupSystem.userLogin(userID, password)) {
+            if (LoginController.userLogin(userID, password)) {
                 frame.dispose();
-                MenuPage menuPage = new MenuPage(userID);
+                MenuPage menuPage = new MenuPage(userID, pickupSystem, loginController);
             } else {
                 messageLabel.setText("Incorrect Username or Password");
             }

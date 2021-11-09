@@ -7,15 +7,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MenuPage implements ActionListener {
-    JFrame frame = new JFrame();
-    JButton depositButton = new JButton( "<html>" + "DEPOSIT" + "<br>" + "PACKAGE" + "<html>" );
-    JButton pickupButton = new JButton("<html>" + "PICKUP" + "<br>" + "PACKAGE" + "<html>");
-    JButton logoutButton = new JButton("》logout");
-    JLabel userLabel = new JLabel();
-    JLabel tempLabel = new JLabel();
-    PickupSystem pickupSystem = new PickupSystem();
+    private JFrame frame = new JFrame();
+    private JButton depositButton = new JButton( "<html>" + "DEPOSIT" + "<br>" + "PACKAGE" + "<html>" );
+    private JButton pickupButton = new JButton("<html>" + "PICKUP" + "<br>" + "PACKAGE" + "<html>");
+    private JButton logoutButton = new JButton("》logout");
+    private JLabel userLabel = new JLabel();
+    private JLabel tempLabel = new JLabel();
+    private String userID;
+    private PickupSystem pickupSystem = new PickupSystem();
+    private LoginController loginController = new LoginController();
 
-    MenuPage(String userID){
+    MenuPage(String username, PickupSystem pckSys, LoginController loginC){
+        this.userID = username;
+        this.pickupSystem = pckSys;
+        this.loginController = loginC;
 
         userLabel.setBounds(20,0,100,50);
         userLabel.setFont(new Font(null, Font.PLAIN,12));
@@ -43,7 +48,6 @@ public class MenuPage implements ActionListener {
         logoutButton.setFocusable(false);
         logoutButton.addActionListener(this);
 
-
         tempLabel.setBounds(50,300,150,30);
         tempLabel.setFont(new Font(null, Font.PLAIN,12));
         tempLabel.setForeground(Color.lightGray);
@@ -62,26 +66,24 @@ public class MenuPage implements ActionListener {
         frame.setVisible(true);
 
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==depositButton) {
             tempLabel.setText("Deposit");
-            //todo: deposit package
-            //frame.dispose();
-            OperationStore operationStore = new OperationStore();
+            frame.dispose();
+            OperationStore operationStore = new OperationStore(userID, pickupSystem, loginController);
         }
         if(e.getSource()==pickupButton) {
             tempLabel.setText("Pickup");
-            //todo: pickup package
-            //frame.dispose();
-            OperationSearch operationSearch = new OperationSearch();
+            frame.dispose();
+            OperationSearch operationSearch = new OperationSearch(userID, pickupSystem, loginController);
         }
         if(e.getSource()==logoutButton) {
             tempLabel.setText("Logout");
-            //todo: return to LoginPage
-            pickupSystem.userLogout();
-            //frame.dispose();
-            //LoginPage loginPage = new LoginPage();
+            LoginController.userLogout();
+            frame.dispose();
+            LoginPage loginPage = new LoginPage();
         }
     }
 }
