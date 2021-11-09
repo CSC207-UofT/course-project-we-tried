@@ -77,7 +77,11 @@ public class ItemManager {
         if(imap.get(id) == null){
             return null;
         }
-        return imap.get(id).toString();
+        return imap.get(id).getInfo();
+    }
+
+    public Map<String, Item> getItemMap(){
+        return imap;
     }
 
     public int getStorageTime(){
