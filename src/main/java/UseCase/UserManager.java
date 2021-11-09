@@ -2,7 +2,7 @@ package UseCase;
 
 import Entities.Item;
 import Entities.User;
-
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +14,9 @@ public class UserManager {
     private static Map<String, List<Item>> imap = new HashMap<String, List<Item>>();
     private User currentUser;
 
-    public boolean UserRegister(String username, String pw){
+    public boolean userRegister(String username, String pw){
         umap.put(username, new User(username, pw));
+        imap.put(username, new ArrayList<Item>());
         return true;
     }
 
@@ -29,25 +30,27 @@ public class UserManager {
 
     public boolean pwVerify(String username, String pw){
         // verify password
-        return Objects.equals(pw, umap.get(username).getPassword());
+        if (umap.containsKey(username)){
+            return Objects.equals(pw, umap.get(username).getPassword());
+        }
+        return false;
     }
 
-    public boolean RecordUser(User currUser){
+    public boolean recordUser(User currUser){
         // User or name&pw ???
         currentUser = currUser;
         return true;
     }
 
-    public void adduser(User newUser){
-        // ??? similar to Register
-        umap.put(newUser.getUsername(), newUser);
+    public void record_item_processor(String processor_name, Item new_item){
+        imap.get(processor_name).add(new_item);
     }
 
-    public static Map<String, User> GetUMap(String username, User user){
+    public Map<String, User> getUMap(String username, User user){
         return umap;
     }
 
-    public static Map<String, List<Item>> GetUserImap(String username, User user){
+    public Map<String, List<Item>> getUserImap(){
         return imap;
     }
 
