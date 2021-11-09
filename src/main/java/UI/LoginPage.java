@@ -1,27 +1,26 @@
 package UI;
+
+import Controller.PickupSystem;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 
 
 public class LoginPage implements ActionListener {
-    JFrame frame = new JFrame();
-    JButton loginButton = new JButton("Login");
-    JButton registerButton = new JButton("Register");
-    JTextField userIDField = new JTextField();
-    JPasswordField userPasswordField = new JPasswordField();
-    ImageIcon user = new ImageIcon("src/user-24.png");
-    ImageIcon password = new ImageIcon("src/lock-24.png");
-    JLabel userIDLabel = new JLabel(user);
-    JLabel userPasswordLabel = new JLabel(password);
-    JLabel messageLabel = new JLabel();
+    private JFrame frame = new JFrame();
+    private JButton loginButton = new JButton("Login");
+    private JButton registerButton = new JButton("Register");
+    private JTextField userIDField = new JTextField();
+    private JPasswordField userPasswordField = new JPasswordField();
+    private ImageIcon user = new ImageIcon("src/user-24.png");
+    private ImageIcon password = new ImageIcon("src/lock-24.png");
+    private JLabel userIDLabel = new JLabel(user);
+    private JLabel userPasswordLabel = new JLabel(password);
+    private JLabel messageLabel = new JLabel();
+    private PickupSystem pickupSystem = new PickupSystem();
 
-    HashMap<String, String> loginInfo = new HashMap<String, String>();
-
-    public LoginPage(HashMap<String, String> login){
-        loginInfo = login;
+    public LoginPage(){
 
         userIDLabel.setBounds(50, 100, 75, 25);
         userPasswordLabel.setBounds(50, 150, 75, 25);
@@ -64,24 +63,22 @@ public class LoginPage implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        String userID = userIDField.getText();
+        String password = String.valueOf(userPasswordField.getPassword());
+
         if(e.getSource()==registerButton) {
             //todo: register userID and password
+            pickupSystem.userRegister(userID, password);
         }
         if(e.getSource()==loginButton) {
-
-            String userID = userIDField.getText();
-            String password = String.valueOf(userPasswordField.getPassword());
-
-            if (loginInfo.containsKey(userID)) {
-                if (loginInfo.get(userID).equals(password)) {
-                    frame.dispose();
-                    MenuPage menuPage = new MenuPage(userID);
-                } else {
-                    messageLabel.setText("Incorrect Password");
-                }
+            //todo: user login pickupSystem
+            if (pickupSystem.userLogin(userID, password)) {
+                frame.dispose();
+                MenuPage menuPage = new MenuPage(userID);
             } else {
-                messageLabel.setText("Username Not Found");
+                messageLabel.setText("Incorrect Username or Password");
             }
         }
     }
 }
+

@@ -1,4 +1,6 @@
 package UI;
+import Controller.PickupSystem;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,6 +13,7 @@ public class MenuPage implements ActionListener {
     JButton logoutButton = new JButton("》logout");
     JLabel userLabel = new JLabel();
     JLabel tempLabel = new JLabel();
+    PickupSystem pickupSystem = new PickupSystem();
 
     MenuPage(String userID){
 
@@ -65,15 +68,18 @@ public class MenuPage implements ActionListener {
             tempLabel.setText("Deposit");
             //todo: deposit package
             //frame.dispose();
+            OperationStore operationStore = new OperationStore();
         }
         if(e.getSource()==pickupButton) {
             tempLabel.setText("Pickup");
             //todo: pickup package
             //frame.dispose();
+            OperationSearch operationSearch = new OperationSearch();
         }
         if(e.getSource()==logoutButton) {
             tempLabel.setText("Logout");
             //todo: return to LoginPage
+            pickupSystem.userLogout();
             //frame.dispose();
             //LoginPage loginPage = new LoginPage();
         }
