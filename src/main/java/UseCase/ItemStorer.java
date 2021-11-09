@@ -7,23 +7,45 @@ import java.util.Map;
 
 public class ItemStorer {
     String location = "";
-    Map<String, Item> imap;
+    Map<String, Item> Imap;
+    Container c;
+    static Locker L;
+    static Freezer F;
+    static Refrigerator R;
 
+    public void setup(Map<String, Item> imap, Locker l, Freezer f, Refrigerator r){
+        Imap = imap;
+        L = l;
+        F = f;
+        R = r;
+    }
 
-    public void createItem(Map imap, String id, List<String> info, String storageRequirement) {
+    public void findContainer(Item i){
+        if (i.getStorageRequirement().equals("L")){
+            c = L;
+        } else if (i.getStorageRequirement().equals("F")){
+            c = F;
+        } else if (i.getStorageRequirement().equals("R")){
+            c = R;
+        } else {
+            c = null;}
+    }
+
+    public void create(String id, List<String> info, String storageRequirement) {
         Item i1 = new Item(id, info, storageRequirement);
-        imap.put(id, i1);
+        Imap.put(id, i1);
     }
 
 
     public String add(String id, String currentUser) {
-        Item i1 = imap.get(id);
-        if (findContainer(i1) != null) {
-            location = findContainer(i1).nextVacantLocation();
+        Item i1 = Imap.get(id);
+        findContainer(i1);
+        if (c != null) {
+            location = c.nextVacantLocation();
             if (location == null) {
                 return null;
             } else {
-                findContainer(i1).modifyContainer(location);
+                c.modifyContainer(location);
                 i1.setLocation(location);
                 i1.setProcessor(currentUser);
                 return location;
@@ -31,16 +53,6 @@ public class ItemStorer {
         } else {
             return null;
         }
-    }
-
-    public static Container findContainer(Item i, Locker L, Freezer F, Refrigerator R){
-        if (i.getStorageRequirement().equals("L")){
-            return L;
-        } else if (i.getStorageRequirement().equals("F")){
-            return F;
-        } else if (i.getStorageRequirement().equals("R")){
-            return R;
-        } else {return null;}
     }
 
 

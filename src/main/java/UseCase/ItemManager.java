@@ -38,6 +38,8 @@ public class ItemManager {
         L = new Locker(3, lmap);
         F = new Freezer(1, fmap);
         R = new Refrigerator(2, rmap);
+
+        storer.setup(imap, L,F,R);
     }
 
     /*A customized series of containers*/
@@ -48,52 +50,21 @@ public class ItemManager {
         return imap;
     }
 
-    public void createItem(String id, List<String> info, String storageRequirement) {
-        Item i1 = new Item(id, info, storageRequirement);
-        imap.put(id, i1);
-    }
-
-    public static Container findContainer(Item i) {
-        if (i.getStorageRequirement().equals("L")) {
-            return L;
-        } else if (i.getStorageRequirement().equals("F")) {
-            return F;
-        } else if (i.getStorageRequirement().equals("R")) {
-            return R;
-        } else {
-            return null;
-        }
-    }
-
-    public String addItem(String id, String currentUser) {
-        Item i1 = imap.get(id);
-        if (findContainer(i1) != null) {
-            String location = findContainer(i1).nextVacantLocation();
-            if (location == null) {
-                return null;
-            } else {
-                findContainer(i1).modifyContainer(location);
-                i1.setLocation(location);
-                i1.setProcessor(currentUser);
-                return location;
-            }
-        } else {
-            return null;
-        }
+    public String addItem(String id, List<String> info, String storageRequirement, String currentUser) {
+        storer.create(id, info, storageRequirement);
+        storer.add(id,currentUser);
+        // timer.RecordStart();
     }
 
     public String removeItem(String id) {
-        String location;
-        location = imap.get(id).getLocation();
-        imap.remove(id);
-        return location;
+        //searcher.search();
+        //checkFee(id);
+        return picker.remove(id,imap);
     }
 
-    public List<String> searchItem(String id) {
-        if (imap.get(id) == null) {
-            return null;
-        }
-        return imap.get(id).getInfo();
+    public List<String> searchItem(String id){
+        // checkFee(id);
+        return searcher.search(id, imap);
     }
 
     public void checkFee(String id){
