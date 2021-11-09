@@ -50,9 +50,7 @@ public class PickupSystem {
         return true;
 
     public String search(String id) {
-        if(iman.searchItem(id) == null){
-            return null;
-        return iman.searchItem(id)
+        return iman.searchItem(id);
         }
 
         
