@@ -1,22 +1,16 @@
 package Controller;
 
+import Entities.Item;
+import UseCase.ItemManager;
 import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class PickupSystemTest {
 
-    @Test
-    public void userLogin() {
-    }
-
-    @Test
-    public void userRegister() {
-    }
-
-    @Test
-    public void userLogout() {
-    }
 
     @Test
     public void pickup() {
@@ -27,6 +21,13 @@ public class PickupSystemTest {
     }
 
     @Test
-    public void search() {
+    public void search_has_item() {
+
+    }
+
+    @Test
+    public void search_no_item() {
+  ;
+
     }
 }

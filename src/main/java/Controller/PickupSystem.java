@@ -5,6 +5,8 @@ import UseCase.UserManager;
 import java.util.List;
 public class PickupSystem {
     private ItemManager iman = new ItemManager();
+    private UserManager uman = new UserManager();
+
     private static String currentUser = "";
 
     public PickupSystem(){
@@ -15,14 +17,14 @@ public class PickupSystem {
         iman.removeItem(id);
         }
 
-    public boolean storeItem(String id, List<String> info, String storageRequirement) {
+    public String storeItem(String id, List<String> info, String storageRequirement, String name) {
         // this will interact with the UI layer
+        currentUser = uman.RecordUser(name);
         iman.createItem(id,info,storageRequirement);
         return iman.addItem(id, currentUser);
     }
 
-    public List<String> search(String id){
-        return iman.searchItem(id);
+    public List<String> search(String id){return iman.searchItem(id);
         }
 
         
