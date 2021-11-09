@@ -54,8 +54,10 @@ public class PickupSystem {
         }
         return true;
 
-    public boolean search() {
-
+    public String search(String id) {
+        if(iman.searchItem(id) == null){
+            return null;
+        return iman.searchItem(id)
         }
 
         
