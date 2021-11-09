@@ -11,12 +11,21 @@ public class ItemManager {
     private static Locker L;
     private static Freezer F;
     private static Refrigerator R;
-
+    private final ItemStorer storer;
+    private final ItemSearcher searcher;
+    private final ItemPicker picker;
+    private final ItemTimer timer;
 
     /**
      * A new ItemManager, with a preset series of containers.
+     * This is the "Facade" class.
      */
-    public ItemManager(){
+    public ItemManager(ItemStorer storer, ItemSearcher searcher, ItemPicker picker, ItemTimer timer) {
+        this.storer = storer;
+        this.searcher = searcher;
+        this.picker = picker;
+        this.timer = timer;
+
         Map<String, Boolean> lmap = new HashMap<>(3);
         lmap.put("L01", false);
         lmap.put("L02", false);
@@ -28,76 +37,67 @@ public class ItemManager {
         rmap.put("r02", false);
         L = new Locker(3, lmap);
         F = new Freezer(1, fmap);
-        R = new Refrigerator(2,rmap);
+        R = new Refrigerator(2, rmap);
     }
 
     /*A customized series of containers*/
-    public ItemManager(List<String> series){
+    public ItemManager(List<String> series) {
     }
 
-    public Item createItem(String id, List<String> info, String storageRequirement){
+    public Map<String, Item> getItemMap() {
+        return imap;
+    }
+
+    public void createItem(String id, List<String> info, String storageRequirement) {
         Item i1 = new Item(id, info, storageRequirement);
         imap.put(id, i1);
-        return i1;
     }
 
-    public static Container findContainer(Item i){
-        if (i.getStorageRequirement().equals("L")){
+    public static Container findContainer(Item i) {
+        if (i.getStorageRequirement().equals("L")) {
             return L;
-        } else if (i.getStorageRequirement().equals("F")){
+        } else if (i.getStorageRequirement().equals("F")) {
             return F;
-        } else if (i.getStorageRequirement().equals("R")){
+        } else if (i.getStorageRequirement().equals("R")) {
             return R;
-        } else {return null;}
+        } else {
+            return null;
+        }
     }
 
-    public boolean addItem(String id, String currentUser) {
+    public String addItem(String id, String currentUser) {
         Item i1 = imap.get(id);
         if (findContainer(i1) != null) {
             String location = findContainer(i1).nextVacantLocation();
             if (location == null) {
-                return false;
+                return null;
             } else {
                 findContainer(i1).modifyContainer(location);
                 i1.setLocation(location);
                 i1.setProcessor(currentUser);
-                return true;
+                return location;
             }
-        } else {return false;}
+        } else {
+            return null;
+        }
     }
 
-    public String removeItem(String id){
+    public String removeItem(String id) {
         String location;
         location = imap.get(id).getLocation();
         imap.remove(id);
         return location;
     }
 
-    public List<String> searchItem(String id){
-        if(imap.get(id) == null){
+    public List<String> searchItem(String id) {
+        if (imap.get(id) == null) {
             return null;
         }
         return imap.get(id).getInfo();
     }
 
-    public Map<String, Item> getItemMap(){
-        return imap;
-    }
-
-    public int getStorageTime(){
-        // TODO: find a way to express the storage time and set a standard(free storage).
-        return 0;
-    }
-
-    public void setFee(String id, int fee){
-        Item i1 = imap.get(id);
-        // TODO: add the condition about storage time(check whether the fee should be set; if not, return false)
-        i1.setFee(fee);
-    }
-
-    public boolean checkFee(String id){
-        Item i1 = imap.get(id);
-        return i1.isFee();
+    public void checkFee(String id){
+        timer.CalculateFee();
     }
 
 }

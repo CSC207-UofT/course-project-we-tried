@@ -62,7 +62,7 @@ public class Locker implements Container{
     public String nextVacantLocation() {
         for (String location: lmap.keySet()){
             Boolean empty = lmap.get(location);
-            if (empty){ return location;
+            if (!empty){ return location;
             }
         }
         return null;
