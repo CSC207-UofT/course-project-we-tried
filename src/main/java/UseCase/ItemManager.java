@@ -1,8 +1,12 @@
 package UseCase;
 
-import Entities.*;
+import Entities.Freezer;
+import Entities.Item;
+import Entities.Locker;
+import Entities.Refrigerator;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,13 +27,13 @@ public class ItemManager {
         this.picker = picker;
         this.timer = timer;
 
-        Map<String, Boolean> lmap = new HashMap<>(3);
+        Map<String, Boolean> lmap = new LinkedHashMap<>(3);
         lmap.put("L01", false);
         lmap.put("L02", false);
         lmap.put("L03", false);
-        Map<String, Boolean> fmap = new HashMap<>(1);
+        Map<String, Boolean> fmap = new LinkedHashMap<>(1);
         fmap.put("f01", false);
-        Map<String, Boolean> rmap = new HashMap<>(2);
+        Map<String, Boolean> rmap = new LinkedHashMap<>(2);
         rmap.put("r01", false);
         rmap.put("r02", false);
         Locker l = new Locker(3, lmap);
@@ -38,8 +42,6 @@ public class ItemManager {
 
         storer.setup(imap, l, f, r);
     }
-
-
 
     public Map<String, Item> getItemMap() {
         return imap;
@@ -55,7 +57,8 @@ public class ItemManager {
         if(searcher.search(id,imap)!=null){
         //checkFee(id);
         return picker.remove(id,imap);}
-        else{return null;}
+        else{
+            return null;}
     }
 
     public List<String> searchItem(String id){

@@ -43,6 +43,7 @@ public class ItemStorer {
         if (c != null) {
             location = c.nextVacantLocation();
             if (location == null) {
+                Imap.remove(id);
                 return null;
             } else {
                 c.modifyContainer(location);
@@ -51,6 +52,7 @@ public class ItemStorer {
                 return location;
             }
         } else {
+            Imap.remove(id);
             return null;
         }
     }
