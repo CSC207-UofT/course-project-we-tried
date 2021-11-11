@@ -1,5 +1,6 @@
 package UI;
 
+import Controller.LoginController;
 import Controller.PickupSystem;
 import UseCase.ItemManager;
 
@@ -7,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class OperationSearch implements ActionListener{
     private JFrame frame;
@@ -70,7 +72,7 @@ public class OperationSearch implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         String id = EnterID.getText();
-        List<String> option = pckSys.search(id);
+        ArrayList<String> option = (ArrayList<String>) pckSys.search(id);
 
         if (e.getSource()==Search){
             if (option == null){
@@ -78,13 +80,12 @@ public class OperationSearch implements ActionListener{
             }
             else{
                 frame.dispose();
-                OperationExtraction operationExtraction = new OperationExtraction(userID, pickupSystem, loginController);
-                OperationExtraction.setVisible(true);
+                OperationExtraction operationExtraction = new OperationExtraction(userID, pckSys, loginController);
             }
         }
         if (e.getSource()==Menu){
             frame.dispose();
-            MenuPage menuPage = new MenuPage(userID, pickupSystem, loginController);
+            MenuPage menuPage = new MenuPage(userID, pckSys, loginController);
         }
     }
 }
