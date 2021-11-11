@@ -1,15 +1,19 @@
 package Controller;
 
-import UseCase.ItemManager;
-import UseCase.UserManager;
+import UseCase.*;
+
 import java.util.List;
 public class PickupSystem {
-    private ItemManager iman = new ItemManager();
-    private UserManager uman = new UserManager();
 
-    private static String currentUser = "";
+    private final ItemManager iman;
+    private final UserManager uman = new UserManager();
 
     public PickupSystem(){
+        ItemStorer storer = new ItemStorer();
+        ItemPicker picker = new ItemPicker();
+        ItemSearcher searcher = new ItemSearcher();
+        ItemTimer timer = new ItemTimer();
+        this.iman = new ItemManager(storer, searcher, picker, timer);
     }
 
     public void pickup(String id){
@@ -19,9 +23,8 @@ public class PickupSystem {
 
     public String storeItem(String id, List<String> info, String storageRequirement, String name) {
         // this will interact with the UI layer
-        currentUser = uman.RecordUser(name);
-        iman.createItem(id,info,storageRequirement);
-        return iman.addItem(id, currentUser);
+        String currentUser = uman.RecordUser(name).getUsername();
+        return iman.addItem(id, info, storageRequirement, currentUser);
     }
 
     public List<String> search(String id){return iman.searchItem(id);

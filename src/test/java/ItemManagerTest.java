@@ -22,7 +22,7 @@ public class ItemManagerTest {
 
     @Test
     public void testCreateItem() {
-        ItemManager iman = new ItemManager();
+        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         List<String> i_info = Arrays.asList("Sender: Queenie", "Receiver: test", "Description: Test!");
         iman.createItem("test_c", i_info, "L");
         assertNotNull(iman.searchItem("test_c"));
@@ -31,7 +31,7 @@ public class ItemManagerTest {
 
     @Test
     public void testAddItem_L() {
-        ItemManager iman = new ItemManager();
+        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         User u = new User("queenie", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
         Item i = iman.createItem("test_id", i_info, "L");
@@ -43,7 +43,7 @@ public class ItemManagerTest {
 
     @Test
     public void testAddItem_R_two_item() {
-        ItemManager iman = new ItemManager();
+        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         User u = new User("queenie", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
         Item i1 = iman.createItem("test_id1", i_info, "R");
@@ -57,7 +57,7 @@ public class ItemManagerTest {
 
     @Test
     public void testAddItem_F() {
-        ItemManager iman = new ItemManager();
+        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         User u = new User("queenie", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
         Item i = iman.createItem("test_id", i_info, "F");
@@ -67,7 +67,7 @@ public class ItemManagerTest {
 
     @Test
     public void testAddItem_right_container_mixed() {
-        ItemManager iman = new ItemManager();
+        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         User u = new User("queenie", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
         Item iL = new Item("test_id_L", i_info,"L");
@@ -80,7 +80,7 @@ public class ItemManagerTest {
 
     @Test
     public void testAddItem_Full() {
-        ItemManager iman = new ItemManager();
+        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         User u = new User("queenie", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
         Item i = iman.createItem("test_id", i_info, "F");
@@ -95,7 +95,7 @@ public class ItemManagerTest {
 
     @Test(timeout = 50)
     public void testRemoveItem_exist_item() {
-        ItemManager iman = new ItemManager();
+        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         User u = new User("test_user", "123456");
         List<String> i_info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
         Item i = new Item("test_id", i_info, "L01", u.getUsername(),"L");
@@ -106,7 +106,7 @@ public class ItemManagerTest {
 
     @Test
     public void testSearchItem_no_item() {
-        ItemManager iman = new ItemManager();
+        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
         Item i = new Item("a", info, "l");
         assertNull(iman.searchItem("a"));
@@ -114,7 +114,7 @@ public class ItemManagerTest {
     }
     @Test
     public void testSearchItem_exist_item(){
-        ItemManager iman = new ItemManager();
+        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
         Item i = new Item("a", info, "l");
         iman.addItem("a","alan");

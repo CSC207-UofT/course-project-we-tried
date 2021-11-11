@@ -7,10 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ItemManager {
-    private static Map<String, Item> imap = new HashMap<String, Item>();
-    private static Locker L;
-    private static Freezer F;
-    private static Refrigerator R;
+    private static final Map<String, Item> imap = new HashMap<String, Item>();
     private final ItemStorer storer;
     private final ItemSearcher searcher;
     private final ItemPicker picker;
@@ -35,16 +32,14 @@ public class ItemManager {
         Map<String, Boolean> rmap = new HashMap<>(2);
         rmap.put("r01", false);
         rmap.put("r02", false);
-        L = new Locker(3, lmap);
-        F = new Freezer(1, fmap);
-        R = new Refrigerator(2, rmap);
+        Locker l = new Locker(3, lmap);
+        Freezer f = new Freezer(1, fmap);
+        Refrigerator r = new Refrigerator(2, rmap);
 
-        storer.setup(imap, L,F,R);
+        storer.setup(imap, l, f, r);
     }
 
-    /*A customized series of containers*/
-    public ItemManager(List<String> series) {
-    }
+
 
     public Map<String, Item> getItemMap() {
         return imap;
@@ -52,14 +47,15 @@ public class ItemManager {
 
     public String addItem(String id, List<String> info, String storageRequirement, String currentUser) {
         storer.create(id, info, storageRequirement);
-        storer.add(id,currentUser);
         // timer.RecordStart();
+        return storer.add(id,currentUser);
     }
 
     public String removeItem(String id) {
-        //searcher.search();
+        if(searcher.search(id,imap)!=null){
         //checkFee(id);
-        return picker.remove(id,imap);
+        return picker.remove(id,imap);}
+        else{return null;}
     }
 
     public List<String> searchItem(String id){
