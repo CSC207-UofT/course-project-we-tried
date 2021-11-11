@@ -12,23 +12,35 @@ public class ItemManager {
     private static Freezer F;
     private static Refrigerator R;
 
-
-    /*A preset series of containers*/
+    /**
+     * A new ItemManager, with a preset series of containers.
+     */
     public ItemManager(){
-        Map<String, Boolean> lmap = new HashMap<>(10);
-        L = new Locker(0, 10, lmap);
-        F = new Freezer(0, 5);
-        R = new Refrigerator(0,8);
+        Map<String, Boolean> lmap = new HashMap<>(3);
+        lmap.put("L01", false);
+        lmap.put("L02", false);
+        lmap.put("L03", false);
+        Map<String, Boolean> fmap = new HashMap<>(1);
+        fmap.put("f01", false);
+        Map<String, Boolean> rmap = new HashMap<>(2);
+        rmap.put("r01", false);
+        rmap.put("r02", false);
+        L = new Locker(3, lmap);
+        F = new Freezer(1, fmap);
+        R = new Refrigerator(2,rmap);
     }
 
     /*A customized series of containers*/
     public ItemManager(List<String> series){
     }
 
-    public Item createItem(String id, List<String> info, String storageRequirement){
+    public Map<String, Item> getItemMap(){
+        return imap;
+    }
+
+    public void createItem(String id, List<String> info, String storageRequirement){
         Item i1 = new Item(id, info, storageRequirement);
         imap.put(id, i1);
-        return i1;
     }
 
     public static Container findContainer(Item i){
@@ -41,19 +53,19 @@ public class ItemManager {
         } else {return null;}
     }
 
-    public boolean addItem(String id, String currentUser) {
+    public String addItem(String id, String currentUser) {
         Item i1 = imap.get(id);
         if (findContainer(i1) != null) {
             String location = findContainer(i1).nextVacantLocation();
             if (location == null) {
-                return false;
+                return null;
             } else {
-                findContainer(i1).modifyMap(location);
+                findContainer(i1).modifyContainer(location);
                 i1.setLocation(location);
                 i1.setProcessor(currentUser);
-                return true;
+                return location;
             }
-        } else {return false;}
+        } else {return null;}
     }
 
     public String removeItem(String id){
@@ -63,11 +75,11 @@ public class ItemManager {
         return location;
     }
 
-    public String searchItem(String id){
+    public List<String> searchItem(String id){
         if(imap.get(id) == null){
             return null;
         }
-        return imap.get(id).toString();
+        return imap.get(id).getInfo();
     }
 
     public int getStorageTime(){
