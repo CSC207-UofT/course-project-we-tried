@@ -125,5 +125,5 @@ public class ItemManagerTest {
         String expect = "Item:a"+line_seperator+info+line_seperator+location+line_seperator+processor+line_seperator+fee;
         assertEquals(expect,iman.searchItem("a"));
     }
-
+//    new ArrayList<>(Arrays.asList("a","Sender: test_sender" ,"Receiver: test_receiver", "Description: This is a test!"));
 }

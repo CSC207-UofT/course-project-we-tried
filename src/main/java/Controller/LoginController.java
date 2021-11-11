@@ -4,6 +4,7 @@ import UseCase.UserManager;
 import java.util.List;
 public class LoginController {
     private UserManager uman = new UserManager();
+    private ItemManager iman = new ItemManager();
     private static String currentUser = "";
 
 
@@ -24,7 +25,7 @@ public class LoginController {
         // lookup username; if already exists, return false.
         // else call Usermanager.register
         if(uman.lookupUser(username) == null){
-            uman.UserRegister(username,pw);
+            uman.userRegister(username,pw);
             return true;
         }
         return false;
@@ -32,6 +33,9 @@ public class LoginController {
 
     public boolean userLogout(){
         // set current user as ""
+
+        currentUser = ""
+
         return true;
     }
 }
