@@ -1,26 +1,44 @@
 package Entities;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class Freezer implements Container{
-
-    private Map<String, Boolean> fmap;
-    private final int capacity = 0;
+    /**
+     * The map of this Freezer, with index of the locations and its state(empty or not).
+     */
+    private final Map<String, Boolean> fmap;
+    /**
+     * The capacity of this Freezer.
+     */
+    private final int capacity;
+    /**
+     * The current number of items in this Freezer. Default is 0.
+     */
     private int number_items;
+    /**
+     * The number of vacant spaces of this Freezer.
+     */
     private int Vacancy;
 
-    public Freezer( int number_items, int Vacancy){
-        this.number_items = number_items;
-        this.Vacancy = Vacancy;
-        this.fmap = new HashMap<String, Boolean>();
+    /**
+     * A new, empty freezer, with a preset capacity and map.
+     */
+    public Freezer(int capacity, Map<String, Boolean> fmap){
+        this.capacity = capacity;
+        this.fmap = fmap;
+        this.number_items = 0;
+        this.Vacancy = capacity;
     }
 
+    /**
+     * Make modifications to the container when an item is added.
+     */
     @Override
-    public void modifyMap(String location){
+    public void modifyContainer(String location){
+        this.number_items = this.number_items + 1;
+        this.Vacancy = this.Vacancy - 1;
         this.fmap.replace(location, false, true);
     }
-
 
     @Override
     public int getCapacity() {
@@ -47,7 +65,7 @@ public class Freezer implements Container{
     public String nextVacantLocation() {
         for (String location: fmap.keySet()){
             Boolean empty = fmap.get(location);
-            if (empty){ return location;
+            if (!empty){ return location;
             }
         }
         return null;
