@@ -12,7 +12,6 @@ public class ItemManager {
     private static Freezer F;
     private static Refrigerator R;
 
-
     /**
      * A new ItemManager, with a preset series of containers.
      */
@@ -35,10 +34,13 @@ public class ItemManager {
     public ItemManager(List<String> series){
     }
 
-    public Item createItem(String id, List<String> info, String storageRequirement){
+    public Map<String, Item> getItemMap(){
+        return imap;
+    }
+
+    public void createItem(String id, List<String> info, String storageRequirement){
         Item i1 = new Item(id, info, storageRequirement);
         imap.put(id, i1);
-        return i1;
     }
 
     public static Container findContainer(Item i){
@@ -51,19 +53,19 @@ public class ItemManager {
         } else {return null;}
     }
 
-    public boolean addItem(String id, String currentUser) {
+    public String addItem(String id, String currentUser) {
         Item i1 = imap.get(id);
         if (findContainer(i1) != null) {
             String location = findContainer(i1).nextVacantLocation();
             if (location == null) {
-                return false;
+                return null;
             } else {
                 findContainer(i1).modifyContainer(location);
                 i1.setLocation(location);
                 i1.setProcessor(currentUser);
-                return true;
+                return location;
             }
-        } else {return false;}
+        } else {return null;}
     }
 
     public String removeItem(String id){
@@ -78,10 +80,6 @@ public class ItemManager {
             return null;
         }
         return imap.get(id).getInfo();
-    }
-
-    public Map<String, Item> getItemMap(){
-        return imap;
     }
 
     public int getStorageTime(){

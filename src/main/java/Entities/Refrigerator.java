@@ -59,7 +59,7 @@ public class Refrigerator implements Container {
     public String nextVacantLocation() {
         for (String location: rmap.keySet()){
             Boolean empty = rmap.get(location);
-            if (empty){ return location;
+            if (!empty){ return location;
             }
         }
         return null;
