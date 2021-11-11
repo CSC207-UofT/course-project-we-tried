@@ -44,14 +44,23 @@ public class UserManager {
     }
 
     /**
-     * Record the current user.
+     * Record and return the current user.
      */
     public User RecordUser(String curr_name){
         if (umap.containsKey(curr_name)){
             currentUser = umap.get(curr_name);
             return currentUser;
+        } else {
+            currentUser = null;
+            return null;
         }
-        return null;
+    }
+
+    /**
+     * Return current user.
+     */
+    public User getCurrentUser(){
+        return currentUser;
     }
 
     /**
