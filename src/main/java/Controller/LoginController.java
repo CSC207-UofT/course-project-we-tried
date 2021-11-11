@@ -15,7 +15,7 @@ public class LoginController {
         if(uman.lookupUser(username) == null){
             return false;
         }
-        currentUser = uman.RecordUser(username);
+        currentUser = username;
         return uman.pwVerify(username, pw);
     }
 

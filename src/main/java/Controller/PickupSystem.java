@@ -19,7 +19,7 @@ public class PickupSystem {
 
     public String storeItem(String id, List<String> info, String storageRequirement, String name) {
         // this will interact with the UI layer
-        currentUser = uman.RecordUser(name);
+        currentUser = name;
         iman.createItem(id,info,storageRequirement);
         return iman.addItem(id, currentUser);
     }
