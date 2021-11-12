@@ -1,7 +1,5 @@
 package Controller;
-import UseCase.ItemManager;
 import UseCase.UserManager;
-import java.util.List;
 public class LoginController {
     private UserManager uman = new UserManager();
     private static String currentUser = "";
@@ -15,7 +13,7 @@ public class LoginController {
         if(uman.lookupUser(username) == null){
             return false;
         }
-        currentUser = uman.RecordUser(username);
+        currentUser = uman.RecordUser(username).getUsername();
         return uman.pwVerify(username, pw);
     }
 
@@ -24,7 +22,7 @@ public class LoginController {
         // lookup username; if already exists, return false.
         // else call Usermanager.register
         if(uman.lookupUser(username) == null){
-            uman.UserRegister(username,pw);
+            uman.userRegister(username,pw);
             return true;
         }
         return false;

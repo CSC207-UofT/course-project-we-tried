@@ -86,6 +86,15 @@ public class UserManagerTest {
         UserManager uman = new UserManager();
         uman.userRegister("queenie", "test1");
         assertNotNull(uman.RecordUser("queenie"));
+        assertEquals(uman.getCurrentUser(), "queenie");
+    }
+
+    @Test
+    public void recordUser_null() {
+        UserManager uman = new UserManager();
+        uman.userRegister("queenie", "test1");
+        uman.RecordUser(null);
+        assertNull(uman.getCurrentUser());
     }
 
     @Test
