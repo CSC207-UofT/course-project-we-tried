@@ -85,4 +85,5 @@ public class LockerTest {
         Locker L = new Locker(1, lmap);
         assertNotNull(L.generateMap());
     }
+
 }

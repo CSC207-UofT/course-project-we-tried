@@ -67,4 +67,5 @@ public class FreezerTest {
         assertEquals("L01", F.nextVacantLocation());
         assertEquals("L01", F.nextVacantLocation());
     }
+
 }

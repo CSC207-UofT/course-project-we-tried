@@ -9,6 +9,7 @@ public class UserTest {
     @Test
     public void getPassword() {
         User Queenie = new User("queenie", "123456");
+        assertNotEquals("123", Queenie.getPassword());
         assertEquals("123456", Queenie.getPassword());
     }
 
