@@ -99,7 +99,7 @@ public class ItemManagerTest {
     public void testSearchItem_no_item() {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
-        Item i = new Item("a", info, "l");
+        Item i = new Item("a", info, "L");
         assertNull(iman.searchItem("a"));
 
     }

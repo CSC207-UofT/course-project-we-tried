@@ -11,14 +11,19 @@ import static org.junit.Assert.*;
 
 public class LoginControllerTest {
 
-
+    @Test
+    public void user(){
+        LoginController log = new LoginController();
+        UserManager u = log.getUman();
+        Map<String, User> m = u.getUMap("al");
+    }
 
     @Test
     public void userLogin_successful() {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
         Map<String, User> m = u.getUMap("al");
-        log.userRegister("queenie", "abc");
+        log.userRegister("alan", "abc");
         assertTrue(log.userLogin("alan", "abc"));
         assertEquals("alan",log.getCurrentUser());
         assertEquals("alan", log.getUman().getCurrentUser().getUsername());
