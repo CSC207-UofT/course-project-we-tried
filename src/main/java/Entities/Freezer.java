@@ -65,7 +65,7 @@ public class Freezer implements Container{
     public String nextVacantLocation() {
         for (String location: fmap.keySet()){
             Boolean empty = fmap.get(location);
-            if (empty){ return location;
+            if (!empty){ return location;
             }
         }
         return null;
