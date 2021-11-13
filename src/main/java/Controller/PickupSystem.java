@@ -27,13 +27,18 @@ public class PickupSystem {
     }
 
     public List<String> search(String id){
+
         return iman.searchItem(id);
         }
 
-        
+    public ItemManager getIman() {
+        return iman;
+    }
+    public UserManager getUman(){
+        return uman;
+    }
 
-
-//        if(iman.getvancancy() == false){
+    //        if(iman.getvancancy() == false){
 //            return false;
 //        }
 //        else{

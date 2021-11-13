@@ -2,9 +2,10 @@ package Controller;
 import UseCase.ItemManager;
 import UseCase.UserManager;
 import java.util.List;
+import java.util.Objects;
+
 public class LoginController {
     private UserManager uman = new UserManager();
-    private ItemManager iman = new ItemManager();
     private static String currentUser = "";
 
 
@@ -16,8 +17,11 @@ public class LoginController {
         if(uman.lookupUser(username) == null){
             return false;
         }
-        currentUser = username;
-        return uman.pwVerify(username, pw);
+        else if (uman.pwVerify(username, pw)){
+            currentUser = username;
+            return true;
+        }
+        return false;
     }
 
 
@@ -33,9 +37,19 @@ public class LoginController {
 
     public boolean userLogout(){
         // set current user as ""
-
+        if(Objects.equals(currentUser, "")){
+            return false;
+        }
         currentUser = "";
 
         return true;
+    }
+
+    public void set_uman_current_empty(){
+
+    }
+
+    public UserManager getUman(){
+        return uman;
     }
 }
