@@ -34,7 +34,7 @@ public class LoginController {
     public boolean userLogout(){
         // set current user as ""
 
-        currentUser = ""
+        currentUser = "";
 
         return true;
     }
