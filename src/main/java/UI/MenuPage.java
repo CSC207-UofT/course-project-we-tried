@@ -82,7 +82,7 @@ public class MenuPage implements ActionListener {
         }
         if(e.getSource()==logoutButton) {
             tempLabel.setText("Logout");
-            LoginController.userLogout();
+            loginController.userLogout();
             frame.dispose();
             LoginPage loginPage = new LoginPage();
         }

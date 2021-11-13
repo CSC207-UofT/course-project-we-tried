@@ -69,10 +69,10 @@ public class LoginPage implements ActionListener {
         String password = String.valueOf(userPasswordField.getPassword());
 
         if(e.getSource()==registerButton) {
-            LoginController.userRegister(userID, password);
+            loginController.userRegister(userID, password);
         }
         if(e.getSource()==loginButton) {
-            if (LoginController.userLogin(userID, password)) {
+            if (loginController.userLogin(userID, password)) {
                 frame.dispose();
                 MenuPage menuPage = new MenuPage(userID, pickupSystem, loginController);
             } else {
