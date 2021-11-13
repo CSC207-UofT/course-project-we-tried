@@ -19,6 +19,7 @@ public class LoginController {
         }
         else if (uman.pwVerify(username, pw)){
             currentUser = username;
+            uman.RecordUser(username);
             return true;
         }
         return false;
@@ -41,15 +42,15 @@ public class LoginController {
             return false;
         }
         currentUser = "";
-
+        uman.RecordUser("");
         return true;
-    }
-
-    public void set_uman_current_empty(){
-
     }
 
     public UserManager getUman(){
         return uman;
+    }
+
+    public String getCurrentUser(){
+        return currentUser;
     }
 }

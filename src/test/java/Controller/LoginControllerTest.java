@@ -4,15 +4,24 @@ import Entities.User;
 import UseCase.UserManager;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.Assert.*;
 
 public class LoginControllerTest {
 
+
+
     @Test
     public void userLogin_successful() {
         LoginController log = new LoginController();
-        log.userRegister("alan", "abc");
+        UserManager u = log.getUman();
+        Map<String, User> m = u.getUMap("al");
+        log.userRegister("queenie", "abc");
         assertTrue(log.userLogin("alan", "abc"));
+        assertEquals("alan",log.getCurrentUser());
+        assertEquals("alan", log.getUman().getCurrentUser().getUsername());
 
     }
 
@@ -33,7 +42,10 @@ public class LoginControllerTest {
     @Test
     public void userRegister_successful() {
         LoginController log = new LoginController();
-        assertTrue(log.userRegister("alan", "abc"));
+        UserManager u = log.getUman();
+        Map<String, User> m = u.getUMap("alan");
+        Boolean a = log.userRegister("alan","abc");
+        assertTrue(a);
 
     }
 
@@ -52,6 +64,8 @@ public class LoginControllerTest {
         log.userRegister("alan", "abc");
         log.userLogin("alan", "abc");
         assertTrue(log.userLogout());
+        assertEquals("",log.getCurrentUser());
+        assertNull(log.getUman().getCurrentUser());
     }
 
     @Test

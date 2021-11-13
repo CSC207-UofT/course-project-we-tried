@@ -112,6 +112,7 @@ public class ItemManagerTest {
         List<String> expected = new ArrayList<>(Arrays.asList("a","Sender: test_sender","Receiver: test_receiver",
                 "Description: This is a test!",location, "test_user","L"));
         assertEquals(expected,iman.searchItem("a"));
+
     }
 
 //    @Test
