@@ -1,4 +1,8 @@
+import Controller.LoginController;
+import Controller.PickupSystem;
 import UI.LoginPage;
+import UI.OperationSearch;
+import UI.OperationStore;
 
 import java.util.HashMap;
 
@@ -33,5 +37,10 @@ public class DemoMain {
                 System.out.println("Returning to the main menu...");
             }
         }*/
+        LoginPage loginPage = new LoginPage();
+        //PickupSystem pickupSystem = new PickupSystem();
+        //LoginController loginController = new LoginController();
+        //OperationStore operationStore = new OperationStore("user",pickupSystem,loginController);
+        //OperationSearch operationSearch = new OperationSearch("user",pickupSystem,loginController);
     }
 }

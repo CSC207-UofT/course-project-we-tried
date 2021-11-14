@@ -12,27 +12,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OperationStore extends JFrame {
-    private JLabel Instruction;
-    private JLabel pkgID;
-    private JButton Menu;
-    private JButton Store;
-    private JLabel pkginfo;
-    private JTextField IDID;
-    private JTextField infoinfo;
-    private JLabel StgRequire;
-    private JTextField ReqReq;
+    private JLabel Instruction = new JLabel();
+    private JLabel pkgID = new JLabel();
+    private JButton Menu = new JButton();
+    private JButton Store = new JButton();
+    private JLabel pkginfo = new JLabel();
+    private JTextField IDID = new JTextField();
+    private JTextField infoinfo = new JTextField();
+    private JLabel StgRequire = new JLabel();
+    private JTextField ReqReq = new JTextField();
     final int FRAME_HEIGHT = 500;
     final int FRAME_LENGTH = 500;
-    private JPanel panel;
-    private PickupSystem pckSys;
-    private JLabel Sender;
-    private JLabel Receiver;
-    private JTextField sdsd;
-    private JTextField rere;
-    private JLabel Description;
-    private JTextField dede;
-    private String UserID;
-    private LoginController lgcontrol;
+    private JPanel panel = new JPanel();
+    private PickupSystem pckSys = new PickupSystem();
+    private JLabel Sender = new JLabel();
+    private JLabel Receiver = new JLabel();
+    private JTextField sdsd = new JTextField();
+    private JTextField rere = new JTextField();
+    private JLabel Description = new JLabel();
+    private JTextField dede = new JTextField();
+    private String UserID = new String();
+    private LoginController lgcontrol = new LoginController();
 
     public OperationStore(String userID, PickupSystem pckSys, LoginController lgcontrol){
         this.pckSys = pckSys;
@@ -105,7 +105,7 @@ public class OperationStore extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 OperationStore.this.setVisible(false);
                 //JFrame add the menu function;
-                //Menu.this.setVisible(true)
+                MenuPage menuPage = new MenuPage(UserID, pckSys, lgcontrol);
             }
         });
 
