@@ -10,6 +10,46 @@ import static org.junit.Assert.*;
 public class LockerTest {
 
     @Test
+    public void modifyContainer(){
+        Map<String, Boolean> lmap = new HashMap<>(1);
+        lmap.put("L01", false);
+        Locker L = new Locker(1, lmap);
+        L.modifyContainer("L01");
+        assertTrue(L.generateMap().get("L01"));
+    }
+
+    @Test
+    public void getCapacity(){
+        Map<String, Boolean> lmap = new HashMap<>(2);
+        lmap.put("L01", false);
+        lmap.put("L02", false);
+        Locker L = new Locker(2, lmap);
+        assertEquals(2, L.getCapacity());
+    }
+
+    @Test
+    public void getNumberOfItems(){
+        Map<String, Boolean> lmap = new HashMap<>(2);
+        lmap.put("L01", false);
+        lmap.put("L02", false);
+        Locker L = new Locker(2, lmap);
+        assertEquals(0, L.getNumberOfItems());
+        L.modifyContainer("L01");
+        assertEquals(1, L.getNumberOfItems());
+    }
+
+    @Test
+    public void getVacancy(){
+        Map<String, Boolean> lmap = new HashMap<>(2);
+        lmap.put("L01", false);
+        lmap.put("L02", false);
+        Locker L = new Locker(2, lmap);
+        assertEquals(2, L.getVacancy());
+        L.modifyContainer("L01");
+        assertEquals(1, L.getVacancy());
+    }
+
+    @Test
     public void nextVacantLocation() {
         Map<String, Boolean> lmap = new HashMap<>(2);
         lmap.put("L01", false);
@@ -37,4 +77,13 @@ public class LockerTest {
         assertEquals("L01", L.nextVacantLocation());
         assertEquals("L01", L.nextVacantLocation());
     }
+
+    @Test
+    public void generateMap(){
+        Map<String, Boolean> lmap = new HashMap<>(1);
+        lmap.put("L01", false);
+        Locker L = new Locker(1, lmap);
+        assertNotNull(L.generateMap());
+    }
+
 }

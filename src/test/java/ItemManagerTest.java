@@ -5,6 +5,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -98,10 +99,22 @@ public class ItemManagerTest {
     public void testSearchItem_no_item() {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
-        Item i = new Item("a", info, "l");
+        Item i = new Item("a", info, "L");
         assertNull(iman.searchItem("a"));
 
     }
+    @Test
+   public void testSearchItem_exist_item(){
+        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
+        List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
+        User u = new User("test_user", "123456");
+        String location =  iman.addItem("a", info,"L","test_user" );
+        List<String> expected = new ArrayList<>(Arrays.asList("a","Sender: test_sender","Receiver: test_receiver",
+                "Description: This is a test!",location, "test_user","L"));
+        assertEquals(expected,iman.searchItem("a"));
+
+    }
+
 //    @Test
 //    public void testSearchItem_exist_item(){
 //        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
