@@ -92,11 +92,12 @@ public class OperationStore extends JFrame {
                 infoinfo.add(sdsd.getText());
                 infoinfo.add(rere.getText());
                 infoinfo.add(dede.getText());
-                if (pckSys.storeItem(IDID.getText(), infoinfo,ReqReq.getText(), userID) != null){
-                    JOptionPane.showMessageDialog(null, "Deposit succeed");
-                }
+                String stored_item = pckSys.storeItem(IDID.getText(), infoinfo,ReqReq.getText(), userID);
 
-                else{
+                if (stored_item != null){
+                    JOptionPane.showMessageDialog(null, "Deposit succeed "+"Stored in:"+stored_item);
+                }
+                else {
                     JOptionPane.showMessageDialog(null, "The" + ReqReq.getText()
                             + " is currently full.");
                 }
