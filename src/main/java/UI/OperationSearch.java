@@ -11,16 +11,16 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class OperationSearch implements ActionListener{
-    private JFrame frame;
-    private JLabel Instruction;
-    private JLabel pkgID;
-    private JButton Search;
-    private JButton Menu;
-    private JTextField EnterID;
-    private JButton pickup;
-    private PickupSystem pckSys;
-    private LoginController loginController;
-    private String userID;
+    private JFrame frame = new JFrame();
+    private JLabel Instruction = new JLabel();
+    private JLabel pkgID = new JLabel();
+    private JButton Search = new JButton();
+    private JButton Menu = new JButton();
+    private JTextField EnterID = new JTextField();
+    private JButton pickup = new JButton();
+    private PickupSystem pckSys = new PickupSystem();
+    private LoginController loginController = new LoginController();
+    private String userID = new String();
 
 
     public OperationSearch(String username, PickupSystem pckSys, LoginController loginC) {
@@ -54,6 +54,7 @@ public class OperationSearch implements ActionListener{
         Menu.setBorder(BorderFactory.createLineBorder(Color.white));
         Menu.setForeground(Color.white);
         Menu.setFocusable(false);
+        Menu.addActionListener(this);
 
         frame.add(Instruction);
         frame.add(pkgID);
@@ -81,6 +82,7 @@ public class OperationSearch implements ActionListener{
             else{
                 frame.dispose();
                 OperationExtraction operationExtraction = new OperationExtraction(userID, pckSys, loginController);
+                operationExtraction.setVisible(true);
             }
         }
         if (e.getSource()==Menu){

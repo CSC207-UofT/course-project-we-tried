@@ -70,13 +70,13 @@ public class Item {
 
     public List<String> getInfo(){
         List<String> ltlt = new ArrayList<>(8);
-        ltlt.add(this.id);
-        ltlt.add(this.itemInfo.get(0));
-        ltlt.add(this.itemInfo.get(1));
-        ltlt.add(this.itemInfo.get(2));
-        ltlt.add(this.location);
-        ltlt.add(this.processor);
-        ltlt.add(this.storageRequirement);
+        ltlt.add(0,this.id);
+        ltlt.add(1, this.itemInfo.get(0));
+        ltlt.add(2, this.itemInfo.get(1));
+        ltlt.add(3, this.itemInfo.get(2));
+        ltlt.add(4, this.location);
+        ltlt.add(5, this.processor);
+        ltlt.add(6, this.storageRequirement);
 
         return ltlt;
     }

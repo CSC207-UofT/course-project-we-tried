@@ -11,21 +11,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OperationExtraction extends JFrame{
-    private JLabel ID;
-    private JLabel Sender;
-    private JLabel Receiver;
-    private JLabel Description;
-    private JLabel Location;
-    private JLabel Processor;
-    private JLabel StgReq;
-    private JButton Pickup;
-    private JButton Menu;
-    private JPanel panel;
-    private String id;
+    private JLabel ID = new JLabel();
+    private JLabel Sender = new JLabel();
+    private JLabel Receiver = new JLabel();
+    private JLabel Description = new JLabel();
+    private JLabel Location = new JLabel();
+    private JLabel Processor = new JLabel();
+    private JLabel StgReq = new JLabel();
+    private JButton Pickup = new JButton();
+    private JButton Menu = new JButton();
+    private JPanel panel = new JPanel();
+    private String id = new String();
     final int FRAME_HEIGHT = 1000;
     final int FRAME_LENGTH = 500;
-    private PickupSystem pckSys;
-    private LoginController lgctrol;
+    private PickupSystem pckSys = new PickupSystem();
+    private LoginController lgctrol = new LoginController();
 
     public OperationExtraction(String id, PickupSystem pckSys, LoginController lgctrol){
         this.id = id;
@@ -69,6 +69,14 @@ public class OperationExtraction extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 pckSys.pickup(id);
                 JOptionPane.showMessageDialog(null, "Package successfully removed");
+            }
+        });
+
+        Menu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                OperationExtraction.this.setVisible(false);
+                MenuPage menu = new MenuPage(id, pckSys, lgctrol);
             }
         });
 

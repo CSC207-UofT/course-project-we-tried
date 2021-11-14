@@ -74,6 +74,7 @@ public class MenuPage implements ActionListener {
             tempLabel.setText("Deposit");
             frame.dispose();
             OperationStore operationStore = new OperationStore(userID, pickupSystem, loginController);
+            operationStore.setVisible(true);
         }
         if(e.getSource()==pickupButton) {
             tempLabel.setText("Pickup");
