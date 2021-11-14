@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ItemManager {
-    private final static Map<String, Item> imap = new HashMap<String, Item>();
+    private final Map<String, Item> imap = new HashMap<String, Item>();
     private final ItemStorer storer;
     private final ItemSearcher searcher;
     private final ItemPicker picker;
@@ -48,7 +48,8 @@ public class ItemManager {
     }
 
     public String addItem(String id, List<String> info, String storageRequirement, String currentUser) {
-        storer.create(id, info, storageRequirement);
+        boolean stored = storer.create(id, info, storageRequirement);
+        if(!stored){return "*";}
         // timer.RecordStart();
         return storer.add(id,currentUser);
     }

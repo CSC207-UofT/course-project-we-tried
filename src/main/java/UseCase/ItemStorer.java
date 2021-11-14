@@ -31,11 +31,16 @@ public class ItemStorer {
             c = null;}
     }
 
-    public void create(String id, List<String> info, String storageRequirement) {
+    public boolean create(String id, List<String> info, String storageRequirement) {
         Item i1 = new Item(id, info, storageRequirement);
+        if(Imap.containsKey(id)){
+            return false;
+        }
+        else{
         Imap.put(id, i1);
+        return true;
+        }
     }
-
 
     public String add(String id, String currentUser) {
         Item i1 = Imap.get(id);
