@@ -26,12 +26,14 @@ public class OperationExtraction extends JFrame{
     final int FRAME_LENGTH = 500;
     private PickupSystem pckSys = new PickupSystem();
     private LoginController lgctrol = new LoginController();
+    private String pkgId = new String();
 
-    public OperationExtraction(String id, PickupSystem pckSys, LoginController lgctrol){
+    public OperationExtraction(String id, String pkgId,PickupSystem pckSys, LoginController lgctrol){
         this.id = id;
         this.lgctrol = lgctrol;
+        this.pkgId = pkgId;
         panel = new JPanel();
-        ArrayList<String> ltlt = (ArrayList<String>) pckSys.search(id);
+        ArrayList<String> ltlt = (ArrayList<String>) pckSys.search(pkgId);
 
         ID = new JLabel(ltlt.get(0));
         panel.add(ID);
@@ -67,7 +69,7 @@ public class OperationExtraction extends JFrame{
         Pickup.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                pckSys.pickup(id);
+                pckSys.pickup(ltlt.get(0));
                 JOptionPane.showMessageDialog(null, "Package successfully removed");
             }
         });
