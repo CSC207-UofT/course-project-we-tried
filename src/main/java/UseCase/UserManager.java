@@ -10,8 +10,8 @@ import java.util.Objects;
 
 public class UserManager {
 
-    private static Map<String, User> umap = new HashMap<String, User>();
-    private static Map<String, List<Item>> imap = new HashMap<String, List<Item>>();
+    private Map<String, User> umap = new HashMap<String, User>();
+    private Map<String, List<Item>> imap = new HashMap<String, List<Item>>();
     private User currentUser;
 
     /**

@@ -1,3 +1,5 @@
+package UseCase;
+
 import UseCase.UserManager;
 import Entities.User;
 import Entities.Item;
@@ -86,7 +88,7 @@ public class UserManagerTest {
         UserManager uman = new UserManager();
         uman.userRegister("queenie", "test1");
         assertNotNull(uman.RecordUser("queenie"));
-        assertEquals(uman.getCurrentUser(), "queenie");
+        assertEquals(uman.getCurrentUser().getUsername(), "queenie");
     }
 
     @Test

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ItemManager {
-    private static final Map<String, Item> imap = new HashMap<String, Item>();
+    private final Map<String, Item> imap = new HashMap<String, Item>();
     private final ItemStorer storer;
     private final ItemSearcher searcher;
     private final ItemPicker picker;
