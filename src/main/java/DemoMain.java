@@ -3,12 +3,16 @@ import Controller.PickupSystem;
 import UI.LoginPage;
 import UI.OperationSearch;
 import UI.OperationStore;
+import UseCase.ItemManager;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.HashMap;
 
 public class DemoMain {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         /*List<String> i1_info = new ArrayList<String>(Arrays.asList("Sender: CSC", "Receiver: We_Tried", "Description: This is a package!"));
         List<String> i2_info = new ArrayList<String>(Arrays.asList("Sender: CSC", "Receiver: We_Failed", "Description: This is not my package!"));
         User u1 = new User("user1", "123456");
@@ -37,7 +41,12 @@ public class DemoMain {
                 System.out.println("Returning to the main menu...");
             }
         }*/
-        LoginPage loginPage = new LoginPage();
+        FileInputStream fis = new FileInputStream("xyz.txt");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        ItemManager im = (ItemManager) ois.readObject();
+        ois.close();
+        PickupSystem pickupSystem = new PickupSystem(im);
+        LoginPage loginPage = new LoginPage(pickupSystem);
         //PickupSystem pickupSystem = new PickupSystem();
         //LoginController loginController = new LoginController();
         //OperationStore operationStore = new OperationStore("user",pickupSystem,loginController);

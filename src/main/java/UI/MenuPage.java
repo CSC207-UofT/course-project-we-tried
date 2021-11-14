@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class MenuPage implements ActionListener {
     private JFrame frame = new JFrame();
@@ -15,10 +16,10 @@ public class MenuPage implements ActionListener {
     private JLabel userLabel = new JLabel();
     private JLabel tempLabel = new JLabel();
     private String userID;
-    private PickupSystem pickupSystem = new PickupSystem();
+    private PickupSystem pickupSystem;
     private LoginController loginController = new LoginController();
 
-    MenuPage(String username, PickupSystem pckSys, LoginController loginC){
+    MenuPage(String username, PickupSystem pckSys, LoginController loginC) throws IOException, ClassNotFoundException {
         this.userID = username;
         this.pickupSystem = pckSys;
         this.loginController = loginC;
@@ -73,19 +74,38 @@ public class MenuPage implements ActionListener {
         if(e.getSource()==depositButton) {
             tempLabel.setText("Deposit");
             frame.dispose();
-            OperationStore operationStore = new OperationStore(userID, pickupSystem, loginController);
+            OperationStore operationStore = null;
+            try {
+                operationStore = new OperationStore(userID, pickupSystem, loginController);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
             operationStore.setVisible(true);
         }
         if(e.getSource()==pickupButton) {
             tempLabel.setText("Pickup");
             frame.dispose();
-            OperationSearch operationSearch = new OperationSearch(userID, pickupSystem, loginController);
+            try {
+                OperationSearch operationSearch = new OperationSearch(userID, pickupSystem, loginController);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
         }
         if(e.getSource()==logoutButton) {
             tempLabel.setText("Logout");
             loginController.userLogout();
             frame.dispose();
-            LoginPage loginPage = new LoginPage();
+            try {
+                LoginPage loginPage = new LoginPage(this.pickupSystem);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 }

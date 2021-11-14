@@ -1,11 +1,11 @@
 package UseCase;
-
+import java.io.*;
 import Entities.*;
 
 import java.util.List;
 import java.util.Map;
 
-public class ItemStorer {
+public class ItemStorer implements Serializable{
     String location = "";
     Map<String, Item> Imap;
     Container c;

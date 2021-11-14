@@ -1,8 +1,8 @@
 package Entities;
-
+import java.io.*;
 import java.util.Map;
 
-public class Freezer implements Container{
+public class Freezer implements Container, Serializable{
     /**
      * The map of this Freezer, with index of the locations and its state(empty or not).
      */

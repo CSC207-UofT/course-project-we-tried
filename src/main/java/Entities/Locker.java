@@ -1,8 +1,8 @@
 package Entities;
-
+import java.io.*;
 import java.util.Map;
 
-public class Locker implements Container{
+public class Locker implements Container, Serializable{
     /**
      * The map of this Locker, with index of the locations and its state(empty or not).
      */

@@ -7,6 +7,7 @@ import UseCase.ItemManager;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,11 +25,11 @@ public class OperationExtraction extends JFrame{
     private String id = new String();
     final int FRAME_HEIGHT = 1000;
     final int FRAME_LENGTH = 500;
-    private PickupSystem pckSys = new PickupSystem();
+    private PickupSystem pckSys;
     private LoginController lgctrol = new LoginController();
     private String pkgId = new String();
 
-    public OperationExtraction(String id, String pkgId,PickupSystem pckSys, LoginController lgctrol){
+    public OperationExtraction(String id, String pkgId,PickupSystem pckSys, LoginController lgctrol) throws IOException, ClassNotFoundException {
         this.id = id;
         this.lgctrol = lgctrol;
         this.pkgId = pkgId;
@@ -69,7 +70,11 @@ public class OperationExtraction extends JFrame{
         Pickup.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                pckSys.pickup(ltlt.get(0));
+                try {
+                    pckSys.pickup(ltlt.get(0));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
                 JOptionPane.showMessageDialog(null, "Package successfully removed");
             }
         });
@@ -78,7 +83,13 @@ public class OperationExtraction extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 OperationExtraction.this.setVisible(false);
-                MenuPage menu = new MenuPage(id, pckSys, lgctrol);
+                try {
+                    MenuPage menu = new MenuPage(id, pckSys, lgctrol);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 

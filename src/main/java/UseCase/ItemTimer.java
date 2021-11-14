@@ -1,6 +1,8 @@
 package UseCase;
 
-public class ItemTimer {
+import java.io.Serializable;
+
+public class ItemTimer implements Serializable {
     // TODO: this part of functionality will be fulfilled in Phase 2.
     int total = 0;
 

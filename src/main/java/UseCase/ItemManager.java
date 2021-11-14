@@ -4,13 +4,13 @@ import Entities.Freezer;
 import Entities.Item;
 import Entities.Locker;
 import Entities.Refrigerator;
-
+import java.io.*;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ItemManager {
+public class ItemManager implements Serializable{
     private final Map<String, Item> imap = new HashMap<String, Item>();
     private final ItemStorer storer;
     private final ItemSearcher searcher;

@@ -1,5 +1,5 @@
 package UseCase;
-
+import java.io.*;
 import Entities.Item;
 import Entities.User;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class UserManager {
+public class UserManager implements Serializable{
 
     private final Map<String, User> umap = new HashMap<String, User>();
     private final Map<String, List<Item>> imap = new HashMap<String, List<Item>>();

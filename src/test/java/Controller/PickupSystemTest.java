@@ -5,6 +5,7 @@ import Entities.User;
 import UseCase.*;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +17,7 @@ public class PickupSystemTest {
 
 
     @Test
-    public void pickup_successful() {
+    public void pickup_successful() throws IOException, ClassNotFoundException {
         PickupSystem p = new PickupSystem();
         ItemManager i = p.getIman();
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
@@ -25,7 +26,7 @@ public class PickupSystemTest {
         assertNull(i.searchItem("test_id1"));
     }
     @Test
-    public void pickup_wrong_item(){
+    public void pickup_wrong_item() throws IOException, ClassNotFoundException {
         PickupSystem p = new PickupSystem();
         ItemManager i = p.getIman();
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
@@ -35,7 +36,7 @@ public class PickupSystemTest {
 
     }
     @Test
-    public void storeItem_successful() {
+    public void storeItem_successful() throws IOException, ClassNotFoundException {
         PickupSystem p = new PickupSystem();
         UserManager u = p.getUman();
         u.userRegister("alan", "123");

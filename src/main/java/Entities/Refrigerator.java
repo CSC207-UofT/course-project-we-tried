@@ -1,8 +1,8 @@
 package Entities;
-
+import java.io.*;
 import java.util.Map;
 
-public class Refrigerator implements Container {
+public class Refrigerator implements Container, Serializable {
     /**
      * The map of this Refrigerator, with index of the locations and its state(empty or not).
      */
