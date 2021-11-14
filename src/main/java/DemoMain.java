@@ -33,11 +33,5 @@ public class DemoMain {
                 System.out.println("Returning to the main menu...");
             }
         }*/
-        HashMap<String, String> loginInfo = new HashMap<String, String>();
-        loginInfo.put("User1", "123");
-        loginInfo.put("User2", "456");
-        loginInfo.put("User3", "789");
-
-        LoginPage loginPage = new LoginPage(loginInfo);
     }
 }
