@@ -4,7 +4,6 @@ import UseCase.*;
 
 import java.util.List;
 public class PickupSystem {
-
     private final ItemManager iman;
     private final UserManager uman = new UserManager();
 
@@ -27,13 +26,19 @@ public class PickupSystem {
         return iman.addItem(id, info, storageRequirement, currentUser);
     }
 
-    public List<String> search(String id){return iman.searchItem(id);
+    public List<String> search(String id){
+
+        return iman.searchItem(id);
         }
 
-        
+    public ItemManager getIman() {
+        return iman;
+    }
+    public UserManager getUman(){
+        return uman;
+    }
 
-
-//        if(iman.getvancancy() == false){
+    //        if(iman.getvancancy() == false){
 //            return false;
 //        }
 //        else{
