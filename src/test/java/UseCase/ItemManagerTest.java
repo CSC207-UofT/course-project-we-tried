@@ -1,3 +1,5 @@
+package UseCase;
+
 import Entities.Item;
 import Entities.User;
 import UseCase.*;
