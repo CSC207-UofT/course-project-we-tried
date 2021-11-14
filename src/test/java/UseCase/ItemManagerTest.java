@@ -2,7 +2,6 @@ package UseCase;
 
 import Entities.Item;
 import Entities.User;
-import UseCase.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -86,6 +85,17 @@ public class ItemManagerTest {
         iman.addItem("test_o", i_info, "F","queenie");
         assertNull(iman.searchItem("test_o"));
     }
+
+    @Test
+    public void testAddItem_repetitive(){
+        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
+        User u = new User("jane", "123456");
+        List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
+        iman.addItem("test_id", i_info, "L","jane");
+        assertEquals("L01", iman.getItemMap().get("test_id").getLocation());
+        assertEquals("*", iman.addItem("test_id", i_info, "F","jane"));
+    }
+
 
     @Test(timeout = 50)
     public void testRemoveItem_exist_item() {

@@ -10,8 +10,8 @@ import java.util.Objects;
 
 public class UserManager {
 
-    private static Map<String, User> umap = new HashMap<String, User>();
-    private static Map<String, List<Item>> imap = new HashMap<String, List<Item>>();
+    private final Map<String, User> umap = new HashMap<String, User>();
+    private final Map<String, List<Item>> imap = new HashMap<String, List<Item>>();
     private User currentUser;
 
     /**
@@ -44,12 +44,12 @@ public class UserManager {
     }
 
     /**
-     * Record and return the current user.
+     * Record and return the current username.
      */
-    public User RecordUser(String curr_name){
+    public String RecordUser(String curr_name){
         if (umap.containsKey(curr_name)){
             currentUser = umap.get(curr_name);
-            return currentUser;
+            return curr_name;
         } else {
             currentUser = null;
             return null;
