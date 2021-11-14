@@ -73,6 +73,12 @@ public class OperationStore extends JFrame {
         ReqReq = new JTextField(10);
         panel.add(ReqReq);
 
+        Store = new JButton("Store");
+        panel.add(Store);
+
+        Menu = new JButton("Menu");
+        panel.add(Menu);
+
         //pkginfo = new JLabel("Scanned info");
         //panel.add(pkginfo);
 
@@ -92,7 +98,7 @@ public class OperationStore extends JFrame {
 
                 else{
                     JOptionPane.showMessageDialog(null, "The" + ReqReq.getText()
-                            + "is currently full.");
+                            + " is currently full.");
                 }
 
 
@@ -110,7 +116,7 @@ public class OperationStore extends JFrame {
         });
 
         this.setLayout(null);
-        panel.setSize(250,250);
+        panel.setSize(300,400);
         panel.setLocation((FRAME_HEIGHT - 250)/2, (FRAME_LENGTH - 250)/2);
         this.add(panel);
         this.setSize(FRAME_HEIGHT, FRAME_LENGTH);

@@ -72,6 +72,14 @@ public class OperationExtraction extends JFrame{
             }
         });
 
+        Menu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                OperationExtraction.this.setVisible(false);
+                MenuPage menu = new MenuPage(id, pckSys, lgctrol);
+            }
+        });
+
         this.setLayout(null);
         panel.setSize(800,800);
         panel.setLocation((FRAME_HEIGHT - 800)/2, (FRAME_LENGTH - 150)/2);

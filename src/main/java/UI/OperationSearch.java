@@ -82,6 +82,7 @@ public class OperationSearch implements ActionListener{
             else{
                 frame.dispose();
                 OperationExtraction operationExtraction = new OperationExtraction(userID, pckSys, loginController);
+                operationExtraction.setVisible(true);
             }
         }
         if (e.getSource()==Menu){
