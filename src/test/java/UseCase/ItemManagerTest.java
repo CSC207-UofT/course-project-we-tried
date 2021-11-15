@@ -48,7 +48,7 @@ public class ItemManagerTest {
     }
 
     @Test
-    public void testAddItem_R_two_item() {
+    public void testAddItem_R_two_item() throws IOException {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         User u = new User("queenie", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
@@ -61,7 +61,7 @@ public class ItemManagerTest {
     }
 
     @Test
-    public void testAddItem_F() {
+    public void testAddItem_F() throws IOException {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         User u = new User("queenie", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
@@ -70,7 +70,7 @@ public class ItemManagerTest {
     }
 
     @Test
-    public void testAddItem_right_container_mixed() {
+    public void testAddItem_right_container_mixed() throws IOException {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         User u = new User("queenie", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
@@ -81,7 +81,7 @@ public class ItemManagerTest {
     }
 
     @Test
-    public void testAddItem_Full() {
+    public void testAddItem_Full() throws IOException {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         User u = new User("queenie", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
@@ -92,7 +92,7 @@ public class ItemManagerTest {
     }
 
     @Test
-    public void testAddItem_repetitive(){
+    public void testAddItem_repetitive() throws IOException {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         User u = new User("jane", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
@@ -103,7 +103,7 @@ public class ItemManagerTest {
 
 
     @Test(timeout = 50)
-    public void testRemoveItem_exist_item() {
+    public void testRemoveItem_exist_item() throws IOException {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         User u = new User("test_user", "123456");
         List<String> i_info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
@@ -121,7 +121,7 @@ public class ItemManagerTest {
 
     }
     @Test
-   public void testSearchItem_exist_item(){
+   public void testSearchItem_exist_item() throws IOException {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
         User u = new User("test_user", "123456");

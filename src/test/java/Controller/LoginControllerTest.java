@@ -32,21 +32,21 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void userLogin_fail_wrong_password() {
+    public void userLogin_fail_wrong_password() throws IOException {
         LoginController log = new LoginController();
         log.userRegister("alan", "abc");
         assertFalse(log.userLogin("alan", "ab"));
     }
 
     @Test
-    public void userLogin_fail_wrong_user() {
+    public void userLogin_fail_wrong_user() throws IOException {
         LoginController log = new LoginController();
         log.userRegister("alan", "abc");
         assertFalse(log.userLogin("ala", "abc"));
     }
 
     @Test
-    public void userRegister_successful() {
+    public void userRegister_successful() throws IOException {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
         Map<String, User> m = u.getUMap("alan");
@@ -56,7 +56,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void userRegister_fail() {
+    public void userRegister_fail() throws IOException {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
         u.userRegister("alan", "123");
@@ -65,7 +65,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void userLogout_has_current_user() {
+    public void userLogout_has_current_user() throws IOException {
         LoginController log = new LoginController();
         log.userRegister("alan", "abc");
         log.userLogin("alan", "abc");

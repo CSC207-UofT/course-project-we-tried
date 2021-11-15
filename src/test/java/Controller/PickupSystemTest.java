@@ -47,7 +47,7 @@ public class PickupSystemTest {
 
 
     @Test
-    public void search() {
+    public void search() throws IOException {
         PickupSystem p = new PickupSystem();
         ItemManager i = p.getIman();
         List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
