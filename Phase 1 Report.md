@@ -68,3 +68,4 @@ Delete registered user - Everett\
 Improve UI format and appearance - Juliet\
 \
 In addition, everyone will be responsible for adding and improving styling and documentation of the classes they implemented, as well as refactoring in a meaningful way.
+
