@@ -102,14 +102,26 @@ public class OperationStore extends JFrame {
                     ex.printStackTrace();
                 }
 
-                if (stored_item != null){
-                    JOptionPane.showMessageDialog(null, "Deposit succeed "+"Stored in:"+stored_item);
-                }
-                else {
-                    JOptionPane.showMessageDialog(null, "The" + ReqReq.getText()
-                            + " is currently full.");
-                }
 
+                if (stored_item != null){
+                    JOptionPane.showMessageDialog(null,
+                            "Deposit succeed "+"Stored in:"+stored_item);
+                }
+                /* if(stored_item.equals("*")){
+                    JOptionPane.showMessageDialog(null, "Item already Exist.");
+                }*/
+                else {
+                    if (ReqReq.getText().equals("F")){
+                        JOptionPane.showMessageDialog(null, "The Freezer is currently full.");
+                    }
+                    else  if (ReqReq.getText().equals("L")){
+                        JOptionPane.showMessageDialog(null, "The Locker is currently full.");
+                    }
+                    else if(ReqReq.getText().equals("R")){
+                        JOptionPane.showMessageDialog(null,
+                                "The Refrigerator is currently full.");
+                    }
+                }
 
             }
         });

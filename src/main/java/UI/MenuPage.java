@@ -100,7 +100,7 @@ public class MenuPage implements ActionListener {
             loginController.userLogout();
             frame.dispose();
             try {
-                LoginPage loginPage = new LoginPage(this.pickupSystem);
+                LoginPage loginPage = new LoginPage(this.pickupSystem, this.loginController);
             } catch (IOException ex) {
                 ex.printStackTrace();
             } catch (ClassNotFoundException ex) {

@@ -21,10 +21,11 @@ public class LoginPage implements ActionListener {
     private JLabel userPasswordLabel = new JLabel(password);
     private JLabel messageLabel = new JLabel();
     private PickupSystem pickupSystem;
-    private LoginController loginController = new LoginController();
+    private LoginController loginController;
 
-    public LoginPage(PickupSystem pckSys) throws IOException, ClassNotFoundException {
+    public LoginPage(PickupSystem pckSys, LoginController lgcontrol) throws IOException, ClassNotFoundException {
         this.pickupSystem = pckSys;
+        this.loginController = lgcontrol;
 
         userIDLabel.setBounds(50, 100, 75, 25);
         userPasswordLabel.setBounds(50, 150, 75, 25);

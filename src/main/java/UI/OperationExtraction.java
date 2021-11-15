@@ -29,32 +29,32 @@ public class OperationExtraction extends JFrame{
     private LoginController lgctrol = new LoginController();
     private String pkgId = new String();
 
-    public OperationExtraction(String id, String pkgId,PickupSystem pckSys, LoginController lgctrol) throws IOException, ClassNotFoundException {
+    public OperationExtraction(String id, String pkgId,PickupSystem pckSys, LoginController lgctrol){
         this.id = id;
         this.lgctrol = lgctrol;
         this.pkgId = pkgId;
         panel = new JPanel();
         ArrayList<String> ltlt = (ArrayList<String>) pckSys.search(pkgId);
 
-        ID = new JLabel(ltlt.get(0));
+        ID = new JLabel("Package ID: " + ltlt.get(0));
         panel.add(ID);
 
-        Sender = new JLabel(ltlt.get(1));
+        Sender = new JLabel("Sender: " + ltlt.get(1));
         panel.add(Sender);
 
-        Receiver = new JLabel(ltlt.get(2));
+        Receiver = new JLabel("Receiver: " + ltlt.get(2));
         panel.add(Receiver);
 
-        Description = new JLabel(ltlt.get(3));
+        Description = new JLabel("Description: " + ltlt.get(3));
         panel.add(Description);
 
-        Location = new JLabel(ltlt.get(4));
+        Location = new JLabel("Location: " + ltlt.get(4));
         panel.add(Location);
 
-        Processor = new JLabel(ltlt.get(5));
+        Processor = new JLabel("Processor: " + ltlt.get(5));
         panel.add(Processor);
 
-        StgReq = new JLabel(ltlt.get(6));
+        StgReq = new JLabel("Storage Requirement: " + ltlt.get(6));
         panel.add(StgReq);
 
 
