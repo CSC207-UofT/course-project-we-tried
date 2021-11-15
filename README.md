@@ -17,4 +17,4 @@
 
 1. [Specification](https://github.com/CSC207-UofT/course-project-we-tried/blob/9a04625ae5fba075f433ee12341b6ba37c0fc00d/Updated%20Specification.md)
 
-2. [Phase 1 Progress Report](https://github.com/CSC207-UofT/course-project-we-tried/blob/9a04625ae5fba075f433ee12341b6ba37c0fc00d/Phase%201%20Report.md)
+2. [Phase 1 Progress Report](https://github.com/CSC207-UofT/course-project-we-tried/blob/8217c09eb3d7eee43808e64b1a10ac525c5786e9/Phase%201%20Report.md)
