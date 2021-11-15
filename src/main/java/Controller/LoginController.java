@@ -13,7 +13,7 @@ public class LoginController {
     public LoginController(){
     }
 
-    public LoginController(UserManager userManager){}
+    public LoginController(UserManager userManager){this.uman = userManager;}
 
     public boolean userLogin(String username, String pw){
         // login
