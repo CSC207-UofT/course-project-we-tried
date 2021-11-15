@@ -1,18 +1,12 @@
 import Controller.LoginController;
 import Controller.PickupSystem;
-import Entities.Freezer;
-import Entities.Locker;
-import Entities.Refrigerator;
 import UI.LoginPage;
-import UI.OperationSearch;
-import UI.OperationStore;
 import UseCase.ItemManager;
 import UseCase.UserManager;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.HashMap;
 import java.util.Map;
 
 public class DemoMain {
