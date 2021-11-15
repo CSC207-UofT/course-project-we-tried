@@ -23,7 +23,7 @@ public class OperationExtraction extends JFrame{
     private JButton Menu = new JButton();
     private JPanel panel = new JPanel();
     private String id = new String();
-    final int FRAME_HEIGHT = 1000;
+    final int FRAME_HEIGHT = 500;
     final int FRAME_LENGTH = 500;
     private PickupSystem pckSys;
     private LoginController lgctrol = new LoginController();
@@ -94,8 +94,8 @@ public class OperationExtraction extends JFrame{
         });
 
         this.setLayout(null);
-        panel.setSize(800,800);
-        panel.setLocation((FRAME_HEIGHT - 800)/2, (FRAME_LENGTH - 150)/2);
+        panel.setSize(150,400);
+        panel.setLocation((FRAME_HEIGHT - 150)/2, (FRAME_LENGTH - 250)/2);
         this.add(panel);
         this.setSize(FRAME_HEIGHT, FRAME_LENGTH);
         this.setTitle("Extract Item");

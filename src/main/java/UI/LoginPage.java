@@ -72,12 +72,27 @@ public class LoginPage implements ActionListener {
         String password = String.valueOf(userPasswordField.getPassword());
 
         if(e.getSource()==registerButton) {
+
             try {
-                this.loginController.userRegister(userID, password);
+                if(this.loginController.userRegister(userID, password)){
+                    JOptionPane.showMessageDialog(null, "Register Succeed! Please Login");
+                }
+                else {
+                    try {
+                        if(!this.loginController.userRegister(userID, password)){
+                            JOptionPane.showMessageDialog(null,
+                                    "Invalid Username or Username already Exist. " +
+                                            "Please select another Username.");
+                        }
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-            JOptionPane.showMessageDialog(null, "Register Succeed! Please Login");
+
+
         }
         if(e.getSource()==loginButton) {
             if (this.loginController.userLogin(userID, password)) {
