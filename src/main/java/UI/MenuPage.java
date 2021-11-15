@@ -17,7 +17,7 @@ public class MenuPage implements ActionListener {
     private JLabel tempLabel = new JLabel();
     private String userID;
     private PickupSystem pickupSystem;
-    private LoginController loginController = new LoginController();
+    private LoginController loginController;
 
     MenuPage(String username, PickupSystem pckSys, LoginController loginC) throws IOException, ClassNotFoundException {
         this.userID = username;
@@ -76,7 +76,7 @@ public class MenuPage implements ActionListener {
             frame.dispose();
             OperationStore operationStore = null;
             try {
-                operationStore = new OperationStore(userID, pickupSystem, loginController);
+                operationStore = new OperationStore(userID, this.pickupSystem, this.loginController);
             } catch (IOException ex) {
                 ex.printStackTrace();
             } catch (ClassNotFoundException ex) {
@@ -88,7 +88,7 @@ public class MenuPage implements ActionListener {
             tempLabel.setText("Pickup");
             frame.dispose();
             try {
-                OperationSearch operationSearch = new OperationSearch(userID, pickupSystem, loginController);
+                OperationSearch operationSearch = new OperationSearch(userID, this.pickupSystem, this.loginController);
             } catch (IOException ex) {
                 ex.printStackTrace();
             } catch (ClassNotFoundException ex) {
@@ -97,7 +97,7 @@ public class MenuPage implements ActionListener {
         }
         if(e.getSource()==logoutButton) {
             tempLabel.setText("Logout");
-            loginController.userLogout();
+            this.loginController.userLogout();
             frame.dispose();
             try {
                 LoginPage loginPage = new LoginPage(this.pickupSystem, this.loginController);

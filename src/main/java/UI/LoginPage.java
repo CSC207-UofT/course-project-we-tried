@@ -73,17 +73,17 @@ public class LoginPage implements ActionListener {
 
         if(e.getSource()==registerButton) {
             try {
-                loginController.userRegister(userID, password);
+                this.loginController.userRegister(userID, password);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
             JOptionPane.showMessageDialog(null, "Register Succeed! Please Login");
         }
         if(e.getSource()==loginButton) {
-            if (loginController.userLogin(userID, password)) {
+            if (this.loginController.userLogin(userID, password)) {
                 frame.dispose();
                 try {
-                    MenuPage menuPage = new MenuPage(userID, this.pickupSystem, loginController);
+                    MenuPage menuPage = new MenuPage(userID, this.pickupSystem, this.loginController);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 } catch (ClassNotFoundException ex) {
