@@ -15,7 +15,7 @@ public class FreezerTest {
         Map<String, Boolean> fmap = new HashMap<>(1);
         fmap.put("L01", false);
         Locker F = new Locker(1, fmap);
-        F.modifyContainer("L01");
+        F.modifyContainerAdd("L01");
         assertTrue(F.generateMap().get("L01"));
     }
 
@@ -35,7 +35,7 @@ public class FreezerTest {
         fmap.put("L02", false);
         Locker F = new Locker(2, fmap);
         assertEquals(0, F.getNumberOfItems());
-        F.modifyContainer("L01");
+        F.modifyContainerAdd("L01");
         assertEquals(1, F.getNumberOfItems());
     }
 
@@ -46,7 +46,7 @@ public class FreezerTest {
         fmap.put("L02", false);
         Locker F = new Locker(2, fmap);
         assertEquals(2, F.getVacancy());
-        F.modifyContainer("L01");
+        F.modifyContainerAdd("L01");
         assertEquals(1, F.getVacancy());
     }
 

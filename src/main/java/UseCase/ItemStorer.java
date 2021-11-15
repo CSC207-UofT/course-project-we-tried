@@ -9,9 +9,9 @@ public class ItemStorer implements Serializable{
     String location = "";
     Map<String, Item> Imap;
     Container c;
-    static Locker L;
-    static Freezer F;
-    static Refrigerator R;
+    Locker L;
+    Freezer F;
+    Refrigerator R;
 
     public void setup(Map<String, Item> imap, Locker l, Freezer f, Refrigerator r){
         Imap = imap;
@@ -51,7 +51,7 @@ public class ItemStorer implements Serializable{
                 Imap.remove(id);
                 return null;
             } else {
-                c.modifyContainer(location);
+                c.modifyContainerAdd(location);
                 i1.setLocation(location);
                 i1.setProcessor(currentUser);
                 return location;

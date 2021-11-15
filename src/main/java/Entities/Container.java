@@ -12,6 +12,6 @@ public interface Container {
     Map<String, Boolean> generateMap();
     String nextVacantLocation();
 
-    void modifyContainer(String l);
-
+    void modifyContainerAdd(String l) throws IOException;
+    void modifyContainerRemove(String l) throws IOException;
 }

@@ -31,6 +31,23 @@ public class Freezer implements Container, Serializable{
     }
 
     /**
+     * A freezer, generated from a existing map.
+     * @param fmap existing map from files.
+     */
+    public Freezer(Map<String, Boolean> fmap){
+        this.capacity = fmap.size();
+        this.fmap = fmap;
+        this.Vacancy = capacity;
+        this.number_items = 0;
+        for(boolean i: fmap.values()){
+            if(i){
+                this.number_items = this.number_items + 1;
+                this.Vacancy = this.Vacancy - 1;
+            }
+        }
+    }
+
+    /**
      * Make modifications to the container when an item is added.
      */
     @Override
@@ -38,6 +55,16 @@ public class Freezer implements Container, Serializable{
         this.number_items = this.number_items + 1;
         this.Vacancy = this.Vacancy - 1;
         this.fmap.replace(location, false, true);
+        FileOutputStream fos = new FileOutputStream("freezer.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(this.fmap);
+    }
+
+    @Override
+    public void modifyContainerRemove(String location) throws IOException {
+        this.number_items = this.number_items - 1;
+        this.Vacancy = this.Vacancy + 1;
+        this.fmap.replace(location, true, false);
         FileOutputStream fos = new FileOutputStream("freezer.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(this.fmap);

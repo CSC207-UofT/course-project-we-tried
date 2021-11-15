@@ -41,6 +41,16 @@ public class ItemManager implements Serializable{
         Refrigerator r = new Refrigerator(2, rmap);
 
         storer.setup(imap, l, f, r);
+        picker.setup(imap, l, f, r);
+    }
+
+    public void reload(Map<String, Boolean> lmap, Map<String, Boolean> fmap, Map<String, Boolean> rmap){
+        Locker l = new Locker(lmap);
+        Freezer f = new Freezer(fmap);
+        Refrigerator r = new Refrigerator(rmap);
+
+        storer.setup(imap,l,f,r);
+        picker.setup(imap,l,f,r);
     }
 
     public Map<String, Item> getItemMap() {
@@ -57,7 +67,7 @@ public class ItemManager implements Serializable{
     public String removeItem(String id) {
         if(searcher.search(id,imap)!=null){
         //checkFee(id);
-        return picker.remove(id,imap);}
+        return picker.remove(id);}
         else{
             return null;}
     }

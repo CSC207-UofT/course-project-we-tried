@@ -4,16 +4,16 @@ import UseCase.*;
 
 import java.util.List;
 public class PickupSystem {
-    private ItemManager iman;
+    ItemStorer storer = new ItemStorer();
+    ItemPicker picker = new ItemPicker();
+    ItemSearcher searcher = new ItemSearcher();
+    ItemTimer timer = new ItemTimer();
+    private ItemManager iman = new ItemManager(storer, searcher, picker, timer);
     private final UserManager uman = new UserManager();
 
     public PickupSystem(){}
 
     public PickupSystem(ItemManager iman) throws IOException, ClassNotFoundException {
-        ItemStorer storer = new ItemStorer();
-        ItemPicker picker = new ItemPicker();
-        ItemSearcher searcher = new ItemSearcher();
-        ItemTimer timer = new ItemTimer();
         this.iman = iman;
     }
 

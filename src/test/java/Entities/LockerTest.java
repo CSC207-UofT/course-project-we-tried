@@ -15,7 +15,7 @@ public class LockerTest {
         Map<String, Boolean> lmap = new HashMap<>(1);
         lmap.put("L01", false);
         Locker L = new Locker(1, lmap);
-        L.modifyContainer("L01");
+        L.modifyContainerAdd("L01");
         assertTrue(L.generateMap().get("L01"));
     }
 
@@ -35,7 +35,7 @@ public class LockerTest {
         lmap.put("L02", false);
         Locker L = new Locker(2, lmap);
         assertEquals(0, L.getNumberOfItems());
-        L.modifyContainer("L01");
+        L.modifyContainerAdd("L01");
         assertEquals(1, L.getNumberOfItems());
     }
 
@@ -46,7 +46,7 @@ public class LockerTest {
         lmap.put("L02", false);
         Locker L = new Locker(2, lmap);
         assertEquals(2, L.getVacancy());
-        L.modifyContainer("L01");
+        L.modifyContainerAdd("L01");
         assertEquals(1, L.getVacancy());
     }
 
