@@ -47,7 +47,7 @@ public class ItemManager implements Serializable{
         return imap;
     }
 
-    public String addItem(String id, List<String> info, String storageRequirement, String currentUser) {
+    public String addItem(String id, List<String> info, String storageRequirement, String currentUser) throws IOException {
         boolean stored = storer.create(id, info, storageRequirement);
         if(!stored){return "*";}
         // timer.RecordStart();

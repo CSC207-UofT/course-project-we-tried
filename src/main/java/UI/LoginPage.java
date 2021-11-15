@@ -71,7 +71,12 @@ public class LoginPage implements ActionListener {
         String password = String.valueOf(userPasswordField.getPassword());
 
         if(e.getSource()==registerButton) {
-            loginController.userRegister(userID, password);
+            try {
+                loginController.userRegister(userID, password);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            JOptionPane.showMessageDialog(null, "Register Succeed! Please Login");
         }
         if(e.getSource()==loginButton) {
             if (loginController.userLogin(userID, password)) {

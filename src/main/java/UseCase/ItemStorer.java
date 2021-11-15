@@ -42,7 +42,7 @@ public class ItemStorer implements Serializable{
         }
     }
 
-    public String add(String id, String currentUser) {
+    public String add(String id, String currentUser) throws IOException {
         Item i1 = Imap.get(id);
         findContainer(i1);
         if (c != null) {

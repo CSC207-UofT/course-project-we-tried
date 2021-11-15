@@ -1,14 +1,19 @@
 import Controller.LoginController;
 import Controller.PickupSystem;
+import Entities.Freezer;
+import Entities.Locker;
+import Entities.Refrigerator;
 import UI.LoginPage;
 import UI.OperationSearch;
 import UI.OperationStore;
 import UseCase.ItemManager;
+import UseCase.UserManager;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.HashMap;
+import java.util.Map;
 
 public class DemoMain {
 
@@ -41,12 +46,31 @@ public class DemoMain {
                 System.out.println("Returning to the main menu...");
             }
         }*/
+
         FileInputStream fis = new FileInputStream("xyz.txt");
         ObjectInputStream ois = new ObjectInputStream(fis);
         ItemManager im = (ItemManager) ois.readObject();
+        FileInputStream fiss = new FileInputStream("user.txt");
+        ObjectInputStream oiss = new ObjectInputStream(fiss);
+        UserManager um = (UserManager) oiss.readObject();
+        FileInputStream fisss = new FileInputStream("freezer.txt");
+        ObjectInputStream oisss = new ObjectInputStream(fisss);
+        Map<String, Boolean> f = (Map<String, Boolean>) oisss.readObject();
+        FileInputStream fisssss = new FileInputStream("locker.txt");
+        ObjectInputStream oisssss = new ObjectInputStream(fisssss);
+        Map<String, Boolean> l = (Map<String, Boolean>) oisssss.readObject();
+        FileInputStream fissssss = new FileInputStream("refrigerator.txt");
+        ObjectInputStream oissssss = new ObjectInputStream(fissssss);
+        Map<String, Boolean> r = (Map<String, Boolean>) oissssss.readObject();
         ois.close();
+        oiss.close();
+        oisss.close();
+        oisssss.close();
+        oissssss.close();
+        im.reload(l,f,r);
+        LoginController loginController = new LoginController(um);
         PickupSystem pickupSystem = new PickupSystem(im);
-        LoginPage loginPage = new LoginPage(pickupSystem);
+        LoginPage loginPage = new LoginPage(pickupSystem, loginController);
         //PickupSystem pickupSystem = new PickupSystem();
         //LoginController loginController = new LoginController();
         //OperationStore operationStore = new OperationStore("user",pickupSystem,loginController);

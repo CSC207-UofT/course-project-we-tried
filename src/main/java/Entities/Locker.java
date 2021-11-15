@@ -34,10 +34,13 @@ public class Locker implements Container, Serializable{
      * Make modifications to the container when an item is added.
      */
     @Override
-    public void modifyContainer(String location){
+    public void modifyContainerAdd(String location) throws IOException {
         this.number_items = this.number_items + 1;
         this.Vacancy = this.Vacancy - 1;
         this.lmap.replace(location, false, true);
+        FileOutputStream fos = new FileOutputStream("locker.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(this.lmap);
     }
 
     @Override

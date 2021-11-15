@@ -7,6 +7,8 @@ public class PickupSystem {
     private ItemManager iman;
     private final UserManager uman = new UserManager();
 
+    public PickupSystem(){}
+
     public PickupSystem(ItemManager iman) throws IOException, ClassNotFoundException {
         ItemStorer storer = new ItemStorer();
         ItemPicker picker = new ItemPicker();

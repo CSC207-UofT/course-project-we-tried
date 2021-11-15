@@ -1,6 +1,6 @@
 package Entities;
 import java.io.*;
-public class User {
+public class User implements Serializable{
     private String username;
     private String password;
     

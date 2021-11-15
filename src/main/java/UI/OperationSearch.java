@@ -83,13 +83,7 @@ public class OperationSearch implements ActionListener{
             else{
                 frame.dispose();
                 OperationExtraction operationExtraction = null;
-                try {
-                    operationExtraction = new OperationExtraction(userID, id,pckSys, loginController);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                } catch (ClassNotFoundException ex) {
-                    ex.printStackTrace();
-                }
+                operationExtraction = new OperationExtraction(userID, id,pckSys, loginController);
                 operationExtraction.setVisible(true);
             }
         }

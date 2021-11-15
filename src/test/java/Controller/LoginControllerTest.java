@@ -4,6 +4,7 @@ import Entities.User;
 import UseCase.UserManager;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void userLogin_successful() {
+    public void userLogin_successful() throws IOException {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
         Map<String, User> m = u.getUMap("al");
