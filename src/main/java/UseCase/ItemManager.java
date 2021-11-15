@@ -44,6 +44,12 @@ public class ItemManager implements Serializable{
         picker.setup(imap, l, f, r);
     }
 
+    /**
+     * Reload the information, when files are read.
+     * @param lmap the map containing information of the locker
+     * @param fmap the map containing information of the freezer
+     * @param rmap the map containing information of the refrigerator
+     */
     public void reload(Map<String, Boolean> lmap, Map<String, Boolean> fmap, Map<String, Boolean> rmap){
         Locker l = new Locker(lmap);
         Freezer f = new Freezer(fmap);
@@ -57,6 +63,16 @@ public class ItemManager implements Serializable{
         return imap;
     }
 
+    /**
+     * Add an item, with its info, to the containers based on its storage requirement.
+     * @param id the identification number of this item.
+     * @param info the information attached to this item.
+     * @param storageRequirement one of the strings "L/F/R". This identifies which container it needs
+     * @param currentUser the user's username, of whom that adds this item.
+     * @return return the location where the item is stored; if an item of the same id already exists, return a special
+     * string "*"; if the item cannot be stored, return null.
+     * @throws IOException
+     */
     public String addItem(String id, List<String> info, String storageRequirement, String currentUser) throws IOException {
         boolean stored = storer.create(id, info, storageRequirement);
         if(!stored){return "*";}
@@ -64,6 +80,11 @@ public class ItemManager implements Serializable{
         return storer.add(id,currentUser);
     }
 
+    /**
+     * Remove an item with id.
+     * @param id the identification number of the item to be removed.
+     * @return return the location of the item; if the item is not found, return null.
+     */
     public String removeItem(String id) {
         if(searcher.search(id,imap)!=null){
         //checkFee(id);
@@ -72,11 +93,17 @@ public class ItemManager implements Serializable{
             return null;}
     }
 
+    /**
+     * Search for an item with id.
+     * @param id the identification number of the item to be searched.
+     * @return return the information of the item fund, in a list; if the item is not fund, return null.
+     */
     public List<String> searchItem(String id){
         // checkFee(id);
         return searcher.search(id, imap);
     }
 
+    // TODO: this will be implemented in Phase 2
     public void checkFee(String id){
         timer.CalculateFee();
     }

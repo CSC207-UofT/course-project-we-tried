@@ -16,6 +16,10 @@ public class ItemPicker implements Serializable{
     Freezer F;
     Refrigerator R;
 
+    /**
+     * A helper method, to find the suitable container for an item.
+     * @param i the given item.
+     */
     public void findContainer(Item i){
         if (i.getStorageRequirement().equals("L")){
             c = L;
@@ -27,6 +31,13 @@ public class ItemPicker implements Serializable{
             c = null;}
     }
 
+    /**
+     * A helper method to set up this picker for operation, with a series of containers.
+     * @param imap The map of items, mapping id to item.
+     * @param l the Locker.
+     * @param f the Freezer.
+     * @param r the Refrigerator.
+     */
     public void setup(Map<String, Item> imap, Locker l, Freezer f, Refrigerator r){
         Imap = imap;
         L = l;
@@ -34,6 +45,11 @@ public class ItemPicker implements Serializable{
         R = r;
     }
 
+    /**
+     * Remove an item with id.
+     * @param id the identification number of the item to be removed.
+     * @return return the location of the item; if the item is not found, return null.
+     */
     public String remove(String id){
         Item i1 = Imap.get(id);
         findContainer(i1);
