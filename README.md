@@ -12,3 +12,9 @@
 3. [Scenario Walkthrough](https://github.com/CSC207-UofT/course-project-we-tried/blob/00fbe26cba3b525eb2890afcb5db31d9dd621db1/Scenario%20Walk-through.md)
 
 4. [Phase 0 Progress Report](https://github.com/CSC207-UofT/course-project-we-tried/blob/b7d85389098eea77ee029375f33e041932503a03/Phase%200%20Report.md)
+
+### Phase 1
+
+1. [Specification](https://github.com/CSC207-UofT/course-project-we-tried/blob/9a04625ae5fba075f433ee12341b6ba37c0fc00d/Updated%20Specification.md)
+
+2. [Phase 1 Progress Report](https://github.com/CSC207-UofT/course-project-we-tried/blob/9a04625ae5fba075f433ee12341b6ba37c0fc00d/Phase%201%20Report.md)
