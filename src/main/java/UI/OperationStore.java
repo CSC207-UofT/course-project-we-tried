@@ -146,7 +146,7 @@ public class OperationStore extends JFrame {
         });
 
         this.setLayout(null);
-        panel.setSize(220,400);
+        panel.setSize(240,400);
         panel.setLocation((FRAME_HEIGHT - 250)/2, (FRAME_LENGTH - 300)/2);
         this.add(panel);
         this.setSize(FRAME_HEIGHT, FRAME_LENGTH);
