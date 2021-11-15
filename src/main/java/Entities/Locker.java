@@ -1,8 +1,8 @@
 package Entities;
-
+import java.io.*;
 import java.util.Map;
 
-public class Locker implements Container{
+public class Locker implements Container, Serializable{
     /**
      * The map of this Locker, with index of the locations and its state(empty or not).
      */
@@ -31,13 +31,43 @@ public class Locker implements Container{
     }
 
     /**
+     * A locker, generated from a existing map.
+     * @param lmap existing map from files.
+     */
+    public Locker(Map<String, Boolean> lmap){
+        this.capacity = lmap.size();
+        this.lmap = lmap;
+        this.Vacancy = capacity;
+        this.number_items = 0;
+        for(boolean i: lmap.values()){
+            if(i){
+                this.number_items = this.number_items + 1;
+                this.Vacancy = this.Vacancy - 1;
+            }
+        }
+    }
+
+    /**
      * Make modifications to the container when an item is added.
      */
     @Override
-    public void modifyContainer(String location){
+    public void modifyContainerAdd(String location) throws IOException {
         this.number_items = this.number_items + 1;
         this.Vacancy = this.Vacancy - 1;
         this.lmap.replace(location, false, true);
+        FileOutputStream fos = new FileOutputStream("locker.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(this.lmap);
+    }
+
+    @Override
+    public void modifyContainerRemove(String location) throws IOException {
+        this.number_items = this.number_items - 1;
+        this.Vacancy = this.Vacancy + 1;
+        this.lmap.replace(location, true, false);
+        FileOutputStream fos = new FileOutputStream("freezer.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(this.lmap);
     }
 
     @Override

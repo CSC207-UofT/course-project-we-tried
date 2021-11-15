@@ -2,6 +2,7 @@ package Entities;
 
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,11 +11,11 @@ import static org.junit.Assert.*;
 public class FreezerTest {
 
     @Test
-    public void modifyContainer() {
+    public void modifyContainer() throws IOException {
         Map<String, Boolean> fmap = new HashMap<>(1);
         fmap.put("L01", false);
         Locker F = new Locker(1, fmap);
-        F.modifyContainer("L01");
+        F.modifyContainerAdd("L01");
         assertTrue(F.generateMap().get("L01"));
     }
 
@@ -28,24 +29,24 @@ public class FreezerTest {
     }
 
     @Test
-    public void getNumberOfItems() {
+    public void getNumberOfItems() throws IOException {
         Map<String, Boolean> fmap = new HashMap<>(2);
         fmap.put("L01", false);
         fmap.put("L02", false);
         Locker F = new Locker(2, fmap);
         assertEquals(0, F.getNumberOfItems());
-        F.modifyContainer("L01");
+        F.modifyContainerAdd("L01");
         assertEquals(1, F.getNumberOfItems());
     }
 
     @Test
-    public void getVacancy() {
+    public void getVacancy() throws IOException {
         Map<String, Boolean> fmap = new HashMap<>(2);
         fmap.put("L01", false);
         fmap.put("L02", false);
         Locker F = new Locker(2, fmap);
         assertEquals(2, F.getVacancy());
-        F.modifyContainer("L01");
+        F.modifyContainerAdd("L01");
         assertEquals(1, F.getVacancy());
     }
 

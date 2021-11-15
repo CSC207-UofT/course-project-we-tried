@@ -1,5 +1,7 @@
 package Entities;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Map;
 
 public interface Container {
@@ -10,6 +12,6 @@ public interface Container {
     Map<String, Boolean> generateMap();
     String nextVacantLocation();
 
-    void modifyContainer(String l);
-
+    void modifyContainerAdd(String l) throws IOException;
+    void modifyContainerRemove(String l) throws IOException;
 }

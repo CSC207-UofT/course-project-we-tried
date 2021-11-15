@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 
 public class LoginPage implements ActionListener {
@@ -19,10 +20,12 @@ public class LoginPage implements ActionListener {
     private JLabel userIDLabel = new JLabel(user);
     private JLabel userPasswordLabel = new JLabel(password);
     private JLabel messageLabel = new JLabel();
-    private PickupSystem pickupSystem = new PickupSystem();
-    private LoginController loginController = new LoginController();
+    private PickupSystem pickupSystem;
+    private LoginController loginController;
 
-    public LoginPage(){
+    public LoginPage(PickupSystem pckSys, LoginController lgcontrol) throws IOException, ClassNotFoundException {
+        this.pickupSystem = pckSys;
+        this.loginController = lgcontrol;
 
         userIDLabel.setBounds(50, 100, 75, 25);
         userPasswordLabel.setBounds(50, 150, 75, 25);
@@ -69,12 +72,23 @@ public class LoginPage implements ActionListener {
         String password = String.valueOf(userPasswordField.getPassword());
 
         if(e.getSource()==registerButton) {
-            loginController.userRegister(userID, password);
+            try {
+                loginController.userRegister(userID, password);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            JOptionPane.showMessageDialog(null, "Register Succeed! Please Login");
         }
         if(e.getSource()==loginButton) {
             if (loginController.userLogin(userID, password)) {
                 frame.dispose();
-                MenuPage menuPage = new MenuPage(userID, pickupSystem, loginController);
+                try {
+                    MenuPage menuPage = new MenuPage(userID, this.pickupSystem, loginController);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
             } else {
                 messageLabel.setText("Incorrect Username or Password");
             }

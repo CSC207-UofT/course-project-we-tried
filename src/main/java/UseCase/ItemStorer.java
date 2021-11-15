@@ -1,17 +1,17 @@
 package UseCase;
-
+import java.io.*;
 import Entities.*;
 
 import java.util.List;
 import java.util.Map;
 
-public class ItemStorer {
+public class ItemStorer implements Serializable{
     String location = "";
     Map<String, Item> Imap;
     Container c;
-    static Locker L;
-    static Freezer F;
-    static Refrigerator R;
+    Locker L;
+    Freezer F;
+    Refrigerator R;
 
     public void setup(Map<String, Item> imap, Locker l, Freezer f, Refrigerator r){
         Imap = imap;
@@ -42,7 +42,7 @@ public class ItemStorer {
         }
     }
 
-    public String add(String id, String currentUser) {
+    public String add(String id, String currentUser) throws IOException {
         Item i1 = Imap.get(id);
         findContainer(i1);
         if (c != null) {
@@ -51,7 +51,7 @@ public class ItemStorer {
                 Imap.remove(id);
                 return null;
             } else {
-                c.modifyContainer(location);
+                c.modifyContainerAdd(location);
                 i1.setLocation(location);
                 i1.setProcessor(currentUser);
                 return location;

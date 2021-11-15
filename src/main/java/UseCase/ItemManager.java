@@ -4,13 +4,13 @@ import Entities.Freezer;
 import Entities.Item;
 import Entities.Locker;
 import Entities.Refrigerator;
-
+import java.io.*;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ItemManager {
+public class ItemManager implements Serializable{
     private final Map<String, Item> imap = new HashMap<String, Item>();
     private final ItemStorer storer;
     private final ItemSearcher searcher;
@@ -41,13 +41,23 @@ public class ItemManager {
         Refrigerator r = new Refrigerator(2, rmap);
 
         storer.setup(imap, l, f, r);
+        picker.setup(imap, l, f, r);
+    }
+
+    public void reload(Map<String, Boolean> lmap, Map<String, Boolean> fmap, Map<String, Boolean> rmap){
+        Locker l = new Locker(lmap);
+        Freezer f = new Freezer(fmap);
+        Refrigerator r = new Refrigerator(rmap);
+
+        storer.setup(imap,l,f,r);
+        picker.setup(imap,l,f,r);
     }
 
     public Map<String, Item> getItemMap() {
         return imap;
     }
 
-    public String addItem(String id, List<String> info, String storageRequirement, String currentUser) {
+    public String addItem(String id, List<String> info, String storageRequirement, String currentUser) throws IOException {
         boolean stored = storer.create(id, info, storageRequirement);
         if(!stored){return "*";}
         // timer.RecordStart();
@@ -57,7 +67,7 @@ public class ItemManager {
     public String removeItem(String id) {
         if(searcher.search(id,imap)!=null){
         //checkFee(id);
-        return picker.remove(id,imap);}
+        return picker.remove(id);}
         else{
             return null;}
     }

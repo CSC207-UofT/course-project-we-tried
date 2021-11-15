@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +38,11 @@ public class ItemManagerTest {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         User u = new User("queenie", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
-        iman.addItem("test_id", i_info,"L","queenie");
+        try {
+            iman.addItem("test_id", i_info,"L","queenie");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         assertEquals("L01", iman.getItemMap().get("test_id").getLocation());
         assertEquals("queenie", iman.getItemMap().get("test_id").getProcessor());
     }

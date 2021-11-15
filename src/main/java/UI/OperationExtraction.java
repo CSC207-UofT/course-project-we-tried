@@ -7,6 +7,7 @@ import UseCase.ItemManager;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class OperationExtraction extends JFrame{
     private String id = new String();
     final int FRAME_HEIGHT = 1000;
     final int FRAME_LENGTH = 500;
-    private PickupSystem pckSys = new PickupSystem();
+    private PickupSystem pckSys;
     private LoginController lgctrol = new LoginController();
     private String pkgId = new String();
 
@@ -35,25 +36,25 @@ public class OperationExtraction extends JFrame{
         panel = new JPanel();
         ArrayList<String> ltlt = (ArrayList<String>) pckSys.search(pkgId);
 
-        ID = new JLabel(ltlt.get(0));
+        ID = new JLabel("Package ID: " + ltlt.get(0));
         panel.add(ID);
 
-        Sender = new JLabel(ltlt.get(1));
+        Sender = new JLabel("Sender: " + ltlt.get(1));
         panel.add(Sender);
 
-        Receiver = new JLabel(ltlt.get(2));
+        Receiver = new JLabel("Receiver: " + ltlt.get(2));
         panel.add(Receiver);
 
-        Description = new JLabel(ltlt.get(3));
+        Description = new JLabel("Description: " + ltlt.get(3));
         panel.add(Description);
 
-        Location = new JLabel(ltlt.get(4));
+        Location = new JLabel("Location: " + ltlt.get(4));
         panel.add(Location);
 
-        Processor = new JLabel(ltlt.get(5));
+        Processor = new JLabel("Processor: " + ltlt.get(5));
         panel.add(Processor);
 
-        StgReq = new JLabel(ltlt.get(6));
+        StgReq = new JLabel("Storage Requirement: " + ltlt.get(6));
         panel.add(StgReq);
 
 
@@ -69,7 +70,11 @@ public class OperationExtraction extends JFrame{
         Pickup.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                pckSys.pickup(ltlt.get(0));
+                try {
+                    pckSys.pickup(ltlt.get(0));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
                 JOptionPane.showMessageDialog(null, "Package successfully removed");
             }
         });
@@ -78,7 +83,13 @@ public class OperationExtraction extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 OperationExtraction.this.setVisible(false);
-                MenuPage menu = new MenuPage(id, pckSys, lgctrol);
+                try {
+                    MenuPage menu = new MenuPage(id, pckSys, lgctrol);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 

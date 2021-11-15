@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class OperationSearch implements ActionListener{
@@ -18,12 +19,12 @@ public class OperationSearch implements ActionListener{
     private JButton Menu = new JButton();
     private JTextField EnterID = new JTextField();
     private JButton pickup = new JButton();
-    private PickupSystem pckSys = new PickupSystem();
+    private PickupSystem pckSys;
     private LoginController loginController = new LoginController();
     private String userID = new String();
 
 
-    public OperationSearch(String username, PickupSystem pckSys, LoginController loginC) {
+    public OperationSearch(String username, PickupSystem pckSys, LoginController loginC) throws IOException, ClassNotFoundException {
         this.pckSys = pckSys;
         this.loginController = loginC;
         this.userID = username;
@@ -81,13 +82,20 @@ public class OperationSearch implements ActionListener{
             }
             else{
                 frame.dispose();
-                OperationExtraction operationExtraction = new OperationExtraction(userID, id,pckSys, loginController);
+                OperationExtraction operationExtraction = null;
+                operationExtraction = new OperationExtraction(userID, id,pckSys, loginController);
                 operationExtraction.setVisible(true);
             }
         }
         if (e.getSource()==Menu){
             frame.dispose();
-            MenuPage menuPage = new MenuPage(userID, pckSys, loginController);
+            try {
+                MenuPage menuPage = new MenuPage(userID, pckSys, loginController);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 }

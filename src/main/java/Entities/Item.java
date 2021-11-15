@@ -1,9 +1,9 @@
 package Entities;
-
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Item {
+public class Item implements Serializable{
     private String id;
     private List<String> itemInfo; // From txt
     private String location;

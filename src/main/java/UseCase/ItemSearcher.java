@@ -1,11 +1,11 @@
 package UseCase;
-
+import java.io.*;
 import Entities.Item;
 
 import java.util.List;
 import java.util.Map;
 
-public class ItemSearcher {
+public class ItemSearcher implements Serializable{
 
     /**
      * This class is responsible for searching an item that have been placed in the container.

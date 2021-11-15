@@ -8,6 +8,7 @@ import UseCase.ItemManager;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class OperationStore extends JFrame {
     final int FRAME_HEIGHT = 500;
     final int FRAME_LENGTH = 500;
     private JPanel panel = new JPanel();
-    private PickupSystem pckSys = new PickupSystem();
+    private PickupSystem pckSys;
     private JLabel Sender = new JLabel();
     private JLabel Receiver = new JLabel();
     private JTextField sdsd = new JTextField();
@@ -34,7 +35,7 @@ public class OperationStore extends JFrame {
     private String UserID = new String();
     private LoginController lgcontrol = new LoginController();
 
-    public OperationStore(String userID, PickupSystem pckSys, LoginController lgcontrol){
+    public OperationStore(String userID, PickupSystem pckSys, LoginController lgcontrol) throws IOException, ClassNotFoundException {
         this.pckSys = pckSys;
         this.UserID = userID;
         this.lgcontrol = lgcontrol;
@@ -92,16 +93,35 @@ public class OperationStore extends JFrame {
                 infoinfo.add(sdsd.getText());
                 infoinfo.add(rere.getText());
                 infoinfo.add(dede.getText());
-                String stored_item = pckSys.storeItem(IDID.getText(), infoinfo,ReqReq.getText(), userID);
+                String stored_item = null;
+                try {
+                    stored_item = pckSys.storeItem(IDID.getText(), infoinfo,ReqReq.getText(), userID);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+
 
                 if (stored_item != null){
-                    JOptionPane.showMessageDialog(null, "Deposit succeed "+"Stored in:"+stored_item);
+                    JOptionPane.showMessageDialog(null,
+                            "Deposit succeed "+"Stored in:"+stored_item);
                 }
+                /* if(stored_item.equals("*")){
+                    JOptionPane.showMessageDialog(null, "Item already Exist.");
+                }*/
                 else {
-                    JOptionPane.showMessageDialog(null, "The" + ReqReq.getText()
-                            + " is currently full.");
+                    if (ReqReq.getText().equals("F")){
+                        JOptionPane.showMessageDialog(null, "The Freezer is currently full.");
+                    }
+                    else  if (ReqReq.getText().equals("L")){
+                        JOptionPane.showMessageDialog(null, "The Locker is currently full.");
+                    }
+                    else if(ReqReq.getText().equals("R")){
+                        JOptionPane.showMessageDialog(null,
+                                "The Refrigerator is currently full.");
+                    }
                 }
-
 
             }
         });
@@ -112,7 +132,13 @@ public class OperationStore extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 OperationStore.this.setVisible(false);
                 //JFrame add the menu function;
-                MenuPage menuPage = new MenuPage(UserID, pckSys, lgcontrol);
+                try {
+                    MenuPage menuPage = new MenuPage(UserID, pckSys, lgcontrol);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
