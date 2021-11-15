@@ -71,7 +71,7 @@ public class OperationStore extends JFrame {
         StgRequire = new JLabel("Storage Requirement:");
         panel.add(StgRequire);
 
-        ReqReq = new JTextField(10);
+        ReqReq = new JTextField(20);
         panel.add(ReqReq);
 
         Store = new JButton("Store");
@@ -104,12 +104,15 @@ public class OperationStore extends JFrame {
 
 
                 if (stored_item != null){
-                    JOptionPane.showMessageDialog(null,
-                            "Deposit succeed "+"Stored in:"+stored_item);
+                    if(stored_item.equals("*")){
+                        JOptionPane.showMessageDialog(null, "Item already Exist with same ID.");
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,
+                                "Deposit succeed "+"Stored in:"+ stored_item);
+                    }
                 }
-                /* if(stored_item.equals("*")){
-                    JOptionPane.showMessageDialog(null, "Item already Exist.");
-                }*/
+
                 else {
                     if (ReqReq.getText().equals("F")){
                         JOptionPane.showMessageDialog(null, "The Freezer is currently full.");
@@ -143,8 +146,8 @@ public class OperationStore extends JFrame {
         });
 
         this.setLayout(null);
-        panel.setSize(300,400);
-        panel.setLocation((FRAME_HEIGHT - 250)/2, (FRAME_LENGTH - 250)/2);
+        panel.setSize(220,400);
+        panel.setLocation((FRAME_HEIGHT - 250)/2, (FRAME_LENGTH - 300)/2);
         this.add(panel);
         this.setSize(FRAME_HEIGHT, FRAME_LENGTH);
         this.setTitle("Store Packages");
