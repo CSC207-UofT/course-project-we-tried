@@ -22,6 +22,7 @@ public class Freezer implements Container, Serializable{
 
     /**
      * A new, empty freezer, with a preset capacity and map.
+     * @param fmap existing map from files.
      */
     public Freezer(int capacity, Map<String, Boolean> fmap){
         this.capacity = capacity;
@@ -49,6 +50,7 @@ public class Freezer implements Container, Serializable{
 
     /**
      * Make modifications to the container when an item is added.
+     * @param location  a string of the location of container
      */
     @Override
     public void modifyContainerAdd(String location) throws IOException {
@@ -59,7 +61,10 @@ public class Freezer implements Container, Serializable{
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(this.fmap);
     }
-
+    /**
+     * Make modifications to the container when an item is removed.
+     * @param location  a string of the location of container
+     */
     @Override
     public void modifyContainerRemove(String location) throws IOException {
         this.number_items = this.number_items - 1;

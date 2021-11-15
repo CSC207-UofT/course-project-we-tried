@@ -4,13 +4,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Item implements Serializable{
+    /**
+     * The id of the item.
+     */
     private String id;
+    /**
+     * a list of string of itemInfo of the item
+     */
     private List<String> itemInfo; // From txt
+    /**
+     * The location where the item is stored
+     */
     private String location;
-    private String processor; // The user(username) last processed this item
-    private String storageRequirement; // L/F/R
-    private boolean fee; // whether the item has exceeded free storage time
+    /**
+     * The user(username) last processed this item
+     */
+    private String processor;
+    /**
+     * The storage requirement of the item, L/F/R
+     */
+    private String storageRequirement;
+    /**
+     * The extra fee need to pay after the item has exceeded free storage time
+     */
+    private boolean fee;
 
+    /**
+     * Create a item object
+     * @param id the string id of the item
+     * @param info the list of string of the item information
+     * @param storageRequirement the string storage requirement of the item
+     *
+     */
     public Item(String id, List<String> info, String storageRequirement){
         this.id = id;
         this.itemInfo = info;
@@ -19,7 +44,13 @@ public class Item implements Serializable{
         this.storageRequirement = storageRequirement;
         this.fee = false;
     }
-
+    /**
+     * Create a item object
+     * @param id the string id of the item
+     * @param info the list of string of the item information
+     * @param processor the string of the username who last processed this item
+     * @param storageRequirement the string storage requirement of the item
+     */
     public Item(String id, List<String> info, String location, String processor, String storageRequirement){
         this.id = id;
         this.itemInfo = info;

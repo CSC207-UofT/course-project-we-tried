@@ -49,6 +49,7 @@ public class Locker implements Container, Serializable{
 
     /**
      * Make modifications to the container when an item is added.
+     * @param location  a string of the location of container
      */
     @Override
     public void modifyContainerAdd(String location) throws IOException {
@@ -59,7 +60,10 @@ public class Locker implements Container, Serializable{
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(this.lmap);
     }
-
+    /**
+     * Make modifications to the container when an item is removed.
+     * @param location  a string of the location of container
+     */
     @Override
     public void modifyContainerRemove(String location) throws IOException {
         this.number_items = this.number_items - 1;
