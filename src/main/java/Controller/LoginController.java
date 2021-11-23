@@ -18,14 +18,6 @@ public class LoginController {
      */
     public LoginController(UserManager userManager){this.uman = userManager;}
 
-    /**
-     * check if the username is a valid name for register
-     * @param name username
-     *
-     */
-    public boolean is_valid_name(String name){
-        return name.matches("^[a-zA-Z0-9]{4,12}$");
-    }
 
     /**
      * Check if username and password matches each other.
@@ -58,7 +50,7 @@ public class LoginController {
         // lookup username; if already exists, return false.
         // else call Usermanager.register
         if(uman.lookupUser(username) == null){
-            if (is_valid_name(username)) {
+            if (uman.is_valid_name(username)) {
                 uman.userRegister(username,pw);
                 FileOutputStream fos = new FileOutputStream("user.txt");
                 ObjectOutputStream oos = new ObjectOutputStream(fos);

@@ -94,20 +94,5 @@ public class LoginControllerTest {
         assertTrue(log.getUman() instanceof UserManager);
     }
 
-    @Test
-    public void is_valid_name(){
-        LoginController log = new LoginController();
-        String a = "123";
-        String b = "1234";
-        String c = "abcd";
-        String d = "abcd12bc";
-        String e = "asrae123!";
-        String f = "123456789abc3";
-        assertTrue(log.is_valid_name(b));
-        assertTrue(log.is_valid_name(c));
-        assertTrue(log.is_valid_name(d));
-        assertFalse(log.is_valid_name(a));
-        assertFalse(log.is_valid_name(e));
-        assertFalse(log.is_valid_name(f));
-    }
+
 }
