@@ -58,6 +58,7 @@ public class PickupSystemTest {
         assertEquals(expected_info,p.search("a"));
 
     }
+
     @Test
     public void getIman(){
         PickupSystem p = new PickupSystem();
