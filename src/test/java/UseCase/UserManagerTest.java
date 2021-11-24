@@ -5,10 +5,8 @@ import UseCase.UserManager;
 import Entities.User;
 import Entities.Item;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,6 +24,23 @@ public class UserManagerTest {
     }
 
     @Test
+    public void is_valid_name(){
+        UserManager uman = new UserManager();
+        String a = "123";
+        String b = "1234";
+        String c = "abcd";
+        String d = "abcd12bc";
+        String e = "asrae123!";
+        String f = "123456789abc3";
+        assertTrue(uman.is_valid_name(b));
+        assertTrue(uman.is_valid_name(c));
+        assertTrue(uman.is_valid_name(d));
+        assertFalse(uman.is_valid_name(a));
+        assertFalse(uman.is_valid_name(e));
+        assertFalse(uman.is_valid_name(f));
+    }
+
+    @Test
     public void userRegister_empty() {
         UserManager uman = new UserManager();
         //assertNull(uman.lookupUser("207project"));
@@ -39,6 +54,15 @@ public class UserManagerTest {
         assertNotNull(uman.lookupUser("207project"));
         assertSame(uman.lookupUser("207project").getUsername(), "207project");
         assertSame(uman.lookupUser("207project").getPassword(), "test1");
+    }
+
+    @Test
+    public void userDelete() {
+        UserManager uman = new UserManager();
+        uman.userRegister("queenie", "207");
+        assertNotNull(uman.lookupUser("queenie"));
+        uman.userDelete("queenie", "207");
+        assertNull(uman.lookupUser("queenie"));
     }
 
     @Test
@@ -79,9 +103,9 @@ public class UserManagerTest {
         uman.userRegister("207project", "test1");
         List<String> i_info = Arrays.asList("Sender: t_sender", "Receiver: t_receiver", "Description: !");
         Item i = new Item("test_i1", i_info,"F");
-        uman.record_item_processor("207project", i);
-        Map<String, List<Item>> item_map = uman.getUserImap();
-        assertTrue(item_map.get("207project").contains(i));
+        uman.record_item_processor("207project", "test_i1");
+        ArrayList<String> item_map = uman.getUserImap("207project");
+        assertTrue(item_map.contains("test_i1"));
     }
 
     @Test
@@ -111,23 +135,16 @@ public class UserManagerTest {
     public void getUserImap() {
         UserManager uman = new UserManager();
         uman.userRegister("queenie", "test1");
-        assertNotNull(uman.getUserImap());
+        assertNotNull(uman.getUserImap("queenie"));
     }
 
     @Test
-    public void is_valid_name(){
+    public void reset_all_users() {
         UserManager uman = new UserManager();
-        String a = "123";
-        String b = "1234";
-        String c = "abcd";
-        String d = "abcd12bc";
-        String e = "asrae123!";
-        String f = "123456789abc3";
-        assertTrue(uman.is_valid_name(b));
-        assertTrue(uman.is_valid_name(c));
-        assertTrue(uman.is_valid_name(d));
-        assertFalse(uman.is_valid_name(a));
-        assertFalse(uman.is_valid_name(e));
-        assertFalse(uman.is_valid_name(f));
+        uman.userRegister("queenie", "test1");
+        assertNotNull(uman.lookupUser("queenie"));
+        uman.reset_all_users();
+        assertNull(uman.lookupUser("queenie"));
     }
+
 }

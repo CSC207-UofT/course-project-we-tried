@@ -10,14 +10,14 @@ import java.util.Objects;
 
 public class UserManager implements Serializable{
 
-    private final Map<String, User> umap = new HashMap<String, User>();
-    private final Map<String, List<Item>> imap = new HashMap<String, List<Item>>();
+    private Map<String, User> umap = new HashMap<String, User>();
+    private final Map<String, List<String>> imap = new HashMap<String, List<String>>();
     private User currentUser;
 
     /**
      * check if the username is a valid name for register
      * @param name username
-     *
+     * @return Return true if name is valid; false if not.
      */
     public boolean is_valid_name(String name){
         return name.matches("^[a-zA-Z0-9]{4,12}$");
@@ -25,18 +25,32 @@ public class UserManager implements Serializable{
 
     /**
      * Register the new user to the system.
+     * @param username user's username
+     * @param pw user's corresponding password
      */
-    public boolean userRegister(String username, String pw) {
+    public void userRegister(String username, String pw){
         if (is_valid_name(username)) {
             umap.put(username, new User(username, pw));
-            imap.put(username, new ArrayList<Item>());
-            return true;
+            imap.put(username, new ArrayList<String>());
         }
-        return false;
     }
 
     /**
-     * Look up existing user in the map, and return user; if not found, return null.
+     * Register the new user to the system.
+     * @param name input username
+     * @param pw input corresponding password
+     */
+    public void userDelete(String name, String pw){
+        //first check password
+        if (pwVerify(name, pw)){
+            umap.remove(name);
+        }
+    }
+
+    /**
+     * Look up existing user in the map.
+     * @param username user's username
+     * @return Return user; if not found, return null.
      */
     public User lookupUser(String username){
         if (umap.containsKey(username)){
@@ -47,6 +61,9 @@ public class UserManager implements Serializable{
 
     /**
      * Verify the user's input password and stored password.
+     * @param username input username
+     * @param pw input corresponding password
+     * @return Return true if the username matches password, false if it doesn't.
      */
     public boolean pwVerify(String username, String pw){
         if (umap.containsKey(username)){
@@ -56,7 +73,9 @@ public class UserManager implements Serializable{
     }
 
     /**
-     * Record and return the current username.
+     * Record and the current username.
+     * @param curr_name current username
+     * @return Return true if successfully record, false if not.
      */
     public String RecordUser(String curr_name){
         if (umap.containsKey(curr_name)){
@@ -77,13 +96,24 @@ public class UserManager implements Serializable{
 
     /**
      * Record item that the user processed.
+     * @param processor_name processor's username
+     * @param new_item_id new processed item's id
      */
-    public void record_item_processor(String processor_name, Item new_item){
-        imap.get(processor_name).add(new_item);
+    public void record_item_processor(String processor_name, String new_item_id){
+        imap.get(processor_name).add(new_item_id);
     }
 
     /**
-     * Return the map contains (username: user).
+     * Reset UserManager to not have any users.
+     */
+    public void reset_all_users(){
+        this.umap = new HashMap<String, User>();
+    }
+
+    /**
+     * Get users' map
+     * @param username user's username
+     * @return Return the map contains (username: user).
      */
     public Map<String, User> getUMap(String username){
 
@@ -91,11 +121,13 @@ public class UserManager implements Serializable{
     }
 
     /**
-     * Return the map contains (username: List of items).
+     * Get list contains all items' ids processed by the user
+     * @param username user's username
+     * @return Return the ArrayList contains items' ids processed by this user.
      */
-    public Map<String, List<Item>> getUserImap(){
+    public ArrayList<String> getUserImap(String username){
 
-        return imap;
+        return (ArrayList<String>) imap.get(username);
     }
 
 }
