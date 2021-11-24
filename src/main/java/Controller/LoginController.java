@@ -2,6 +2,7 @@ package Controller;
 import UseCase.UserManager;
 import java.io.*;
 import java.util.Objects;
+import java.util.ArrayList;
 
 public class LoginController {
 
@@ -74,11 +75,31 @@ public class LoginController {
         return true;
     }
 
+    /**
+     * Delete the user and check if delete succeed.
+     * @param username The input username.
+     * @param pw The input password.
+     * @return Return true if delete succeed, false if it doesn't.
+     */
+    public boolean userDelete(String username, String pw){
+        uman.userDelete(username, pw);
+        return uman.lookupUser(username) == null;
+    }
+
     public UserManager getUman(){
         return uman;
     }
 
     public String getCurrentUser(){
         return currentUser;
+    }
+
+    /**
+     * Get user processed items' ids.
+     * @param username The input username.
+     * @return Return the ArrayList contains all items' ids processed by this user.
+     */
+    public ArrayList<String> get_processor_item(String username){
+        return uman.getUserImap(username);
     }
 }
