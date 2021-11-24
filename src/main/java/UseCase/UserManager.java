@@ -15,12 +15,24 @@ public class UserManager implements Serializable{
     private User currentUser;
 
     /**
+     * check if the username is a valid name for register
+     * @param name username
+     *
+     */
+    public boolean is_valid_name(String name){
+        return name.matches("^[a-zA-Z0-9]{4,12}$");
+    }
+
+    /**
      * Register the new user to the system.
      */
-    public boolean userRegister(String username, String pw){
-        umap.put(username, new User(username, pw));
-        imap.put(username, new ArrayList<Item>());
-        return true;
+    public boolean userRegister(String username, String pw) {
+        if (is_valid_name(username)) {
+            umap.put(username, new User(username, pw));
+            imap.put(username, new ArrayList<Item>());
+            return true;
+        }
+        return false;
     }
 
     /**

@@ -18,12 +18,14 @@ public class LoginController {
      */
     public LoginController(UserManager userManager){this.uman = userManager;}
 
+
     /**
      * Check if username and password matches each other.
      * @param username The input username.
      * @param pw The input password.
      * @return Return true if the username matches password, false if it doesn't.
      */
+
     public boolean userLogin(String username, String pw){
         // login
         if(uman.lookupUser(username) == null){
@@ -48,11 +50,13 @@ public class LoginController {
         // lookup username; if already exists, return false.
         // else call Usermanager.register
         if(uman.lookupUser(username) == null){
-            uman.userRegister(username,pw);
-            FileOutputStream fos = new FileOutputStream("user.txt");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(this.uman);
-            return true;
+            if (uman.is_valid_name(username)) {
+                uman.userRegister(username,pw);
+                FileOutputStream fos = new FileOutputStream("user.txt");
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                oos.writeObject(this.uman);
+                return true;
+            }
         }
         return false;
     }

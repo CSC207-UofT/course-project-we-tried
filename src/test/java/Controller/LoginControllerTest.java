@@ -65,6 +65,14 @@ public class LoginControllerTest {
     }
 
     @Test
+    public void userRegister_fail_name() throws IOException {
+        LoginController log = new LoginController();
+        UserManager u = log.getUman();
+        u.userRegister("ala", "123");
+        assertFalse(log.userRegister("ala", "abc"));
+    }
+
+    @Test
     public void userLogout_has_current_user() throws IOException {
         LoginController log = new LoginController();
         log.userRegister("alan", "abc");
@@ -85,4 +93,6 @@ public class LoginControllerTest {
         LoginController log = new LoginController();
         assertTrue(log.getUman() instanceof UserManager);
     }
+
+
 }

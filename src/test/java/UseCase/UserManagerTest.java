@@ -1,5 +1,6 @@
 package UseCase;
 
+import Controller.LoginController;
 import UseCase.UserManager;
 import Entities.User;
 import Entities.Item;
@@ -113,4 +114,20 @@ public class UserManagerTest {
         assertNotNull(uman.getUserImap());
     }
 
+    @Test
+    public void is_valid_name(){
+        UserManager uman = new UserManager();
+        String a = "123";
+        String b = "1234";
+        String c = "abcd";
+        String d = "abcd12bc";
+        String e = "asrae123!";
+        String f = "123456789abc3";
+        assertTrue(uman.is_valid_name(b));
+        assertTrue(uman.is_valid_name(c));
+        assertTrue(uman.is_valid_name(d));
+        assertFalse(uman.is_valid_name(a));
+        assertFalse(uman.is_valid_name(e));
+        assertFalse(uman.is_valid_name(f));
+    }
 }
