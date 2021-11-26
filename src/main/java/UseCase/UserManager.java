@@ -112,10 +112,9 @@ public class UserManager implements Serializable{
 
     /**
      * Get users' map
-     * @param username user's username
      * @return Return the map contains (username: user).
      */
-    public Map<String, User> getUMap(String username){
+    public Map<String, User> getUMap(){
 
         return umap;
     }

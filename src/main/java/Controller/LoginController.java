@@ -86,6 +86,10 @@ public class LoginController {
         return uman.lookupUser(username) == null;
     }
 
+    public boolean resetuser(){
+        uman.reset_all_users();
+        return true;
+    }
     public UserManager getUman(){
         return uman;
     }

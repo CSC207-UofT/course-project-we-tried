@@ -128,7 +128,7 @@ public class UserManagerTest {
     public void getUMap() {
         UserManager uman = new UserManager();
         uman.userRegister("queenie", "test1");
-        assertNotNull(uman.getUMap("queenie"));
+        assertNotNull(uman.getUMap());
     }
 
     @Test
@@ -147,4 +147,8 @@ public class UserManagerTest {
         assertNull(uman.lookupUser("queenie"));
     }
 
+   @Test
+    public void get_processor_item(){
+
+   }
 }
