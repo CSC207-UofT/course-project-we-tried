@@ -53,14 +53,14 @@ public class ItemStorer implements Serializable{
      * @param storageRequirement one of the strings "L/F/R". This identifies which container it needs
      * @return return true if the item is successfully created and put in the map; return false if the item already exists.
      */
-    public boolean create(String id, List<String> info, String storageRequirement) {
+    public Item create(String id, List<String> info, String storageRequirement) {
         Item i1 = new Item(id, info, storageRequirement);
         if(Imap.containsKey(id)){
-            return false;
+            return null;
         }
         else{
         Imap.put(id, i1);
-        return true;
+        return i1;
         }
     }
 

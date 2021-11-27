@@ -4,6 +4,7 @@ import Entities.*;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,9 +63,9 @@ public class ItemManager implements Serializable{
      * @throws IOException
      */
     public String addItem(String id, List<String> info, String storageRequirement, String currentUser) throws IOException {
-        boolean stored = storer.create(id, info, storageRequirement);
-        if(!stored){return "*";}
-        // timer.RecordStart();
+        Item i = storer.create(id, info, storageRequirement);
+        if(i == null){return "*";}
+        timer.RecordStart(i);
         return storer.add(id,currentUser);
     }
 
@@ -75,8 +76,9 @@ public class ItemManager implements Serializable{
      */
     public String removeItem(String id) {
         if(searcher.search(id,imap)!=null){
-        //checkFee(id);
-        return picker.remove(id);}
+        checkFee(id); // TODO: there should be methods to display this info implement in UI
+            timer.RecordEnd(id);
+            return picker.remove(id);}
         else{
             return null;}
     }
@@ -87,13 +89,26 @@ public class ItemManager implements Serializable{
      * @return return the information of the item fund, in a list; if the item is not fund, return null.
      */
     public List<String> searchItem(String id){
-        // checkFee(id);
+        checkFee(id); // TODO: there should be methods to display this info implement in UI
         return searcher.search(id, imap);
     }
 
-    // TODO: this will be implemented in Phase 2
-    public void checkFee(String id){
-        timer.CalculateFee();
+    /**
+     * Check the storage fee for a item with given id.
+     * @param id the identification number of the item.
+     * @return Return a list of information with the item id:
+     * index 0 - the time when it was stored
+     * index 1 - the expiration date of the free storage
+     * index 2 - its current storage fee.
+     */
+    public List<String> checkFee(String id){
+        List<String> info = new ArrayList<>();
+        List<String> tls = timer.getTimeListString(id);
+        String fee = String.valueOf(timer.CalculateFee(id));
+        info.add(0, tls.get(0));
+        info.add(1,tls.get(1));
+        info.add(2, fee);
+        return info;
     }
 
 }
