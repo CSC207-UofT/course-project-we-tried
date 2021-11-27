@@ -102,6 +102,7 @@ public class LoginControllerTest {
         u.userRegister("Alan", "1234");
         Boolean b = log.userDelete("Alan", "1234");
         assertTrue(b);
+        assertTrue(u.getUMap().isEmpty());
     }
 
     @Test
@@ -111,6 +112,7 @@ public class LoginControllerTest {
         u.userRegister("Alan", "1234");
         Boolean b = log.userDelete("Alan", "12345");
         assertFalse(b);
+        assertFalse(u.getUMap().isEmpty());
     }
 
     @Test
