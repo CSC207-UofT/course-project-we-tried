@@ -1,12 +1,10 @@
 package UseCase;
 
-import Entities.Freezer;
-import Entities.Item;
-import Entities.Locker;
-import Entities.Refrigerator;
-import java.io.*;
+import Entities.*;
+
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,20 +24,10 @@ public class ItemManager implements Serializable{
         this.searcher = searcher;
         this.picker = picker;
         this.timer = timer;
-
-        Map<String, Boolean> lmap = new LinkedHashMap<>(3);
-        lmap.put("L01", false);
-        lmap.put("L02", false);
-        lmap.put("L03", false);
-        Map<String, Boolean> fmap = new LinkedHashMap<>(1);
-        fmap.put("f01", false);
-        Map<String, Boolean> rmap = new LinkedHashMap<>(2);
-        rmap.put("r01", false);
-        rmap.put("r02", false);
-        Locker l = new Locker(3, lmap);
-        Freezer f = new Freezer(1, fmap);
-        Refrigerator r = new Refrigerator(2, rmap);
-
+        Containerfacotry cf = new Containerfacotry();
+        Locker l = (Locker)cf.get_container("Locker");
+        Freezer f = (Freezer)cf.get_container("Freezer");
+        Refrigerator r = (Refrigerator)cf.get_container("Refrigerator");
         storer.setup(imap, l, f, r);
         picker.setup(imap, l, f, r);
     }
