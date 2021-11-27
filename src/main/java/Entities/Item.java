@@ -24,10 +24,6 @@ public class Item implements Serializable{
      * The storage requirement of the item, L/F/R
      */
     private String storageRequirement;
-    /**
-     * The extra fee need to pay after the item has exceeded free storage time
-     */
-    private boolean fee;
 
     /**
      * Create a item object
@@ -42,7 +38,6 @@ public class Item implements Serializable{
         this.location = "";
         this.processor = "";
         this.storageRequirement = storageRequirement;
-        this.fee = false;
     }
     /**
      * Create a item object
@@ -57,10 +52,8 @@ public class Item implements Serializable{
         this.location = location;
         this.processor = processor;
         this.storageRequirement = storageRequirement;
-        this.fee = false;
     }
 
-    /* Item needs a set location & set processor and record fee*/
     public void setLocation(String location){
         this.location = location;
     }
@@ -68,12 +61,6 @@ public class Item implements Serializable{
     public void setProcessor(String username){
         this.processor = username;
     }
-
-    public void setFee(int fee){
-        this.fee = true;
-    }
-
-    /*Above are all the new modifications*/
 
     public String getId() {
         return id;
@@ -93,10 +80,6 @@ public class Item implements Serializable{
 
     public String getStorageRequirement() {
         return storageRequirement;
-    }
-
-    public boolean isFee() {
-        return fee;
     }
 
     public List<String> getInfo(){
