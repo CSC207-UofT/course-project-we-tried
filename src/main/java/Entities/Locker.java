@@ -69,7 +69,7 @@ public class Locker implements Container, Serializable{
         this.number_items = this.number_items - 1;
         this.Vacancy = this.Vacancy + 1;
         this.lmap.replace(location, true, false);
-        FileOutputStream fos = new FileOutputStream("freezer.txt");
+        FileOutputStream fos = new FileOutputStream("locker.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(this.lmap);
     }
