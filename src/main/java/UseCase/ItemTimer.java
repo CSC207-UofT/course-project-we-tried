@@ -64,9 +64,11 @@ public class ItemTimer implements Serializable {
      */
     public List<String> getTimeListString(String id){
         List<Calendar> t_list = timer_map.get(id);
+        if (t_list == null){return null;}
         List<String> s_list = new ArrayList<>();
         for (Calendar t: t_list){
-            String s = t.get(Calendar.YEAR) + "/" + t.get(Calendar.MONTH)+1 + "/" + t.get(Calendar.DATE);
+            int month = t.get(Calendar.MONTH)+1;
+            String s = t.get(Calendar.YEAR) + "/" + month + "/" + t.get(Calendar.DATE);
             s_list.add(s);
         }
         return s_list;
