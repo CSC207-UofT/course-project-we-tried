@@ -42,7 +42,7 @@ public class PickupSystem {
      * @param name current user's name.
      * @return return Item's information.
      */
-    public String storeItem(String id, List<String> info, String storageRequirement, String name) throws IOException, ClassNotFoundException{
+    public String storeItem(String id, List<String> info, String storageRequirement, String name) throws IOException, ClassNotFoundException {
         // this will interact with the UI layer
         String str = iman.addItem(id, info, storageRequirement, name);
         if (str != null){
