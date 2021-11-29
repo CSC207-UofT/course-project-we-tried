@@ -84,8 +84,7 @@ public class LoginController {
      * @return Return true if delete succeed, false if it doesn't.
      */
     public boolean userDelete(String username, String pw){
-        uman.userDelete(username, pw);
-        return uman.lookupUser(username) == null;
+        return uman.userDelete(username,pw);
     }
 
     public boolean resetuser(){
