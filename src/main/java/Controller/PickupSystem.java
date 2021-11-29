@@ -59,7 +59,6 @@ public class PickupSystem {
      * @return return the item's information.
      */
     public List<String> search(String id){
-
         return iman.searchItem(id);
         }
 

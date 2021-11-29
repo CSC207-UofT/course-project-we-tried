@@ -26,13 +26,6 @@ public class ItemTest {
         assertEquals("alan", i.getProcessor());
     }
 
-    @Test
-    public void setFee() {
-        List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
-        Item i = new Item("a", info, "L");
-        i.setFee(5);
-        assertTrue(i.isFee());
-    }
 
     @Test
     public void getId() {
@@ -69,12 +62,6 @@ public class ItemTest {
         assertEquals("L",i.getStorageRequirement());
     }
 
-    @Test
-    public void isFee() {
-        List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
-        Item i = new Item("a", info, "L");
-        assertFalse(i.isFee());
-    }
 
     @Test
     public void getInfo() {
