@@ -2,7 +2,7 @@ package Controller;
 import java.io.*;
 import UseCase.*;
 import java.util.List;
-public class PickupSystem{
+public class PickupSystem {
     ItemStorer storer = new ItemStorer();
     ItemPicker picker = new ItemPicker();
     ItemSearcher searcher = new ItemSearcher();
