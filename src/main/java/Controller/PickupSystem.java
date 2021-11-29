@@ -1,7 +1,11 @@
 package Controller;
 import java.io.*;
 import UseCase.*;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 public class PickupSystem {
     ItemStorer storer = new ItemStorer();
     ItemPicker picker = new ItemPicker();
@@ -9,6 +13,7 @@ public class PickupSystem {
     ItemTimer timer = new ItemTimer();
     private ItemManager iman = new ItemManager(storer, searcher, picker, timer);
     private final UserManager uman = new UserManager();
+    private Map<String, String> item_location = new HashMap<>();
 
     /**
      * An empty constructor.
@@ -29,7 +34,10 @@ public class PickupSystem {
      */
     public void pickup(String id) throws IOException {
         // this will interact with the UI layer
-        iman.removeItem(id);
+        if (iman.searchItem(id) != null){
+            String loca = iman.removeItem(id);
+            item_location.remove(loca);
+        }
         FileOutputStream fos = new FileOutputStream("xyz.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(this.iman);
@@ -48,6 +56,7 @@ public class PickupSystem {
         String str = iman.addItem(id, info, storageRequirement, name);
         if (str != null){
             uman.record_item_processor(name, id);
+            item_location.put(str,id);
         }
         FileOutputStream fos = new FileOutputStream("xyz.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
