@@ -25,8 +25,8 @@ public class LoginControllerTest {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
         Map<String, User> m = u.getUMap();
-        log.userRegister("alan", "abc");
-        assertTrue(log.userLogin("alan", "abc"));
+        log.userRegister("alan", "abcd");
+        assertTrue(log.userLogin("alan", "abcd"));
         assertEquals("alan",log.getCurrentUser());
         assertEquals("alan", log.getUman().getCurrentUser().getUsername());
 
@@ -51,7 +51,7 @@ public class LoginControllerTest {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
         Map<String, User> m = u.getUMap();
-        Boolean a = log.userRegister("alan","abc");
+        Boolean a = log.userRegister("alan","abcd");
         assertTrue(a);
 
     }
