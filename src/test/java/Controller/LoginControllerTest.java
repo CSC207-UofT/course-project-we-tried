@@ -35,15 +35,15 @@ public class LoginControllerTest {
     @Test
     public void userLogin_fail_wrong_password() throws IOException {
         LoginController log = new LoginController();
-        log.userRegister("alan", "abc");
-        assertFalse(log.userLogin("alan", "ab"));
+        log.userRegister("alan", "abce");
+        assertFalse(log.userLogin("alan", "abcc"));
     }
 
     @Test
     public void userLogin_fail_wrong_user() throws IOException {
         LoginController log = new LoginController();
-        log.userRegister("alan", "abc");
-        assertFalse(log.userLogin("ala", "abc"));
+        log.userRegister("alan", "abcd");
+        assertFalse(log.userLogin("ala", "abcd"));
     }
 
     @Test
