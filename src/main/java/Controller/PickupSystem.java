@@ -9,7 +9,6 @@ public class PickupSystem {
     ItemTimer timer = new ItemTimer();
     private ItemManager iman = new ItemManager(storer, searcher, picker, timer);
     private final UserManager uman = new UserManager();
-
     /**
      * An empty constructor.
      */

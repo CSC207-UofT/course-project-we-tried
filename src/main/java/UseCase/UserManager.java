@@ -108,12 +108,25 @@ public class UserManager implements Serializable{
     }
 
     /**
+     * Return current user.
+     */
+    public String getCurrentUserId(){
+        return currentUser.getUsername();
+    }
+
+    /**
      * Record item that the user processed.
      * @param processor_name processor's username
      * @param new_item_id new processed item's id
      */
     public void record_item_processor(String processor_name, String new_item_id){
-        imap.get(processor_name).add(new_item_id);
+        if (imap.containsKey(processor_name)){
+            imap.get(processor_name).add(new_item_id);
+        }else{
+            imap.put(processor_name, new ArrayList<String>());
+            imap.get(processor_name).add(new_item_id);
+        }
+
     }
 
     /**
