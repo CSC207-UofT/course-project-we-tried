@@ -40,7 +40,7 @@ public class PickupSystemTest {
     public void storeItem_successful() throws IOException, ClassNotFoundException {
         PickupSystem p = new PickupSystem();
         UserManager u = p.getUman();
-        u.userRegister("alan", "123");
+        u.userRegister("alan", "1234");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
         String location = p.storeItem("test_id1", i_info, "L","alan");
         assertEquals("L01",location);
