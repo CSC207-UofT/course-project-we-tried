@@ -59,9 +59,9 @@ public class UserManagerTest {
     @Test
     public void userDelete() {
         UserManager uman = new UserManager();
-        uman.userRegister("queenie", "207");
+        uman.userRegister("queenie", "2077");
         assertNotNull(uman.lookupUser("queenie"));
-        uman.userDelete("queenie", "207");
+        uman.userDelete("queenie", "2077");
         assertNull(uman.lookupUser("queenie"));
     }
 
