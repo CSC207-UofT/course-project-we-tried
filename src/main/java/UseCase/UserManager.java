@@ -1,6 +1,6 @@
 package UseCase;
 import java.io.*;
-import Entities.Item;
+
 import Entities.User;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,15 +36,17 @@ public class UserManager implements Serializable{
     }
 
     /**
-     * Register the new user to the system.
+     * Delete the new user from the system.
      * @param name input username
      * @param pw input corresponding password
      */
-    public void userDelete(String name, String pw){
+    public boolean userDelete(String name, String pw){
         //first check password
-        if (pwVerify(name, pw)){
+        if ((umap.containsKey(name)) & (pwVerify(name, pw))){
             umap.remove(name);
+            return true;
         }
+        return false;
     }
 
     /**
