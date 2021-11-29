@@ -6,10 +6,7 @@ import UseCase.UserManager;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -53,6 +50,7 @@ public class PickupSystemTest {
         u.userRegister("queenie", "1234");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
         String location = p.storeItem("test_1", i_info, "L","alan");
+        ItemManager m = p.getIman();
         assertNotNull(u.getUserImap("queenie"));
         assertEquals(Arrays.asList("test_1"),u.getUserImap("queenie"));
         assertEquals("L01",location);
