@@ -9,6 +9,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -113,40 +114,33 @@ public class ItemManagerTest {
         assertNull(iman.searchItem("a"));
     }
 
-//    @Test
-//    public void testSearchItem_no_item() {
-//        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
-//        List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
-//        Item i = new Item("a", info, "L");
-//        assertNull(iman.searchItem("a"));
-//
-//    }
-//    @Test
-//   public void testSearchItem_exist_item() throws IOException {
-//        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
-//        List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
-//        User u = new User("test_user", "123456");
-//        String location =  iman.addItem("a", info,"L","test_user" );
-//        List<String> expected = new ArrayList<>(Arrays.asList("a","Sender: test_sender","Receiver: test_receiver",
-//                "Description: This is a test!",location, "test_user","L"));
-//        assertEquals(expected,iman.searchItem("a"));
-//
-//    }
+    @Test
+    public void testSearchItem_no_item() {
+        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
+        List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
+        Item i = new Item("a", info, "L");
+        assertNull(iman.searchItem("a"));
 
+    }
+    @Test
+   public void testSearchItem_exist_item() throws IOException {
+        Calendar t_start = Calendar.getInstance();
+        int month_1 = t_start.get(Calendar.MONTH)+1;
+        String s_1 = t_start.get(Calendar.YEAR) + "/" + month_1 + "/" + t_start.get(Calendar.DATE);
 
+        Calendar t_fee = Calendar.getInstance();
+        t_fee.add(Calendar.DATE,2);
+        int month_2 = t_fee.get(Calendar.MONTH)+1;
+        String s_2 = t_fee.get(Calendar.YEAR) + "/" + month_2 + "/" + t_fee.get(Calendar.DATE);
 
-//    @Test
-//    public void testSearchItem_exist_item(){
-//        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
-//        List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
-//        iman.addItem("a",info, "l","alan");
-//        Item i = iman.getItemMap().get("a");
-//        String location = i.getLocation();
-//        boolean fee = i.isFee();
-//        String processor = i.getProcessor();
-//        String line_seperator = System.lineSeparator();
-//        String expect = "Item:a"+line_seperator+info+line_seperator+location+line_seperator+processor+line_seperator+fee;
-//        assertEquals(expect, iman.searchItem("a"));
-//    }
+        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
+        List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
+        User u = new User("test_user", "123456");
+        String location =  iman.addItem("a", info,"L","test_user" );
+        List<String> expected = new ArrayList<>(Arrays.asList("a","Sender: test_sender","Receiver: test_receiver",
+                "Description: This is a test!",location, "test_user","L", s_1, s_2,"0"));
+        assertEquals(expected,iman.searchItem("a"));
+
+    }
 
 }

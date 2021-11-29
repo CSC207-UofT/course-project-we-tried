@@ -89,6 +89,7 @@ public class ItemManager implements Serializable{
      */
     public List<String> searchItem(String id){
         List<String> i_list = searcher.search(id, imap);
+        if(i_list==null){return null;}
         List<String> t_list = checkFee(id);
         i_list.addAll(t_list);
         return i_list;
