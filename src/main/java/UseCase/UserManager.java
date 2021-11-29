@@ -36,7 +36,7 @@ public class UserManager implements Serializable{
     }
 
     /**
-     * Delete the new user from the system.
+     * Delete the user from the system.
      * @param name input username
      * @param pw input corresponding password
      */
