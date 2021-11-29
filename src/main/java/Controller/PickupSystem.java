@@ -46,6 +46,9 @@ public class PickupSystem {
     public String storeItem(String id, List<String> info, String storageRequirement, String name) throws IOException, ClassNotFoundException {
         // this will interact with the UI layer
         String str = iman.addItem(id, info, storageRequirement, name);
+        if (str != null){
+            uman.record_item_processor(name, id);
+        }
         FileOutputStream fos = new FileOutputStream("xyz.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(this.iman);
