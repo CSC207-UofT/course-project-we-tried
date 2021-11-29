@@ -2,14 +2,13 @@ package Controller;
 import java.io.*;
 import UseCase.*;
 import java.util.List;
-public class PickupSystem {
+public class PickupSystem{
     ItemStorer storer = new ItemStorer();
     ItemPicker picker = new ItemPicker();
     ItemSearcher searcher = new ItemSearcher();
     ItemTimer timer = new ItemTimer();
     private ItemManager iman = new ItemManager(storer, searcher, picker, timer);
     private final UserManager uman = new UserManager();
-
     /**
      * An empty constructor.
      */
@@ -43,7 +42,7 @@ public class PickupSystem {
      * @param name current user's name.
      * @return return Item's information.
      */
-    public String storeItem(String id, List<String> info, String storageRequirement, String name) throws IOException, ClassNotFoundException {
+    public String storeItem(String id, List<String> info, String storageRequirement, String name) throws IOException, ClassNotFoundException{
         // this will interact with the UI layer
         String str = iman.addItem(id, info, storageRequirement, name);
         if (str != null){
