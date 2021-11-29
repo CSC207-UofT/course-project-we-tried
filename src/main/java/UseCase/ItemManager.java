@@ -76,7 +76,6 @@ public class ItemManager implements Serializable{
      */
     public String removeItem(String id) {
         if(searcher.search(id,imap)!=null){
-        checkFee(id); // TODO: there should be methods to display this info implement in UI
             timer.RecordEnd(id);
             return picker.remove(id);}
         else{
@@ -89,8 +88,10 @@ public class ItemManager implements Serializable{
      * @return return the information of the item fund, in a list; if the item is not fund, return null.
      */
     public List<String> searchItem(String id){
-        checkFee(id); // TODO: there should be methods to display this info implement in UI
-        return searcher.search(id, imap);
+        List<String> i_list = searcher.search(id, imap);
+        List<String> t_list = checkFee(id);
+        i_list.addAll(t_list);
+        return i_list;
     }
 
     /**
