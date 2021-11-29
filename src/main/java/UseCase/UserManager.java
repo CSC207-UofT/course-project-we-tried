@@ -24,14 +24,25 @@ public class UserManager implements Serializable{
     }
 
     /**
+     * check if the password is a valid name for register
+     * @param password username
+     * @return Return true if password is valid; false if not.
+     */
+    public boolean is_valid_password(String password){
+        return password.matches("^[a-zA-Z0-9]{4,12}$");
+    }
+
+    /**
      * Register the new user to the system.
      * @param username user's username
      * @param pw user's corresponding password
      */
     public void userRegister(String username, String pw){
         if (is_valid_name(username)) {
-            umap.put(username, new User(username, pw));
-            imap.put(username, new ArrayList<String>());
+            if (is_valid_password(pw)) {
+                umap.put(username, new User(username, pw));
+                imap.put(username, new ArrayList<String>());
+            }
         }
     }
 

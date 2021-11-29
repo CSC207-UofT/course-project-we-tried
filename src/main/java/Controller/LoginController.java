@@ -52,11 +52,13 @@ public class LoginController {
         // else call Usermanager.register
         if(uman.lookupUser(username) == null){
             if (uman.is_valid_name(username)) {
-                uman.userRegister(username,pw);
-                FileOutputStream fos = new FileOutputStream("user.txt");
-                ObjectOutputStream oos = new ObjectOutputStream(fos);
-                oos.writeObject(this.uman);
-                return true;
+                if(uman.is_valid_password(pw)){
+                    uman.userRegister(username, pw);
+                    FileOutputStream fos = new FileOutputStream("user.txt");
+                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                    oos.writeObject(this.uman);
+                    return true;
+                }
             }
         }
         return false;
