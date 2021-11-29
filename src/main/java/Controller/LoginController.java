@@ -2,6 +2,7 @@ package Controller;
 import UseCase.UserManager;
 import java.io.*;
 import java.util.Objects;
+import java.util.ArrayList;
 
 public class LoginController {
 
@@ -18,12 +19,14 @@ public class LoginController {
      */
     public LoginController(UserManager userManager){this.uman = userManager;}
 
+
     /**
      * Check if username and password matches each other.
      * @param username The input username.
      * @param pw The input password.
      * @return Return true if the username matches password, false if it doesn't.
      */
+
     public boolean userLogin(String username, String pw){
         // login
         if(uman.lookupUser(username) == null){
@@ -48,11 +51,13 @@ public class LoginController {
         // lookup username; if already exists, return false.
         // else call Usermanager.register
         if(uman.lookupUser(username) == null){
-            uman.userRegister(username,pw);
-            FileOutputStream fos = new FileOutputStream("user.txt");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(this.uman);
-            return true;
+            if (uman.is_valid_name(username)) {
+                uman.userRegister(username,pw);
+                FileOutputStream fos = new FileOutputStream("user.txt");
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                oos.writeObject(this.uman);
+                return true;
+            }
         }
         return false;
     }
@@ -70,11 +75,35 @@ public class LoginController {
         return true;
     }
 
+    /**
+     * Delete the user and check if delete succeed.
+     * @param username The input username.
+     * @param pw The input password.
+     * @return Return true if delete succeed, false if it doesn't.
+     */
+    public boolean userDelete(String username, String pw){
+        uman.userDelete(username, pw);
+        return uman.lookupUser(username) == null;
+    }
+
+    public boolean resetuser(){
+        uman.reset_all_users();
+        return true;
+    }
     public UserManager getUman(){
         return uman;
     }
 
     public String getCurrentUser(){
         return currentUser;
+    }
+
+    /**
+     * Get user processed items' ids.
+     * @param username The input username.
+     * @return Return the ArrayList contains all items' ids processed by this user.
+     */
+    public ArrayList<String> get_processor_item(String username){
+        return uman.getUserImap(username);
     }
 }

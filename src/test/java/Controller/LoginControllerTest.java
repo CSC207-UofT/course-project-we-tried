@@ -2,6 +2,7 @@ package Controller;
 
 import Entities.User;
 import UseCase.UserManager;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -16,14 +17,14 @@ public class LoginControllerTest {
     public void user(){
         LoginController log = new LoginController();
         UserManager u = log.getUman();
-        Map<String, User> m = u.getUMap("al");
+        Map<String, User> m = u.getUMap();
     }
 
     @Test
     public void userLogin_successful() throws IOException {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
-        Map<String, User> m = u.getUMap("al");
+        Map<String, User> m = u.getUMap();
         log.userRegister("alan", "abc");
         assertTrue(log.userLogin("alan", "abc"));
         assertEquals("alan",log.getCurrentUser());
@@ -49,7 +50,7 @@ public class LoginControllerTest {
     public void userRegister_successful() throws IOException {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
-        Map<String, User> m = u.getUMap("alan");
+        Map<String, User> m = u.getUMap();
         Boolean a = log.userRegister("alan","abc");
         assertTrue(a);
 
@@ -62,6 +63,14 @@ public class LoginControllerTest {
         u.userRegister("alan", "123");
         assertFalse(log.userRegister("alan", "abc"));
 
+    }
+
+    @Test
+    public void userRegister_fail_name() throws IOException {
+        LoginController log = new LoginController();
+        UserManager u = log.getUman();
+        u.userRegister("ala", "123");
+        assertFalse(log.userRegister("ala", "abc"));
     }
 
     @Test
@@ -84,5 +93,43 @@ public class LoginControllerTest {
     public void getUman() {
         LoginController log = new LoginController();
         assertTrue(log.getUman() instanceof UserManager);
+    }
+
+    @Test
+    public void userDelete_success(){
+        LoginController log = new LoginController();
+        UserManager u = log.getUman();
+        u.userRegister("Alan", "1234");
+        Boolean b = log.userDelete("Alan", "1234");
+        assertTrue(b);
+        assertTrue(u.getUMap().isEmpty());
+    }
+
+    @Test
+    public void userDelete_fail(){
+        LoginController log = new LoginController();
+        UserManager u = log.getUman();
+        u.userRegister("Alan", "1234");
+        Boolean b = log.userDelete("Alan", "12345");
+        assertFalse(b);
+        assertFalse(u.getUMap().isEmpty());
+    }
+
+    @Test
+    public void resetuser(){
+        LoginController log = new LoginController();
+        UserManager u = log.getUman();
+        u.userRegister("Alan", "1234");
+        log.resetuser();
+        assertTrue(u.getUMap().isEmpty());
+    }
+
+    @Test
+    public void getCurrentUser(){
+        LoginController log = new LoginController();
+        UserManager u = log.getUman();
+        u.userRegister("Alan", "1234");
+        u.RecordUser("Alan");
+        assertEquals("Alan", u.getCurrentUser().getUsername());
     }
 }

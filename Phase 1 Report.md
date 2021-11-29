@@ -39,6 +39,13 @@ We have satisfied the single responsibility for most of our classes. For example
 \
 Also, our entity class satisfies the interface segregation principle. The interface inside the entity class package is called Container. The interface is small and contains all relevant methods to entity classes. Therefore, the interface is easy to extend and modify.
 
+### Packaging Strategy
+Our packaging strategy is by layer. The Repository is the data of the closets (Refrigerator, Freezer, Locker), which contains the items that already exist. It also contains the users’ usernames and passwords. Both data is stored outside the service sector (in a txt file). \
+\
+The Controller layer is on the other end, independent from the service as well. It makes the main moves.\
+\
+The service segment is in between, uses the data and is used by the controller to fulfill a variety of tasks that the controller gives us. 
+
 ### Design Pattern
 Our group uses a Facade design pattern in our use cases. In phase 0, all responsibilities to operate on items are fulfilled in the ItemManager use case. However, this violates the single responsibility principle, as all the responsibilities such as storing items, picking up items and searching items are all in the same class.\
 \

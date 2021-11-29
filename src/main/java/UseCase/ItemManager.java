@@ -1,12 +1,11 @@
 package UseCase;
 
-import Entities.Freezer;
-import Entities.Item;
-import Entities.Locker;
-import Entities.Refrigerator;
-import java.io.*;
+import Entities.*;
+
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,20 +25,10 @@ public class ItemManager implements Serializable{
         this.searcher = searcher;
         this.picker = picker;
         this.timer = timer;
-
-        Map<String, Boolean> lmap = new LinkedHashMap<>(3);
-        lmap.put("L01", false);
-        lmap.put("L02", false);
-        lmap.put("L03", false);
-        Map<String, Boolean> fmap = new LinkedHashMap<>(1);
-        fmap.put("f01", false);
-        Map<String, Boolean> rmap = new LinkedHashMap<>(2);
-        rmap.put("r01", false);
-        rmap.put("r02", false);
-        Locker l = new Locker(3, lmap);
-        Freezer f = new Freezer(1, fmap);
-        Refrigerator r = new Refrigerator(2, rmap);
-
+        Containerfacotry cf = new Containerfacotry();
+        Locker l = (Locker)cf.get_container("Locker");
+        Freezer f = (Freezer)cf.get_container("Freezer");
+        Refrigerator r = (Refrigerator)cf.get_container("Refrigerator");
         storer.setup(imap, l, f, r);
         picker.setup(imap, l, f, r);
     }
@@ -74,9 +63,9 @@ public class ItemManager implements Serializable{
      * @throws IOException
      */
     public String addItem(String id, List<String> info, String storageRequirement, String currentUser) throws IOException {
-        boolean stored = storer.create(id, info, storageRequirement);
-        if(!stored){return "*";}
-        // timer.RecordStart();
+        Item i = storer.create(id, info, storageRequirement);
+        if(i == null){return "*";}
+        timer.RecordStart(i);
         return storer.add(id,currentUser);
     }
 
@@ -87,8 +76,8 @@ public class ItemManager implements Serializable{
      */
     public String removeItem(String id) {
         if(searcher.search(id,imap)!=null){
-        //checkFee(id);
-        return picker.remove(id);}
+            timer.RecordEnd(id);
+            return picker.remove(id);}
         else{
             return null;}
     }
@@ -99,13 +88,28 @@ public class ItemManager implements Serializable{
      * @return return the information of the item fund, in a list; if the item is not fund, return null.
      */
     public List<String> searchItem(String id){
-        // checkFee(id);
-        return searcher.search(id, imap);
+        List<String> i_list = searcher.search(id, imap);
+        List<String> t_list = checkFee(id);
+        i_list.addAll(t_list);
+        return i_list;
     }
 
-    // TODO: this will be implemented in Phase 2
-    public void checkFee(String id){
-        timer.CalculateFee();
+    /**
+     * Check the storage fee for a item with given id.
+     * @param id the identification number of the item.
+     * @return Return a list of information with the item id:
+     * index 0 - the time when it was stored
+     * index 1 - the expiration date of the free storage
+     * index 2 - its current storage fee.
+     */
+    public List<String> checkFee(String id){
+        List<String> info = new ArrayList<>();
+        List<String> tls = timer.getTimeListString(id);
+        String fee = String.valueOf(timer.CalculateFee(id));
+        info.add(0, tls.get(0));
+        info.add(1,tls.get(1));
+        info.add(2, fee);
+        return info;
     }
 
 }
