@@ -51,7 +51,7 @@ public class ItemStorer implements Serializable{
      * @param id the identification number of this item.
      * @param info the information attached to this item.
      * @param storageRequirement one of the strings "L/F/R". This identifies which container it needs
-     * @return return true if the item is successfully created and put in the map; return false if the item already exists.
+     * @return return item if the item is successfully created and put in the map; return null if the item already exists.
      */
     public Item create(String id, List<String> info, String storageRequirement) {
         Item i1 = new Item(id, info, storageRequirement);
@@ -73,6 +73,9 @@ public class ItemStorer implements Serializable{
      */
     public String add(String id, String currentUser) throws IOException {
         Item i1 = Imap.get(id);
+        if(i1 == null){
+            return null;
+        }
         findContainer(i1);
         if (c != null) {
             location = c.nextVacantLocation();
