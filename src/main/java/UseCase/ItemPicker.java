@@ -52,6 +52,9 @@ public class ItemPicker implements Serializable{
      */
     public String remove(String id){
         Item i1 = Imap.get(id);
+        if(i1 == null){
+            return null;
+        }
         findContainer(i1);
         location = i1.getLocation();
         if (c != null) {
