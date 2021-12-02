@@ -8,6 +8,8 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
@@ -131,5 +133,17 @@ public class LoginControllerTest {
         u.userRegister("Alan", "1234");
         u.RecordUser("Alan");
         assertEquals("Alan", u.getCurrentUser().getUsername());
+    }
+
+    @Test
+    public void get_processor_item() throws IOException, ClassNotFoundException {
+        PickupSystem p = new PickupSystem();
+        UserManager u = p.getUman();
+        u.userRegister("queenie", "1234");
+        List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
+        String location = p.storeItem("test_1", i_info, "L", "queenie");
+        assertNotNull(u.getUserImap("queenie"));
+        assertEquals(Arrays.asList("test_1"), u.getUserImap("queenie"));
+        assertEquals("L01", location);
     }
 }
