@@ -9,14 +9,14 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class LockerVisualization implements ActionListener{
+public class FreezerVisualization implements ActionListener {
     private JFrame frame = new JFrame();
-    private ImageIcon LockerImage= new ImageIcon("src/Locker.png");
+    private ImageIcon LockerImage = new ImageIcon("src/Locker.png");
     private JButton Menu = new JButton("Menu");
     private JButton Search = new JButton("Search");
     private JLabel LockerLocker = new JLabel(LockerImage);
-    private ImageIcon VImage= new ImageIcon("src/Vertical.png");
-    private ImageIcon HImage= new ImageIcon("src/Horizontal.png");
+    private ImageIcon VImage = new ImageIcon("src/Vertical.png");
+    private ImageIcon HImage = new ImageIcon("src/Horizontal.png");
     private ImageIcon Vb = new ImageIcon("src/Verticalborder.png");
     private JLabel Vertivcalline1 = new JLabel(VImage);
     private JLabel Vertivcalline2 = new JLabel(VImage);
@@ -31,23 +31,23 @@ public class LockerVisualization implements ActionListener{
     private PickupSystem pickupSystem;
     private LoginController loginController;
     private String userID = new String();
-    private JLabel L01 = new JLabel("L01");
-    private JLabel L02 = new JLabel("L02");
-    private JLabel L03 = new JLabel("L03");
-    private JLabel L04 = new JLabel("L04");
-    private JLabel L05 = new JLabel("L05");
-    private JLabel L06 = new JLabel("L06");
-    private JLabel L07 = new JLabel("L07");
-    private JLabel L08 = new JLabel("L08");
-    private JLabel L09 = new JLabel("L09");
-    private JLabel L010 = new JLabel("L10");
-    private JLabel L011 = new JLabel("L11");
-    private JLabel L012 = new JLabel("L12");
-    private JLabel L013 = new JLabel("L13");
-    private JLabel L014 = new JLabel("L14");
-    private JLabel L015 = new JLabel("L15");
+    private JLabel L01 = new JLabel("F01");
+    private JLabel L02 = new JLabel("F02");
+    private JLabel L03 = new JLabel("F03");
+    private JLabel L04 = new JLabel("F04");
+    private JLabel L05 = new JLabel("F05");
+    private JLabel L06 = new JLabel("F06");
+    private JLabel L07 = new JLabel("F07");
+    private JLabel L08 = new JLabel("F08");
+    private JLabel L09 = new JLabel("F09");
+    private JLabel L010 = new JLabel("F10");
+    private JLabel L011 = new JLabel("F11");
+    private JLabel L012 = new JLabel("F12");
+    private JLabel L013 = new JLabel("F13");
+    private JLabel L014 = new JLabel("F14");
+    private JLabel L015 = new JLabel("F15");
     private JLabel L1 = new JLabel();
-    private JLabel L2= new JLabel();
+    private JLabel L2 = new JLabel();
     private JLabel L3 = new JLabel();
     private JLabel L4 = new JLabel();
     private JLabel L5 = new JLabel();
@@ -62,11 +62,11 @@ public class LockerVisualization implements ActionListener{
     private JLabel L14 = new JLabel();
     private JLabel L15 = new JLabel();
 
-    public LockerVisualization(String username, PickupSystem pckSys, LoginController loginC){
+
+    public FreezerVisualization(String username, PickupSystem pckSys, LoginController loginC) {
         this.pickupSystem = pckSys;
         this.loginController = loginC;
         this.userID = username;
-
 
         ArrayList friends = new ArrayList(15);
         friends.add("11111111111");
@@ -88,19 +88,19 @@ public class LockerVisualization implements ActionListener{
         Horizontalline1.setBounds(0, 20, 800, 20);
         frame.add(Horizontalline1);
 
-        Horizongtalline2.setBounds(0, 760, 800,20);
+        Horizongtalline2.setBounds(0, 760, 800, 20);
         frame.add(Horizongtalline2);
 
-        VerticalBorder1.setBounds(29, 2, 40,800);
+        VerticalBorder1.setBounds(29, 2, 40, 800);
         frame.add(VerticalBorder1);
 
-        VerticalBorder2.setBounds(731, 2, 40,800);
+        VerticalBorder2.setBounds(731, 2, 40, 800);
         frame.add(VerticalBorder2);
 
-        Vertivcalline1.setBounds(263,2,40,800);
+        Vertivcalline1.setBounds(263, 2, 40, 800);
         frame.add(Vertivcalline1);
 
-        Vertivcalline2.setBounds(497,2,40,800);
+        Vertivcalline2.setBounds(497, 2, 40, 800);
         frame.add(Vertivcalline2);
 
         Horizontalline3.setBounds(0, 168, 800, 10);
@@ -117,206 +117,206 @@ public class LockerVisualization implements ActionListener{
 
 
         L01.setBounds(143, 4, 100, 100);
-        L01.setFont(new Font(null,Font.PLAIN, 30));
+        L01.setFont(new Font(null, Font.PLAIN, 30));
         L01.setForeground(Color.white);
         frame.add(L01);
 
-        if(friends.get(0) != null){
+        if (friends.get(0) != null) {
             L1 = new JLabel((String) friends.get(0));
             L1.setBounds(110, 63, 200, 100);
-            L1.setFont(new Font(null,Font.PLAIN, 20));
+            L1.setFont(new Font(null, Font.PLAIN, 20));
             L1.setForeground(Color.white);
             frame.add(L1);
         }
 
         L02.setBounds(377, 4, 100, 100);
-        L02.setFont(new Font(null,Font.PLAIN, 30));
+        L02.setFont(new Font(null, Font.PLAIN, 30));
         L02.setForeground(Color.white);
         frame.add(L02);
 
-        if(friends.get(1) != null){
+        if (friends.get(1) != null) {
             L2 = new JLabel((String) friends.get(1));
             L2.setBounds(344, 63, 200, 100);
-            L2.setFont(new Font(null,Font.PLAIN, 20));
+            L2.setFont(new Font(null, Font.PLAIN, 20));
             L2.setForeground(Color.white);
             frame.add(L2);
         }
 
         L03.setBounds(611, 4, 100, 100);
-        L03.setFont(new Font(null,Font.PLAIN, 30));
+        L03.setFont(new Font(null, Font.PLAIN, 30));
         L03.setForeground(Color.white);
         frame.add(L03);
 
-        if (friends.get(2) != null){
+        if (friends.get(2) != null) {
             L3 = new JLabel((String) friends.get(2));
             L3.setBounds(578, 63, 200, 100);
-            L3.setFont(new Font(null,Font.PLAIN, 20));
+            L3.setFont(new Font(null, Font.PLAIN, 20));
             L3.setForeground(Color.white);
             frame.add(L3);
         }
 
 
         L04.setBounds(143, 152, 100, 100);
-        L04.setFont(new Font(null,Font.PLAIN, 30));
+        L04.setFont(new Font(null, Font.PLAIN, 30));
         L04.setForeground(Color.white);
         frame.add(L04);
 
-        if(friends.get(3) != null){
+        if (friends.get(3) != null) {
             L4 = new JLabel((String) friends.get(3));
             L4.setBounds(110, 211, 200, 100);
-            L4.setFont(new Font(null,Font.PLAIN, 20));
+            L4.setFont(new Font(null, Font.PLAIN, 20));
             L4.setForeground(Color.white);
             frame.add(L4);
         }
 
         L05.setBounds(377, 152, 100, 100);
-        L05.setFont(new Font(null,Font.PLAIN, 30));
+        L05.setFont(new Font(null, Font.PLAIN, 30));
         L05.setForeground(Color.white);
         frame.add(L05);
 
-        if(friends.get(4) != null){
+        if (friends.get(4) != null) {
             L5 = new JLabel((String) friends.get(4));
             L5.setBounds(344, 211, 200, 100);
-            L5.setFont(new Font(null,Font.PLAIN, 20));
+            L5.setFont(new Font(null, Font.PLAIN, 20));
             L5.setForeground(Color.white);
             frame.add(L5);
         }
 
         L06.setBounds(611, 152, 100, 100);
-        L06.setFont(new Font(null,Font.PLAIN, 30));
+        L06.setFont(new Font(null, Font.PLAIN, 30));
         L06.setForeground(Color.white);
         frame.add(L06);
 
-        if (friends.get(5) != null){
+        if (friends.get(5) != null) {
             L6 = new JLabel((String) friends.get(5));
             L6.setBounds(578, 211, 200, 100);
-            L6.setFont(new Font(null,Font.PLAIN, 20));
+            L6.setFont(new Font(null, Font.PLAIN, 20));
             L6.setForeground(Color.white);
             frame.add(L6);
         }
 
 
         L07.setBounds(143, 300, 100, 100);
-        L07.setFont(new Font(null,Font.PLAIN, 30));
+        L07.setFont(new Font(null, Font.PLAIN, 30));
         L07.setForeground(Color.white);
         frame.add(L07);
 
-        if(friends.get(6) != null){
+        if (friends.get(6) != null) {
             L7 = new JLabel((String) friends.get(6));
             L7.setBounds(110, 359, 200, 100);
-            L7.setFont(new Font(null,Font.PLAIN, 20));
+            L7.setFont(new Font(null, Font.PLAIN, 20));
             L7.setForeground(Color.white);
             frame.add(L7);
         }
 
         L08.setBounds(377, 300, 100, 100);
-        L08.setFont(new Font(null,Font.PLAIN, 30));
+        L08.setFont(new Font(null, Font.PLAIN, 30));
         L08.setForeground(Color.white);
         frame.add(L08);
 
-        if(friends.get(7) != null){
+        if (friends.get(7) != null) {
             L8 = new JLabel((String) friends.get(7));
             L8.setBounds(344, 359, 200, 100);
-            L8.setFont(new Font(null,Font.PLAIN, 20));
+            L8.setFont(new Font(null, Font.PLAIN, 20));
             L8.setForeground(Color.white);
             frame.add(L8);
         }
 
 
         L09.setBounds(611, 300, 100, 100);
-        L09.setFont(new Font(null,Font.PLAIN, 30));
+        L09.setFont(new Font(null, Font.PLAIN, 30));
         L09.setForeground(Color.white);
         frame.add(L09);
 
-        if (friends.get(8) != null){
+        if (friends.get(8) != null) {
             L9 = new JLabel((String) friends.get(8));
             L9.setBounds(578, 359, 200, 100);
-            L9.setFont(new Font(null,Font.PLAIN, 20));
+            L9.setFont(new Font(null, Font.PLAIN, 20));
             L9.setForeground(Color.white);
             frame.add(L9);
         }
 
         L010.setBounds(143, 448, 100, 100);
-        L010.setFont(new Font(null,Font.PLAIN, 30));
+        L010.setFont(new Font(null, Font.PLAIN, 30));
         L010.setForeground(Color.white);
         frame.add(L010);
 
-        if(friends.get(9) != null){
+        if (friends.get(9) != null) {
             L10 = new JLabel((String) friends.get(9));
             L10.setBounds(110, 507, 200, 100);
-            L10.setFont(new Font(null,Font.PLAIN, 20));
+            L10.setFont(new Font(null, Font.PLAIN, 20));
             L10.setForeground(Color.white);
             frame.add(L10);
         }
 
         L011.setBounds(377, 448, 100, 100);
-        L011.setFont(new Font(null,Font.PLAIN, 30));
+        L011.setFont(new Font(null, Font.PLAIN, 30));
         L011.setForeground(Color.white);
         frame.add(L011);
 
-        if(friends.get(10) != null){
+        if (friends.get(10) != null) {
             L11 = new JLabel((String) friends.get(10));
             L11.setBounds(344, 507, 200, 100);
-            L11.setFont(new Font(null,Font.PLAIN, 20));
+            L11.setFont(new Font(null, Font.PLAIN, 20));
             L11.setForeground(Color.white);
             frame.add(L11);
         }
 
 
         L012.setBounds(611, 448, 100, 100);
-        L012.setFont(new Font(null,Font.PLAIN, 30));
+        L012.setFont(new Font(null, Font.PLAIN, 30));
         L012.setForeground(Color.white);
         frame.add(L012);
 
-        if (friends.get(11) != null){
+        if (friends.get(11) != null) {
             L12 = new JLabel((String) friends.get(11));
             L12.setBounds(578, 507, 200, 100);
-            L12.setFont(new Font(null,Font.PLAIN, 20));
+            L12.setFont(new Font(null, Font.PLAIN, 20));
             L12.setForeground(Color.white);
             frame.add(L12);
         }
 
         L013.setBounds(143, 596, 100, 100);
-        L013.setFont(new Font(null,Font.PLAIN, 30));
+        L013.setFont(new Font(null, Font.PLAIN, 30));
         L013.setForeground(Color.white);
         frame.add(L013);
 
-        if(friends.get(12) != null){
+        if (friends.get(12) != null) {
             L13 = new JLabel((String) friends.get(12));
             L13.setBounds(110, 655, 200, 100);
-            L13.setFont(new Font(null,Font.PLAIN, 20));
+            L13.setFont(new Font(null, Font.PLAIN, 20));
             L13.setForeground(Color.white);
             frame.add(L13);
         }
 
         L014.setBounds(377, 596, 100, 100);
-        L014.setFont(new Font(null,Font.PLAIN, 30));
+        L014.setFont(new Font(null, Font.PLAIN, 30));
         L014.setForeground(Color.white);
         frame.add(L014);
 
-        if(friends.get(13) != null){
+        if (friends.get(13) != null) {
             L14 = new JLabel((String) friends.get(13));
             L14.setBounds(344, 655, 200, 100);
-            L14.setFont(new Font(null,Font.PLAIN, 20));
+            L14.setFont(new Font(null, Font.PLAIN, 20));
             L14.setForeground(Color.white);
             frame.add(L14);
         }
 
         L015.setBounds(611, 596, 100, 100);
-        L015.setFont(new Font(null,Font.PLAIN, 30));
+        L015.setFont(new Font(null, Font.PLAIN, 30));
         L015.setForeground(Color.white);
         frame.add(L015);
 
-        if (friends.get(14) != null){
+        if (friends.get(14) != null) {
             L15 = new JLabel((String) friends.get(14));
             L15.setBounds(578, 655, 200, 100);
-            L15.setFont(new Font(null,Font.PLAIN, 20));
+            L15.setFont(new Font(null, Font.PLAIN, 20));
             L15.setForeground(Color.white);
             frame.add(L15);
         }
 
         Search.setBounds(850, 200, 200, 100);
-        Search.setFont(new Font(null,Font.PLAIN, 30));
+        Search.setFont(new Font(null, Font.PLAIN, 30));
         Search.setBorder(BorderFactory.createLineBorder(Color.white));
         Search.setOpaque(true);
         Search.setBackground(Color.white);
@@ -325,7 +325,7 @@ public class LockerVisualization implements ActionListener{
         frame.add(Search);
 
         Menu.setBounds(850, 500, 200, 100);
-        Menu.setFont(new Font(null,Font.PLAIN, 30));
+        Menu.setFont(new Font(null, Font.PLAIN, 30));
         Menu.setBorder(BorderFactory.createLineBorder(Color.white));
         Menu.setForeground(Color.white);
         Menu.setBackground(Color.darkGray);
@@ -353,7 +353,7 @@ public class LockerVisualization implements ActionListener{
                 ex.printStackTrace();
             }
         }
-        if(e.getSource()== Search) {
+        if (e.getSource() == Search) {
             frame.dispose();
             try {
                 OperationSearch operationSearch = new OperationSearch(userID, this.pickupSystem, this.loginController);
@@ -364,4 +364,5 @@ public class LockerVisualization implements ActionListener{
             }
         }
     }
+
 }

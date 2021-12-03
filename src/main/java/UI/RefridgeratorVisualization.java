@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class LockerVisualization implements ActionListener{
+public class RefridgeratorVisualization implements ActionListener{
     private JFrame frame = new JFrame();
     private ImageIcon LockerImage= new ImageIcon("src/Locker.png");
     private JButton Menu = new JButton("Menu");
@@ -31,21 +31,21 @@ public class LockerVisualization implements ActionListener{
     private PickupSystem pickupSystem;
     private LoginController loginController;
     private String userID = new String();
-    private JLabel L01 = new JLabel("L01");
-    private JLabel L02 = new JLabel("L02");
-    private JLabel L03 = new JLabel("L03");
-    private JLabel L04 = new JLabel("L04");
-    private JLabel L05 = new JLabel("L05");
-    private JLabel L06 = new JLabel("L06");
-    private JLabel L07 = new JLabel("L07");
-    private JLabel L08 = new JLabel("L08");
-    private JLabel L09 = new JLabel("L09");
-    private JLabel L010 = new JLabel("L10");
-    private JLabel L011 = new JLabel("L11");
-    private JLabel L012 = new JLabel("L12");
-    private JLabel L013 = new JLabel("L13");
-    private JLabel L014 = new JLabel("L14");
-    private JLabel L015 = new JLabel("L15");
+    private JLabel L01 = new JLabel("R01");
+    private JLabel L02 = new JLabel("R02");
+    private JLabel L03 = new JLabel("R03");
+    private JLabel L04 = new JLabel("R04");
+    private JLabel L05 = new JLabel("R05");
+    private JLabel L06 = new JLabel("R06");
+    private JLabel L07 = new JLabel("R07");
+    private JLabel L08 = new JLabel("R08");
+    private JLabel L09 = new JLabel("R09");
+    private JLabel L010 = new JLabel("R10");
+    private JLabel L011 = new JLabel("R11");
+    private JLabel L012 = new JLabel("R12");
+    private JLabel L013 = new JLabel("R13");
+    private JLabel L014 = new JLabel("R14");
+    private JLabel L015 = new JLabel("R15");
     private JLabel L1 = new JLabel();
     private JLabel L2= new JLabel();
     private JLabel L3 = new JLabel();
@@ -62,11 +62,10 @@ public class LockerVisualization implements ActionListener{
     private JLabel L14 = new JLabel();
     private JLabel L15 = new JLabel();
 
-    public LockerVisualization(String username, PickupSystem pckSys, LoginController loginC){
+    public RefridgeratorVisualization(String username, PickupSystem pckSys, LoginController loginC){
         this.pickupSystem = pckSys;
         this.loginController = loginC;
         this.userID = username;
-
 
         ArrayList friends = new ArrayList(15);
         friends.add("11111111111");
