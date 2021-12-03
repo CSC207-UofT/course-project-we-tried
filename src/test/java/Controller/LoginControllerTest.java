@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 public class LoginControllerTest {
 
     @Test
-    public void user(){
+    public void user() throws IOException {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
         Map<String, User> m = u.getUMap();
@@ -84,19 +84,19 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void userLogout_has_no_current_user() {
+    public void userLogout_has_no_current_user() throws IOException {
         LoginController log = new LoginController();
         assertFalse(log.userLogout());
     }
 
     @Test
-    public void getUman() {
+    public void getUman() throws IOException {
         LoginController log = new LoginController();
         assertTrue(log.getUman() instanceof UserManager);
     }
 
     @Test
-    public void userDelete_success(){
+    public void userDelete_success() throws IOException {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
         u.userRegister("Alan", "1234");
@@ -106,7 +106,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void userDelete_fail(){
+    public void userDelete_fail() throws IOException {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
         u.userRegister("Alan", "1234");
@@ -116,7 +116,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void resetuser(){
+    public void resetuser() throws IOException {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
         u.userRegister("Alan", "1234");
@@ -125,7 +125,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void getCurrentUser(){
+    public void getCurrentUser() throws IOException {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
         u.userRegister("Alan", "1234");
