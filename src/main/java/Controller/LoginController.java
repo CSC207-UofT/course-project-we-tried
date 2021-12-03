@@ -54,7 +54,7 @@ public class LoginController {
             if (uman.is_valid_name(username)) {
                 if(uman.is_valid_password(pw)){
                     uman.userRegister(username, pw);
-                    FileOutputStream fos = new FileOutputStream("user.txt");
+                    FileOutputStream fos = new FileOutputStream("D:\\delivery file\\user.txt");
                     ObjectOutputStream oos = new ObjectOutputStream(fos);
                     oos.writeObject(this.uman);
                     return true;

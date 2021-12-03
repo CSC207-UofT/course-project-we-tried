@@ -4,9 +4,13 @@ import UI.LoginPage;
 import UseCase.ItemManager;
 import UseCase.UserManager;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
 
 public class DemoMain {
@@ -40,20 +44,28 @@ public class DemoMain {
                 System.out.println("Returning to the main menu...");
             }
         }*/
-
-        FileInputStream fis = new FileInputStream("xyz.txt");
+        Path path = Paths.get("D:\\delivery file");
+        Path pathCreate = Files.createDirectories(path);
+        File file = new File("D:\\delivery file\\xyz.txt");
+        if (! file.exists()){
+            LoginController loginController = new LoginController();
+            PickupSystem pickupSystem = new PickupSystem();
+            LoginPage loginPage = new LoginPage(pickupSystem, loginController);
+        }
+        else{
+        FileInputStream fis = new FileInputStream("D:\\delivery file\\xyz.txt");
         ObjectInputStream ois = new ObjectInputStream(fis);
         ItemManager im = (ItemManager) ois.readObject();
-        FileInputStream fiss = new FileInputStream("user.txt");
+        FileInputStream fiss = new FileInputStream("D:\\delivery file\\user.txt");
         ObjectInputStream oiss = new ObjectInputStream(fiss);
         UserManager um = (UserManager) oiss.readObject();
-        FileInputStream fisss = new FileInputStream("freezer.txt");
+        FileInputStream fisss = new FileInputStream("D:\\delivery file\\freezer.txt");
         ObjectInputStream oisss = new ObjectInputStream(fisss);
         Map<String, Boolean> f = (Map<String, Boolean>) oisss.readObject();
-        FileInputStream fisssss = new FileInputStream("locker.txt");
+        FileInputStream fisssss = new FileInputStream("D:\\delivery file\\locker.txt");
         ObjectInputStream oisssss = new ObjectInputStream(fisssss);
         Map<String, Boolean> l = (Map<String, Boolean>) oisssss.readObject();
-        FileInputStream fissssss = new FileInputStream("refrigerator.txt");
+        FileInputStream fissssss = new FileInputStream("D:\\delivery file\\refrigerator.txt");
         ObjectInputStream oissssss = new ObjectInputStream(fissssss);
         Map<String, Boolean> r = (Map<String, Boolean>) oissssss.readObject();
         ois.close();
@@ -64,7 +76,7 @@ public class DemoMain {
         im.reload(l,f,r);
         LoginController loginController = new LoginController(um);
         PickupSystem pickupSystem = new PickupSystem(im);
-        LoginPage loginPage = new LoginPage(pickupSystem, loginController);
+        LoginPage loginPage = new LoginPage(pickupSystem, loginController);}
         //PickupSystem pickupSystem = new PickupSystem();
         //LoginController loginController = new LoginController();
         //OperationStore operationStore = new OperationStore("user",pickupSystem,loginController);

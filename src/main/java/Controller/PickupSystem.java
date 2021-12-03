@@ -18,13 +18,17 @@ public class PickupSystem {
     /**
      * An empty constructor.
      */
-    public PickupSystem(){}
+    public PickupSystem() throws IOException {
+        FileOutputStream fos = new FileOutputStream("D:\\delivery file\\xyz.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(this.iman);
+    }
 
     /**
      * Construct a new PickupSystem with existing ItemManager.
      * @param iman An existing ItemManager.
      */
-    public PickupSystem(ItemManager iman) {
+    public PickupSystem(ItemManager iman) throws IOException {
         this.iman = iman;
     }
 
@@ -38,7 +42,7 @@ public class PickupSystem {
             String loca = iman.removeItem(id);
             item_location.remove(loca);
         }
-        FileOutputStream fos = new FileOutputStream("xyz.txt");
+        FileOutputStream fos = new FileOutputStream("D:\\delivery file\\xyz.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(this.iman);
         }
@@ -58,7 +62,7 @@ public class PickupSystem {
             uman.record_item_processor(name, id);
             item_location.put(str,id);
         }
-        FileOutputStream fos = new FileOutputStream("xyz.txt");
+        FileOutputStream fos = new FileOutputStream("D:\\delivery file\\xyz.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(this.iman);
         return str;
