@@ -22,6 +22,7 @@ public class LoginPage implements ActionListener {
     private JLabel messageLabel = new JLabel();
     private PickupSystem pickupSystem;
     private LoginController loginController;
+    private JButton deleteUserButton = new JButton("Delete Current User");
 
     public LoginPage(PickupSystem pckSys, LoginController lgcontrol) throws IOException, ClassNotFoundException {
         this.pickupSystem = pckSys;
@@ -33,7 +34,7 @@ public class LoginPage implements ActionListener {
         userIDField.setBounds(125,100,200,25);
         userPasswordField.setBounds(125,150,200,25);
 
-        messageLabel.setBounds(140, 250, 250, 35);
+        messageLabel.setBounds(100, 240, 300, 40);
         messageLabel.setFont(new Font(null,Font.PLAIN, 13));
         messageLabel.setForeground(Color.lightGray);
 
@@ -47,8 +48,15 @@ public class LoginPage implements ActionListener {
         registerButton.setBounds(220,200,100,25);
         registerButton.setBorder(BorderFactory.createLineBorder(Color.white));
         registerButton.setForeground(Color.white);
+        registerButton.setBackground(Color.darkGray);
         registerButton.setFocusable(false);
         registerButton.addActionListener(this);
+
+        deleteUserButton.setBounds(220, 300,150,25);
+        deleteUserButton.setFont(new Font(null, Font.PLAIN,12));
+        deleteUserButton.setForeground(Color.darkGray);
+        deleteUserButton.setFocusable(false);
+        deleteUserButton.addActionListener(this);
 
         frame.add(userIDLabel);
         frame.add(userPasswordLabel);
@@ -57,6 +65,7 @@ public class LoginPage implements ActionListener {
         frame.add(userPasswordField);
         frame.add(loginButton);
         frame.add(registerButton);
+        frame.add(deleteUserButton);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setBackground(Color.darkGray);
@@ -72,7 +81,6 @@ public class LoginPage implements ActionListener {
         String password = String.valueOf(userPasswordField.getPassword());
 
         if(e.getSource()==registerButton) {
-
             try {
                 if(this.loginController.userRegister(userID, password)){
                     JOptionPane.showMessageDialog(null, "Register Succeed! Please Login");
@@ -81,8 +89,9 @@ public class LoginPage implements ActionListener {
                     try {
                         if(!this.loginController.userRegister(userID, password)){
                             JOptionPane.showMessageDialog(null,
-                                    "Invalid Username or Username already Exist. " +
-                                            "Please select another Username.");
+                                    "Invalid Username or Username already Exist.");
+                            messageLabel.setText("<html>"+ "Create username and password between " +"<br>"+
+                                    "4-12 characters without special symbols"+ "<html>");
                         }
                     } catch (IOException ex) {
                         ex.printStackTrace();
@@ -91,8 +100,6 @@ public class LoginPage implements ActionListener {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-
-
         }
         if(e.getSource()==loginButton) {
             if (this.loginController.userLogin(userID, password)) {
@@ -106,6 +113,15 @@ public class LoginPage implements ActionListener {
                 }
             } else {
                 messageLabel.setText("Incorrect Username or Password");
+            }
+        }
+        //todo:exception
+        if(e.getSource()==deleteUserButton){
+            if(this.loginController.userDelete(userID, password)){
+                JOptionPane.showMessageDialog(null, "User Deleted");
+            }
+            else{
+                messageLabel.setText("Delete unsuccessful, Please try again");
             }
         }
     }
