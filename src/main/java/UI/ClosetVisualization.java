@@ -30,6 +30,18 @@ public class ClosetVisualization {
     private JLabel L01 = new JLabel("L01");
     private JLabel L02 = new JLabel("L02");
     private JLabel L03 = new JLabel("L03");
+    private JLabel L04 = new JLabel("L04");
+    private JLabel L05 = new JLabel("L05");
+    private JLabel L06 = new JLabel("L06");
+    private JLabel L07 = new JLabel("L07");
+    private JLabel L08 = new JLabel("L08");
+    private JLabel L09 = new JLabel("L09");
+    private JLabel L010 = new JLabel("L10");
+    private JLabel L011 = new JLabel("L11");
+    private JLabel L012 = new JLabel("L12");
+    private JLabel L013 = new JLabel("L13");
+    private JLabel L014 = new JLabel("L14");
+    private JLabel L015 = new JLabel("L15");
     private JLabel L1 = new JLabel();
     private JLabel L2= new JLabel();
     private JLabel L3 = new JLabel();
@@ -112,12 +124,82 @@ public class ClosetVisualization {
         L02.setForeground(Color.white);
         frame.add(L02);
 
+        L2 = new JLabel((String) friends.get(1));
+        L2.setBounds(344, 63, 200, 100);
+        L2.setFont(new Font(null,Font.PLAIN, 20));
+        L2.setForeground(Color.white);
+        frame.add(L2);
+
         L03.setBounds(611, 4, 100, 100);
         L03.setFont(new Font(null,Font.PLAIN, 30));
         L03.setForeground(Color.white);
         frame.add(L03);
 
+        L3 = new JLabel((String) friends.get(2));
+        L3.setBounds(578, 63, 200, 100);
+        L3.setFont(new Font(null,Font.PLAIN, 20));
+        L3.setForeground(Color.white);
+        frame.add(L3);
 
+        L04.setBounds(143, 152, 100, 100);
+        L04.setFont(new Font(null,Font.PLAIN, 30));
+        L04.setForeground(Color.white);
+        frame.add(L04);
+
+        L05.setBounds(377, 152, 100, 100);
+        L05.setFont(new Font(null,Font.PLAIN, 30));
+        L05.setForeground(Color.white);
+        frame.add(L05);
+
+        L06.setBounds(611, 152, 100, 100);
+        L06.setFont(new Font(null,Font.PLAIN, 30));
+        L06.setForeground(Color.white);
+        frame.add(L06);
+
+        L07.setBounds(143, 300, 100, 100);
+        L07.setFont(new Font(null,Font.PLAIN, 30));
+        L07.setForeground(Color.white);
+        frame.add(L07);
+
+        L08.setBounds(377, 300, 100, 100);
+        L08.setFont(new Font(null,Font.PLAIN, 30));
+        L08.setForeground(Color.white);
+        frame.add(L08);
+
+        L09.setBounds(611, 300, 100, 100);
+        L09.setFont(new Font(null,Font.PLAIN, 30));
+        L09.setForeground(Color.white);
+        frame.add(L09);
+
+        L010.setBounds(143, 448, 100, 100);
+        L010.setFont(new Font(null,Font.PLAIN, 30));
+        L010.setForeground(Color.white);
+        frame.add(L010);
+
+        L011.setBounds(377, 448, 100, 100);
+        L011.setFont(new Font(null,Font.PLAIN, 30));
+        L011.setForeground(Color.white);
+        frame.add(L011);
+
+        L012.setBounds(611, 448, 100, 100);
+        L012.setFont(new Font(null,Font.PLAIN, 30));
+        L012.setForeground(Color.white);
+        frame.add(L012);
+
+        L013.setBounds(143, 596, 100, 100);
+        L013.setFont(new Font(null,Font.PLAIN, 30));
+        L013.setForeground(Color.white);
+        frame.add(L013);
+
+        L014.setBounds(377, 596, 100, 100);
+        L014.setFont(new Font(null,Font.PLAIN, 30));
+        L014.setForeground(Color.white);
+        frame.add(L014);
+
+        L015.setBounds(611, 596, 100, 100);
+        L015.setFont(new Font(null,Font.PLAIN, 30));
+        L015.setForeground(Color.white);
+        frame.add(L015);
 
 
 
