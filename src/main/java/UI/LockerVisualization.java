@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ClosetVisualization implements ActionListener{
+public class LockerVisualization implements ActionListener{
     private JFrame frame = new JFrame();
     private ImageIcon LockerImage= new ImageIcon("src/Locker.png");
     private JButton Menu = new JButton("Menu");
@@ -62,7 +62,7 @@ public class ClosetVisualization implements ActionListener{
     private JLabel L14 = new JLabel();
     private JLabel L15 = new JLabel();
 
-    public ClosetVisualization(){
+    public LockerVisualization(){
 //        String username, PickupSystem pckSys, LoginController loginC
 //        this.pickupSystem = pckSys;
 //        this.loginController = loginC;
@@ -329,6 +329,7 @@ public class ClosetVisualization implements ActionListener{
         Menu.setFont(new Font(null,Font.PLAIN, 30));
         Menu.setBorder(BorderFactory.createLineBorder(Color.white));
         Menu.setForeground(Color.white);
+        Menu.setBackground(Color.darkGray);
         Menu.setFocusable(false);
         Menu.addActionListener(this);
         frame.add(Menu);
@@ -365,6 +366,6 @@ public class ClosetVisualization implements ActionListener{
         }
     }
     public static void main(String[] args){
-        ClosetVisualization close = new ClosetVisualization();
+        LockerVisualization close = new LockerVisualization();
     }
 }
