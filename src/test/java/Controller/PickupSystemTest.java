@@ -89,4 +89,15 @@ public class PickupSystemTest {
         assertTrue(p.getUman() instanceof UserManager);
 
     }
+    @Test
+    public void get_processor_item() throws IOException, ClassNotFoundException {
+        PickupSystem p = new PickupSystem();
+        UserManager u = p.getUman();
+        u.userRegister("queenie", "1234");
+        List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
+        String location = p.storeItem("test_1", i_info, "L", "queenie");
+        assertNotNull(u.getUserImap("queenie"));
+        assertEquals(Arrays.asList("test_1"), u.getUserImap("queenie"));
+        assertEquals("L01", location);
     }
+}
