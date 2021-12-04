@@ -51,7 +51,7 @@ public class LoginController {
             if (uman.is_valid_name(username)) {
                 if(uman.is_valid_password(pw)){
                     uman.userRegister(username, pw);
-                    FileOutputStream fos = new FileOutputStream("D:\\delivery file\\user.txt");
+                    FileOutputStream fos = new FileOutputStream("./data file/user.txt");
                     ObjectOutputStream oos = new ObjectOutputStream(fos);
                     oos.writeObject(this.uman);
                     return true;
@@ -80,7 +80,7 @@ public class LoginController {
      */
     public void userDelete(String username) throws IOException {
         uman.userDelete(username);
-        FileOutputStream fos = new FileOutputStream("D:\\delivery file\\user.txt");
+        FileOutputStream fos = new FileOutputStream("./data file/user.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(this.uman);
     }

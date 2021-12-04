@@ -41,30 +41,32 @@ public class DemoMain {
                 System.out.println("Returning to the main menu...");
             }
         }*/
-        Path path = Paths.get("D:\\delivery file");
+        Path path = Paths.get("./data file");
         Path pathCreate = Files.createDirectories(path);
-        File file = new File("D:\\delivery file\\xyz.txt");
+        File file = new File("./data file/xyz.txt");
         if (! file.exists()){
             UserManager userManager = new UserManager();
-            FileOutputStream fos = new FileOutputStream("D:\\delivery file\\user.txt");
+            FileOutputStream fos = new FileOutputStream("./data file/user.txt");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(userManager);
-            LoginController loginController = new LoginController();
-            PickupSystem pickupSystem = new PickupSystem();
+            ItemManager itemManager = new ItemManager();
+            FileOutputStream foss = new FileOutputStream("./data file/xyz.txt");
+            ObjectOutputStream ooss = new ObjectOutputStream(foss);
+            ooss.writeObject(itemManager);
         }
-        FileInputStream fis = new FileInputStream("D:\\delivery file\\xyz.txt");
+        FileInputStream fis = new FileInputStream("./data file/xyz.txt");
         ObjectInputStream ois = new ObjectInputStream(fis);
         ItemManager im = (ItemManager) ois.readObject();
-        FileInputStream fiss = new FileInputStream("D:\\delivery file\\user.txt");
+        FileInputStream fiss = new FileInputStream("./data file/user.txt");
         ObjectInputStream oiss = new ObjectInputStream(fiss);
         UserManager um = (UserManager) oiss.readObject();
-        FileInputStream fisss = new FileInputStream("D:\\delivery file\\freezer.txt");
+        FileInputStream fisss = new FileInputStream("./data file/freezer.txt");
         ObjectInputStream oisss = new ObjectInputStream(fisss);
         Map<String, Boolean> f = (Map<String, Boolean>) oisss.readObject();
-        FileInputStream fisssss = new FileInputStream("D:\\delivery file\\locker.txt");
+        FileInputStream fisssss = new FileInputStream("./data file/locker.txt");
         ObjectInputStream oisssss = new ObjectInputStream(fisssss);
         Map<String, Boolean> l = (Map<String, Boolean>) oisssss.readObject();
-        FileInputStream fissssss = new FileInputStream("D:\\delivery file\\refrigerator.txt");
+        FileInputStream fissssss = new FileInputStream("./data file/refrigerator.txt");
         ObjectInputStream oissssss = new ObjectInputStream(fissssss);
         Map<String, Boolean> r = (Map<String, Boolean>) oissssss.readObject();
         ois.close();
