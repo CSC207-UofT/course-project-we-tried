@@ -14,10 +14,10 @@ public class MenuPage implements ActionListener {
     private JButton pickupButton = new JButton("<html>" + "PICKUP" + "<br>" + "PACKAGE" + "<html>");
     private JButton logoutButton = new JButton("》logout");
     private JLabel userLabel = new JLabel();
-    private JLabel tempLabel = new JLabel();
     private String userID;
     private PickupSystem pickupSystem;
     private LoginController loginController;
+    private JButton lookupButton = new JButton("Lookup Processed Items");
 
     MenuPage(String username, PickupSystem pckSys, LoginController loginC) throws IOException, ClassNotFoundException {
         this.userID = username;
@@ -33,6 +33,7 @@ public class MenuPage implements ActionListener {
         depositButton.setFont(new Font(null, Font.PLAIN,17));
         depositButton.setBorder(BorderFactory.createLineBorder(Color.white));
         depositButton.setForeground(Color.white);
+        depositButton.setBackground(Color.darkGray);
         depositButton.setFocusable(false);
         depositButton.addActionListener(this);
 
@@ -40,6 +41,7 @@ public class MenuPage implements ActionListener {
         pickupButton.setFont(new Font(null, Font.PLAIN,17));
         pickupButton.setBorder(BorderFactory.createLineBorder(Color.white));
         pickupButton.setForeground(Color.white);
+        pickupButton.setBackground(Color.darkGray);
         pickupButton.setFocusable(false);
         pickupButton.addActionListener(this);
 
@@ -50,15 +52,17 @@ public class MenuPage implements ActionListener {
         logoutButton.setFocusable(false);
         logoutButton.addActionListener(this);
 
-        tempLabel.setBounds(50,300,150,30);
-        tempLabel.setFont(new Font(null, Font.PLAIN,12));
-        tempLabel.setForeground(Color.lightGray);
+        lookupButton.setBounds(220, 330,170,25);
+        lookupButton.setFont(new Font(null, Font.PLAIN,12));
+        lookupButton.setForeground(Color.darkGray);
+        lookupButton.setFocusable(false);
+        lookupButton.addActionListener(this);
 
         frame.add(userLabel);
         frame.add(depositButton);
         frame.add(pickupButton);
         frame.add(logoutButton);
-        frame.add(tempLabel);
+        frame.add(lookupButton);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setBackground(Color.darkGray);
@@ -72,7 +76,6 @@ public class MenuPage implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==depositButton) {
-            tempLabel.setText("Deposit");
             frame.dispose();
             OperationStore operationStore = null;
             try {
@@ -82,10 +85,8 @@ public class MenuPage implements ActionListener {
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
-            operationStore.setVisible(true);
         }
         if(e.getSource()==pickupButton) {
-            tempLabel.setText("Pickup");
             frame.dispose();
             try {
                 OperationSearch operationSearch = new OperationSearch(userID, this.pickupSystem, this.loginController);
@@ -96,7 +97,6 @@ public class MenuPage implements ActionListener {
             }
         }
         if(e.getSource()==logoutButton) {
-            tempLabel.setText("Logout");
             this.loginController.userLogout();
             frame.dispose();
             try {
@@ -106,6 +106,13 @@ public class MenuPage implements ActionListener {
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
+        }
+        if(e.getSource()==lookupButton){
+            //todo:exception
+
+            String info = String.join("<br>", this.pickupSystem.get_processor_item(userID));
+            JOptionPane.showMessageDialog(null, "<html>" + "Item ID:" +
+                    "<br>" + info +"<html>");
         }
     }
 }

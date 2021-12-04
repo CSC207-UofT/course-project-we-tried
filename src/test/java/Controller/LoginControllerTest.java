@@ -8,13 +8,15 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
 public class LoginControllerTest {
 
     @Test
-    public void user(){
+    public void user() throws IOException {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
         Map<String, User> m = u.getUMap();
@@ -84,19 +86,19 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void userLogout_has_no_current_user() {
+    public void userLogout_has_no_current_user() throws IOException {
         LoginController log = new LoginController();
         assertFalse(log.userLogout());
     }
 
     @Test
-    public void getUman() {
+    public void getUman() throws IOException {
         LoginController log = new LoginController();
         assertTrue(log.getUman() instanceof UserManager);
     }
 
     @Test
-    public void userDelete_success(){
+    public void userDelete_success() throws IOException {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
         u.userRegister("Alan", "1234");
@@ -106,7 +108,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void userDelete_fail(){
+    public void userDelete_fail() throws IOException {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
         u.userRegister("Alan", "1234");
@@ -116,7 +118,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void resetuser(){
+    public void resetuser() throws IOException {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
         u.userRegister("Alan", "1234");
@@ -125,11 +127,23 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void getCurrentUser(){
+    public void getCurrentUser() throws IOException {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
         u.userRegister("Alan", "1234");
         u.RecordUser("Alan");
         assertEquals("Alan", u.getCurrentUser().getUsername());
+    }
+
+    @Test
+    public void get_processor_item() throws IOException, ClassNotFoundException {
+        PickupSystem p = new PickupSystem();
+        UserManager u = p.getUman();
+        u.userRegister("queenie", "1234");
+        List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
+        String location = p.storeItem("test_1", i_info, "L", "queenie");
+        assertNotNull(u.getUserImap("queenie"));
+        assertEquals(Arrays.asList("test_1"), u.getUserImap("queenie"));
+        assertEquals("L01", location);
     }
 }

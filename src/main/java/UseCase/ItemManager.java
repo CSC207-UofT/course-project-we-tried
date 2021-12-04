@@ -20,15 +20,15 @@ public class ItemManager implements Serializable{
      * A new ItemManager, with a preset series of containers.
      * This is the "Facade" class.
      */
-    public ItemManager(ItemStorer storer, ItemSearcher searcher, ItemPicker picker, ItemTimer timer) {
+    public ItemManager(ItemStorer storer, ItemSearcher searcher, ItemPicker picker, ItemTimer timer) throws IOException {
         this.storer = storer;
         this.searcher = searcher;
         this.picker = picker;
         this.timer = timer;
         Containerfacotry cf = new Containerfacotry();
-        Locker l = (Locker)cf.get_container("Locker");
-        Freezer f = (Freezer)cf.get_container("Freezer");
-        Refrigerator r = (Refrigerator)cf.get_container("Refrigerator");
+        Locker l = (Locker)cf.get_container("D:\\delivery file\\Locker");
+        Freezer f = (Freezer)cf.get_container("D:\\delivery file\\Freezer");
+        Refrigerator r = (Refrigerator)cf.get_container("D:\\delivery file\\Refrigerator");
         storer.setup(imap, l, f, r);
         picker.setup(imap, l, f, r);
     }

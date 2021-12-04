@@ -35,7 +35,7 @@ public class ItemManagerTest {
     }
 
     @Test
-    public void testAddItem_L() {
+    public void testAddItem_L() throws IOException {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         User u = new User("queenie", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
@@ -115,7 +115,7 @@ public class ItemManagerTest {
     }
 
     @Test
-    public void testSearchItem_no_item() {
+    public void testSearchItem_no_item() throws IOException {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
         Item i = new Item("a", info, "L");

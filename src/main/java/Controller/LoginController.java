@@ -9,7 +9,10 @@ public class LoginController {
     private UserManager uman = new UserManager();
     private static String currentUser = "";
 
-    public LoginController(){
+    public LoginController() throws IOException {
+        FileOutputStream fos = new FileOutputStream("D:\\delivery file\\user.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(this.uman);
     }
 
     /**
@@ -54,7 +57,7 @@ public class LoginController {
             if (uman.is_valid_name(username)) {
                 if(uman.is_valid_password(pw)){
                     uman.userRegister(username, pw);
-                    FileOutputStream fos = new FileOutputStream("user.txt");
+                    FileOutputStream fos = new FileOutputStream("D:\\delivery file\\user.txt");
                     ObjectOutputStream oos = new ObjectOutputStream(fos);
                     oos.writeObject(this.uman);
                     return true;
@@ -99,12 +102,5 @@ public class LoginController {
         return currentUser;
     }
 
-    /**
-     * Get user processed items' ids.
-     * @param username The input username.
-     * @return Return the ArrayList contains all items' ids processed by this user.
-     */
-    public ArrayList<String> get_processor_item(String username){
-        return uman.getUserImap(username);
-    }
+
 }

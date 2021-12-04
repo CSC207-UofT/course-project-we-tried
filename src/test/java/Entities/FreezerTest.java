@@ -20,7 +20,7 @@ public class FreezerTest {
     }
 
     @Test
-    public void getCapacity() {
+    public void getCapacity() throws IOException {
         Map<String, Boolean> fmap = new HashMap<>(2);
         fmap.put("L01", false);
         fmap.put("L02", false);
@@ -51,7 +51,7 @@ public class FreezerTest {
     }
 
     @Test
-    public void generateMap() {
+    public void generateMap() throws IOException {
         Map<String, Boolean> fmap = new HashMap<>(1);
         fmap.put("L01", false);
         Locker F = new Locker(1, fmap);
@@ -59,7 +59,7 @@ public class FreezerTest {
     }
 
     @Test
-    public void nextVacantLocation() {
+    public void nextVacantLocation() throws IOException {
         Map<String, Boolean> fmap = new HashMap<>(3);
         fmap.put("L01", false);
         fmap.put("L02", true);
