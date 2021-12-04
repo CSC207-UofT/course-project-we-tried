@@ -15,7 +15,6 @@ public class LockerVisualization implements ActionListener{
     private JButton Menu = new JButton("Menu");
     private JButton Search = new JButton("Search");
     private JButton Container = new JButton("Return");
-    private JLabel LockerLocker = new JLabel(LockerImage);
     private ImageIcon VImage= new ImageIcon("src/Vertical.png");
     private ImageIcon HImage= new ImageIcon("src/Horizontal.png");
     private ImageIcon Vb = new ImageIcon("src/Verticalborder.png");

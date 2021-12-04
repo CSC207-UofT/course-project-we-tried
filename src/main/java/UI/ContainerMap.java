@@ -11,9 +11,9 @@ import java.io.IOException;
 
 public class ContainerMap implements ActionListener {
     private JFrame frame = new JFrame();
-    private JButton lockerMap = new JButton("Locker");
-    private JButton refrigeratorMap = new JButton("Refrigerator");
-    private JButton freezerMap = new JButton("Freezer");
+    private JButton lockerMap = new JButton("LOCKER");
+    private JButton refrigeratorMap = new JButton("REFRIGERATOR");
+    private JButton freezerMap = new JButton("FREEZER");
     private JButton menu = new JButton("》Menu");
     private String userID;
     private PickupSystem pickupSystem;
@@ -24,7 +24,7 @@ public class ContainerMap implements ActionListener {
         this.pickupSystem = pckSys;
         this.loginController = loginC;
 
-        lockerMap.setBounds(60,120,100,60);
+        lockerMap.setBounds(45,120,90,60);
         lockerMap.setFont(new Font(null, Font.PLAIN,17));
         lockerMap.setBorder(BorderFactory.createLineBorder(Color.white));
         lockerMap.setForeground(Color.white);
@@ -32,7 +32,7 @@ public class ContainerMap implements ActionListener {
         lockerMap.setFocusable(false);
         lockerMap.addActionListener(this);
 
-        refrigeratorMap.setBounds(170,120,100,60);
+        refrigeratorMap.setBounds(140,120,135,60);
         refrigeratorMap.setFont(new Font(null, Font.PLAIN,17));
         refrigeratorMap.setBorder(BorderFactory.createLineBorder(Color.white));
         refrigeratorMap.setForeground(Color.white);
@@ -40,7 +40,7 @@ public class ContainerMap implements ActionListener {
         refrigeratorMap.setFocusable(false);
         refrigeratorMap.addActionListener(this);
 
-        freezerMap.setBounds(280,120,100,60);
+        freezerMap.setBounds(280,120,90,60);
         freezerMap.setFont(new Font(null, Font.PLAIN,17));
         freezerMap.setBorder(BorderFactory.createLineBorder(Color.white));
         freezerMap.setForeground(Color.white);

@@ -75,12 +75,14 @@ public class OperationStore implements ActionListener {
         Store.setBounds(145, 280, 70, 30);
         Store.setFont(new Font(null, Font.PLAIN, 13));
         Store.setForeground(Color.darkGray);
+        Store.setBackground(Color.white);
         Store.setFocusable(false);
         Store.addActionListener(this);
 
         Menu.setBounds(225, 280, 70, 30);
         Menu.setFont(new Font(null, Font.PLAIN, 13));
         Menu.setForeground(Color.darkGray);
+        Menu.setBackground(Color.white);
         Menu.setFocusable(false);
         Menu.addActionListener(this);
 
