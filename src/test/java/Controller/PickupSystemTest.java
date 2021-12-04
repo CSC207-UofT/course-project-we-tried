@@ -101,4 +101,23 @@ public class PickupSystemTest {
         assertEquals(Arrays.asList("test_1"), u.getUserImap("queenie"));
         assertEquals("L01", location);
     }
+
+    @Test
+    public void get_package_id() throws IOException, ClassNotFoundException {
+        PickupSystem p = new PickupSystem();
+        ItemManager i = p.getIman();
+        List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
+        i.addItem("id1",i_info,"R", "queenie");
+        i.addItem("id2",i_info,"R", "queenie");
+        i.addItem("id3",i_info,"F", "queenie");
+        i.addItem("id4",i_info,"L", "queenie");
+        i.addItem("id5",i_info,"L", "queenie");
+        i.addItem("id6",i_info,"L", "queenie");
+        ArrayList<String> r_list = new ArrayList<String>(Arrays.asList("id1","id2"));
+        ArrayList<String> f_list = new ArrayList<String>(Arrays.asList("id3"));
+        ArrayList<String> L_list = new ArrayList<String>(Arrays.asList("id4","id5","id6"));
+        assertEquals(L_list, p.get_package("locker"));
+        assertEquals(r_list, p.get_package("refrigerator"));
+        assertEquals(f_list, p.get_package("freezer"));
+        }
 }
