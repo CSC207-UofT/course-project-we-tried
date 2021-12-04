@@ -61,7 +61,7 @@ public class UserManagerTest {
         UserManager uman = new UserManager();
         uman.userRegister("queenie", "2077");
         assertNotNull(uman.lookupUser("queenie"));
-        uman.userDelete("queenie", "2077");
+        uman.userDelete("queenie");
         assertNull(uman.lookupUser("queenie"));
     }
 
