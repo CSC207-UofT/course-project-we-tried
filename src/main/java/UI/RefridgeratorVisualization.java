@@ -12,8 +12,9 @@ import java.util.ArrayList;
 public class RefridgeratorVisualization implements ActionListener{
     private JFrame frame = new JFrame();
     private ImageIcon LockerImage= new ImageIcon("src/Locker.png");
-    private JButton Menu = new JButton("Menu");
+    private JButton Menu = new JButton("Main Menu");
     private JButton Search = new JButton("Search");
+    private JButton Container = new JButton("Return");
     private JLabel LockerLocker = new JLabel(LockerImage);
     private ImageIcon VImage= new ImageIcon("src/Vertical.png");
     private ImageIcon HImage= new ImageIcon("src/Horizontal.png");
@@ -336,7 +337,16 @@ public class RefridgeratorVisualization implements ActionListener{
         Search.addActionListener(this);
         frame.add(Search);
 
-        Menu.setBounds(850, 500, 200, 100);
+        Container.setBounds(850, 400, 200, 100);
+        Container.setFont(new Font(null, Font.PLAIN, 30));
+        Container.setBorder(BorderFactory.createLineBorder(Color.white));
+        Container.setOpaque(true);
+        Container.setBackground(Color.white);
+        Container.setForeground(Color.darkGray);
+        Container.addActionListener(this);
+        frame.add(Container);
+
+        Menu.setBounds(850, 600, 200, 100);
         Menu.setFont(new Font(null, Font.PLAIN, 30));
         Menu.setBorder(BorderFactory.createLineBorder(Color.white));
         Menu.setForeground(Color.white);
@@ -359,6 +369,16 @@ public class RefridgeratorVisualization implements ActionListener{
             frame.dispose();
             try {
                 MenuPage menuPage = new MenuPage(userID, pickupSystem, loginController);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
+        }
+        if (e.getSource() == Container){
+            frame.dispose();
+            try {
+                ContainerMap Cmap = new ContainerMap(userID, pickupSystem, loginController);
             } catch (IOException ex) {
                 ex.printStackTrace();
             } catch (ClassNotFoundException ex) {
