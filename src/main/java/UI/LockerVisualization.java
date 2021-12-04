@@ -331,26 +331,27 @@ public class LockerVisualization implements ActionListener{
         Search.setBounds(850, 200, 200, 100);
         Search.setFont(new Font(null, Font.PLAIN, 30));
         Search.setBorder(BorderFactory.createLineBorder(Color.white));
-        Search.setOpaque(true);
-        Search.setBackground(Color.white);
-        Search.setForeground(Color.darkGray);
+        Search.setBackground(Color.darkGray);
+        Search.setForeground(Color.white);
         Search.addActionListener(this);
+        Search.setFocusable(false);
         frame.add(Search);
 
         Container.setBounds(850, 400, 200, 100);
         Container.setFont(new Font(null, Font.PLAIN, 30));
         Container.setBorder(BorderFactory.createLineBorder(Color.white));
         Container.setOpaque(true);
-        Container.setBackground(Color.white);
-        Container.setForeground(Color.darkGray);
+        Container.setBackground(Color.darkGray);
+        Container.setForeground(Color.white);
         Container.addActionListener(this);
+        Container.setFocusable(false);
         frame.add(Container);
 
         Menu.setBounds(850, 600, 200, 100);
         Menu.setFont(new Font(null, Font.PLAIN, 30));
         Menu.setBorder(BorderFactory.createLineBorder(Color.white));
-        Menu.setForeground(Color.white);
         Menu.setBackground(Color.darkGray);
+        Menu.setForeground(Color.white);
         Menu.setFocusable(false);
         Menu.addActionListener(this);
         frame.add(Menu);
@@ -384,6 +385,7 @@ public class LockerVisualization implements ActionListener{
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
+
         }
         if (e.getSource() == Search) {
             frame.dispose();
