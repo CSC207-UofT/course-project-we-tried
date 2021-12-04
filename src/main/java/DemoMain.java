@@ -51,9 +51,7 @@ public class DemoMain {
             oos.writeObject(userManager);
             LoginController loginController = new LoginController();
             PickupSystem pickupSystem = new PickupSystem();
-            LoginPage loginPage = new LoginPage(pickupSystem, loginController);
         }
-        else{
         FileInputStream fis = new FileInputStream("D:\\delivery file\\xyz.txt");
         ObjectInputStream ois = new ObjectInputStream(fis);
         ItemManager im = (ItemManager) ois.readObject();
@@ -82,5 +80,5 @@ public class DemoMain {
         //LoginController loginController = new LoginController();
         //OperationStore operationStore = new OperationStore("user",pickupSystem,loginController);
         //OperationSearch operationSearch = new OperationSearch("user",pickupSystem,loginController);
-    }
 }
+
