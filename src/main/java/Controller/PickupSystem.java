@@ -1,5 +1,7 @@
 package Controller;
 import java.io.*;
+
+import Entities.Freezer;
 import UseCase.*;
 
 import java.util.ArrayList;
@@ -74,6 +76,9 @@ public class PickupSystem {
         return str;
     }
 
+    public ArrayList<String>  get_package(String container){
+        return iman.get_package_id(container);
+    }
     /**
      * Search item's information.
      * @param id Item's id.

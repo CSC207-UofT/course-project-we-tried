@@ -143,4 +143,37 @@ public class ItemManagerTest {
 
     }
 
+    @Test
+    public void reload() throws IOException {
+        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
+
+
+    }
+
+    @Test
+    public void getItemMap() {
+    }
+
+    @Test
+    public void checkFee() {
+    }
+
+    @Test
+    public void get_package_id() throws IOException {
+        ItemManager i = new ItemManager(storer, searcher, picker, timer);
+        List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
+        i.addItem("id1",i_info,"R", "queenie");
+        i.addItem("id2",i_info,"R", "queenie");
+        i.addItem("id3",i_info,"F", "queenie");
+        i.addItem("id4",i_info,"L", "queenie");
+        i.addItem("id5",i_info,"L", "queenie");
+        i.addItem("id6",i_info,"L", "queenie");
+        ArrayList<String> r_list = new ArrayList<String>(Arrays.asList("id1","id2"));
+        ArrayList<String> f_list = new ArrayList<String>(Arrays.asList("id3"));
+        ArrayList<String> L_list = new ArrayList<String>(Arrays.asList("id4","id5","id6"));
+        assertEquals(L_list, i.get_package_id("locker"));
+        assertEquals(r_list, i.get_package_id("refrigerator"));
+        assertEquals(f_list, i.get_package_id("freezer"));
+
+    }
 }
