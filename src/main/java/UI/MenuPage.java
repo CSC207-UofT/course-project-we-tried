@@ -19,7 +19,7 @@ public class MenuPage implements ActionListener {
     private LoginController loginController;
     private JButton lookupButton = new JButton("Lookup Processed Items");
     private JButton deleteUserButton = new JButton("Delete Current User");
-    private JButton Allclosets = new JButton("Overall Closets Lookup");
+    private JButton Allclosets = new JButton("Lookup Containers");
 
     MenuPage(String username, PickupSystem pckSys, LoginController loginC) throws IOException, ClassNotFoundException {
         this.userID = username;
@@ -47,9 +47,10 @@ public class MenuPage implements ActionListener {
         pickupButton.setFocusable(false);
         pickupButton.addActionListener(this);
 
-        deleteUserButton.setBounds(220, 300,150,25);
+        deleteUserButton.setBounds(220, 270,150,25);
         deleteUserButton.setFont(new Font(null, Font.PLAIN,12));
         deleteUserButton.setForeground(Color.darkGray);
+        deleteUserButton.setBackground(Color.white);
         deleteUserButton.setFocusable(false);
         deleteUserButton.addActionListener(this);
 
@@ -61,15 +62,17 @@ public class MenuPage implements ActionListener {
         logoutButton.setFocusable(false);
         logoutButton.addActionListener(this);
 
-        lookupButton.setBounds(220, 330,180,25);
+        lookupButton.setBounds(220, 300,175,25);
         lookupButton.setFont(new Font(null, Font.PLAIN,12));
         lookupButton.setForeground(Color.darkGray);
+        lookupButton.setBackground(Color.white);
         lookupButton.setFocusable(false);
         lookupButton.addActionListener(this);
 
-        Allclosets.setBounds(220, 360,180,25);
+        Allclosets.setBounds(220, 330,145,25);
         Allclosets.setFont(new Font(null, Font.PLAIN,12));
         Allclosets.setForeground(Color.darkGray);
+        Allclosets.setBackground(Color.white);
         Allclosets.setFocusable(false);
         Allclosets.addActionListener(this);
 
