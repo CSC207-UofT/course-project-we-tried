@@ -3,10 +3,8 @@ import Controller.PickupSystem;
 import UI.LoginPage;
 import UseCase.ItemManager;
 import UseCase.UserManager;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -47,6 +45,10 @@ public class DemoMain {
         Path pathCreate = Files.createDirectories(path);
         File file = new File("D:\\delivery file\\xyz.txt");
         if (! file.exists()){
+            UserManager userManager = new UserManager();
+            FileOutputStream fos = new FileOutputStream("D:\\delivery file\\user.txt");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(userManager);
             LoginController loginController = new LoginController();
             PickupSystem pickupSystem = new PickupSystem();
             LoginPage loginPage = new LoginPage(pickupSystem, loginController);
@@ -74,7 +76,7 @@ public class DemoMain {
         oissssss.close();
         im.reload(l,f,r);
         LoginController loginController = new LoginController(um);
-        PickupSystem pickupSystem = new PickupSystem(im);
+        PickupSystem pickupSystem = new PickupSystem(im, um);
         LoginPage loginPage = new LoginPage(pickupSystem, loginController);}
         //PickupSystem pickupSystem = new PickupSystem();
         //LoginController loginController = new LoginController();
