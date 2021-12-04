@@ -7,23 +7,40 @@ import java.util.Map;
 public class Containerfacotry {
     public Container get_container(String type) throws IOException {
         if (type.equalsIgnoreCase("Freezer")){
-            Map<String, Boolean> fmap = new LinkedHashMap<>(1);
-            fmap.put("f01", false);
-            return new Freezer(1, fmap);
+            Map<String, Boolean> fmap = new LinkedHashMap<>(6);
+            for(int x = 1; x <= 6; x=x+1){
+                 String loc = "F"+"0" + x;
+                 fmap.put(loc, false);}
+            return new Freezer(6, fmap);
         }
+
         if (type.equalsIgnoreCase("Refrigerator")){
-            Map<String, Boolean> rmap = new LinkedHashMap<>(2);
-            rmap.put("r01", false);
-            rmap.put("r02", false);
-            return new Refrigerator(2, rmap);
+            Map<String, Boolean> rmap = new LinkedHashMap<>(12);
+            for(int x = 1; x <= 12; x=x+1){
+                String loc = null;
+                if(x<=9){
+                    loc = "R"+"0" + x;
+                }else{
+                    loc = "R"+x;
+                }
+                rmap.put(loc, false);}
+            return new Refrigerator(12, rmap);
         }
-        if (type.equalsIgnoreCase("Locker")){
-            Map<String, Boolean> lmap = new LinkedHashMap<>(3);
-            lmap.put("L01", false);
-            lmap.put("L02", false);
-            lmap.put("L03", false);
-            return new Locker(3, lmap);
+
+        if (type.equalsIgnoreCase("Locker")) {
+            Map<String, Boolean> lmap = new LinkedHashMap<>(15);
+            for (int x = 1; x <= 15; x = x + 1) {
+                String loc = null;
+                if (x <= 9) {
+                    loc = "L" + "0" + x;
+                } else {
+                    loc = "L" + x;
+                }
+                lmap.put(loc, false);
+            }
+            return new Locker(15, lmap);
         }
+
         return null;
     }
 }
