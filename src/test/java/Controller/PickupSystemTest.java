@@ -74,6 +74,7 @@ public class PickupSystemTest {
         String location =  i.addItem("a", info,"L","test_user" );
         List<String> expected_info = new ArrayList<>(Arrays.asList("a","Sender: test_sender","Receiver: test_receiver",
                 "Description: This is a test!",location, "test_user","L",s_1, s_2,"0"));
+        List<String> actual = p.search("a");
         assertEquals(expected_info,p.search("a"));
 
     }
