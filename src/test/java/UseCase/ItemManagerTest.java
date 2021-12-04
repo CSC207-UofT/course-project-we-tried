@@ -1,19 +1,17 @@
 package UseCase;
 
 import Entities.Item;
+import Entities.Locker;
+import Entities.Refrigerator;
 import Entities.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 
 public class ItemManagerTest {
@@ -143,4 +141,75 @@ public class ItemManagerTest {
 
     }
 
+    @Test
+    public void reload() throws IOException {
+        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
+        Map<String, Boolean> rmap = new LinkedHashMap<>(1);
+        rmap.put("r01", false);
+        Refrigerator r = new Refrigerator(2, rmap);
+        Map<String, Boolean> lmap = new LinkedHashMap<>(1);
+        lmap.put("L01", false);
+        Map<String, Boolean> fmap = new LinkedHashMap<>(1);
+        fmap.put("f01",false);
+        iman.reload(lmap, fmap, rmap);
+        List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
+        iman.addItem("test_1", i_info, "L","jane");
+        iman.addItem("test_2", i_info, "R","jane");
+        iman.addItem("test_3", i_info, "F","jane");
+        iman.addItem("test_4", i_info, "L","jane");
+        iman.addItem("test_5", i_info, "R","jane");
+        iman.addItem("test_6", i_info, "F","jane");
+        assertEquals(3, iman.getItemMap().size());
+    }
+
+    @Test
+    public void getItemMap() throws IOException {
+        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
+        assertEquals(0, iman.getItemMap().size());
+    }
+
+    @Test
+    public void checkFee() throws IOException {
+        Calendar t_start = Calendar.getInstance();
+        int month_1 = t_start.get(Calendar.MONTH)+1;
+        String s_1 = t_start.get(Calendar.YEAR) + "/" + month_1 + "/" + t_start.get(Calendar.DATE);
+
+        Calendar t_fee = Calendar.getInstance();
+        t_fee.add(Calendar.DATE,2);
+        int month_2 = t_fee.get(Calendar.MONTH)+1;
+        String s_2 = t_fee.get(Calendar.YEAR) + "/" + month_2 + "/" + t_fee.get(Calendar.DATE);
+
+        Calendar t = Calendar.getInstance();
+        t.add(Calendar.DATE,1);
+        int month_3 = t.get(Calendar.MONTH)+1;
+        String s_3 = t.get(Calendar.YEAR) + "/" + month_3 + "/" + t.get(Calendar.DATE);
+
+        ItemManager i = new ItemManager(storer, searcher, picker, timer);
+        List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
+        i.addItem("id1",i_info,"L", "queenie");
+        i.addItem("id2",i_info,"F", "queenie");
+        ArrayList<String> id1 = new ArrayList<String>(Arrays.asList(s_1, s_2, "0"));
+        ArrayList<String> id2 = new ArrayList<String>(Arrays.asList(s_1, s_3, "0"));
+        assertEquals(id1, i.checkFee("id1"));
+        assertEquals(id2, i.checkFee("id2"));
+    }
+
+    @Test
+    public void get_package_id() throws IOException {
+        ItemManager i = new ItemManager(storer, searcher, picker, timer);
+        List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
+        i.addItem("id1",i_info,"R", "queenie");
+        i.addItem("id2",i_info,"R", "queenie");
+        i.addItem("id3",i_info,"F", "queenie");
+        i.addItem("id4",i_info,"L", "queenie");
+        i.addItem("id5",i_info,"L", "queenie");
+        i.addItem("id6",i_info,"L", "queenie");
+        ArrayList<String> r_list = new ArrayList<String>(Arrays.asList("id1","id2"));
+        ArrayList<String> f_list = new ArrayList<String>(Arrays.asList("id3"));
+        ArrayList<String> L_list = new ArrayList<String>(Arrays.asList("id4","id5","id6"));
+        assertEquals(L_list, i.get_package_id("locker"));
+        assertEquals(r_list, i.get_package_id("refrigerator"));
+        assertEquals(f_list, i.get_package_id("freezer"));
+
+    }
 }

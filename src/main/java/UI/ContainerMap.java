@@ -24,7 +24,7 @@ public class ContainerMap implements ActionListener {
         this.pickupSystem = pckSys;
         this.loginController = loginC;
 
-        lockerMap.setBounds(70,120,100,60);
+        lockerMap.setBounds(60,120,100,60);
         lockerMap.setFont(new Font(null, Font.PLAIN,17));
         lockerMap.setBorder(BorderFactory.createLineBorder(Color.white));
         lockerMap.setForeground(Color.white);
@@ -32,7 +32,7 @@ public class ContainerMap implements ActionListener {
         lockerMap.setFocusable(false);
         lockerMap.addActionListener(this);
 
-        refrigeratorMap.setBounds(180,120,100,60);
+        refrigeratorMap.setBounds(170,120,100,60);
         refrigeratorMap.setFont(new Font(null, Font.PLAIN,17));
         refrigeratorMap.setBorder(BorderFactory.createLineBorder(Color.white));
         refrigeratorMap.setForeground(Color.white);
@@ -72,13 +72,16 @@ public class ContainerMap implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==lockerMap){
+            frame.dispose();
             LockerVisualization lockerVisualization = new LockerVisualization(userID,this.pickupSystem,this.loginController);
         }
         if (e.getSource()==refrigeratorMap){
+            frame.dispose();
             RefridgeratorVisualization refridgeratorVisualization =
                     new RefridgeratorVisualization(userID,this.pickupSystem,this.loginController);
         }
         if (e.getSource()==freezerMap){
+            frame.dispose();
             FreezerVisualization freezerVisualization = new FreezerVisualization(userID,this.pickupSystem,this.loginController);
         }
         if (e.getSource()==menu){

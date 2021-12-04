@@ -106,14 +106,6 @@ public class LoginControllerTest {
         assertTrue(u.getUMap().isEmpty());
     }
 
-    @Test
-    public void userDelete_fail() throws IOException {
-        LoginController log = new LoginController();
-        UserManager u = log.getUman();
-        u.userRegister("Alan", "1234");
-        log.userDelete("Alan");
-        assertFalse(u.getUMap().isEmpty());
-    }
 
     @Test
     public void resetuser() throws IOException {

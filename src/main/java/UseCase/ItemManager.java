@@ -4,10 +4,7 @@ import Entities.*;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ItemManager implements Serializable{
     private final Map<String, Item> imap = new HashMap<String, Item>();
@@ -20,6 +17,24 @@ public class ItemManager implements Serializable{
      * A new ItemManager, with a preset series of containers.
      * This is the "Facade" class.
      */
+
+    public ItemManager() throws IOException {
+        ItemStorer storer = new ItemStorer();
+        ItemPicker picker = new ItemPicker();
+        ItemSearcher searcher = new ItemSearcher();
+        ItemTimer timer = new ItemTimer();
+        this.storer = storer;
+        this.searcher = searcher;
+        this.picker = picker;
+        this.timer = timer;
+        Containerfacotry cf = new Containerfacotry();
+        Locker l = (Locker)cf.get_container("Locker");
+        Freezer f = (Freezer)cf.get_container("Freezer");
+        Refrigerator r = (Refrigerator)cf.get_container("Refrigerator");
+        storer.setup(imap, l, f, r);
+        picker.setup(imap, l, f, r);
+    }
+
     public ItemManager(ItemStorer storer, ItemSearcher searcher, ItemPicker picker, ItemTimer timer) throws IOException {
         this.storer = storer;
         this.searcher = searcher;
@@ -113,4 +128,38 @@ public class ItemManager implements Serializable{
         return info;
     }
 
+    public void helper_package_id(ArrayList<String> p_list, String locat){
+        for(String id: imap.keySet()){
+            if(Objects.equals(imap.get(id).getLocation(), locat)){
+                p_list.add(id);
+    }}}
+
+    public ArrayList<String> get_package_id(String container){
+        ArrayList<String> p_list = new ArrayList<>();
+        if (Objects.equals(container, "freezer")){
+            for (String locat: storer.F.generateMap().keySet()){
+                if(storer.F.generateMap().get(locat)){
+                    helper_package_id(p_list,locat);
+                }
+            }
+        return p_list;
+        }
+        if (Objects.equals(container, "locker")){
+            for (String locat: storer.L.generateMap().keySet()){
+                if(storer.L.generateMap().get(locat)){
+                    helper_package_id(p_list,locat);
+                }
+            }
+            return p_list;
+        }
+        if (Objects.equals(container, "refrigerator")){
+            for (String locat: storer.R.generateMap().keySet()){
+                if(storer.R.generateMap().get(locat)){
+                    helper_package_id(p_list,locat);
+                }
+            }
+            return p_list;
+        }
+        return null;
+    }
 }
