@@ -1,5 +1,6 @@
 package UseCase;
 
+import Entities.Container;
 import Entities.Item;
 import Entities.User;
 
@@ -22,7 +23,10 @@ public class DataManager implements Observer{
     }
 
     public DataManager(){
-        // new DM, everything is empty. call constructEmpty.
+        // new DM, everything is empty. call constructEmpty(maybe).
+        Map<String,Boolean> lmap = new HashMap<String,Boolean>();
+        ContainerMap.put("L",lmap);
+
     }
 
     public List<Object> constructEmptyData() throws IOException{
@@ -49,15 +53,15 @@ public class DataManager implements Observer{
         List<Object> empty_list = this.constructEmptyData();
         ItemManager im = (ItemManager) empty_list.get(0);
         UserManager um = (UserManager) empty_list.get(1);
-        im.reload(ContainerMap.get());
-
+        //im.reload(ContainerMap.get());
+        return empty_list; //Not set yet, should be something new...
     }
 
     private void saveCurrentDataToFile(){
         // save current data to file
     }
 
-    private void saveContainerToDM(){
+    private void saveContainerToDM(Container c){
 
     }
 
@@ -70,7 +74,7 @@ public class DataManager implements Observer{
     }
 
     public void update(Observable o, Object arg) {
-        if (o instanceof) { //is instance of one of our managers or container, an observable...
+        // if (o instanceof) { //is instance of one of our managers or container, an observable...
             //make change to the specific map with (arg)
 
             // call saveCurrentData
@@ -80,4 +84,4 @@ public class DataManager implements Observer{
     // public Map getter(){}
 
 
-}
+
