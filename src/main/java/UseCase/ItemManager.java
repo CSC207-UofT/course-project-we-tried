@@ -109,6 +109,7 @@ public class ItemManager implements Serializable{
         info.add(2, fee);
         return info;
     }
+
     public void helper_package_id(ArrayList<String> p_list, String locat){
         for(String id: imap.keySet()){
             if(Objects.equals(imap.get(id).getLocation(), locat)){

@@ -1,19 +1,17 @@
 package UseCase;
 
 import Entities.Item;
+import Entities.Locker;
+import Entities.Refrigerator;
 import Entities.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 
 public class ItemManagerTest {
@@ -146,16 +144,32 @@ public class ItemManagerTest {
     @Test
     public void reload() throws IOException {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
-
-
+        Map<String, Boolean> rmap = new LinkedHashMap<>(1);
+        rmap.put("r01", false);
+        Refrigerator r = new Refrigerator(2, rmap);
+        Map<String, Boolean> lmap = new LinkedHashMap<>(1);
+        lmap.put("L01", false);
+        Map<String, Boolean> fmap = new LinkedHashMap<>(1);
+        fmap.put("f01",false);
+        iman.reload(lmap, fmap, rmap);
+        List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
+        iman.addItem("test_1", i_info, "L","jane");
+        iman.addItem("test_2", i_info, "R","jane");
+        iman.addItem("test_3", i_info, "F","jane");
+        iman.addItem("test_4", i_info, "L","jane");
+        iman.addItem("test_5", i_info, "R","jane");
+        iman.addItem("test_6", i_info, "F","jane");
+        assertEquals(3, iman.getItemMap().size());
     }
 
     @Test
-    public void getItemMap() {
+    public void getItemMap() throws IOException {
+        ItemManager iman = new ItemManager(storer, searcher, picker, timer);
+        assertEquals(0, iman.getItemMap().size());
     }
 
     @Test
-    public void checkFee() {
+    public void checkFee() throws IOException {
     }
 
     @Test
