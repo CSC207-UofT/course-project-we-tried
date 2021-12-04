@@ -69,31 +69,31 @@ public class OperationExtraction implements ActionListener{
         Location.setForeground(Color.white);
         frame.add(Location);
 
-        StgReq = new JLabel("Storage Requirement: " + ltlt.get(6));
+        StgReq = new JLabel("Storage Requirement: " + ltlt.get(5));
         StgReq.setBounds(100, 175, 300, 25);
         StgReq.setFont(new Font(null,Font.PLAIN, 13));
         StgReq.setForeground(Color.white);
         frame.add(StgReq);
 
-        Processor = new JLabel("Processor: " + ltlt.get(5));
+        Processor = new JLabel("Processor: " + ltlt.get(6));
         Processor.setBounds(100, 200, 300, 25);
         Processor.setFont(new Font(null,Font.PLAIN, 13));
         Processor.setForeground(Color.white);
         frame.add(Processor);
 
-        DepTime = new JLabel("Deposit Time: " + ltlt.get(6));
+        DepTime = new JLabel("Deposit Time: " + ltlt.get(7));
         DepTime.setBounds(100, 225, 300, 25);
         DepTime.setFont(new Font(null,Font.PLAIN, 13));
         DepTime.setForeground(Color.white);
         frame.add(DepTime);
 
-        DDL = new JLabel("Free Storage EXPIRED at: " + ltlt.get(7));
+        DDL = new JLabel("Free Storage EXPIRED at: " + ltlt.get(8));
         DDL.setBounds(100, 250, 300, 25);
         DDL.setFont(new Font(null,Font.PLAIN, 13));
         DDL.setForeground(Color.white);
         frame.add(DDL);
 
-        StorageFee = new JLabel("Additional fee needed: " + ltlt.get(8));
+        StorageFee = new JLabel("Additional fee needed: " + ltlt.get(9));
         StorageFee.setBounds(100, 275, 300, 25);
         StorageFee.setFont(new Font(null,Font.PLAIN, 13));
         StorageFee.setForeground(Color.white);
