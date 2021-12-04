@@ -170,6 +170,28 @@ public class ItemManagerTest {
 
     @Test
     public void checkFee() throws IOException {
+        Calendar t_start = Calendar.getInstance();
+        int month_1 = t_start.get(Calendar.MONTH)+1;
+        String s_1 = t_start.get(Calendar.YEAR) + "/" + month_1 + "/" + t_start.get(Calendar.DATE);
+
+        Calendar t_fee = Calendar.getInstance();
+        t_fee.add(Calendar.DATE,2);
+        int month_2 = t_fee.get(Calendar.MONTH)+1;
+        String s_2 = t_fee.get(Calendar.YEAR) + "/" + month_2 + "/" + t_fee.get(Calendar.DATE);
+
+        Calendar t = Calendar.getInstance();
+        t.add(Calendar.DATE,1);
+        int month_3 = t.get(Calendar.MONTH)+1;
+        String s_3 = t.get(Calendar.YEAR) + "/" + month_3 + "/" + t.get(Calendar.DATE);
+
+        ItemManager i = new ItemManager(storer, searcher, picker, timer);
+        List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
+        i.addItem("id1",i_info,"L", "queenie");
+        i.addItem("id2",i_info,"F", "queenie");
+        ArrayList<String> id1 = new ArrayList<String>(Arrays.asList(s_1, s_2, "0"));
+        ArrayList<String> id2 = new ArrayList<String>(Arrays.asList(s_1, s_3, "0"));
+        assertEquals(id1, i.checkFee("id1"));
+        assertEquals(id2, i.checkFee("id2"));
     }
 
     @Test
