@@ -19,14 +19,12 @@ public class LoginController {
      */
     public LoginController(UserManager userManager){this.uman = userManager;}
 
-
     /**
      * Check if username and password matches each other.
      * @param username The input username.
      * @param pw The input password.
      * @return Return true if the username matches password, false if it doesn't.
      */
-
     public boolean userLogin(String username, String pw){
         // login
         if(uman.lookupUser(username) == null){
@@ -39,7 +37,6 @@ public class LoginController {
         }
         return false;
     }
-
 
     /**
      * Register a new user with valid username and password.
@@ -80,24 +77,33 @@ public class LoginController {
     /**
      * Delete the user and check if delete succeed.
      * @param username The input username.
-     * @param pw The input password.
-     * @return Return true if delete succeed, false if it doesn't.
      */
-    public boolean userDelete(String username, String pw){
-        return uman.userDelete(username,pw);
+    public void userDelete(String username){
+        uman.userDelete(username);
     }
 
+    /**
+     * Reset UserManager to not have any registered user.
+     */
     public boolean resetuser(){
         uman.reset_all_users();
         return true;
     }
+
+    /**
+     * Get UserManager.
+     * @return Return the usermanager.
+     */
     public UserManager getUman(){
         return uman;
     }
 
+    /**
+     * Get current user.
+     * @return Return the current user.
+     */
     public String getCurrentUser(){
         return currentUser;
     }
-
 
 }
