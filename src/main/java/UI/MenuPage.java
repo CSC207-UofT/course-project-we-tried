@@ -111,8 +111,8 @@ public class MenuPage implements ActionListener {
             //todo:exception
 
             String info = String.join("<br>", this.pickupSystem.get_processor_item(userID));
-            JOptionPane.showMessageDialog(null, "<html>" + info +"<html>");
-
+            JOptionPane.showMessageDialog(null, "<html>" + "Item ID:" +
+                    "<br>" + info +"<html>");
         }
     }
 }
