@@ -23,6 +23,9 @@ public class OperationExtraction extends JFrame{
     private JButton Menu = new JButton();
     private JPanel panel = new JPanel();
     private String id = new String();
+    private JLabel DepTime = new JLabel();
+    private JLabel DDL = new JLabel();
+    private JLabel StorageFee = new JLabel();
     final int FRAME_HEIGHT = 500;
     final int FRAME_LENGTH = 500;
     private PickupSystem pckSys;
@@ -51,11 +54,23 @@ public class OperationExtraction extends JFrame{
         Location = new JLabel("Location: " + ltlt.get(4));
         panel.add(Location);
 
-        Processor = new JLabel("Processor: " + ltlt.get(5));
-        panel.add(Processor);
 
         StgReq = new JLabel("Storage Requirement: " + ltlt.get(6));
         panel.add(StgReq);
+
+        Processor = new JLabel("Processor: " + ltlt.get(5));
+        panel.add(Processor);
+
+        DepTime = new JLabel("Deposit Time: " + ltlt.get(6));
+        panel.add(DepTime);
+
+        DDL = new JLabel("Free Storage EXPIRED at: " + ltlt.get(7));
+        panel.add(DDL);
+
+        StorageFee = new JLabel("Additional fee needed: " + ltlt.get(8));
+        panel.add(StorageFee);
+
+
 
 
         //iteminfo = new JLabel(pckSys.search(id));
