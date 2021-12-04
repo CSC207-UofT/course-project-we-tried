@@ -11,9 +11,9 @@ import java.io.IOException;
 
 public class ContainerMap implements ActionListener {
     private JFrame frame = new JFrame();
-    private JButton lockerMap = new JButton("LOCKER");
-    private JButton refrigeratorMap = new JButton("REFRIGERATOR");
-    private JButton freezerMap = new JButton("FREEZER");
+    private JButton lockerMap = new JButton("Locker");
+    private JButton refrigeratorMap = new JButton("Refrigerator");
+    private JButton freezerMap = new JButton("Freezer");
     private JButton menu = new JButton("》Menu");
     private String userID;
     private PickupSystem pickupSystem;
