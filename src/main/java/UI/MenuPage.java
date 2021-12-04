@@ -53,7 +53,7 @@ public class MenuPage implements ActionListener {
         logoutButton.setFocusable(false);
         logoutButton.addActionListener(this);
 
-        lookupButton.setBounds(220, 330,200,25);
+        lookupButton.setBounds(220, 330,180,25);
         lookupButton.setFont(new Font(null, Font.PLAIN,12));
         lookupButton.setForeground(Color.darkGray);
         lookupButton.setFocusable(false);
