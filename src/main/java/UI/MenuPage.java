@@ -49,10 +49,11 @@ public class MenuPage implements ActionListener {
         logoutButton.setFont(new Font(null, Font.PLAIN,12));
         logoutButton.setBorder(BorderFactory.createLineBorder(Color.darkGray));
         logoutButton.setForeground(Color.white);
+        logoutButton.setBackground(Color.darkGray);
         logoutButton.setFocusable(false);
         logoutButton.addActionListener(this);
 
-        lookupButton.setBounds(220, 330,170,25);
+        lookupButton.setBounds(220, 330,200,25);
         lookupButton.setFont(new Font(null, Font.PLAIN,12));
         lookupButton.setForeground(Color.darkGray);
         lookupButton.setFocusable(false);
