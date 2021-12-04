@@ -125,7 +125,11 @@ public class MenuPage implements ActionListener {
         }
 
         if(e.getSource()==deleteUserButton){
-            this.loginController.userDelete(userID);
+            try {
+                this.loginController.userDelete(userID);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
             JOptionPane.showMessageDialog(null, "User Deleted");
             frame.dispose();
             try {

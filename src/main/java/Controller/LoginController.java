@@ -78,8 +78,11 @@ public class LoginController {
      * Delete the user and check if delete succeed.
      * @param username The input username.
      */
-    public void userDelete(String username){
+    public void userDelete(String username) throws IOException {
         uman.userDelete(username);
+        FileOutputStream fos = new FileOutputStream("D:\\delivery file\\user.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(this.uman);
     }
 
     /**
