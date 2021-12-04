@@ -108,7 +108,7 @@ public class FreezerVisualization implements ActionListener {
         frame.add(L01);
 
         if (f_list != null) {
-            if (f_list.size() > 0) {
+            if (f_list.size() >0) {
                 L1 = new JLabel((String) f_list.get(0));
                 L1.setBounds(110, 63, 200, 100);
                 L1.setFont(new Font(null, Font.PLAIN, 20));
