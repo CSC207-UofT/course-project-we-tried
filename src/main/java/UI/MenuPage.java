@@ -79,6 +79,7 @@ public class MenuPage implements ActionListener {
         frame.add(logoutButton);
         frame.add(lookupButton);
         frame.add(deleteUserButton);
+        frame.add(Allclosets);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setBackground(Color.darkGray);
@@ -125,11 +126,15 @@ public class MenuPage implements ActionListener {
         }
         if(e.getSource()==Allclosets){
             frame.dispose();
-            ContainerMap containerMap = new ContainerMap(userID, this.pickupSystem, this.loginController);
+            try {
+                ContainerMap containerMap = new ContainerMap(userID, this.pickupSystem, this.loginController);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
         }
         if(e.getSource()==lookupButton){
-            //todo:exception
-
             String info = String.join("<br>", this.pickupSystem.get_processor_item(userID));
             JOptionPane.showMessageDialog(null, "<html>" + "Item ID:" +
                     "<br>" + info +"<html>");
