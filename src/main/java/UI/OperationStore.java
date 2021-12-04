@@ -32,7 +32,7 @@ public class OperationStore implements ActionListener {
     private PickupSystem pckSys;
     private String UserID = new String();
     private LoginController lgcontrol = new LoginController();
-//小按键格式
+
     public OperationStore(String userID, PickupSystem pckSys, LoginController lgcontrol) throws IOException, ClassNotFoundException {
         this.pckSys = pckSys;
         this.UserID = userID;

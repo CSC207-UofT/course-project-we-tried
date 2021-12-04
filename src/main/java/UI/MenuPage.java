@@ -20,7 +20,7 @@ public class MenuPage implements ActionListener {
     private JButton lookupButton = new JButton("Lookup Processed Items");
     private JButton deleteUserButton = new JButton("Delete Current User");
     private JButton Allclosets = new JButton("Lookup Containers");
-//小按键格式
+
     MenuPage(String username, PickupSystem pckSys, LoginController loginC) throws IOException, ClassNotFoundException {
         this.userID = username;
         this.pickupSystem = pckSys;
