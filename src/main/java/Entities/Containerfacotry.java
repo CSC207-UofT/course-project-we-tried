@@ -6,18 +6,18 @@ import java.util.Map;
 
 public class Containerfacotry {
     public Container get_container(String type) throws IOException {
-        if (type.equalsIgnoreCase("D:\\delivery file\\Freezer")){
+        if (type.equalsIgnoreCase("Freezer")){
             Map<String, Boolean> fmap = new LinkedHashMap<>(1);
             fmap.put("f01", false);
             return new Freezer(1, fmap);
         }
-        if (type.equalsIgnoreCase("D:\\delivery file\\Refrigerator")){
+        if (type.equalsIgnoreCase("Refrigerator")){
             Map<String, Boolean> rmap = new LinkedHashMap<>(2);
             rmap.put("r01", false);
             rmap.put("r02", false);
             return new Refrigerator(2, rmap);
         }
-        if (type.equalsIgnoreCase("D:\\delivery file\\Locker")){
+        if (type.equalsIgnoreCase("Locker")){
             Map<String, Boolean> lmap = new LinkedHashMap<>(3);
             lmap.put("L01", false);
             lmap.put("L02", false);

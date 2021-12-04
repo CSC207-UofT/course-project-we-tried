@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.*;
 
 import static org.junit.Assert.*;
@@ -95,7 +96,7 @@ public class ItemPickerTest {
     }
 
     @Test
-    public void setup() {
+    public void setup() throws IOException {
         Map<String, Item> imap = new HashMap<String, Item>();
         Map<String, Boolean> fmap = new LinkedHashMap<>(2);
         Freezer f = new Freezer(2,fmap);
