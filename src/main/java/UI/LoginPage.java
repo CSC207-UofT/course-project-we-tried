@@ -22,7 +22,7 @@ public class LoginPage implements ActionListener {
     private JLabel messageLabel = new JLabel();
     private PickupSystem pickupSystem;
     private LoginController loginController;
-    private JButton deleteUserButton = new JButton("Delete Current User");
+
 
     public LoginPage(PickupSystem pckSys, LoginController lgcontrol) throws IOException, ClassNotFoundException {
         this.pickupSystem = pckSys;
@@ -52,12 +52,6 @@ public class LoginPage implements ActionListener {
         registerButton.setFocusable(false);
         registerButton.addActionListener(this);
 
-        deleteUserButton.setBounds(220, 300,150,25);
-        deleteUserButton.setFont(new Font(null, Font.PLAIN,12));
-        deleteUserButton.setForeground(Color.darkGray);
-        deleteUserButton.setFocusable(false);
-        deleteUserButton.addActionListener(this);
-
         frame.add(userIDLabel);
         frame.add(userPasswordLabel);
         frame.add(messageLabel);
@@ -65,7 +59,7 @@ public class LoginPage implements ActionListener {
         frame.add(userPasswordField);
         frame.add(loginButton);
         frame.add(registerButton);
-        frame.add(deleteUserButton);
+
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setBackground(Color.darkGray);
@@ -116,14 +110,7 @@ public class LoginPage implements ActionListener {
             }
         }
         //todo:exception
-        if(e.getSource()==deleteUserButton){
-            if(this.loginController.userDelete(userID, password)){
-                JOptionPane.showMessageDialog(null, "User Deleted");
-            }
-            else{
-                messageLabel.setText("Delete unsuccessful, Please try again");
-            }
-        }
+
     }
 }
 
