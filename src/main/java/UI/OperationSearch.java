@@ -54,6 +54,7 @@ public class OperationSearch implements ActionListener{
         Menu.setBounds(210, 200, 100, 25);
         Menu.setBorder(BorderFactory.createLineBorder(Color.white));
         Menu.setForeground(Color.white);
+        Menu.setBackground(Color.darkGray);
         Menu.setFocusable(false);
         Menu.addActionListener(this);
 
@@ -83,8 +84,11 @@ public class OperationSearch implements ActionListener{
             else{
                 frame.dispose();
                 OperationExtraction operationExtraction = null;
-                operationExtraction = new OperationExtraction(userID, id,pckSys, loginController);
-                operationExtraction.setVisible(true);
+                try {
+                    operationExtraction = new OperationExtraction(userID, id,pckSys, loginController);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         }
         if (e.getSource()==Menu){

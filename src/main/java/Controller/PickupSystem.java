@@ -13,19 +13,24 @@ public class PickupSystem {
     ItemSearcher searcher = new ItemSearcher();
     ItemTimer timer = new ItemTimer();
     private ItemManager iman = new ItemManager(storer, searcher, picker, timer);
-    private final UserManager uman = new UserManager();
+    private UserManager uman = new UserManager();
     private Map<String, String> item_location = new HashMap<>();
     /**
      * An empty constructor.
      */
-    public PickupSystem(){}
+    public PickupSystem() throws IOException {
+        FileOutputStream fos = new FileOutputStream("D:\\delivery file\\xyz.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(this.iman);
+    }
 
     /**
      * Construct a new PickupSystem with existing ItemManager.
      * @param iman An existing ItemManager.
      */
-    public PickupSystem(ItemManager iman) {
+    public PickupSystem(ItemManager iman, UserManager uman) throws IOException {
         this.iman = iman;
+        this.uman = uman;
     }
 
     /**
@@ -38,10 +43,17 @@ public class PickupSystem {
             String loca = iman.removeItem(id);
             item_location.remove(loca);
         }
-        FileOutputStream fos = new FileOutputStream("xyz.txt");
+        save_file();
+    }
+
+    private void save_file() throws IOException {
+        FileOutputStream fos = new FileOutputStream("D:\\delivery file\\xyz.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(this.iman);
-        }
+        FileOutputStream foss = new FileOutputStream("D:\\delivery file\\user.txt");
+        ObjectOutputStream ooss = new ObjectOutputStream(foss);
+        ooss.writeObject(this.uman);
+    }
 
     /**
      * Store a new item to the current map and save ItemManager to the file.
@@ -58,9 +70,7 @@ public class PickupSystem {
             uman.record_item_processor(name, id);
             item_location.put(str,id);
         }
-        FileOutputStream fos = new FileOutputStream("xyz.txt");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(this.iman);
+        save_file();
         return str;
     }
 

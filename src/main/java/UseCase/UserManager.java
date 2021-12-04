@@ -14,6 +14,7 @@ public class UserManager implements Serializable{
     private final Map<String, List<String>> imap = new HashMap<String, List<String>>();
     private User currentUser;
 
+    public UserManager(){};
     /**
      * check if the username is a valid name for register
      * @param name username
@@ -24,8 +25,8 @@ public class UserManager implements Serializable{
     }
 
     /**
-     * check if the password is a valid name for register
-     * @param password username
+     * check if the password is a valid password for register
+     * @param password user password
      * @return Return true if password is valid; false if not.
      */
     public boolean is_valid_password(String password){
@@ -49,15 +50,9 @@ public class UserManager implements Serializable{
     /**
      * Delete the user from the system.
      * @param name input username
-     * @param pw input corresponding password
      */
-    public boolean userDelete(String name, String pw){
-        //first check password
-        if ((umap.containsKey(name)) & (pwVerify(name, pw))){
-            umap.remove(name);
-            return true;
-        }
-        return false;
+    public void userDelete(String name){
+        umap.remove(name);
     }
 
     /**
@@ -130,7 +125,7 @@ public class UserManager implements Serializable{
     }
 
     /**
-     * Reset UserManager to not have any users.
+     * Reset UserManager to not have any registered user.
      */
     public void reset_all_users(){
         this.umap = new HashMap<String, User>();

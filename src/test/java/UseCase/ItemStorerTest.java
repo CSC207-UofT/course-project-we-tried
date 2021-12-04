@@ -58,7 +58,7 @@ public class ItemStorerTest {
     }
 
     @Test
-    public void setup() {
+    public void setup() throws IOException {
         Map<String, Item> imap = new HashMap<String, Item>();
         Map<String, Boolean> fmap = new LinkedHashMap<>(2);
         Freezer f = new Freezer(2,fmap);

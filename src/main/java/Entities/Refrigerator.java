@@ -23,11 +23,14 @@ public class Refrigerator implements Container, Serializable {
     /**
      * A new, empty Refrigerator, with a preset capacity and map.
      */
-    public Refrigerator(int capacity, Map<String, Boolean> rmap){
+    public Refrigerator(int capacity, Map<String, Boolean> rmap) throws IOException {
         this.capacity = capacity;
         this.rmap = rmap;
         this.Vacancy = capacity;
         this.number_items = 0;
+        FileOutputStream fos = new FileOutputStream("D:\\delivery file\\refrigerator.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(this.rmap);
     }
 
     /**
@@ -56,7 +59,7 @@ public class Refrigerator implements Container, Serializable {
         this.number_items = this.number_items + 1;
         this.Vacancy = this.Vacancy - 1;
         this.rmap.replace(location, false, true);
-        FileOutputStream fos = new FileOutputStream("refrigerator.txt");
+        FileOutputStream fos = new FileOutputStream("D:\\delivery file\\refrigerator.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(this.rmap);
     }
@@ -69,7 +72,7 @@ public class Refrigerator implements Container, Serializable {
         this.number_items = this.number_items - 1;
         this.Vacancy = this.Vacancy + 1;
         this.rmap.replace(location, true, false);
-        FileOutputStream fos = new FileOutputStream("refrigerator.txt");
+        FileOutputStream fos = new FileOutputStream("D:\\delivery file\\refrigerator.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(this.rmap);
     }

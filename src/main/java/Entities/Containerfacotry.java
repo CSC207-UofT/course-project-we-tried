@@ -1,10 +1,11 @@
 package Entities;
 
+import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Containerfacotry {
-    public Container get_container(String type){
+    public Container get_container(String type) throws IOException {
         if (type.equalsIgnoreCase("Freezer")){
             Map<String, Boolean> fmap = new LinkedHashMap<>(1);
             fmap.put("f01", false);

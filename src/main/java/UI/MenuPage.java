@@ -18,6 +18,8 @@ public class MenuPage implements ActionListener {
     private PickupSystem pickupSystem;
     private LoginController loginController;
     private JButton lookupButton = new JButton("Lookup Processed Items");
+    private JButton deleteUserButton = new JButton("Delete Current User");
+    private JButton Allclosets = new JButton("Overall Closets Lookup");
 
     MenuPage(String username, PickupSystem pckSys, LoginController loginC) throws IOException, ClassNotFoundException {
         this.userID = username;
@@ -45,24 +47,39 @@ public class MenuPage implements ActionListener {
         pickupButton.setFocusable(false);
         pickupButton.addActionListener(this);
 
+        deleteUserButton.setBounds(220, 300,150,25);
+        deleteUserButton.setFont(new Font(null, Font.PLAIN,12));
+        deleteUserButton.setForeground(Color.darkGray);
+        deleteUserButton.setFocusable(false);
+        deleteUserButton.addActionListener(this);
+
         logoutButton.setBounds(270, 210,100,20);
         logoutButton.setFont(new Font(null, Font.PLAIN,12));
         logoutButton.setBorder(BorderFactory.createLineBorder(Color.darkGray));
         logoutButton.setForeground(Color.white);
+        logoutButton.setBackground(Color.darkGray);
         logoutButton.setFocusable(false);
         logoutButton.addActionListener(this);
 
-        lookupButton.setBounds(220, 330,170,25);
+        lookupButton.setBounds(220, 330,180,25);
         lookupButton.setFont(new Font(null, Font.PLAIN,12));
         lookupButton.setForeground(Color.darkGray);
         lookupButton.setFocusable(false);
         lookupButton.addActionListener(this);
+
+        Allclosets.setBounds(220, 360,180,25);
+        Allclosets.setFont(new Font(null, Font.PLAIN,12));
+        Allclosets.setForeground(Color.darkGray);
+        Allclosets.setFocusable(false);
+        Allclosets.addActionListener(this);
 
         frame.add(userLabel);
         frame.add(depositButton);
         frame.add(pickupButton);
         frame.add(logoutButton);
         frame.add(lookupButton);
+        frame.add(deleteUserButton);
+        frame.add(Allclosets);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setBackground(Color.darkGray);
@@ -107,12 +124,37 @@ public class MenuPage implements ActionListener {
                 ex.printStackTrace();
             }
         }
+        if(e.getSource()==Allclosets){
+            frame.dispose();
+            try {
+                ContainerMap containerMap = new ContainerMap(userID, this.pickupSystem, this.loginController);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
+        }
         if(e.getSource()==lookupButton){
-            //todo:exception
-
             String info = String.join("<br>", this.pickupSystem.get_processor_item(userID));
             JOptionPane.showMessageDialog(null, "<html>" + "Item ID:" +
                     "<br>" + info +"<html>");
+        }
+
+        if(e.getSource()==deleteUserButton){
+            try {
+                this.loginController.userDelete(userID);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            JOptionPane.showMessageDialog(null, "User Deleted");
+            frame.dispose();
+            try {
+                LoginPage loginPage = new LoginPage(this.pickupSystem, this.loginController);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 }

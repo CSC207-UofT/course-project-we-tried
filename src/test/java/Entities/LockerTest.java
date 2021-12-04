@@ -20,7 +20,7 @@ public class LockerTest {
     }
 
     @Test
-    public void getCapacity(){
+    public void getCapacity() throws IOException {
         Map<String, Boolean> lmap = new HashMap<>(2);
         lmap.put("L01", false);
         lmap.put("L02", false);
@@ -51,7 +51,7 @@ public class LockerTest {
     }
 
     @Test
-    public void nextVacantLocation() {
+    public void nextVacantLocation() throws IOException {
         Map<String, Boolean> lmap = new HashMap<>(2);
         lmap.put("L01", false);
         lmap.put("L02", false);
@@ -60,7 +60,7 @@ public class LockerTest {
     }
 
     @Test
-    public void nextVacantLocation_not_first() {
+    public void nextVacantLocation_not_first() throws IOException {
         Map<String, Boolean> lmap = new HashMap<>(2);
         lmap.put("L01", true);
         lmap.put("L02", false);
@@ -69,7 +69,7 @@ public class LockerTest {
     }
 
     @Test
-    public void nextVacantLocation_not_change() {
+    public void nextVacantLocation_not_change() throws IOException {
         Map<String, Boolean> lmap = new HashMap<>(3);
         lmap.put("L01", false);
         lmap.put("L02", true);
@@ -80,7 +80,7 @@ public class LockerTest {
     }
 
     @Test
-    public void generateMap(){
+    public void generateMap() throws IOException {
         Map<String, Boolean> lmap = new HashMap<>(1);
         lmap.put("L01", false);
         Locker L = new Locker(1, lmap);

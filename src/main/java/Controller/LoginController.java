@@ -9,7 +9,7 @@ public class LoginController {
     private UserManager uman = new UserManager();
     private static String currentUser = "";
 
-    public LoginController(){
+    public LoginController() throws IOException {
     }
 
     /**
@@ -19,14 +19,12 @@ public class LoginController {
      */
     public LoginController(UserManager userManager){this.uman = userManager;}
 
-
     /**
      * Check if username and password matches each other.
      * @param username The input username.
      * @param pw The input password.
      * @return Return true if the username matches password, false if it doesn't.
      */
-
     public boolean userLogin(String username, String pw){
         // login
         if(uman.lookupUser(username) == null){
@@ -39,7 +37,6 @@ public class LoginController {
         }
         return false;
     }
-
 
     /**
      * Register a new user with valid username and password.
@@ -54,7 +51,7 @@ public class LoginController {
             if (uman.is_valid_name(username)) {
                 if(uman.is_valid_password(pw)){
                     uman.userRegister(username, pw);
-                    FileOutputStream fos = new FileOutputStream("user.txt");
+                    FileOutputStream fos = new FileOutputStream("D:\\delivery file\\user.txt");
                     ObjectOutputStream oos = new ObjectOutputStream(fos);
                     oos.writeObject(this.uman);
                     return true;
@@ -80,24 +77,36 @@ public class LoginController {
     /**
      * Delete the user and check if delete succeed.
      * @param username The input username.
-     * @param pw The input password.
-     * @return Return true if delete succeed, false if it doesn't.
      */
-    public boolean userDelete(String username, String pw){
-        return uman.userDelete(username,pw);
+    public void userDelete(String username) throws IOException {
+        uman.userDelete(username);
+        FileOutputStream fos = new FileOutputStream("D:\\delivery file\\user.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(this.uman);
     }
 
+    /**
+     * Reset UserManager to not have any registered user.
+     */
     public boolean resetuser(){
         uman.reset_all_users();
         return true;
     }
+
+    /**
+     * Get UserManager.
+     * @return Return the usermanager.
+     */
     public UserManager getUman(){
         return uman;
     }
 
+    /**
+     * Get current user.
+     * @return Return the current user.
+     */
     public String getCurrentUser(){
         return currentUser;
     }
-
 
 }

@@ -20,7 +20,7 @@ public class ItemManager implements Serializable{
      * A new ItemManager, with a preset series of containers.
      * This is the "Facade" class.
      */
-    public ItemManager(ItemStorer storer, ItemSearcher searcher, ItemPicker picker, ItemTimer timer) {
+    public ItemManager(ItemStorer storer, ItemSearcher searcher, ItemPicker picker, ItemTimer timer) throws IOException {
         this.storer = storer;
         this.searcher = searcher;
         this.picker = picker;
