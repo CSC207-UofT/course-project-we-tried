@@ -6,32 +6,29 @@ import Entities.Item;
 import UseCase.ItemManager;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OperationStore extends JFrame {
-    private JLabel Instruction = new JLabel();
-    private JLabel pkgID = new JLabel();
-    private JButton Menu = new JButton();
-    private JButton Store = new JButton();
-    private JLabel pkginfo = new JLabel();
+public class OperationStore implements ActionListener {
+    private JFrame frame = new JFrame();
+    private JLabel Instruction = new JLabel("Please enter Package ID and Item Information");
+    private JLabel pkgID = new JLabel("ID:");
     private JTextField IDID = new JTextField();
-    private JTextField infoinfo = new JTextField();
-    private JLabel StgRequire = new JLabel();
-    private JTextField ReqReq = new JTextField();
-    final int FRAME_HEIGHT = 500;
-    final int FRAME_LENGTH = 500;
-    private JPanel panel = new JPanel();
-    private PickupSystem pckSys;
-    private JLabel Sender = new JLabel();
-    private JLabel Receiver = new JLabel();
+    private JLabel Sender = new JLabel("Sender:");
     private JTextField sdsd = new JTextField();
+    private JLabel Receiver = new JLabel("Receiver:");
     private JTextField rere = new JTextField();
-    private JLabel Description = new JLabel();
+    private JLabel Description = new JLabel("Description:");
     private JTextField dede = new JTextField();
+    private JLabel StgRequire = new JLabel("Storage Requirement:");
+    private JTextField ReqReq = new JTextField();
+    private JButton Store = new JButton("Store");
+    private JButton Menu = new JButton("Menu");
+    private PickupSystem pckSys;
     private String UserID = new String();
     private LoginController lgcontrol = new LoginController();
 
@@ -39,117 +36,126 @@ public class OperationStore extends JFrame {
         this.pckSys = pckSys;
         this.UserID = userID;
         this.lgcontrol = lgcontrol;
-        panel = new JPanel();
 
-        Instruction = new JLabel("Please enter Package ID and Item Info");
-        panel.add(Instruction);
+        Instruction.setBounds(85, 50, 300, 20);
+        Instruction.setFont(new Font(null, Font.PLAIN, 13));
+        Instruction.setForeground(Color.white);
 
-        pkgID = new JLabel("ID: ");
-        panel.add(pkgID);
+        pkgID.setBounds(105, 90, 80, 24);
+        pkgID.setFont(new Font(null, Font.PLAIN, 13));
+        pkgID.setForeground(Color.white);
 
-        IDID = new JTextField(20);
-        panel.add(IDID);
+        IDID.setBounds(185, 90, 150, 24);
 
-        Sender = new JLabel("Sender:");
-        panel.add(Sender);
+        Sender.setBounds(105, 125, 80, 24);
+        Sender.setFont(new Font(null, Font.PLAIN, 13));
+        Sender.setForeground(Color.white);
 
-        sdsd = new JTextField(20);
-        panel.add(sdsd);
+        sdsd.setBounds(185, 125, 150, 24);
 
-        Receiver = new JLabel("Receiver:");
-        panel.add(Receiver);
+        Receiver.setBounds(105, 160, 80, 24);
+        Receiver.setFont(new Font(null, Font.PLAIN, 13));
+        Receiver.setForeground(Color.white);
 
-        rere = new JTextField(20);
-        panel.add(rere);
+        rere.setBounds(185, 160, 150, 24);
 
-        Description = new JLabel("Description:");
-        panel.add(Description);
+        Description.setBounds(105, 195, 80, 24);
+        Description.setFont(new Font(null, Font.PLAIN, 13));
+        Description.setForeground(Color.white);
 
-        dede = new JTextField(20);
-        panel.add(dede);
+        dede.setBounds(185, 195, 150, 24);
 
-        StgRequire = new JLabel("Storage Requirement:");
-        panel.add(StgRequire);
+        StgRequire.setBounds(105, 230, 150, 24);
+        StgRequire.setFont(new Font(null, Font.PLAIN, 13));
+        StgRequire.setForeground(Color.white);
 
-        ReqReq = new JTextField(20);
-        panel.add(ReqReq);
+        ReqReq.setBounds(250, 230, 85, 24);
 
-        Store = new JButton("Store");
-        panel.add(Store);
+        Store.setBounds(145, 280, 70, 30);
+        Store.setFont(new Font(null, Font.PLAIN, 13));
+        Store.setForeground(Color.darkGray);
+        Store.setFocusable(false);
+        Store.addActionListener(this);
 
-        Menu = new JButton("Menu");
-        panel.add(Menu);
+        Menu.setBounds(225, 280, 70, 30);
+        Menu.setFont(new Font(null, Font.PLAIN, 13));
+        Menu.setForeground(Color.darkGray);
+        Menu.setFocusable(false);
+        Menu.addActionListener(this);
 
-        //pkginfo = new JLabel("Scanned info");
-        //panel.add(pkginfo);
+        frame.add(Instruction);
+        frame.add(pkgID);
+        frame.add(IDID);
+        frame.add(Sender);
+        frame.add(sdsd);
+        frame.add(Receiver);
+        frame.add(rere);
+        frame.add(Description);
+        frame.add(dede);
+        frame.add(StgRequire);
+        frame.add(ReqReq);
+        frame.add(Store);
+        frame.add(Menu);
 
-        //infoinfo = new JTextField(50);
-        //panel.add(infoinfo);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setBackground(Color.darkGray);
+        frame.setSize(420, 420);
+        frame.setLayout(null);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
 
-        Store.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ArrayList<String> infoinfo = new ArrayList<>(3);
-                infoinfo.add(sdsd.getText());
-                infoinfo.add(rere.getText());
-                infoinfo.add(dede.getText());
-                String stored_item = null;
-                try {
-                    stored_item = pckSys.storeItem(IDID.getText(), infoinfo,ReqReq.getText(), userID);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                } catch (ClassNotFoundException ex) {
-                    ex.printStackTrace();
-                }
+    }
 
-
-                if (stored_item != null){
-                    if(stored_item.equals("*")){
-                        JOptionPane.showMessageDialog(null, "Item already Exist with same ID.");
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(null,
-                                "Deposit succeed "+"Stored in:"+ stored_item);
-                    }
-                }
-
-                else {
-                    if (ReqReq.getText().equals("F")){
-                        JOptionPane.showMessageDialog(null, "The Freezer is currently full.");
-                    }
-                    else  if (ReqReq.getText().equals("L")){
-                        JOptionPane.showMessageDialog(null, "The Locker is currently full.");
-                    }
-                    else if(ReqReq.getText().equals("R")){
-                        JOptionPane.showMessageDialog(null,
-                                "The Refrigerator is currently full.");
-                    }
-                }
-
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource()==Store) {
+            ArrayList<String> infoinfo = new ArrayList<>(3);
+            infoinfo.add(sdsd.getText());
+            infoinfo.add(rere.getText());
+            infoinfo.add(dede.getText());
+            String stored_item = null;
+            try {
+                stored_item = pckSys.storeItem(IDID.getText(), infoinfo,ReqReq.getText(), UserID);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
             }
-        });
 
-
-        Menu.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                OperationStore.this.setVisible(false);
-                //JFrame add the menu function;
-                try {
-                    MenuPage menuPage = new MenuPage(UserID, pckSys, lgcontrol);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                } catch (ClassNotFoundException ex) {
-                    ex.printStackTrace();
+            if (stored_item != null){
+                if(stored_item.equals("*")){
+                    JOptionPane.showMessageDialog(null, "Item already Exist with same ID.");
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,
+                            "Deposit succeed "+"Stored in:"+ stored_item);
                 }
             }
-        });
 
-        this.setLayout(null);
-        panel.setSize(240,400);
-        panel.setLocation((FRAME_HEIGHT - 250)/2, (FRAME_LENGTH - 300)/2);
-        this.add(panel);
-        this.setSize(FRAME_HEIGHT, FRAME_LENGTH);
-        this.setTitle("Store Packages");
+            else {
+                if (ReqReq.getText().equals("F")){
+                    JOptionPane.showMessageDialog(null, "The Freezer is currently full.");
+                }
+                else  if (ReqReq.getText().equals("L")){
+                    JOptionPane.showMessageDialog(null, "The Locker is currently full.");
+                }
+                else if(ReqReq.getText().equals("R")){
+                    JOptionPane.showMessageDialog(null,
+                            "The Refrigerator is currently full.");
+                }
+            }
+        }
+
+        if (e.getSource()==Menu) {
+            frame.dispose();
+            //JFrame add the menu function;
+            try {
+                MenuPage menuPage = new MenuPage(UserID, pckSys, lgcontrol);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 }

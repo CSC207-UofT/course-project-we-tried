@@ -79,12 +79,12 @@ public class PickupSystemTest {
     }
 
     @Test
-    public void getIman(){
+    public void getIman() throws IOException {
         PickupSystem p = new PickupSystem();
         assertTrue(p.getIman() instanceof ItemManager);
     }
     @Test
-    public void getUman(){
+    public void getUman() throws IOException {
         PickupSystem p = new PickupSystem();
         assertTrue(p.getUman() instanceof UserManager);
 

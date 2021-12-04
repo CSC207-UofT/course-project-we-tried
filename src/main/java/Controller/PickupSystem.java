@@ -2,6 +2,7 @@ package Controller;
 import java.io.*;
 import UseCase.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,13 +18,17 @@ public class PickupSystem {
     /**
      * An empty constructor.
      */
-    public PickupSystem(){}
+    public PickupSystem() throws IOException {
+        FileOutputStream fos = new FileOutputStream("D:\\delivery file\\xyz.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(this.iman);
+    }
 
     /**
      * Construct a new PickupSystem with existing ItemManager.
      * @param iman An existing ItemManager.
      */
-    public PickupSystem(ItemManager iman) {
+    public PickupSystem(ItemManager iman) throws IOException {
         this.iman = iman;
     }
 
@@ -37,7 +42,7 @@ public class PickupSystem {
             String loca = iman.removeItem(id);
             item_location.remove(loca);
         }
-        FileOutputStream fos = new FileOutputStream("xyz.txt");
+        FileOutputStream fos = new FileOutputStream("D:\\delivery file\\xyz.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(this.iman);
         }
@@ -57,7 +62,7 @@ public class PickupSystem {
             uman.record_item_processor(name, id);
             item_location.put(str,id);
         }
-        FileOutputStream fos = new FileOutputStream("xyz.txt");
+        FileOutputStream fos = new FileOutputStream("D:\\delivery file\\xyz.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(this.iman);
         return str;
@@ -79,4 +84,12 @@ public class PickupSystem {
         return uman;
     }
 
+    /**
+     * Get user processed items' ids.
+     * @param username The input username.
+     * @return Return the ArrayList contains all items' ids processed by this user.
+     */
+    public ArrayList<String> get_processor_item(String username){
+        return uman.getUserImap(username);
+    }
 }

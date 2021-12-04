@@ -29,7 +29,7 @@ public class OperationExtraction extends JFrame{
     private LoginController lgctrol = new LoginController();
     private String pkgId = new String();
 
-    public OperationExtraction(String id, String pkgId,PickupSystem pckSys, LoginController lgctrol){
+    public OperationExtraction(String id, String pkgId,PickupSystem pckSys, LoginController lgctrol) throws IOException {
         this.id = id;
         this.lgctrol = lgctrol;
         this.pkgId = pkgId;
