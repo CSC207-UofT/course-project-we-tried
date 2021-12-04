@@ -21,9 +21,6 @@ public class PickupSystem {
      * An empty constructor.
      */
     public PickupSystem() throws IOException {
-        FileOutputStream fos = new FileOutputStream("D:\\delivery file\\xyz.txt");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(this.iman);
     }
 
     /**
@@ -49,10 +46,10 @@ public class PickupSystem {
     }
 
     private void save_file() throws IOException {
-        FileOutputStream fos = new FileOutputStream("D:\\delivery file\\xyz.txt");
+        FileOutputStream fos = new FileOutputStream("./data file/xyz.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(this.iman);
-        FileOutputStream foss = new FileOutputStream("D:\\delivery file\\user.txt");
+        FileOutputStream foss = new FileOutputStream("./data file/user.txt");
         ObjectOutputStream ooss = new ObjectOutputStream(foss);
         ooss.writeObject(this.uman);
     }

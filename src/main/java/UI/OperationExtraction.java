@@ -37,6 +37,7 @@ public class OperationExtraction implements ActionListener{
         this.lgctrol = lgctrol;
         this.pkgId = pkgId;
         this.ltlt = (ArrayList<String>) pckSys.search(pkgId);
+        this.pckSys = pckSys;
 
         ID = new JLabel("Package ID: " + ltlt.get(0));
         ID.setBounds(100, 50, 300, 25);
