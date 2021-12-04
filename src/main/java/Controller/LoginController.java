@@ -10,9 +10,6 @@ public class LoginController {
     private static String currentUser = "";
 
     public LoginController() throws IOException {
-        FileOutputStream fos = new FileOutputStream("D:\\delivery file\\user.txt");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(this.uman);
     }
 
     /**

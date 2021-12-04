@@ -74,6 +74,7 @@ public class PickupSystemTest {
         String location =  i.addItem("a", info,"L","test_user" );
         List<String> expected_info = new ArrayList<>(Arrays.asList("a","Sender: test_sender","Receiver: test_receiver",
                 "Description: This is a test!",location, "test_user","L",s_1, s_2,"0"));
+        List<String> actual = p.search("a");
         assertEquals(expected_info,p.search("a"));
 
     }
@@ -89,4 +90,15 @@ public class PickupSystemTest {
         assertTrue(p.getUman() instanceof UserManager);
 
     }
+    @Test
+    public void get_processor_item() throws IOException, ClassNotFoundException {
+        PickupSystem p = new PickupSystem();
+        UserManager u = p.getUman();
+        u.userRegister("queenie", "1234");
+        List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
+        String location = p.storeItem("test_1", i_info, "L", "queenie");
+        assertNotNull(u.getUserImap("queenie"));
+        assertEquals(Arrays.asList("test_1"), u.getUserImap("queenie"));
+        assertEquals("L01", location);
     }
+}
