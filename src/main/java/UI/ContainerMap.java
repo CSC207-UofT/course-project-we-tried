@@ -24,7 +24,7 @@ public class ContainerMap implements ActionListener {
         this.pickupSystem = pckSys;
         this.loginController = loginC;
 
-        lockerMap.setBounds(60,120,100,60);
+        lockerMap.setBounds(50,120,100,60);
         lockerMap.setFont(new Font(null, Font.PLAIN,17));
         lockerMap.setBorder(BorderFactory.createLineBorder(Color.white));
         lockerMap.setForeground(Color.white);
@@ -32,7 +32,7 @@ public class ContainerMap implements ActionListener {
         lockerMap.setFocusable(false);
         lockerMap.addActionListener(this);
 
-        refrigeratorMap.setBounds(170,120,100,60);
+        refrigeratorMap.setBounds(160,120,100,60);
         refrigeratorMap.setFont(new Font(null, Font.PLAIN,17));
         refrigeratorMap.setBorder(BorderFactory.createLineBorder(Color.white));
         refrigeratorMap.setForeground(Color.white);
@@ -40,7 +40,7 @@ public class ContainerMap implements ActionListener {
         refrigeratorMap.setFocusable(false);
         refrigeratorMap.addActionListener(this);
 
-        freezerMap.setBounds(280,120,100,60);
+        freezerMap.setBounds(270,120,100,60);
         freezerMap.setFont(new Font(null, Font.PLAIN,17));
         freezerMap.setBorder(BorderFactory.createLineBorder(Color.white));
         freezerMap.setForeground(Color.white);

@@ -15,14 +15,12 @@ public class RefridgeratorVisualization implements ActionListener{
     private JButton Menu = new JButton("Main Menu");
     private JButton Search = new JButton("Search");
     private JButton Container = new JButton("Return");
-    private JLabel LockerLocker = new JLabel(LockerImage);
-    private ImageIcon VImage= new ImageIcon("src/Vertical.png");
+    private ImageIcon VImage= new ImageIcon("src/VerticalR.png");
     private ImageIcon HImage= new ImageIcon("src/Horizontal.png");
-    private ImageIcon Vb = new ImageIcon("src/Verticalborder.png");
+    private ImageIcon Vb = new ImageIcon("src/VerticalborderR.png");
     private JLabel Vertivcalline1 = new JLabel(VImage);
     private JLabel Vertivcalline2 = new JLabel(VImage);
     private JLabel Horizontalline1 = new JLabel(HImage);
-    private JLabel Horizongtalline2 = new JLabel(HImage);
     private JLabel Horizontalline3 = new JLabel(HImage);
     private JLabel Horizontalline4 = new JLabel(HImage);
     private JLabel Horizontalline5 = new JLabel(HImage);
@@ -44,9 +42,6 @@ public class RefridgeratorVisualization implements ActionListener{
     private JLabel L010 = new JLabel("R10");
     private JLabel L011 = new JLabel("R11");
     private JLabel L012 = new JLabel("R12");
-    private JLabel L013 = new JLabel("R13");
-    private JLabel L014 = new JLabel("R14");
-    private JLabel L015 = new JLabel("R15");
     private JLabel L1 = new JLabel();
     private JLabel L2= new JLabel();
     private JLabel L3 = new JLabel();
@@ -59,9 +54,6 @@ public class RefridgeratorVisualization implements ActionListener{
     private JLabel L10 = new JLabel();
     private JLabel L11 = new JLabel();
     private JLabel L12 = new JLabel();
-    private JLabel L13 = new JLabel();
-    private JLabel L14 = new JLabel();
-    private JLabel L15 = new JLabel();
 
     public RefridgeratorVisualization(String username, PickupSystem pckSys, LoginController loginC) {
         this.pickupSystem = pckSys;
@@ -73,19 +65,16 @@ public class RefridgeratorVisualization implements ActionListener{
         Horizontalline1.setBounds(0, 20, 800, 20);
         frame.add(Horizontalline1);
 
-        Horizongtalline2.setBounds(0, 760, 800, 20);
-        frame.add(Horizongtalline2);
-
-        VerticalBorder1.setBounds(29, 2, 40, 800);
+        VerticalBorder1.setBounds(29, 2, 40, 635);
         frame.add(VerticalBorder1);
 
-        VerticalBorder2.setBounds(731, 2, 40, 800);
+        VerticalBorder2.setBounds(731, 2, 40, 635);
         frame.add(VerticalBorder2);
 
-        Vertivcalline1.setBounds(263, 2, 40, 800);
+        Vertivcalline1.setBounds(263, 2, 40, 635);
         frame.add(Vertivcalline1);
 
-        Vertivcalline2.setBounds(497, 2, 40, 800);
+        Vertivcalline2.setBounds(497, 2, 40, 635);
         frame.add(Vertivcalline2);
 
         Horizontalline3.setBounds(0, 168, 800, 10);
@@ -280,51 +269,6 @@ public class RefridgeratorVisualization implements ActionListener{
                 L12.setFont(new Font(null, Font.PLAIN, 20));
                 L12.setForeground(Color.white);
                 frame.add(L12);
-            }
-        }
-
-        L013.setBounds(143, 596, 100, 100);
-        L013.setFont(new Font(null, Font.PLAIN, 30));
-        L013.setForeground(Color.white);
-        frame.add(L013);
-
-        if(f_list != null) {
-            if (f_list.size() > 12) {
-                L13 = new JLabel((String) f_list.get(12));
-                L13.setBounds(110, 655, 200, 100);
-                L13.setFont(new Font(null, Font.PLAIN, 20));
-                L13.setForeground(Color.white);
-                frame.add(L13);
-            }
-        }
-
-        L014.setBounds(377, 596, 100, 100);
-        L014.setFont(new Font(null, Font.PLAIN, 30));
-        L014.setForeground(Color.white);
-        frame.add(L014);
-
-        if(f_list != null) {
-            if (f_list.size() > 13) {
-                L14 = new JLabel((String) f_list.get(13));
-                L14.setBounds(344, 655, 200, 100);
-                L14.setFont(new Font(null, Font.PLAIN, 20));
-                L14.setForeground(Color.white);
-                frame.add(L14);
-            }
-        }
-
-        L015.setBounds(611, 596, 100, 100);
-        L015.setFont(new Font(null, Font.PLAIN, 30));
-        L015.setForeground(Color.white);
-        frame.add(L015);
-
-        if(f_list != null) {
-            if (f_list.size() > 14) {
-                L15 = new JLabel((String) f_list.get(14));
-                L15.setBounds(578, 655, 200, 100);
-                L15.setFont(new Font(null, Font.PLAIN, 20));
-                L15.setForeground(Color.white);
-                frame.add(L15);
             }
         }
 

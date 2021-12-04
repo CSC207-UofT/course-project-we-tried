@@ -69,13 +69,13 @@ public class OperationExtraction implements ActionListener{
         Location.setForeground(Color.white);
         frame.add(Location);
 
-        StgReq = new JLabel("Storage Requirement: " + ltlt.get(5));
+        StgReq = new JLabel("Storage Requirement: " + ltlt.get(6));
         StgReq.setBounds(100, 175, 300, 25);
         StgReq.setFont(new Font(null,Font.PLAIN, 13));
         StgReq.setForeground(Color.white);
         frame.add(StgReq);
 
-        Processor = new JLabel("Processor: " + ltlt.get(6));
+        Processor = new JLabel("Processor: " + ltlt.get(5));
         Processor.setBounds(100, 200, 300, 25);
         Processor.setFont(new Font(null,Font.PLAIN, 13));
         Processor.setForeground(Color.white);
