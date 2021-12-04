@@ -19,6 +19,7 @@ public class MenuPage implements ActionListener {
     private LoginController loginController;
     private JButton lookupButton = new JButton("Lookup Processed Items");
     private JButton deleteUserButton = new JButton("Delete Current User");
+    private JButton Allclosets = new JButton("Overall Closets Lookup");
 
     MenuPage(String username, PickupSystem pckSys, LoginController loginC) throws IOException, ClassNotFoundException {
         this.userID = username;
@@ -65,6 +66,12 @@ public class MenuPage implements ActionListener {
         lookupButton.setForeground(Color.darkGray);
         lookupButton.setFocusable(false);
         lookupButton.addActionListener(this);
+
+        Allclosets.setBounds(220, 360,180,25);
+        Allclosets.setFont(new Font(null, Font.PLAIN,12));
+        Allclosets.setForeground(Color.darkGray);
+        Allclosets.setFocusable(false);
+        Allclosets.addActionListener(this);
 
         frame.add(userLabel);
         frame.add(depositButton);
@@ -115,6 +122,10 @@ public class MenuPage implements ActionListener {
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
+        }
+        if(e.getSource()==Allclosets){
+            frame.dispose();
+            ContainerMap containerMap = new ContainerMap(userID, this.pickupSystem, this.loginController);
         }
         if(e.getSource()==lookupButton){
             //todo:exception
