@@ -26,9 +26,9 @@ public class ItemManager implements Serializable{
         this.picker = picker;
         this.timer = timer;
         Containerfacotry cf = new Containerfacotry();
-        Locker l = (Locker)cf.get_container("D:\\delivery file\\Locker");
-        Freezer f = (Freezer)cf.get_container("D:\\delivery file\\Freezer");
-        Refrigerator r = (Refrigerator)cf.get_container("D:\\delivery file\\Refrigerator");
+        Locker l = (Locker)cf.get_container("Locker");
+        Freezer f = (Freezer)cf.get_container("Freezer");
+        Refrigerator r = (Refrigerator)cf.get_container("Refrigerator");
         storer.setup(imap, l, f, r);
         picker.setup(imap, l, f, r);
     }
