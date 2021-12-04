@@ -18,6 +18,7 @@ public class MenuPage implements ActionListener {
     private PickupSystem pickupSystem;
     private LoginController loginController;
     private JButton lookupButton = new JButton("Lookup Processed Items");
+    private JButton deleteUserButton = new JButton("Delete Current User");
 
     MenuPage(String username, PickupSystem pckSys, LoginController loginC) throws IOException, ClassNotFoundException {
         this.userID = username;
@@ -45,6 +46,12 @@ public class MenuPage implements ActionListener {
         pickupButton.setFocusable(false);
         pickupButton.addActionListener(this);
 
+        deleteUserButton.setBounds(220, 300,150,25);
+        deleteUserButton.setFont(new Font(null, Font.PLAIN,12));
+        deleteUserButton.setForeground(Color.darkGray);
+        deleteUserButton.setFocusable(false);
+        deleteUserButton.addActionListener(this);
+
         logoutButton.setBounds(270, 210,100,20);
         logoutButton.setFont(new Font(null, Font.PLAIN,12));
         logoutButton.setBorder(BorderFactory.createLineBorder(Color.darkGray));
@@ -64,6 +71,7 @@ public class MenuPage implements ActionListener {
         frame.add(pickupButton);
         frame.add(logoutButton);
         frame.add(lookupButton);
+        frame.add(deleteUserButton);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setBackground(Color.darkGray);
@@ -114,6 +122,19 @@ public class MenuPage implements ActionListener {
             String info = String.join("<br>", this.pickupSystem.get_processor_item(userID));
             JOptionPane.showMessageDialog(null, "<html>" + "Item ID:" +
                     "<br>" + info +"<html>");
+        }
+
+        if(e.getSource()==deleteUserButton){
+            this.loginController.userDelete(userID);
+            JOptionPane.showMessageDialog(null, "User Deleted");
+            frame.dispose();
+            try {
+                LoginPage loginPage = new LoginPage(this.pickupSystem, this.loginController);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 }
