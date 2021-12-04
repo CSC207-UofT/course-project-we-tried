@@ -14,6 +14,7 @@ public class UserManager implements Serializable{
     private final Map<String, List<String>> imap = new HashMap<String, List<String>>();
     private User currentUser;
 
+    public UserManager(){};
     /**
      * check if the username is a valid name for register
      * @param name username
