@@ -12,6 +12,9 @@ public class ItemManager implements Serializable{
     private final ItemSearcher searcher;
     private final ItemPicker picker;
     private final ItemTimer timer;
+    public static final int FREEZER_SIZE = 6;
+    public static final int REFRIGERATOR_SIZE = 12;
+    public static final int LOCKER_SIZE = 15;
 
     /**
      * A new ItemManager, with a preset series of containers.
@@ -117,7 +120,7 @@ public class ItemManager implements Serializable{
     public Map<String, String> get_package_id(String container){
         Map<String, String> idm = new LinkedHashMap<>();
         if (Objects.equals(container, "freezer")){
-            for(int x = 1; x <= 6; x=x+1){
+            for(int x = 1; x <= FREEZER_SIZE; x=x+1){
                 String loc = "F"+"0" + x;
                 idm.put(loc,null);
             }
@@ -130,7 +133,7 @@ public class ItemManager implements Serializable{
         }
 
         if (Objects.equals(container, "refrigerator")){
-            for(int x = 1; x <= 12; x=x+1) {
+            for(int x = 1; x <= REFRIGERATOR_SIZE; x=x+1) {
                 String loc = null;
                 if (x <= 9) {
                     loc = "R" + "0" + x;
@@ -148,7 +151,7 @@ public class ItemManager implements Serializable{
         }
 
         if (Objects.equals(container, "locker")){
-            for (int x = 1; x <= 15; x = x + 1) {
+            for (int x = 1; x <= LOCKER_SIZE; x = x + 1) {
                 String loc = null;
                 if (x <= 9) {
                     loc = "L" + "0" + x;

@@ -4,6 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Item implements Serializable{
+    public static final int ID_INDEX = 0;
+    public static final int SENDER_INDEX = 1;
+    public static final int RECEIVER_INDEX = 2;
+    public static final int DESCRIPTION_INDEX = 3;
+    public static final int LOCATION_INDEX = 4;
+    public static final int PROCESSOR_INDEX = 5;
+    public static final int REQUIREMENT_INDEX = 6;
+    public static final int INFO_CAPACITY = 8;
+
     /**
      * The id of the item.
      */
@@ -83,14 +92,14 @@ public class Item implements Serializable{
     }
 
     public List<String> getInfo(){
-        List<String> ltlt = new ArrayList<>(8);
-        ltlt.add(0,this.id);
-        ltlt.add(1, this.itemInfo.get(0));
-        ltlt.add(2, this.itemInfo.get(1));
-        ltlt.add(3, this.itemInfo.get(2));
-        ltlt.add(4, this.location);
-        ltlt.add(5, this.processor);
-        ltlt.add(6, this.storageRequirement);
+        List<String> ltlt = new ArrayList<>(INFO_CAPACITY);
+        ltlt.add(ID_INDEX,this.id);
+        ltlt.add(SENDER_INDEX, this.itemInfo.get(0));
+        ltlt.add(RECEIVER_INDEX, this.itemInfo.get(1));
+        ltlt.add(DESCRIPTION_INDEX, this.itemInfo.get(2));
+        ltlt.add(LOCATION_INDEX, this.location);
+        ltlt.add(PROCESSOR_INDEX, this.processor);
+        ltlt.add(REQUIREMENT_INDEX, this.storageRequirement);
 
         return ltlt;
     }
