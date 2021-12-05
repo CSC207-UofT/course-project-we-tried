@@ -19,28 +19,6 @@ public class RefrigeratorTest {
     }
 
     @Test
-    public void getNumberOfItems() throws IOException {
-        Map<String, Boolean> rmap = new HashMap<>(2);
-        rmap.put("R01", false);
-        rmap.put("R02", false);
-        Locker R = new Locker(2, rmap);
-        assertEquals(0, R.getNumberOfItems());
-        R.modifyContainerAdd("R01");
-        assertEquals(1, R.getNumberOfItems());
-    }
-
-    @Test
-    public void getVacancy() throws IOException {
-        Map<String, Boolean> rmap = new HashMap<>(2);
-        rmap.put("R01", false);
-        rmap.put("R02", false);
-        Locker R = new Locker(2, rmap);
-        assertEquals(2, R.getVacancy());
-        R.modifyContainerAdd("R01");
-        assertEquals(1, R.getVacancy());
-    }
-
-    @Test
     public void nextVacantLocation_no_location() throws IOException {
         Map<String, Boolean> rmap = new HashMap<String, Boolean>();
         Refrigerator r = new Refrigerator(3,rmap);
