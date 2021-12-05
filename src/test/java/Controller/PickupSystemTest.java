@@ -113,11 +113,17 @@ public class PickupSystemTest {
         i.addItem("id4",i_info,"L", "queenie");
         i.addItem("id5",i_info,"L", "queenie");
         i.addItem("id6",i_info,"L", "queenie");
-        ArrayList<String> r_list = new ArrayList<String>(Arrays.asList("id1","id2"));
-        ArrayList<String> f_list = new ArrayList<String>(Arrays.asList("id3"));
-        ArrayList<String> L_list = new ArrayList<String>(Arrays.asList("id4","id5","id6"));
-        assertEquals(L_list, p.get_package("locker"));
-        assertEquals(r_list, p.get_package("refrigerator"));
-        assertEquals(f_list, p.get_package("freezer"));
+        Map<String,String> idm_r = new LinkedHashMap<>();
+        Map<String,String> idm_f = new LinkedHashMap<>();
+        Map<String,String> idm_L = new LinkedHashMap<>();
+        idm_r.put("R01", "id1");
+        idm_r.put("R02", "id2");
+        idm_f.put("F01", "id3");
+        idm_L.put("L01", "id4");
+        idm_L.put("L02", "id5");
+        idm_L.put("L03", "id6");
+        assertEquals(idm_L, p.get_package("locker"));
+        assertEquals(idm_r, p.get_package("refrigerator"));
+        assertEquals(idm_f, p.get_package("freezer"));
         }
 }

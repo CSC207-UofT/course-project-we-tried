@@ -73,7 +73,7 @@ public class PickupSystem {
         return str;
     }
 
-    public ArrayList<String>  get_package(String container){
+    public Map<String, String>  get_package(String container){
         return iman.get_package_id(container);
     }
     /**
