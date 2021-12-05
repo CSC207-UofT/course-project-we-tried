@@ -1,8 +1,6 @@
 package UI;
 import Controller.LoginController;
 import Controller.PickupSystem;
-import Entities.Item;
-import UseCase.ItemManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,83 +21,80 @@ public class OperationExtraction implements ActionListener{
     private JButton Pickup = new JButton();
     private JButton Menu = new JButton();
     private String id = new String();
-    private JLabel DepTime = new JLabel();
+    private JLabel DepositTime = new JLabel();
     private JLabel DDL = new JLabel();
     private JLabel StorageFee = new JLabel();
     private PickupSystem pckSys = new PickupSystem();
-    private LoginController lgctrol = new LoginController();
+    private LoginController logincontrol = new LoginController();
     private String pkgId = new String();
-    private ArrayList<String> ltlt = new ArrayList<>();
+    private ArrayList<String> SearchInfoList = new ArrayList<>();
 
     public OperationExtraction(String id, String pkgId,PickupSystem pckSys, LoginController lgctrol) throws IOException {
         this.id = id;
-        this.lgctrol = lgctrol;
+        this.logincontrol = lgctrol;
         this.pkgId = pkgId;
-        this.ltlt = (ArrayList<String>) pckSys.search(pkgId);
+        this.SearchInfoList = (ArrayList<String>) pckSys.search(pkgId);
         this.pckSys = pckSys;
 
-        ID = new JLabel("Package ID: " + ltlt.get(0));
+        ID = new JLabel("Package ID: " + SearchInfoList.get(0));
         ID.setBounds(100, 50, 300, 25);
         ID.setFont(new Font(null,Font.PLAIN, 13));
         ID.setForeground(Color.white);
         frame.add(ID);
 
-        Sender = new JLabel("Sender: " + ltlt.get(1));
+        Sender = new JLabel("Sender: " + SearchInfoList.get(1));
         Sender.setBounds(100, 75, 300, 25);
         Sender.setFont(new Font(null,Font.PLAIN, 13));
         Sender.setForeground(Color.white);
         frame.add(Sender);
 
-        Receiver = new JLabel("Receiver: " + ltlt.get(2));
+        Receiver = new JLabel("Receiver: " + SearchInfoList.get(2));
         Receiver.setBounds(100, 100, 300, 25);
         Receiver.setFont(new Font(null,Font.PLAIN, 13));
         Receiver.setForeground(Color.white);
         frame.add(Receiver);
 
-        Description = new JLabel("Description: " + ltlt.get(3));
+        Description = new JLabel("Description: " + SearchInfoList.get(3));
         Description.setBounds(100, 125, 300, 25);
         Description.setFont(new Font(null,Font.PLAIN, 13));
         Description.setForeground(Color.white);
         frame.add(Description);
 
-        Location = new JLabel("Location: " + ltlt.get(4));
+        Location = new JLabel("Location: " + SearchInfoList.get(4));
         Location.setBounds(100, 150, 300, 25);
         Location.setFont(new Font(null,Font.PLAIN, 13));
         Location.setForeground(Color.white);
         frame.add(Location);
 
-        StgReq = new JLabel("Storage Requirement: " + ltlt.get(6));
+        StgReq = new JLabel("Storage Requirement: " + SearchInfoList.get(6));
         StgReq.setBounds(100, 175, 300, 25);
         StgReq.setFont(new Font(null,Font.PLAIN, 13));
         StgReq.setForeground(Color.white);
         frame.add(StgReq);
 
-        Processor = new JLabel("Processor: " + ltlt.get(5));
+        Processor = new JLabel("Processor: " + SearchInfoList.get(5));
         Processor.setBounds(100, 200, 300, 25);
         Processor.setFont(new Font(null,Font.PLAIN, 13));
         Processor.setForeground(Color.white);
         frame.add(Processor);
 
-        DepTime = new JLabel("Deposit Time: " + ltlt.get(7));
-        DepTime.setBounds(100, 225, 300, 25);
-        DepTime.setFont(new Font(null,Font.PLAIN, 13));
-        DepTime.setForeground(Color.white);
-        frame.add(DepTime);
+        DepositTime = new JLabel("Deposit Time: " + SearchInfoList.get(7));
+        DepositTime.setBounds(100, 225, 300, 25);
+        DepositTime.setFont(new Font(null,Font.PLAIN, 13));
+        DepositTime.setForeground(Color.white);
+        frame.add(DepositTime);
 
-        DDL = new JLabel("Free Storage EXPIRED at: " + ltlt.get(8));
+        DDL = new JLabel("Free Storage EXPIRED at: " + SearchInfoList.get(8));
         DDL.setBounds(100, 250, 300, 25);
         DDL.setFont(new Font(null,Font.PLAIN, 13));
         DDL.setForeground(Color.white);
         frame.add(DDL);
 
-        StorageFee = new JLabel("Additional fee needed: " + ltlt.get(9));
+        StorageFee = new JLabel("Additional fee needed: " + SearchInfoList.get(9));
         StorageFee.setBounds(100, 275, 300, 25);
         StorageFee.setFont(new Font(null,Font.PLAIN, 13));
         StorageFee.setForeground(Color.white);
         frame.add(StorageFee);
-
-        //iteminfo = new JLabel(pckSys.search(id));
-        //panel.add(iteminfo);
 
         Pickup = new JButton("Pick up the item");
         Pickup.setBounds(90, 305, 150, 30);
@@ -131,7 +126,7 @@ public class OperationExtraction implements ActionListener{
         if (e.getSource()==Pickup){
             try {
                 //pckSys.pickup(pkgId);
-                pckSys.pickup(this.ltlt.get(0));
+                pckSys.pickup(this.SearchInfoList.get(0));
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -140,7 +135,7 @@ public class OperationExtraction implements ActionListener{
         if (e.getSource()==Menu) {
             frame.dispose();
             try {
-                MenuPage menu = new MenuPage(id, pckSys, lgctrol);
+                MenuPage menu = new MenuPage(id, pckSys, logincontrol);
             } catch (IOException ex) {
                 ex.printStackTrace();
             } catch (ClassNotFoundException ex) {

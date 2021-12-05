@@ -15,25 +15,24 @@ public class OperationStore implements ActionListener {
     private JLabel pkgID = new JLabel("ID:");
     private JTextField IDID = new JTextField();
     private JLabel Sender = new JLabel("Sender:");
-    private JTextField sdsd = new JTextField();
+    private JTextField SenderText = new JTextField();
     private JLabel Receiver = new JLabel("Receiver:");
-    private JTextField rere = new JTextField();
+    private JTextField ReceiverText = new JTextField();
     private JLabel Description = new JLabel("Description:");
-    private JTextField dede = new JTextField();
+    private JTextField DescriptionText = new JTextField();
     private JLabel StgRequire = new JLabel("Storage Requirement:");
-    private JTextField ReqReq = new JTextField();
     private JButton Store = new JButton("Store");
     private JButton Menu = new JButton("Menu");
     private PickupSystem pckSys;
     private String UserID = new String();
-    private LoginController lgcontrol = new LoginController();
+    private LoginController loginController = new LoginController();
     private String[] Choice = {"Locker", "Refrigerator", "Freezer"};
     private JComboBox<String> Choices = new JComboBox<>(Choice);
 
     public OperationStore(String userID, PickupSystem pckSys, LoginController lgcontrol) throws IOException, ClassNotFoundException {
         this.pckSys = pckSys;
         this.UserID = userID;
-        this.lgcontrol = lgcontrol;
+        this.loginController = lgcontrol;
 
         Instruction.setBounds(85, 50, 300, 20);
         Instruction.setFont(new Font(null, Font.PLAIN, 13));
@@ -49,19 +48,19 @@ public class OperationStore implements ActionListener {
         Sender.setFont(new Font(null, Font.PLAIN, 13));
         Sender.setForeground(Color.white);
 
-        sdsd.setBounds(185, 125, 150, 24);
+        SenderText.setBounds(185, 125, 150, 24);
 
         Receiver.setBounds(105, 160, 80, 24);
         Receiver.setFont(new Font(null, Font.PLAIN, 13));
         Receiver.setForeground(Color.white);
 
-        rere.setBounds(185, 160, 150, 24);
+        ReceiverText.setBounds(185, 160, 150, 24);
 
         Description.setBounds(105, 195, 80, 24);
         Description.setFont(new Font(null, Font.PLAIN, 13));
         Description.setForeground(Color.white);
 
-        dede.setBounds(185, 195, 150, 24);
+        DescriptionText.setBounds(185, 195, 150, 24);
 
         StgRequire.setBounds(105, 230, 150, 24);
         StgRequire.setFont(new Font(null, Font.PLAIN, 13));
@@ -87,11 +86,11 @@ public class OperationStore implements ActionListener {
         frame.add(pkgID);
         frame.add(IDID);
         frame.add(Sender);
-        frame.add(sdsd);
+        frame.add(SenderText);
         frame.add(Receiver);
-        frame.add(rere);
+        frame.add(ReceiverText);
         frame.add(Description);
-        frame.add(dede);
+        frame.add(DescriptionText);
         frame.add(StgRequire);
         frame.add(Choices);
         frame.add(Store);
@@ -111,9 +110,9 @@ public class OperationStore implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==Store) {
             ArrayList<String> infoinfo = new ArrayList<>(3);
-            infoinfo.add(sdsd.getText());
-            infoinfo.add(rere.getText());
-            infoinfo.add(dede.getText());
+            infoinfo.add(SenderText.getText());
+            infoinfo.add(ReceiverText.getText());
+            infoinfo.add(DescriptionText.getText());
             String stored_item = null;
             String pointer;
             if (Choices.getSelectedItem().equals("Freezer")){
@@ -163,7 +162,7 @@ public class OperationStore implements ActionListener {
             frame.dispose();
             //JFrame add the menu function;
             try {
-                MenuPage menuPage = new MenuPage(UserID, pckSys, lgcontrol);
+                MenuPage menuPage = new MenuPage(UserID, pckSys, loginController);
             } catch (IOException ex) {
                 ex.printStackTrace();
             } catch (ClassNotFoundException ex) {

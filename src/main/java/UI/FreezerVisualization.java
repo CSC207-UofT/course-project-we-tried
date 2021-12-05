@@ -11,20 +11,19 @@ import java.util.Map;
 
 public class FreezerVisualization implements ActionListener {
     private JFrame frame = new JFrame();
-    private ImageIcon LockerImage = new ImageIcon("src/Locker.png");
     private JButton Menu = new JButton("Menu");
     private JButton Search = new JButton("Search");
     private JButton Container = new JButton("Return");
     private ImageIcon VImage = new ImageIcon("src/VerticalF.png");
     private ImageIcon HImage = new ImageIcon("src/Horizontal.png");
-    private ImageIcon Vb = new ImageIcon("src/VerticalborderF.png");
+    private ImageIcon VerticalBorder = new ImageIcon("src/VerticalborderF.png");
     private JLabel Vertivcalline1 = new JLabel(VImage);
     private JLabel Vertivcalline2 = new JLabel(VImage);
     private JLabel Horizontalline1 = new JLabel(HImage);
     private JLabel Horizontalline3 = new JLabel(HImage);
     private JLabel Horizontalline4 = new JLabel(HImage);
-    private JLabel VerticalBorder1 = new JLabel(Vb);
-    private JLabel VerticalBorder2 = new JLabel(Vb);
+    private JLabel VerticalBorder1 = new JLabel(VerticalBorder);
+    private JLabel VerticalBorder2 = new JLabel(VerticalBorder);
     private PickupSystem pickupSystem;
     private LoginController loginController;
     private String userID = new String();

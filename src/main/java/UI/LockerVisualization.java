@@ -11,13 +11,12 @@ import java.util.Map;
 
 public class LockerVisualization implements ActionListener{
     private JFrame frame = new JFrame();
-    private ImageIcon LockerImage= new ImageIcon("src/Locker.png");
     private JButton Menu = new JButton("Menu");
     private JButton Search = new JButton("Search");
     private JButton Container = new JButton("Return");
     private ImageIcon VImage= new ImageIcon("src/Vertical.png");
     private ImageIcon HImage= new ImageIcon("src/Horizontal.png");
-    private ImageIcon Vb = new ImageIcon("src/Verticalborder.png");
+    private ImageIcon VerticalBorder = new ImageIcon("src/Verticalborder.png");
     private JLabel Vertivcalline1 = new JLabel(VImage);
     private JLabel Vertivcalline2 = new JLabel(VImage);
     private JLabel Horizontalline1 = new JLabel(HImage);
@@ -26,8 +25,8 @@ public class LockerVisualization implements ActionListener{
     private JLabel Horizontalline4 = new JLabel(HImage);
     private JLabel Horizontalline5 = new JLabel(HImage);
     private JLabel Horizontalline6 = new JLabel(HImage);
-    private JLabel VerticalBorder1 = new JLabel(Vb);
-    private JLabel VerticalBorder2 = new JLabel(Vb);
+    private JLabel VerticalBorder1 = new JLabel(VerticalBorder);
+    private JLabel VerticalBorder2 = new JLabel(VerticalBorder);
     private PickupSystem pickupSystem;
     private LoginController loginController;
     private String userID = new String();

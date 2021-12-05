@@ -11,13 +11,12 @@ import java.util.Map;
 
 public class RefridgeratorVisualization implements ActionListener{
     private JFrame frame = new JFrame();
-    private ImageIcon LockerImage= new ImageIcon("src/Locker.png");
     private JButton Menu = new JButton("Main Menu");
     private JButton Search = new JButton("Search");
     private JButton Container = new JButton("Return");
     private ImageIcon VImage= new ImageIcon("src/VerticalR.png");
     private ImageIcon HImage= new ImageIcon("src/Horizontal.png");
-    private ImageIcon Vb = new ImageIcon("src/VerticalborderR.png");
+    private ImageIcon Verticalborder = new ImageIcon("src/VerticalborderR.png");
     private JLabel Vertivcalline1 = new JLabel(VImage);
     private JLabel Vertivcalline2 = new JLabel(VImage);
     private JLabel Horizontalline1 = new JLabel(HImage);
@@ -25,8 +24,8 @@ public class RefridgeratorVisualization implements ActionListener{
     private JLabel Horizontalline4 = new JLabel(HImage);
     private JLabel Horizontalline5 = new JLabel(HImage);
     private JLabel Horizontalline6 = new JLabel(HImage);
-    private JLabel VerticalBorder1 = new JLabel(Vb);
-    private JLabel VerticalBorder2 = new JLabel(Vb);
+    private JLabel VerticalBorder1 = new JLabel(Verticalborder);
+    private JLabel VerticalBorder2 = new JLabel(Verticalborder);
     private PickupSystem pickupSystem;
     private LoginController loginController;
     private String userID = new String();
