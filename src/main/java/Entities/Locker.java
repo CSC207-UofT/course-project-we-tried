@@ -68,16 +68,25 @@ public class Locker implements Container, Serializable{
         this.lmap.replace(location, true, false);
     }
 
+    /**
+     * Return the Locker's capacity.
+     */
     @Override
     public int getCapacity() {
         return this.capacity;
     }
 
+    /**
+     * Return the number of items in Locker.
+     */
     @Override
     public int getNumberOfItems() {
         return this.number_items;
     }
 
+    /**
+     * Return the Locker's vacancy.
+     */
     @Override
     public int getVacancy() {
         return this.Vacancy;

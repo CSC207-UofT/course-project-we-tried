@@ -43,6 +43,9 @@ public class PickupSystem {
         save_file();
     }
 
+    /**
+     * Helper function for save the file.
+     */
     private void save_file() throws IOException {
         FileOutputStream fos = new FileOutputStream("./data file/xyz.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -74,18 +77,26 @@ public class PickupSystem {
     public Map<String, String>  get_package(String container){
         return iman.get_package_id(container);
     }
+
     /**
-     * Search item's information.
-     * @param id Item's id.
-     * @return return the item's information.
+     * Search for an item with id.
+     * @param id the identification number of the item to be searched.
+     * @return return the information of the item fund, in a list; if the item is not fund, return null.
      */
     public List<String> search(String id){
         return iman.searchItem(id);
         }
 
+    /**
+     * Return the current ItemManager.
+     */
     public ItemManager getIman() {
         return iman;
     }
+
+    /**
+     * Return the current UserManager.
+     */
     public UserManager getUman(){
         return uman;
     }

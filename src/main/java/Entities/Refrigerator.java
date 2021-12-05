@@ -68,16 +68,25 @@ public class Refrigerator implements Container, Serializable {
         this.rmap.replace(location, true, false);
     }
 
+    /**
+     * Return the Refrigerator's capacity.
+     */
     @Override
     public int getCapacity() {
         return this.capacity;
     }
 
+    /**
+     * Return the number of items in Refrigerator.
+     */
     @Override
     public int getNumberOfItems() {
         return this.number_items;
     }
 
+    /**
+     * Return the Refrigerator's vacancy.
+     */
     @Override
     public int getVacancy() {
         return this.Vacancy;

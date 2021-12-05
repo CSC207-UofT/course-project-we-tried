@@ -84,7 +84,6 @@ public class LoginController {
         oos.writeObject(this.uman);
     }
 
-
     /**
      * Get UserManager.
      * @return Return the usermanager.
