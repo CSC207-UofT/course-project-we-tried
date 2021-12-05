@@ -245,6 +245,7 @@ public class ItemManagerTest {
         assertEquals(idm_f, i.get_package_id("freezer"));
         idm_r.replace("R01", null);
         i.removeItem("id1");
+        i.get_package_id("refrigerator");
         assertEquals(idm_r, i.get_package_id("refrigerator"));
         assertEquals(idm_l, i.get_package_id("locker"));
         assertEquals(idm_f, i.get_package_id("freezer"));
