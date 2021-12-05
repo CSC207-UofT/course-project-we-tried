@@ -67,6 +67,7 @@ public class LoginPage implements ActionListener {
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setTitle("Please Login");
     }
 
     @Override

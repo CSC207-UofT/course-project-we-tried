@@ -284,6 +284,7 @@ public class RefridgeratorVisualization implements ActionListener{
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setTitle("Refrigerator");
     }
 
     public void actionPerformed(ActionEvent e) {

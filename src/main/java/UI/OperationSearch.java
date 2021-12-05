@@ -69,6 +69,7 @@ public class OperationSearch implements ActionListener{
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setTitle("Search");
     }
 
     @Override

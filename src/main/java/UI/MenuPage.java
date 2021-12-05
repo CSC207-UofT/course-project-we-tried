@@ -90,6 +90,7 @@ public class MenuPage implements ActionListener {
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setTitle("Main Menu");
 
     }
 

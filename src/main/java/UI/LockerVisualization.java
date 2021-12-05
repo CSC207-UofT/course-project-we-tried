@@ -334,6 +334,7 @@ public class LockerVisualization implements ActionListener{
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setTitle("Locker");
     }
 
     public void actionPerformed(ActionEvent e) {

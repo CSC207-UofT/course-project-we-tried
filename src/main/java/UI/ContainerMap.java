@@ -67,6 +67,7 @@ public class ContainerMap implements ActionListener {
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setTitle("Closet Menu");
     }
 
     @Override
