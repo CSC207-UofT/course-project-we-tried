@@ -11,6 +11,12 @@ import static org.junit.Assert.*;
 public class LoginControllerTest {
 
     @Test
+    public void LoginController() throws IOException{
+        LoginController l = new LoginController();
+        assertSame("", l.getCurrentUser());
+    }
+
+    @Test
     public void user() throws IOException {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
