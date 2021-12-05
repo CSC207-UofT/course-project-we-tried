@@ -73,8 +73,28 @@ public class RefrigeratorTest {
         p.put("b",true);
         p.put("c",false);
         assertEquals("c", r.nextVacantLocation());
+    }
 
+    @Test
+    public void getNumberOfItems() throws IOException {
+        Map<String, Boolean> rmap = new HashMap<>(2);
+        rmap.put("R01", false);
+        rmap.put("R02", false);
+        Refrigerator R = new Refrigerator(2, rmap);
+        assertEquals(0, R.getNumberOfItems());
+        R.modifyContainerAdd("F01");
+        assertEquals(1, R.getNumberOfItems());
+    }
 
+    @Test
+    public void getVacancy() throws IOException {
+        Map<String, Boolean> rmap = new HashMap<>(2);
+        rmap.put("R01", false);
+        rmap.put("R02", false);
+        Refrigerator R = new Refrigerator(2, rmap);
+        assertEquals(2, R.getVacancy());
+        R.modifyContainerAdd("R01");
+        assertEquals(1, R.getVacancy());
     }
 
     @Test

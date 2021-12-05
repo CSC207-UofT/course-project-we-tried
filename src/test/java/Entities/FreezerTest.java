@@ -21,20 +21,20 @@ public class FreezerTest {
     @Test
     public void getCapacity() throws IOException {
         Map<String, Boolean> fmap = new HashMap<>(2);
-        fmap.put("L01", false);
-        fmap.put("L02", false);
-        Locker F = new Locker(2, fmap);
+        fmap.put("F01", false);
+        fmap.put("F02", false);
+        Freezer F = new Freezer(2, fmap);
         assertEquals(2, F.getCapacity());
     }
 
     @Test
     public void getNumberOfItems() throws IOException {
         Map<String, Boolean> fmap = new HashMap<>(2);
-        fmap.put("L01", false);
-        fmap.put("L02", false);
-        Locker F = new Locker(2, fmap);
+        fmap.put("F01", false);
+        fmap.put("F02", false);
+        Freezer F = new Freezer(2, fmap);
         assertEquals(0, F.getNumberOfItems());
-        F.modifyContainerAdd("L01");
+        F.modifyContainerAdd("F01");
         assertEquals(1, F.getNumberOfItems());
     }
 
@@ -43,7 +43,7 @@ public class FreezerTest {
         Map<String, Boolean> fmap = new HashMap<>(2);
         fmap.put("L01", false);
         fmap.put("L02", false);
-        Locker F = new Locker(2, fmap);
+        Freezer F = new Freezer(2, fmap);
         assertEquals(2, F.getVacancy());
         F.modifyContainerAdd("L01");
         assertEquals(1, F.getVacancy());
@@ -53,7 +53,7 @@ public class FreezerTest {
     public void generateMap() throws IOException {
         Map<String, Boolean> fmap = new HashMap<>(1);
         fmap.put("L01", false);
-        Locker F = new Locker(1, fmap);
+        Freezer F = new Freezer(1, fmap);
         assertNotNull(F.generateMap());
     }
 
@@ -63,7 +63,7 @@ public class FreezerTest {
         fmap.put("L01", false);
         fmap.put("L02", true);
         fmap.put("L03", false);
-        Locker F = new Locker(3, fmap);
+        Freezer F = new Freezer(3, fmap);
         assertEquals("L01", F.nextVacantLocation());
         assertEquals("L01", F.nextVacantLocation());
     }
