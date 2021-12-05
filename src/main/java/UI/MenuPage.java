@@ -141,7 +141,7 @@ public class MenuPage implements ActionListener {
         if(e.getSource()==lookupButton){
             String info = String.join("<br>", this.pickupSystem.get_processor_item(userID));
             JOptionPane.showMessageDialog(null, "<html>" + "Item ID:" +
-                    "<br>" + info +"<html>");
+                    "<br>" + info +"<html>", "", JOptionPane.INFORMATION_MESSAGE);
         }
 
         if(e.getSource()==deleteUserButton){

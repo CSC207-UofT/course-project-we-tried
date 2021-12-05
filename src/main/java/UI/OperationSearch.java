@@ -78,7 +78,8 @@ public class OperationSearch implements ActionListener{
 
         if (e.getSource()==Search){
             if (option == null){
-                JOptionPane.showMessageDialog(null, "Item not found");
+                JOptionPane.showMessageDialog(null, "Item not found", "Alert!",
+                        JOptionPane.INFORMATION_MESSAGE);
             }
             else{
                 frame.dispose();

@@ -136,7 +136,8 @@ public class OperationStore implements ActionListener {
 
             if (stored_item != null){
                 if(stored_item.equals("*")){
-                    JOptionPane.showMessageDialog(null, "Item already Exist with same ID.");
+                    JOptionPane.showMessageDialog(null, "Item already Exist with same ID.",
+                            "Alert!", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else{
                     JOptionPane.showMessageDialog(null,
@@ -146,14 +147,17 @@ public class OperationStore implements ActionListener {
 
             else {
                 if (Choices.getSelectedItem().equals("Freezer")){
-                    JOptionPane.showMessageDialog(null, "The Freezer is currently full.");
+                    JOptionPane.showMessageDialog(null, "The Freezer is currently full.",
+                            "Alert!", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else  if (Choices.getSelectedItem().equals("Locker")){
-                    JOptionPane.showMessageDialog(null, "The Locker is currently full.");
+                    JOptionPane.showMessageDialog(null, "The Locker is currently full.",
+                            "Alert!", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else if(Choices.getSelectedItem().equals("Refrigerator")){
                     JOptionPane.showMessageDialog(null,
-                            "The Refrigerator is currently full.");
+                            "The Refrigerator is currently full.",
+                            "Alert!", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         }

@@ -130,7 +130,8 @@ public class OperationExtraction implements ActionListener{
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-            JOptionPane.showMessageDialog(null, "Package successfully removed");
+            JOptionPane.showMessageDialog(null, "Package successfully removed",
+                    "", JOptionPane.INFORMATION_MESSAGE);
         }
         if (e.getSource()==Menu) {
             frame.dispose();
