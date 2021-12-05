@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class LockerVisualization implements ActionListener{
     private JFrame frame = new JFrame();
@@ -67,7 +68,7 @@ public class LockerVisualization implements ActionListener{
         this.loginController = loginC;
         this.userID = username;
 
-        ArrayList<String> f_list = pckSys.get_package("locker");
+        Map<String,String> f_list = pckSys.get_package("locker");
 
         Horizontalline1.setBounds(0, 20, 800, 20);
         frame.add(Horizontalline1);

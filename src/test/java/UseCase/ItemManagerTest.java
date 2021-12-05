@@ -52,10 +52,10 @@ public class ItemManagerTest {
         User u = new User("queenie", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
         iman.addItem("test_id1",i_info,"R", "queenie");
-        assertEquals("r01", iman.getItemMap().get("test_id1").getLocation());
+        assertEquals("R01", iman.getItemMap().get("test_id1").getLocation());
         assertEquals("queenie", iman.getItemMap().get("test_id1").getProcessor());
         iman.addItem("test_id2",i_info,"R", "queenie");
-        assertEquals("r02", iman.getItemMap().get("test_id2").getLocation());
+        assertEquals("R02", iman.getItemMap().get("test_id2").getLocation());
         assertEquals("queenie", iman.getItemMap().get("test_id2").getProcessor());
     }
 
@@ -65,7 +65,7 @@ public class ItemManagerTest {
         User u = new User("queenie", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
         iman.addItem("test_id", i_info, "F","queenie");
-        assertEquals("f01", iman.getItemMap().get("test_id").getLocation());
+        assertEquals("F01", iman.getItemMap().get("test_id").getLocation());
     }
 
     @Test
@@ -76,7 +76,7 @@ public class ItemManagerTest {
         iman.addItem("test_id_L", i_info,"L","queenie");
         iman.addItem("test_id_F", i_info,"F","queenie");
         assertEquals("L01", iman.getItemMap().get("test_id_L").getLocation());
-        assertEquals("f01", iman.getItemMap().get("test_id_F").getLocation());
+        assertEquals("F01", iman.getItemMap().get("test_id_F").getLocation());
     }
 
     @Test
@@ -85,9 +85,14 @@ public class ItemManagerTest {
         User u = new User("queenie", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
         iman.addItem("test_id", i_info, "F","queenie");
-        assertEquals("f01", iman.getItemMap().get("test_id").getLocation());
+        assertEquals("F01", iman.getItemMap().get("test_id").getLocation());
         iman.addItem("test_o", i_info, "F","queenie");
-        assertNull(iman.searchItem("test_o"));
+        iman.addItem("test_1", i_info, "F","queenie");
+        iman.addItem("test_2", i_info, "F","queenie");
+        iman.addItem("test_3", i_info, "F","queenie");
+        iman.addItem("test_4", i_info, "F","queenie");
+        iman.addItem("test_5", i_info, "F","queenie");
+        assertNull(iman.searchItem("test_5"));
     }
 
     @Test
@@ -204,12 +209,18 @@ public class ItemManagerTest {
         i.addItem("id4",i_info,"L", "queenie");
         i.addItem("id5",i_info,"L", "queenie");
         i.addItem("id6",i_info,"L", "queenie");
-        ArrayList<String> r_list = new ArrayList<String>(Arrays.asList("id1","id2"));
-        ArrayList<String> f_list = new ArrayList<String>(Arrays.asList("id3"));
-        ArrayList<String> L_list = new ArrayList<String>(Arrays.asList("id4","id5","id6"));
-        assertEquals(L_list, i.get_package_id("locker"));
-        assertEquals(r_list, i.get_package_id("refrigerator"));
-        assertEquals(f_list, i.get_package_id("freezer"));
+        Map<String,String> idm_r = new LinkedHashMap<>();
+        Map<String,String> idm_f = new LinkedHashMap<>();
+        Map<String,String> idm_L = new LinkedHashMap<>();
+        idm_r.put("R01", "id1");
+        idm_r.put("R02", "id2");
+        idm_f.put("F01", "id3");
+        idm_L.put("L01", "id4");
+        idm_L.put("L02", "id5");
+        idm_L.put("L03", "id6");
+        assertEquals(idm_L, i.get_package_id("locker"));
+        assertEquals(idm_r, i.get_package_id("refrigerator"));
+        assertEquals(idm_f, i.get_package_id("freezer"));
 
     }
 }

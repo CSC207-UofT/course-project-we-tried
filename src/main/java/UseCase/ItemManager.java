@@ -2,6 +2,7 @@ package UseCase;
 
 import Entities.*;
 
+import javax.xml.stream.Location;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
@@ -128,38 +129,42 @@ public class ItemManager implements Serializable{
         return info;
     }
 
-    public void helper_package_id(ArrayList<String> p_list, String locat){
+    public void helper_package_id(Map<String, String> idm, String locat){
         for(String id: imap.keySet()){
             if(Objects.equals(imap.get(id).getLocation(), locat)){
-                p_list.add(id);
-    }}}
+                idm.put(locat,id);
+            }}}
 
-    public ArrayList<String> get_package_id(String container){
-        ArrayList<String> p_list = new ArrayList<>();
+
+    public Map<String, String> get_package_id(String container){
+        Map<String,String> idm = new LinkedHashMap<>();
         if (Objects.equals(container, "freezer")){
             for (String locat: storer.F.generateMap().keySet()){
                 if(storer.F.generateMap().get(locat)){
-                    helper_package_id(p_list,locat);
+                    helper_package_id(idm,locat);
                 }
             }
-        return p_list;
+            return idm;
         }
-        if (Objects.equals(container, "locker")){
-            for (String locat: storer.L.generateMap().keySet()){
-                if(storer.L.generateMap().get(locat)){
-                    helper_package_id(p_list,locat);
-                }
-            }
-            return p_list;
-        }
+
         if (Objects.equals(container, "refrigerator")){
             for (String locat: storer.R.generateMap().keySet()){
                 if(storer.R.generateMap().get(locat)){
-                    helper_package_id(p_list,locat);
+                    helper_package_id(idm,locat);
                 }
             }
-            return p_list;
+            return idm;
+        }
+
+        if (Objects.equals(container, "locker")){
+            for (String locat: storer.L.generateMap().keySet()){
+                if(storer.L.generateMap().get(locat)){
+                    helper_package_id(idm,locat);
+                }
+            }
+            return idm;
         }
         return null;
+        }
     }
-}
+

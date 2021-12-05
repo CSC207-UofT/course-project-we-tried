@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class FreezerVisualization implements ActionListener {
     private JFrame frame = new JFrame();
@@ -47,7 +48,7 @@ public class FreezerVisualization implements ActionListener {
         this.loginController = loginC;
         this.userID = username;
 
-        ArrayList<String> f_list = pckSys.get_package("freezer");
+        Map<String,String> f_list = pckSys.get_package("freezer");
 
         Horizontalline1.setBounds(0, 20, 800, 20);
         frame.add(Horizontalline1);
