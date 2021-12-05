@@ -89,13 +89,15 @@ public class LoginPage implements ActionListener {
         if(e.getSource()==registerButton) {
             try {
                 if(this.loginController.userRegister(userID, password)){
-                    JOptionPane.showMessageDialog(null, "Register Succeed! Please Login");
+                    JOptionPane.showMessageDialog(null, "Register Succeed! Please Login",
+                            "Register Succeed",JOptionPane.INFORMATION_MESSAGE);
                 }
                 else {
                     try {
                         if(!this.loginController.userRegister(userID, password)){
                             JOptionPane.showMessageDialog(null,
-                                    "Invalid Username or Username already Exist.");
+                                    "Invalid Username or Username already Exist.",
+                                    "Register Failure",JOptionPane.INFORMATION_MESSAGE);
                             messageLabel.setText("<html>"+ "Create username and password between " +"<br>"+
                                     "4-12 characters without special symbols"+ "<html>");
                         }
