@@ -132,13 +132,25 @@ public class ItemManager implements Serializable{
     public void helper_package_id(Map<String, String> idm, String locat){
         for(String id: imap.keySet()){
             if(Objects.equals(imap.get(id).getLocation(), locat)){
-                idm.put(locat,id);
+                int currentindex = 0;
+                for (String i : idm.keySet()){
+                    if(idm.get(i) == null){
+                        idm.put(locat,id);
+                        break;
+                    }
+                    currentindex++;
+                }
+
             }}}
 
 
     public Map<String, String> get_package_id(String container){
         Map<String,String> idm = new LinkedHashMap<>();
         if (Objects.equals(container, "freezer")){
+            for(int x = 1; x <= 6; x=x+1){
+                String loc = "F"+"0" + x;
+                idm.put(loc,null);
+            }
             for (String locat: storer.F.generateMap().keySet()){
                 if(storer.F.generateMap().get(locat)){
                     helper_package_id(idm,locat);
@@ -148,6 +160,15 @@ public class ItemManager implements Serializable{
         }
 
         if (Objects.equals(container, "refrigerator")){
+            for(int x = 1; x <= 12; x=x+1) {
+                String loc = null;
+                if (x <= 9) {
+                    loc = "R" + "0" + x;
+                } else {
+                    loc = "R" + x;
+                }
+                idm.put(loc,null);
+            }
             for (String locat: storer.R.generateMap().keySet()){
                 if(storer.R.generateMap().get(locat)){
                     helper_package_id(idm,locat);
@@ -157,6 +178,15 @@ public class ItemManager implements Serializable{
         }
 
         if (Objects.equals(container, "locker")){
+            for (int x = 1; x <= 15; x = x + 1) {
+                String loc = null;
+                if (x <= 9) {
+                    loc = "L" + "0" + x;
+                } else {
+                    loc = "L" + x;
+                }
+                idm.put(loc,null);
+            }
             for (String locat: storer.L.generateMap().keySet()){
                 if(storer.L.generateMap().get(locat)){
                     helper_package_id(idm,locat);
