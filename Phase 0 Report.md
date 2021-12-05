@@ -23,7 +23,7 @@ In the pick-up procedure, OperationUI receives the item ID provided by the custo
 
 ### Skeleton Program
 
-In the skeleton program of phase 0, we finished the pick-up function of our delivery system. Specifically, the searchItem method and the removeItem method under Itemmanager. The part is used for searching and picking up an item as shown in DemoMain.java. We manually set up two possible items (i1 and i2) and add them into the lockers(iman). With actions of entering 1 or 2 (may vary as we modify the UI during next phases), users are able to search and pick(optional) the item. We have also designed a unittest for the method RemoveItem. In the test, we check if the method could return the location stored in Item, and if it can be successfully removed after running the method.
+In the skeleton program of phase 0, we finished the pick-up function of our delivery system. Specifically, the searchItem method and the removeItem method under Itemmanager. The part is used for searching and picking up an item as shown in Main.java. We manually set up two possible items (i1 and i2) and add them into the lockers(iman). With actions of entering 1 or 2 (may vary as we modify the UI during next phases), users are able to search and pick(optional) the item. We have also designed a unittest for the method RemoveItem. In the test, we check if the method could return the location stored in Item, and if it can be successfully removed after running the method.
 
 In order to keep this use case able to run, we comment part of our controller classes. We also wrote a simplified version of the addItem method, leaving the rest of its functions as Todos.
 
