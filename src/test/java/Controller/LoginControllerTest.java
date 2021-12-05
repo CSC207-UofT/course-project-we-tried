@@ -2,14 +2,9 @@ package Controller;
 
 import Entities.User;
 import UseCase.UserManager;
-import org.junit.Assert;
 import org.junit.Test;
-
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.List;
-import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
@@ -107,14 +102,6 @@ public class LoginControllerTest {
     }
 
 
-    @Test
-    public void resetuser() throws IOException {
-        LoginController log = new LoginController();
-        UserManager u = log.getUman();
-        u.userRegister("Alan", "1234");
-        log.resetuser();
-        assertTrue(u.getUMap().isEmpty());
-    }
 
     @Test
     public void getCurrentUser() throws IOException {

@@ -4,12 +4,9 @@ import Entities.User;
 import UseCase.ItemManager;
 import UseCase.UserManager;
 import org.junit.Test;
-
 import java.io.IOException;
 import java.util.*;
-
 import static org.junit.Assert.*;
-
 public class PickupSystemTest {
 
 

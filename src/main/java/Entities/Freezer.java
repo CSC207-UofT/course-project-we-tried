@@ -53,7 +53,7 @@ public class Freezer implements Container, Serializable{
      * @param location  a string of the location of container
      */
     @Override
-    public void modifyContainerAdd(String location) throws IOException {
+    public void modifyContainerAdd(String location) {
         this.number_items = this.number_items + 1;
         this.Vacancy = this.Vacancy - 1;
         this.fmap.replace(location, false, true);
@@ -63,7 +63,7 @@ public class Freezer implements Container, Serializable{
      * @param location  a string of the location of container
      */
     @Override
-    public void modifyContainerRemove(String location) throws IOException {
+    public void modifyContainerRemove(String location) {
         this.number_items = this.number_items - 1;
         this.Vacancy = this.Vacancy + 1;
         this.fmap.replace(location, true, false);

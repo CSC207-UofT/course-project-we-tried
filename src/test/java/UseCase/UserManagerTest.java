@@ -1,26 +1,19 @@
 package UseCase;
-
-import Controller.LoginController;
-import UseCase.UserManager;
-import Entities.User;
 import Entities.Item;
-
 import java.util.*;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 public class UserManagerTest {
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
     }
 
     @Test
@@ -139,14 +132,6 @@ public class UserManagerTest {
         assertNotNull(uman.getUserImap("queenie"));
     }
 
-    @Test
-    public void reset_all_users() {
-        UserManager uman = new UserManager();
-        uman.userRegister("queenie", "test1");
-        assertNotNull(uman.lookupUser("queenie"));
-        uman.reset_all_users();
-        assertNull(uman.lookupUser("queenie"));
-    }
 
    @Test
     public void get_processor_item(){

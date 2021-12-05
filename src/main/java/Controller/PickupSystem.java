@@ -1,7 +1,5 @@
 package Controller;
 import java.io.*;
-
-import Entities.Freezer;
 import UseCase.*;
 
 import java.util.ArrayList;

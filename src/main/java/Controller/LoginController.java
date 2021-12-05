@@ -2,7 +2,6 @@ package Controller;
 import UseCase.UserManager;
 import java.io.*;
 import java.util.Objects;
-import java.util.ArrayList;
 
 public class LoginController {
 
@@ -85,13 +84,6 @@ public class LoginController {
         oos.writeObject(this.uman);
     }
 
-    /**
-     * Reset UserManager to not have any registered user.
-     */
-    public boolean resetuser(){
-        uman.reset_all_users();
-        return true;
-    }
 
     /**
      * Get UserManager.
