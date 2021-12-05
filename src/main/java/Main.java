@@ -10,7 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
 
-public class DemoMain {
+public class Main {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         /*List<String> i1_info = new ArrayList<String>(Arrays.asList("Sender: CSC", "Receiver: We_Tried", "Description: This is a package!"));
@@ -60,21 +60,8 @@ public class DemoMain {
         FileInputStream fiss = new FileInputStream("./data file/user.txt");
         ObjectInputStream oiss = new ObjectInputStream(fiss);
         UserManager um = (UserManager) oiss.readObject();
-        FileInputStream fisss = new FileInputStream("./data file/freezer.txt");
-        ObjectInputStream oisss = new ObjectInputStream(fisss);
-        Map<String, Boolean> f = (Map<String, Boolean>) oisss.readObject();
-        FileInputStream fisssss = new FileInputStream("./data file/locker.txt");
-        ObjectInputStream oisssss = new ObjectInputStream(fisssss);
-        Map<String, Boolean> l = (Map<String, Boolean>) oisssss.readObject();
-        FileInputStream fissssss = new FileInputStream("./data file/refrigerator.txt");
-        ObjectInputStream oissssss = new ObjectInputStream(fissssss);
-        Map<String, Boolean> r = (Map<String, Boolean>) oissssss.readObject();
         ois.close();
         oiss.close();
-        oisss.close();
-        oisssss.close();
-        oissssss.close();
-        im.reload(l,f,r);
         LoginController loginController = new LoginController(um);
         PickupSystem pickupSystem = new PickupSystem(im, um);
         LoginPage loginPage = new LoginPage(pickupSystem, loginController);}

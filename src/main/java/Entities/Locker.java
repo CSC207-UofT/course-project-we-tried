@@ -28,9 +28,6 @@ public class Locker implements Container, Serializable{
         this.lmap = lmap;
         this.Vacancy = capacity;
         this.number_items = 0;
-        FileOutputStream fos = new FileOutputStream("./data file/locker.txt");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(this.lmap);
     }
 
     /**
@@ -59,9 +56,6 @@ public class Locker implements Container, Serializable{
         this.number_items = this.number_items + 1;
         this.Vacancy = this.Vacancy - 1;
         this.lmap.replace(location, false, true);
-        FileOutputStream fos = new FileOutputStream("./data file/locker.txt");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(this.lmap);
     }
     /**
      * Make modifications to the container when an item is removed.
@@ -72,9 +66,6 @@ public class Locker implements Container, Serializable{
         this.number_items = this.number_items - 1;
         this.Vacancy = this.Vacancy + 1;
         this.lmap.replace(location, true, false);
-        FileOutputStream fos = new FileOutputStream("./data file/locker.txt");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(this.lmap);
     }
 
     @Override

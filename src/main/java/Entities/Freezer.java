@@ -29,9 +29,6 @@ public class Freezer implements Container, Serializable{
         this.fmap = fmap;
         this.number_items = 0;
         this.Vacancy = capacity;
-        FileOutputStream fos = new FileOutputStream("./data file/freezer.txt");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(this.fmap);
     }
 
     /**
@@ -60,9 +57,6 @@ public class Freezer implements Container, Serializable{
         this.number_items = this.number_items + 1;
         this.Vacancy = this.Vacancy - 1;
         this.fmap.replace(location, false, true);
-        FileOutputStream fos = new FileOutputStream("./data file/freezer.txt");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(this.fmap);
     }
     /**
      * Make modifications to the container when an item is removed.
@@ -73,9 +67,6 @@ public class Freezer implements Container, Serializable{
         this.number_items = this.number_items - 1;
         this.Vacancy = this.Vacancy + 1;
         this.fmap.replace(location, true, false);
-        FileOutputStream fos = new FileOutputStream("./data file/freezer.txt");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(this.fmap);
     }
 
     @Override
