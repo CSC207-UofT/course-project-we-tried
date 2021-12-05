@@ -86,7 +86,7 @@ public class RefridgeratorVisualization implements ActionListener{
         Horizontalline5.setBounds(0, 464, 800, 10);
         frame.add(Horizontalline5);
 
-        Horizontalline6.setBounds(0, 612, 800, 10);
+        Horizontalline6.setBounds(0, 607, 800, 10);
         frame.add(Horizontalline6);
 
 
