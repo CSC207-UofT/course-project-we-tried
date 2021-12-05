@@ -129,31 +129,17 @@ public class ItemManager implements Serializable{
         return info;
     }
 
-    public void helper_package_id(Map<String, String> idm, String locat){
-        for(String id: imap.keySet()){
-            if(Objects.equals(imap.get(id).getLocation(), locat)){
-                int currentindex = 0;
-                for (String i : idm.keySet()){
-                    if(idm.get(i) == null){
-                        idm.put(locat,id);
-                        break;
-                    }
-                    currentindex++;
-                }
-
-            }}}
-
 
     public Map<String, String> get_package_id(String container){
-        Map<String,String> idm = new LinkedHashMap<>();
+        Map<String, String> idm = new LinkedHashMap<>();
         if (Objects.equals(container, "freezer")){
             for(int x = 1; x <= 6; x=x+1){
                 String loc = "F"+"0" + x;
                 idm.put(loc,null);
             }
-            for (String locat: storer.F.generateMap().keySet()){
-                if(storer.F.generateMap().get(locat)){
-                    helper_package_id(idm,locat);
+            for(String id: imap.keySet()){
+                if(Objects.equals(imap.get(id).getStorageRequirement(), "F")){
+                    idm.replace(imap.get(id).getLocation(), id);
                 }
             }
             return idm;
@@ -169,9 +155,9 @@ public class ItemManager implements Serializable{
                 }
                 idm.put(loc,null);
             }
-            for (String locat: storer.R.generateMap().keySet()){
-                if(storer.R.generateMap().get(locat)){
-                    helper_package_id(idm,locat);
+            for(String id: imap.keySet()){
+                if(Objects.equals(imap.get(id).getStorageRequirement(), "R")){
+                    idm.replace(imap.get(id).getLocation(), id);
                 }
             }
             return idm;
@@ -187,9 +173,9 @@ public class ItemManager implements Serializable{
                 }
                 idm.put(loc,null);
             }
-            for (String locat: storer.L.generateMap().keySet()){
-                if(storer.L.generateMap().get(locat)){
-                    helper_package_id(idm,locat);
+            for(String id: imap.keySet()){
+                if(Objects.equals(imap.get(id).getStorageRequirement(), "L")){
+                    idm.replace(imap.get(id).getLocation(), id);
                 }
             }
             return idm;

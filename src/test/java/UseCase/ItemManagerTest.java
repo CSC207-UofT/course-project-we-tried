@@ -211,15 +211,43 @@ public class ItemManagerTest {
         i.addItem("id6",i_info,"L", "queenie");
         Map<String,String> idm_r = new LinkedHashMap<>();
         Map<String,String> idm_f = new LinkedHashMap<>();
-        Map<String,String> idm_L = new LinkedHashMap<>();
+        Map<String,String> idm_l = new LinkedHashMap<>();
+        for(int x = 1; x <= 6; x=x+1){
+            String loc = "F"+"0" + x;
+            idm_f.put(loc,null);
+        }
+        for(int x = 1; x <= 12; x=x+1) {
+            String loc = null;
+            if (x <= 9) {
+                loc = "R" + "0" + x;
+            } else {
+                loc = "R" + x;
+            }
+            idm_r.put(loc,null);
+        }
+        for (int x = 1; x <= 15; x = x + 1) {
+            String loc = null;
+            if (x <= 9) {
+                loc = "L" + "0" + x;
+            } else {
+                loc = "L" + x;
+            }
+            idm_l.put(loc,null);
+        }
         idm_r.put("R01", "id1");
         idm_r.put("R02", "id2");
         idm_f.put("F01", "id3");
-        idm_L.put("L01", "id4");
-        idm_L.put("L02", "id5");
-        idm_L.put("L03", "id6");
-        assertEquals(idm_L, i.get_package_id("locker"));
+        idm_l.put("L01", "id4");
+        idm_l.put("L02", "id5");
+        idm_l.put("L03", "id6");
+        assertEquals(idm_l, i.get_package_id("locker"));
         assertEquals(idm_r, i.get_package_id("refrigerator"));
+        assertEquals(idm_f, i.get_package_id("freezer"));
+        idm_r.replace("R01", null);
+        i.removeItem("id1");
+        i.get_package_id("refrigerator");
+        assertEquals(idm_r, i.get_package_id("refrigerator"));
+        assertEquals(idm_l, i.get_package_id("locker"));
         assertEquals(idm_f, i.get_package_id("freezer"));
 
     }
