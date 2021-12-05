@@ -2,7 +2,6 @@ package UseCase;
 
 import Entities.*;
 
-import javax.xml.stream.Location;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
@@ -28,7 +27,7 @@ public class ItemManager implements Serializable{
         this.searcher = searcher;
         this.picker = picker;
         this.timer = timer;
-        Containerfacotry cf = new Containerfacotry();
+        ContainerFactory cf = new ContainerFactory();
         Locker l = (Locker)cf.get_container("Locker");
         Freezer f = (Freezer)cf.get_container("Freezer");
         Refrigerator r = (Refrigerator)cf.get_container("Refrigerator");
@@ -41,27 +40,12 @@ public class ItemManager implements Serializable{
         this.searcher = searcher;
         this.picker = picker;
         this.timer = timer;
-        Containerfacotry cf = new Containerfacotry();
+        ContainerFactory cf = new ContainerFactory();
         Locker l = (Locker)cf.get_container("Locker");
         Freezer f = (Freezer)cf.get_container("Freezer");
         Refrigerator r = (Refrigerator)cf.get_container("Refrigerator");
         storer.setup(imap, l, f, r);
         picker.setup(imap, l, f, r);
-    }
-
-    /**
-     * Reload the information, when files are read.
-     * @param lmap the map containing information of the locker
-     * @param fmap the map containing information of the freezer
-     * @param rmap the map containing information of the refrigerator
-     */
-    public void reload(Map<String, Boolean> lmap, Map<String, Boolean> fmap, Map<String, Boolean> rmap){
-        Locker l = new Locker(lmap);
-        Freezer f = new Freezer(fmap);
-        Refrigerator r = new Refrigerator(rmap);
-
-        storer.setup(imap,l,f,r);
-        picker.setup(imap,l,f,r);
     }
 
     public Map<String, Item> getItemMap() {
