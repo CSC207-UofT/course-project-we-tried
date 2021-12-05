@@ -3,11 +3,46 @@ package Entities;
 import org.junit.Test;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static org.junit.Assert.*;
 
 public class FreezerTest {
+
+    @Test
+    public void freezer_constructor_1() throws IOException{
+        Map<String, Boolean> fmap = new LinkedHashMap<>(1);
+        fmap.put("f01", false);
+        fmap.put("f02",false);
+        Freezer f = new Freezer(2, fmap);
+        assertEquals(2,f.getCapacity());
+        assertEquals(2,f.getVacancy());
+        assertEquals(0,f.getNumberOfItems());
+    }
+
+    @Test
+    public void freezer_constructor_2() throws IOException{
+        Map<String, Boolean> fmap = new LinkedHashMap<>(1);
+        fmap.put("f01", false);
+        Freezer f = new Freezer(fmap);
+        assertEquals(1,f.getCapacity());
+        assertEquals(1,f.getVacancy());
+        assertEquals(0,f.getNumberOfItems());
+    }
+
+    @Test
+    public void freezer_3() throws IOException{
+        Map<String, Boolean> fmap = new LinkedHashMap<>(1);
+        fmap.put("f01", false);
+        fmap.put("fo2",true);
+        Freezer f = new Freezer(fmap);
+        assertEquals(2,f.getCapacity());
+        assertEquals(1,f.getNumberOfItems());
+        assertEquals(1, f.getVacancy());
+    }
+
+
 
     @Test
     public void modifyContainer() throws IOException {
@@ -38,6 +73,7 @@ public class FreezerTest {
         assertEquals(1, F.getNumberOfItems());
     }
 
+
     @Test
     public void getVacancy() throws IOException {
         Map<String, Boolean> fmap = new HashMap<>(2);
@@ -67,5 +103,6 @@ public class FreezerTest {
         assertEquals("L01", F.nextVacantLocation());
         assertEquals("L01", F.nextVacantLocation());
     }
+
 
 }

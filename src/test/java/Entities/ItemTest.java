@@ -10,6 +10,18 @@ import static org.junit.Assert.*;
 public class ItemTest {
 
     @Test
+    public void item_constructor(){
+        List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
+        Item i = new Item("a", info, "L");
+        assertEquals("a", i.getId());
+        assertEquals(info, i.getItemInfo());
+        assertEquals("",i.getLocation());
+        assertEquals("", i.getProcessor());
+        assertEquals("L", i.getStorageRequirement());
+
+    }
+
+    @Test
     public void setLocation() {
         List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
         Item i = new Item("a", info, "L");

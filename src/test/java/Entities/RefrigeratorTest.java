@@ -3,11 +3,45 @@ package Entities;
 import org.junit.Test;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static org.junit.Assert.*;
 
 public class RefrigeratorTest {
+
+    @Test
+    public void refrigerator_constructor_1() throws IOException{
+        Map<String, Boolean> rmap = new LinkedHashMap<>(1);
+        rmap.put("r01", false);
+        rmap.put("r02",false);
+        Refrigerator r = new Refrigerator(2, rmap);
+        assertEquals(2,r.getCapacity());
+        assertEquals(2,r.getVacancy());
+        assertEquals(0,r.getNumberOfItems());
+    }
+
+    @Test
+    public void refrigerator_constructor_2() throws IOException{
+        Map<String, Boolean> rmap = new LinkedHashMap<>(1);
+        rmap.put("r01", false);
+        Refrigerator r = new Refrigerator(rmap);
+        assertEquals(1,r.getCapacity());
+        assertEquals(1,r.getVacancy());
+        assertEquals(0,r.getNumberOfItems());
+
+    }
+
+    @Test
+    public void refrigerator_3() throws IOException{
+        Map<String, Boolean> rmap = new LinkedHashMap<>(1);
+        rmap.put("r01", false);
+        rmap.put("ro2",true);
+        Refrigerator r = new Refrigerator(rmap);
+        assertEquals(2,r.getCapacity());
+        assertEquals(1,r.getNumberOfItems());
+        assertEquals(1, r.getVacancy());
+    }
 
     @Test
     public void getCapacity() throws IOException {

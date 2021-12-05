@@ -3,11 +3,45 @@ package Entities;
 import org.junit.Test;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static org.junit.Assert.*;
 
 public class LockerTest {
+
+    @Test
+    public void locker_constructor_1() throws IOException{
+        Map<String, Boolean> lmap = new LinkedHashMap<>(1);
+        lmap.put("f01", false);
+        lmap.put("f02",false);
+        Locker l = new Locker(2, lmap);
+        assertEquals(2,l.getCapacity());
+        assertEquals(2,l.getVacancy());
+        assertEquals(0,l.getNumberOfItems());
+    }
+
+    @Test
+    public void locker_constructor_2() throws IOException{
+        Map<String, Boolean> lmap = new LinkedHashMap<>(1);
+        lmap.put("f01", false);
+        Locker l = new Locker(lmap);
+        assertEquals(1,l.getCapacity());
+        assertEquals(1,l.getVacancy());
+        assertEquals(0,l.getNumberOfItems());
+    }
+
+    @Test
+    public void locker_3() throws IOException{
+        Map<String, Boolean> lmap = new LinkedHashMap<>(1);
+        lmap.put("l01", false);
+        lmap.put("lo2",true);
+        Locker l = new Locker(lmap);
+        assertEquals(2,l.getCapacity());
+        assertEquals(1,l.getNumberOfItems());
+        assertEquals(1, l.getVacancy());
+    }
+
 
     @Test
     public void modifyContainer() throws IOException {
