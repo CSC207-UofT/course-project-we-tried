@@ -5,6 +5,10 @@ import java.io.Serializable;
 import java.util.*;
 
 public class ItemTimer implements Serializable {
+    public static final int START_INDEX = 0;
+    public static final int EXPIRE_INDEX = 1;
+
+
     /**
      * A map, recording the id of an item and a list of dates; the first date is when the item is stored.
      * The second date is when the free storage expires.
@@ -19,7 +23,7 @@ public class ItemTimer implements Serializable {
         String id = i.getId();
         Calendar c_start = Calendar.getInstance();
         List<Calendar> t_list = new ArrayList<Calendar>();
-        t_list.add(0,c_start);
+        t_list.add(START_INDEX,c_start);
 
         int freeStorageTime = 2; // usual free storage time = 2 days
         if(i.getStorageRequirement().equals("F")){
@@ -27,7 +31,7 @@ public class ItemTimer implements Serializable {
 
         Calendar c_fee = Calendar.getInstance();
         c_fee.add(Calendar.DATE, freeStorageTime);
-        t_list.add(1,c_fee);
+        t_list.add(EXPIRE_INDEX,c_fee);
 
         timer_map.put(id,t_list);
     }
@@ -48,7 +52,7 @@ public class ItemTimer implements Serializable {
     public int CalculateFee(String id){
         Calendar c_current = Calendar.getInstance();
         List<Calendar> t_list = timer_map.get(id);
-        Calendar c_fee = t_list.get(1);
+        Calendar c_fee = t_list.get(EXPIRE_INDEX);
         if(c_current.before(c_fee)){
             return 0;
         } else {
