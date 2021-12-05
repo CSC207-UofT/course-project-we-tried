@@ -17,7 +17,6 @@ public class OperationSearch implements ActionListener{
     private JButton Search = new JButton();
     private JButton Menu = new JButton();
     private JTextField EnterID = new JTextField();
-    private JButton pickup = new JButton();
     private PickupSystem pckSys;
     private LoginController loginController = new LoginController();
     private String userID = new String();
@@ -85,7 +84,7 @@ public class OperationSearch implements ActionListener{
                 frame.dispose();
                 OperationExtraction operationExtraction = null;
                 try {
-                    operationExtraction = new OperationExtraction(userID, id,pckSys, loginController);
+                    operationExtraction = new OperationExtraction(userID, id, pckSys, loginController);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
