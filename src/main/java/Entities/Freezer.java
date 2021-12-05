@@ -85,7 +85,6 @@ public class Freezer implements Container, Serializable{
     public int getNumberOfItems() {
         return number_items;
     }
-
     /**
      * Return the Freezer's vacancy.
      */
@@ -93,7 +92,6 @@ public class Freezer implements Container, Serializable{
     public int getVacancy() {
         return Vacancy;
     }
-
     /**
      * Automatically find the next vacant location for a new item to be placed in.
      */
