@@ -1,10 +1,12 @@
 package Entities;
 import java.io.*;
 public class User implements Serializable{
+
     /**
      * The string of the username
      */
     private String username;
+
     /**
      * The string of the user's password
      */
@@ -20,10 +22,16 @@ public class User implements Serializable{
         this.password = password;
     }
 
+    /**
+     * Return the user's password.
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Return the user's username.
+     */
     public String getUsername() {
         return username;
     }

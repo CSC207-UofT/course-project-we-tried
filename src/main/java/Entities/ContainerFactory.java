@@ -9,6 +9,13 @@ public class ContainerFactory {
     public static final int REFRIGERATOR_SIZE = 12;
     public static final int LOCKER_SIZE = 15;
 
+    /**
+     * Get different container by different input type.
+     * @param type the needed container type.
+     * @return return a Freezer container if the type is "Freezer",return a Refrigerator container if the
+     * type is "Refrigerator", return a Locker container if the type is "Locker"; return null if type is not
+     * any of above three.
+     */
     public Container get_container(String type) throws IOException {
         if (type.equalsIgnoreCase("Freezer")){
             Map<String, Boolean> fmap = new LinkedHashMap<>(FREEZER_SIZE);

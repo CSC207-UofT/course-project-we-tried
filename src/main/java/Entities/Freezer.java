@@ -58,6 +58,7 @@ public class Freezer implements Container, Serializable{
         this.Vacancy = this.Vacancy - 1;
         this.fmap.replace(location, false, true);
     }
+
     /**
      * Make modifications to the container when an item is removed.
      * @param location  a string of the location of container
@@ -69,27 +70,33 @@ public class Freezer implements Container, Serializable{
         this.fmap.replace(location, true, false);
     }
 
+    /**
+     * Return the Freezer's capacity.
+     */
     @Override
     public int getCapacity() {
         return capacity;
     }
 
-
+    /**
+     * Return the number of items in Freezer.
+     */
     @Override
     public int getNumberOfItems() {
         return number_items;
     }
 
+    /**
+     * Return the Freezer's vacancy.
+     */
     @Override
     public int getVacancy() {
         return Vacancy;
     }
 
-    @Override
-    public Map<String, Boolean> generateMap() {
-        return fmap;
-    }
-
+    /**
+     * Automatically find the next vacant location for a new item to be placed in.
+     */
     @Override
     public String nextVacantLocation() {
         for (String location: fmap.keySet()){
@@ -100,5 +107,9 @@ public class Freezer implements Container, Serializable{
         return null;
     }
 
+    @Override
+    public Map<String, Boolean> generateMap() {
+        return fmap;
+    }
 
 }
