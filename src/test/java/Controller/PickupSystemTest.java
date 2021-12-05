@@ -96,6 +96,7 @@ public class PickupSystemTest {
         String location = p.storeItem("test_1", i_info, "L", "queenie");
         assertNotNull(u.getUserImap("queenie"));
         assertEquals(Arrays.asList("test_1"), u.getUserImap("queenie"));
+        assertEquals(Arrays.asList("test_1"), p.get_processor_item("queenie"));
         assertEquals("L01", location);
     }
 
