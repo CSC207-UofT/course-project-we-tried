@@ -106,14 +106,12 @@ public class LockerVisualization implements ActionListener{
         L01.setForeground(Color.white);
         frame.add(L01);
 
-        if (f_list != null) {
-            if (f_list.size() >0) {
-                L1 = new JLabel((String) f_list.get(0));
-                L1.setBounds(110, 63, 200, 100);
-                L1.setFont(new Font(null, Font.PLAIN, 20));
-                L1.setForeground(Color.white);
-                frame.add(L1);
-            }
+        if (f_list.get("L01") != null) {
+            L1 = new JLabel((String) f_list.get("L01"));
+            L1.setBounds(110, 63, 200, 100);
+            L1.setFont(new Font(null, Font.PLAIN, 20));
+            L1.setForeground(Color.white);
+            frame.add(L1);
         }
 
         L02.setBounds(377, 4, 100, 100);
@@ -121,28 +119,25 @@ public class LockerVisualization implements ActionListener{
         L02.setForeground(Color.white);
         frame.add(L02);
 
-        if(f_list != null) {
-            if (f_list.size() > 1) {
-                L2 = new JLabel((String) f_list.get(1));
-                L2.setBounds(344, 63, 200, 100);
-                L2.setFont(new Font(null, Font.PLAIN, 20));
-                L2.setForeground(Color.white);
-                frame.add(L2);
-            }
+        if(f_list.get("L02") != null) {
+            L2 = new JLabel((String) f_list.get("L02"));
+            L2.setBounds(344, 63, 200, 100);
+            L2.setFont(new Font(null, Font.PLAIN, 20));
+            L2.setForeground(Color.white);
+            frame.add(L2);
         }
 
         L03.setBounds(611, 4, 100, 100);
         L03.setFont(new Font(null, Font.PLAIN, 30));
         L03.setForeground(Color.white);
         frame.add(L03);
-        if(f_list != null) {
-            if (f_list.size() > 2) {
-                L3 = new JLabel((String) f_list.get(2));
-                L3.setBounds(578, 63, 200, 100);
-                L3.setFont(new Font(null, Font.PLAIN, 20));
-                L3.setForeground(Color.white);
-                frame.add(L3);
-            }
+        if(f_list.get("L03") != null) {
+            L3 = new JLabel((String) f_list.get("L03"));
+            L3.setBounds(578, 63, 200, 100);
+            L3.setFont(new Font(null, Font.PLAIN, 20));
+            L3.setForeground(Color.white);
+            frame.add(L3);
+
         }
 
 
@@ -151,14 +146,12 @@ public class LockerVisualization implements ActionListener{
         L04.setForeground(Color.white);
         frame.add(L04);
 
-        if(f_list != null) {
-            if (f_list.size() > 3) {
-                L4 = new JLabel((String) f_list.get(3));
-                L4.setBounds(110, 211, 200, 100);
-                L4.setFont(new Font(null, Font.PLAIN, 20));
-                L4.setForeground(Color.white);
-                frame.add(L4);
-            }
+        if(f_list.get("L04") != null) {
+            L4 = new JLabel((String) f_list.get("L04"));
+            L4.setBounds(110, 211, 200, 100);
+            L4.setFont(new Font(null, Font.PLAIN, 20));
+            L4.setForeground(Color.white);
+            frame.add(L4);
         }
 
         L05.setBounds(377, 152, 100, 100);
@@ -166,28 +159,24 @@ public class LockerVisualization implements ActionListener{
         L05.setForeground(Color.white);
         frame.add(L05);
 
-        if(f_list != null) {
-            if (f_list.size() > 4) {
-                L5 = new JLabel((String) f_list.get(4));
-                L5.setBounds(344, 211, 200, 100);
-                L5.setFont(new Font(null, Font.PLAIN, 20));
-                L5.setForeground(Color.white);
-                frame.add(L5);
-            }
+        if(f_list.get("L05") != null) {
+            L5 = new JLabel((String) f_list.get("L05"));
+            L5.setBounds(344, 211, 200, 100);
+            L5.setFont(new Font(null, Font.PLAIN, 20));
+            L5.setForeground(Color.white);
+            frame.add(L5);
         }
 
         L06.setBounds(611, 152, 100, 100);
         L06.setFont(new Font(null, Font.PLAIN, 30));
         L06.setForeground(Color.white);
         frame.add(L06);
-        if(f_list != null) {
-            if (f_list.size() > 5) {
-                L6 = new JLabel((String) f_list.get(5));
-                L6.setBounds(578, 211, 200, 100);
-                L6.setFont(new Font(null, Font.PLAIN, 20));
-                L6.setForeground(Color.white);
-                frame.add(L6);
-            }
+        if(f_list.get("L06") != null) {
+            L6 = new JLabel((String) f_list.get("L06"));
+            L6.setBounds(578, 211, 200, 100);
+            L6.setFont(new Font(null, Font.PLAIN, 20));
+            L6.setForeground(Color.white);
+            frame.add(L6);
         }
 
 
@@ -196,14 +185,12 @@ public class LockerVisualization implements ActionListener{
         L07.setForeground(Color.white);
         frame.add(L07);
 
-        if(f_list != null) {
-            if (f_list.size() > 6) {
-                L7 = new JLabel((String) f_list.get(6));
-                L7.setBounds(110, 359, 200, 100);
-                L7.setFont(new Font(null, Font.PLAIN, 20));
-                L7.setForeground(Color.white);
-                frame.add(L7);
-            }
+        if(f_list.get("L07") != null) {
+            L7 = new JLabel((String) f_list.get("L07"));
+            L7.setBounds(110, 359, 200, 100);
+            L7.setFont(new Font(null, Font.PLAIN, 20));
+            L7.setForeground(Color.white);
+            frame.add(L7);
         }
 
         L08.setBounds(377, 300, 100, 100);
@@ -211,14 +198,12 @@ public class LockerVisualization implements ActionListener{
         L08.setForeground(Color.white);
         frame.add(L08);
 
-        if(f_list != null) {
-            if (f_list.size() > 7) {
-                L8 = new JLabel((String) f_list.get(7));
-                L8.setBounds(344, 359, 200, 100);
-                L8.setFont(new Font(null, Font.PLAIN, 20));
-                L8.setForeground(Color.white);
-                frame.add(L8);
-            }
+        if(f_list.get("L08") != null) {
+            L8 = new JLabel((String) f_list.get("L08"));
+            L8.setBounds(344, 359, 200, 100);
+            L8.setFont(new Font(null, Font.PLAIN, 20));
+            L8.setForeground(Color.white);
+            frame.add(L8);
         }
 
 
@@ -227,14 +212,13 @@ public class LockerVisualization implements ActionListener{
         L09.setForeground(Color.white);
         frame.add(L09);
 
-        if(f_list != null) {
-            if (f_list.size() > 8) {
-                L9 = new JLabel((String) f_list.get(8));
-                L9.setBounds(578, 359, 200, 100);
-                L9.setFont(new Font(null, Font.PLAIN, 20));
-                L9.setForeground(Color.white);
-                frame.add(L9);
-            }
+        if(f_list.get("L09") != null) {
+            L9 = new JLabel((String) f_list.get("L09"));
+            L9.setBounds(578, 359, 200, 100);
+            L9.setFont(new Font(null, Font.PLAIN, 20));
+            L9.setForeground(Color.white);
+            frame.add(L9);
+
         }
 
         L010.setBounds(143, 448, 100, 100);
@@ -242,14 +226,12 @@ public class LockerVisualization implements ActionListener{
         L010.setForeground(Color.white);
         frame.add(L010);
 
-        if(f_list != null) {
-            if (f_list.size() > 9) {
-                L10 = new JLabel((String) f_list.get(9));
-                L10.setBounds(110, 507, 200, 100);
-                L10.setFont(new Font(null, Font.PLAIN, 20));
-                L10.setForeground(Color.white);
-                frame.add(L10);
-            }
+        if(f_list.get("L10") != null) {
+            L10 = new JLabel((String) f_list.get("L10"));
+            L10.setBounds(110, 507, 200, 100);
+            L10.setFont(new Font(null, Font.PLAIN, 20));
+            L10.setForeground(Color.white);
+            frame.add(L10);
         }
 
         L011.setBounds(377, 448, 100, 100);
@@ -257,14 +239,12 @@ public class LockerVisualization implements ActionListener{
         L011.setForeground(Color.white);
         frame.add(L011);
 
-        if(f_list != null) {
-            if (f_list.size() > 10) {
-                L11 = new JLabel((String) f_list.get(10));
-                L11.setBounds(344, 507, 200, 100);
-                L11.setFont(new Font(null, Font.PLAIN, 20));
-                L11.setForeground(Color.white);
-                frame.add(L11);
-            }
+        if(f_list.get("L11") != null) {
+            L11 = new JLabel((String) f_list.get("L11"));
+            L11.setBounds(344, 507, 200, 100);
+            L11.setFont(new Font(null, Font.PLAIN, 20));
+            L11.setForeground(Color.white);
+            frame.add(L11);
         }
 
 
@@ -273,14 +253,12 @@ public class LockerVisualization implements ActionListener{
         L012.setForeground(Color.white);
         frame.add(L012);
 
-        if(f_list != null) {
-            if (f_list.size() > 11) {
-                L12 = new JLabel((String) f_list.get(11));
-                L12.setBounds(578, 507, 200, 100);
-                L12.setFont(new Font(null, Font.PLAIN, 20));
-                L12.setForeground(Color.white);
-                frame.add(L12);
-            }
+        if(f_list.get("L11") != null) {
+            L12 = new JLabel((String) f_list.get("L11"));
+            L12.setBounds(578, 507, 200, 100);
+            L12.setFont(new Font(null, Font.PLAIN, 20));
+            L12.setForeground(Color.white);
+            frame.add(L12);
         }
 
         L013.setBounds(143, 596, 100, 100);
@@ -288,14 +266,12 @@ public class LockerVisualization implements ActionListener{
         L013.setForeground(Color.white);
         frame.add(L013);
 
-        if(f_list != null) {
-            if (f_list.size() > 12) {
-                L13 = new JLabel((String) f_list.get(12));
-                L13.setBounds(110, 655, 200, 100);
-                L13.setFont(new Font(null, Font.PLAIN, 20));
-                L13.setForeground(Color.white);
-                frame.add(L13);
-            }
+        if(f_list.get("L12") != null) {
+            L13 = new JLabel((String) f_list.get("L12"));
+            L13.setBounds(110, 655, 200, 100);
+            L13.setFont(new Font(null, Font.PLAIN, 20));
+            L13.setForeground(Color.white);
+            frame.add(L13);
         }
 
         L014.setBounds(377, 596, 100, 100);
@@ -303,14 +279,12 @@ public class LockerVisualization implements ActionListener{
         L014.setForeground(Color.white);
         frame.add(L014);
 
-        if(f_list != null) {
-            if (f_list.size() > 13) {
-                L14 = new JLabel((String) f_list.get(13));
-                L14.setBounds(344, 655, 200, 100);
-                L14.setFont(new Font(null, Font.PLAIN, 20));
-                L14.setForeground(Color.white);
-                frame.add(L14);
-            }
+        if(f_list.get("L13") != null) {
+            L14 = new JLabel((String) f_list.get("L13"));
+            L14.setBounds(344, 655, 200, 100);
+            L14.setFont(new Font(null, Font.PLAIN, 20));
+            L14.setForeground(Color.white);
+            frame.add(L14);
         }
 
         L015.setBounds(611, 596, 100, 100);
@@ -318,14 +292,12 @@ public class LockerVisualization implements ActionListener{
         L015.setForeground(Color.white);
         frame.add(L015);
 
-        if(f_list != null) {
-            if (f_list.size() > 14) {
-                L15 = new JLabel((String) f_list.get(14));
-                L15.setBounds(578, 655, 200, 100);
-                L15.setFont(new Font(null, Font.PLAIN, 20));
-                L15.setForeground(Color.white);
-                frame.add(L15);
-            }
+        if(f_list.get("L14") != null) {
+            L15 = new JLabel((String) f_list.get("L14"));
+            L15.setBounds(578, 655, 200, 100);
+            L15.setFont(new Font(null, Font.PLAIN, 20));
+            L15.setForeground(Color.white);
+            frame.add(L15);
         }
 
         Search.setBounds(850, 200, 200, 100);
