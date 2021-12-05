@@ -121,8 +121,6 @@ public class LoginPage implements ActionListener {
                 messageLabel.setText("Incorrect Username or Password");
             }
         }
-        //todo:exception
-
     }
 }
 
