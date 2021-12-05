@@ -8,14 +8,6 @@ import static org.junit.Assert.*;
 
 public class UserManagerTest {
 
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
     @Test
     public void is_valid_name(){
         UserManager uman = new UserManager();
@@ -26,6 +18,23 @@ public class UserManagerTest {
         String e = "asrae123!";
         String f = "123456789abc3";
         assertTrue(uman.is_valid_name(b));
+        assertTrue(uman.is_valid_name(c));
+        assertTrue(uman.is_valid_name(d));
+        assertFalse(uman.is_valid_name(a));
+        assertFalse(uman.is_valid_name(e));
+        assertFalse(uman.is_valid_name(f));
+    }
+
+    @Test
+    public void is_valid_password(){
+        UserManager uman = new UserManager();
+        String a = "abd";
+        String b = "123";
+        String c = "12bc";
+        String d = "abcd12bc";
+        String e = "queenie123!";
+        String f = "123456789abc3";
+        assertFalse(uman.is_valid_name(b));
         assertTrue(uman.is_valid_name(c));
         assertTrue(uman.is_valid_name(d));
         assertFalse(uman.is_valid_name(a));
@@ -119,6 +128,14 @@ public class UserManagerTest {
     }
 
     @Test
+    public void get_current_user() {
+        UserManager uman = new UserManager();
+        uman.userRegister("queenie", "test1");
+        uman.RecordUser("queenie");
+        assertEquals(uman.getCurrentUser().getUsername(), "queenie");
+    }
+
+    @Test
     public void getUMap() {
         UserManager uman = new UserManager();
         uman.userRegister("queenie", "test1");
@@ -131,10 +148,4 @@ public class UserManagerTest {
         uman.userRegister("queenie", "test1");
         assertNotNull(uman.getUserImap("queenie"));
     }
-
-
-   @Test
-    public void get_processor_item(){
-
-   }
 }
