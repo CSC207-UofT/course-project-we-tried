@@ -14,7 +14,7 @@ public class LoginPage implements ActionListener {
     private JButton loginButton = new JButton("Login");
     private JButton registerButton = new JButton("Register");
     private JTextField userIDField = new JTextField();
-    private JLabel welcome = new JLabel("<html>"+ "Polar Bear"+"<br>"+ "Delivery System"+ "<html>");
+    private JLabel welcome = new JLabel("<html>"+ "Polar Bear"+"<br>"+ "Pickup Station"+ "<html>");
     private JPasswordField userPasswordField = new JPasswordField();
     private ImageIcon user = new ImageIcon("src/user-24.png");
     private ImageIcon password = new ImageIcon("src/lock-24.png");
@@ -121,8 +121,6 @@ public class LoginPage implements ActionListener {
                 messageLabel.setText("Incorrect Username or Password");
             }
         }
-        //todo:exception
-
     }
 }
 
