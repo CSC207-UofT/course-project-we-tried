@@ -17,6 +17,14 @@ public class LoginControllerTest {
     }
 
     @Test
+    public void LoginController_2() throws IOException{
+        UserManager u = new UserManager();
+        LoginController l = new LoginController(u);
+        assertEquals(u, l.getUman());
+
+    }
+
+    @Test
     public void user() throws IOException {
         LoginController log = new LoginController();
         UserManager u = log.getUman();
