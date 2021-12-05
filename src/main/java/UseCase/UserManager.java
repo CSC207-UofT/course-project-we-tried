@@ -1,6 +1,5 @@
 package UseCase;
 import java.io.*;
-
 import Entities.User;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -122,13 +121,6 @@ public class UserManager implements Serializable{
             imap.get(processor_name).add(new_item_id);
         }
 
-    }
-
-    /**
-     * Reset UserManager to not have any registered user.
-     */
-    public void reset_all_users(){
-        this.umap = new HashMap<String, User>();
     }
 
     /**

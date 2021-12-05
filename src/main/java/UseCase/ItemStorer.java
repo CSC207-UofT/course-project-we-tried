@@ -1,6 +1,5 @@
 package UseCase;
 import Entities.*;
-
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
