@@ -14,38 +14,48 @@ public class LoginPage implements ActionListener {
     private JButton loginButton = new JButton("Login");
     private JButton registerButton = new JButton("Register");
     private JTextField userIDField = new JTextField();
+    private JLabel welcome = new JLabel("<html>"+ "Polar Bear"+"<br>"+ "Delivery System"+ "<html>");
     private JPasswordField userPasswordField = new JPasswordField();
     private ImageIcon user = new ImageIcon("src/user-24.png");
     private ImageIcon password = new ImageIcon("src/lock-24.png");
+    private ImageIcon packageIcon = new ImageIcon("src/bear1.png");
     private JLabel userIDLabel = new JLabel(user);
     private JLabel userPasswordLabel = new JLabel(password);
+    private JLabel packageIconLabel = new JLabel(packageIcon);
     private JLabel messageLabel = new JLabel();
     private PickupSystem pickupSystem;
     private LoginController loginController;
+
 
 
     public LoginPage(PickupSystem pckSys, LoginController lgcontrol) throws IOException, ClassNotFoundException {
         this.pickupSystem = pckSys;
         this.loginController = lgcontrol;
 
-        userIDLabel.setBounds(50, 100, 75, 25);
-        userPasswordLabel.setBounds(50, 150, 75, 25);
+        welcome.setBounds(190, 50, 150, 85);
+        welcome.setFont(new Font(null,Font.PLAIN, 17));
+        welcome.setBackground(Color.darkGray);
+        welcome.setForeground(Color.white);
 
-        userIDField.setBounds(125,100,200,25);
-        userPasswordField.setBounds(125,150,200,25);
+        packageIconLabel.setBounds(90,50,85,85);
+        userIDLabel.setBounds(50, 170, 75, 25);
+        userPasswordLabel.setBounds(50, 220, 75, 25);
 
-        messageLabel.setBounds(100, 240, 300, 40);
+        userIDField.setBounds(125,170,200,25);
+        userPasswordField.setBounds(125,220,200,25);
+
+        messageLabel.setBounds(100, 305, 300, 40);
         messageLabel.setFont(new Font(null,Font.PLAIN, 13));
         messageLabel.setForeground(Color.lightGray);
 
-        loginButton.setBounds(110,200,100,25);
+        loginButton.setBounds(110,270,100,25);
         loginButton.setBorder(BorderFactory.createLineBorder(Color.white));
         loginButton.setOpaque(true);
         loginButton.setBackground(Color.white);
         loginButton.setForeground(Color.darkGray);
         loginButton.addActionListener(this);
 
-        registerButton.setBounds(220,200,100,25);
+        registerButton.setBounds(220,270,100,25);
         registerButton.setBorder(BorderFactory.createLineBorder(Color.white));
         registerButton.setForeground(Color.white);
         registerButton.setBackground(Color.darkGray);
@@ -59,7 +69,8 @@ public class LoginPage implements ActionListener {
         frame.add(userPasswordField);
         frame.add(loginButton);
         frame.add(registerButton);
-
+        frame.add(packageIconLabel);
+        frame.add(welcome);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setBackground(Color.darkGray);
