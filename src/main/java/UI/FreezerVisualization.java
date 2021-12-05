@@ -185,6 +185,7 @@ public class FreezerVisualization implements ActionListener {
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setTitle("Freezer");
     }
 
     public void actionPerformed(ActionEvent e) {

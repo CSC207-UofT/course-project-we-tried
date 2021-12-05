@@ -27,6 +27,8 @@ public class OperationStore implements ActionListener {
     private PickupSystem pckSys;
     private String UserID = new String();
     private LoginController lgcontrol = new LoginController();
+    private String[] Choice = {"Locker", "Refrigerator", "Freezer"};
+    private JComboBox<String> Choices = new JComboBox<>(Choice);
 
     public OperationStore(String userID, PickupSystem pckSys, LoginController lgcontrol) throws IOException, ClassNotFoundException {
         this.pckSys = pckSys;
@@ -65,7 +67,7 @@ public class OperationStore implements ActionListener {
         StgRequire.setFont(new Font(null, Font.PLAIN, 13));
         StgRequire.setForeground(Color.white);
 
-        ReqReq.setBounds(250, 230, 85, 24);
+        Choices.setBounds(250, 230, 85, 24);
 
         Store.setBounds(145, 280, 70, 30);
         Store.setFont(new Font(null, Font.PLAIN, 13));
@@ -91,7 +93,7 @@ public class OperationStore implements ActionListener {
         frame.add(Description);
         frame.add(dede);
         frame.add(StgRequire);
-        frame.add(ReqReq);
+        frame.add(Choices);
         frame.add(Store);
         frame.add(Menu);
 
@@ -101,6 +103,7 @@ public class OperationStore implements ActionListener {
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setTitle("Store");
 
     }
 
@@ -112,13 +115,25 @@ public class OperationStore implements ActionListener {
             infoinfo.add(rere.getText());
             infoinfo.add(dede.getText());
             String stored_item = null;
+            String pointer;
+            if (Choices.getSelectedItem().equals("Freezer")){
+                pointer = "F";
+            }
+            else if(Choices.getSelectedItem().equals("Refrigerator")){
+                pointer = "R";
+            }
+            else{
+                pointer = "L";
+            }
+
             try {
-                stored_item = pckSys.storeItem(IDID.getText(), infoinfo,ReqReq.getText(), UserID);
+                stored_item = pckSys.storeItem(IDID.getText(), infoinfo,pointer, UserID);
             } catch (IOException ex) {
                 ex.printStackTrace();
             } catch (ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
+
 
             if (stored_item != null){
                 if(stored_item.equals("*")){
@@ -131,13 +146,13 @@ public class OperationStore implements ActionListener {
             }
 
             else {
-                if (ReqReq.getText().equals("F")){
+                if (Choices.getSelectedItem().equals("Freezer")){
                     JOptionPane.showMessageDialog(null, "The Freezer is currently full.");
                 }
-                else  if (ReqReq.getText().equals("L")){
+                else  if (Choices.getSelectedItem().equals("Locker")){
                     JOptionPane.showMessageDialog(null, "The Locker is currently full.");
                 }
-                else if(ReqReq.getText().equals("R")){
+                else if(Choices.getSelectedItem().equals("Refrigerator")){
                     JOptionPane.showMessageDialog(null,
                             "The Refrigerator is currently full.");
                 }

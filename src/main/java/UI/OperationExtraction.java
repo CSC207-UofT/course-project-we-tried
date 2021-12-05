@@ -123,6 +123,7 @@ public class OperationExtraction implements ActionListener{
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setTitle("Pick-up");
     }
 
     @Override
