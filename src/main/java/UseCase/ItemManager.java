@@ -13,6 +13,9 @@ public class ItemManager implements Serializable{
     private final ItemSearcher searcher;
     private final ItemPicker picker;
     private final ItemTimer timer;
+    private final Map<String, String> idm_f = new LinkedHashMap<>();
+    private final Map<String, String> idm_l = new LinkedHashMap<>();
+    private final Map<String, String> idm_r = new LinkedHashMap<>();
 
     /**
      * A new ItemManager, with a preset series of containers.
@@ -132,31 +135,23 @@ public class ItemManager implements Serializable{
     public void helper_package_id(Map<String, String> idm, String locat){
         for(String id: imap.keySet()){
             if(Objects.equals(imap.get(id).getLocation(), locat)){
-                int currentindex = 0;
-                for (String i : idm.keySet()){
-                    if(idm.get(i) == null){
-                        idm.put(locat,id);
+                        idm.replace(locat,id);
                         break;
-                    }
-                    currentindex++;
-                }
-
             }}}
 
 
     public Map<String, String> get_package_id(String container){
-        Map<String,String> idm = new LinkedHashMap<>();
         if (Objects.equals(container, "freezer")){
             for(int x = 1; x <= 6; x=x+1){
                 String loc = "F"+"0" + x;
-                idm.put(loc,null);
+                idm_f.put(loc,null);
             }
             for (String locat: storer.F.generateMap().keySet()){
                 if(storer.F.generateMap().get(locat)){
-                    helper_package_id(idm,locat);
+                    helper_package_id(idm_f,locat);
                 }
             }
-            return idm;
+            return idm_f;
         }
 
         if (Objects.equals(container, "refrigerator")){
@@ -167,14 +162,14 @@ public class ItemManager implements Serializable{
                 } else {
                     loc = "R" + x;
                 }
-                idm.put(loc,null);
+                idm_r.put(loc,null);
             }
             for (String locat: storer.R.generateMap().keySet()){
                 if(storer.R.generateMap().get(locat)){
-                    helper_package_id(idm,locat);
+                    helper_package_id(idm_r,locat);
                 }
             }
-            return idm;
+            return idm_r;
         }
 
         if (Objects.equals(container, "locker")){
@@ -185,14 +180,14 @@ public class ItemManager implements Serializable{
                 } else {
                     loc = "L" + x;
                 }
-                idm.put(loc,null);
+                idm_l.put(loc,null);
             }
             for (String locat: storer.L.generateMap().keySet()){
                 if(storer.L.generateMap().get(locat)){
-                    helper_package_id(idm,locat);
+                    helper_package_id(idm_l,locat);
                 }
             }
-            return idm;
+            return idm_l;
         }
         return null;
         }
