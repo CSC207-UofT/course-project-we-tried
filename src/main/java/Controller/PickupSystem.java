@@ -105,7 +105,7 @@ public class PickupSystem {
      * @param username The input username.
      * @return Return the ArrayList contains all items' ids processed by this user.
      */
-    public ArrayList<String> get_processor_item(String username){
+    public List<String> get_processor_item(String username){
         return uman.getUserImap(username);
     }
 }

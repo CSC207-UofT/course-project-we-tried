@@ -9,6 +9,21 @@ import java.util.*;
 import static org.junit.Assert.*;
 public class PickupSystemTest {
 
+    @Test
+    public void pickupsystem() throws IOException{
+        PickupSystem p = new PickupSystem();
+        assertNotNull(p.getIman());
+    }
+
+    @Test
+    public void pickupsystem_2() throws IOException{
+        UserManager u = new UserManager();
+        ItemManager i = new ItemManager();
+        PickupSystem p = new PickupSystem(i,u);
+        assertEquals(p.getIman(), i);
+        assertEquals(p.getUman(), u);
+
+    }
 
 
     @Test
@@ -48,7 +63,7 @@ public class PickupSystemTest {
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
         String location = p.storeItem("test_1", i_info, "L","queenie");
         assertNotNull(u.getUserImap("queenie"));
-        assertEquals(Arrays.asList("test_1"),u.getUserImap("queenie"));
+        assertEquals(List.of("test_1"),u.getUserImap("queenie"));
         assertEquals("L01",location);
     }
 
@@ -79,12 +94,12 @@ public class PickupSystemTest {
     @Test
     public void getIman() throws IOException {
         PickupSystem p = new PickupSystem();
-        assertTrue(p.getIman() instanceof ItemManager);
+        assertTrue(p.getIman() != null);
     }
     @Test
     public void getUman() throws IOException {
         PickupSystem p = new PickupSystem();
-        assertTrue(p.getUman() instanceof UserManager);
+        assertTrue(p.getUman() != null);
 
     }
     @Test
@@ -95,7 +110,8 @@ public class PickupSystemTest {
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
         String location = p.storeItem("test_1", i_info, "L", "queenie");
         assertNotNull(u.getUserImap("queenie"));
-        assertEquals(Arrays.asList("test_1"), u.getUserImap("queenie"));
+        assertEquals(List.of("test_1"), u.getUserImap("queenie"));
+        assertEquals(List.of("test_1"), p.get_processor_item("queenie"));
         assertEquals("L01", location);
     }
 
@@ -151,4 +167,15 @@ public class PickupSystemTest {
         assertEquals(idm_l, p.get_package("locker"));
         assertEquals(idm_f, p.get_package("freezer"));
         }
+
+    @Test
+    public void testGet_processor_item() throws IOException, ClassNotFoundException {
+        PickupSystem p = new PickupSystem();
+        List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
+        String location = p.storeItem("test_id1", i_info, "L","alan");
+        UserManager u = new UserManager();
+        ArrayList<String> a = new ArrayList<>();
+        a.add("test_id1");
+        assertEquals(a, p.get_processor_item("alan"));
+    }
 }
