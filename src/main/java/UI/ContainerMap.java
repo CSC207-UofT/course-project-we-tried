@@ -88,9 +88,7 @@ public class ContainerMap implements ActionListener {
             frame.dispose();
             try {
                 new MenuPage(userID, this.pickupSystem, this.loginController);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
+            } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
         }
