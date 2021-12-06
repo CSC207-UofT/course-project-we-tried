@@ -31,9 +31,9 @@ public class ItemManager implements Serializable{
         this.picker = picker;
         this.timer = timer;
         ContainerFactory cf = new ContainerFactory();
-        Locker l = (Locker)cf.get_container("Locker");
-        Freezer f = (Freezer)cf.get_container("Freezer");
-        Refrigerator r = (Refrigerator)cf.get_container("Refrigerator");
+        Locker l = (Locker)cf.getContainer("Locker");
+        Freezer f = (Freezer)cf.getContainer("Freezer");
+        Refrigerator r = (Refrigerator)cf.getContainer("Refrigerator");
         storer.setup(imap, l, f, r);
         picker.setup(imap, l, f, r);
     }
@@ -44,9 +44,9 @@ public class ItemManager implements Serializable{
         this.picker = picker;
         this.timer = timer;
         ContainerFactory cf = new ContainerFactory();
-        Locker l = (Locker)cf.get_container("Locker");
-        Freezer f = (Freezer)cf.get_container("Freezer");
-        Refrigerator r = (Refrigerator)cf.get_container("Refrigerator");
+        Locker l = (Locker)cf.getContainer("Locker");
+        Freezer f = (Freezer)cf.getContainer("Freezer");
+        Refrigerator r = (Refrigerator)cf.getContainer("Refrigerator");
         storer.setup(imap, l, f, r);
         picker.setup(imap, l, f, r);
     }
