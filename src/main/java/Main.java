@@ -12,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Path path = Paths.get("./data file");
-        Path pathCreate = Files.createDirectories(path);
+        Files.createDirectories(path);
         File file = new File("./data file/xyz.txt");
         if (! file.exists()){
             UserManager userManager = new UserManager();
@@ -34,6 +34,7 @@ public class Main {
         oiss.close();
         LoginController loginController = new LoginController(um);
         PickupSystem pickupSystem = new PickupSystem(im, um);
-        LoginPage loginPage = new LoginPage(pickupSystem, loginController);}
+        new LoginPage(pickupSystem, loginController);
+    }
 }
 

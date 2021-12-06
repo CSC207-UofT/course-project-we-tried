@@ -9,23 +9,23 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class MenuPage implements ActionListener {
-    private JFrame frame = new JFrame();
-    private JButton depositButton = new JButton( "<html>" + "DEPOSIT" + "<br>" + "PACKAGE" + "<html>" );
-    private JButton pickupButton = new JButton("<html>" + "PICKUP" + "<br>" + "PACKAGE" + "<html>");
-    private JButton logoutButton = new JButton("》logout");
-    private JLabel userLabel = new JLabel();
-    private String userID;
-    private PickupSystem pickupSystem;
-    private LoginController loginController;
-    private JButton lookupButton = new JButton("Lookup Processed Items");
-    private JButton deleteUserButton = new JButton("Delete Current User");
-    private JButton Allclosets = new JButton("Lookup Containers");
+    private final JFrame frame = new JFrame();
+    private final JButton depositButton = new JButton( "<html>" + "DEPOSIT" + "<br>" + "PACKAGE" + "<html>" );
+    private final JButton pickupButton = new JButton("<html>" + "PICKUP" + "<br>" + "PACKAGE" + "<html>");
+    private final JButton logoutButton = new JButton("》logout");
+    private final String userID;
+    private final PickupSystem pickupSystem;
+    private final LoginController loginController;
+    private final JButton lookupButton = new JButton("Lookup Processed Items");
+    private final JButton deleteUserButton = new JButton("Delete Current User");
+    private final JButton Allclosets = new JButton("Lookup Containers");
 
     MenuPage(String username, PickupSystem pckSys, LoginController loginC) throws IOException, ClassNotFoundException {
         this.userID = username;
         this.pickupSystem = pckSys;
         this.loginController = loginC;
 
+        JLabel userLabel = new JLabel();
         userLabel.setBounds(20,0,100,50);
         userLabel.setFont(new Font(null, Font.PLAIN,15));
         userLabel.setText("Hello " + userID + "!");

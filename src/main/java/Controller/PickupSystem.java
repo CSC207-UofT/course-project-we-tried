@@ -14,7 +14,7 @@ public class PickupSystem {
     ItemTimer timer = new ItemTimer();
     private ItemManager iman = new ItemManager(storer, searcher, picker, timer);
     private UserManager uman = new UserManager();
-    private Map<String, String> item_location = new HashMap<>();
+    private final Map<String, String> item_location = new HashMap<>();
     /**
      * An empty constructor.
      */

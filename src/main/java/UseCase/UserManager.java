@@ -9,11 +9,12 @@ import java.util.Objects;
 
 public class UserManager implements Serializable{
 
-    private Map<String, User> umap = new HashMap<String, User>();
-    private final Map<String, List<String>> imap = new HashMap<String, List<String>>();
+    private final Map<String, User> umap = new HashMap<>();
+    private final Map<String, List<String>> imap = new HashMap<>();
     private User currentUser;
 
-    public UserManager(){};
+    public UserManager(){}
+
     /**
      * check if the username is a valid name for register
      * @param name username
@@ -41,7 +42,7 @@ public class UserManager implements Serializable{
         if (is_valid_name(username)) {
             if (is_valid_password(pw)) {
                 umap.put(username, new User(username, pw));
-                imap.put(username, new ArrayList<String>());
+                imap.put(username, new ArrayList<>());
             }
         }
     }
@@ -107,12 +108,10 @@ public class UserManager implements Serializable{
      * @param new_item_id new processed item's id
      */
     public void record_item_processor(String processor_name, String new_item_id){
-        if (imap.containsKey(processor_name)){
-            imap.get(processor_name).add(new_item_id);
-        }else{
-            imap.put(processor_name, new ArrayList<String>());
-            imap.get(processor_name).add(new_item_id);
+        if (!imap.containsKey(processor_name)) {
+            imap.put(processor_name, new ArrayList<>());
         }
+        imap.get(processor_name).add(new_item_id);
     }
 
     /**

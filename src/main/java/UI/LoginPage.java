@@ -10,21 +10,14 @@ import java.io.IOException;
 
 
 public class LoginPage implements ActionListener {
-    private JFrame frame = new JFrame();
-    private JButton loginButton = new JButton("Login");
-    private JButton registerButton = new JButton("Register");
-    private JTextField userIDField = new JTextField();
-    private JLabel welcome = new JLabel("<html>"+ "Polar Bear"+"<br>"+ "Pickup Station"+ "<html>");
-    private JPasswordField userPasswordField = new JPasswordField();
-    private ImageIcon user = new ImageIcon("src/user-24.png");
-    private ImageIcon password = new ImageIcon("src/lock-24.png");
-    private ImageIcon packageIcon = new ImageIcon("src/bear1.png");
-    private JLabel userIDLabel = new JLabel(user);
-    private JLabel userPasswordLabel = new JLabel(password);
-    private JLabel packageIconLabel = new JLabel(packageIcon);
-    private JLabel messageLabel = new JLabel();
-    private PickupSystem pickupSystem;
-    private LoginController loginController;
+    private final JFrame frame = new JFrame();
+    private final JButton loginButton = new JButton("Login");
+    private final JButton registerButton = new JButton("Register");
+    private final JTextField userIDField = new JTextField();
+    private final JPasswordField userPasswordField = new JPasswordField();
+    private final JLabel messageLabel = new JLabel();
+    private final PickupSystem pickupSystem;
+    private final LoginController loginController;
 
 
 
@@ -32,13 +25,20 @@ public class LoginPage implements ActionListener {
         this.pickupSystem = pckSys;
         this.loginController = lgcontrol;
 
+        JLabel welcome = new JLabel("<html>" + "Polar Bear" + "<br>" + "Pickup Station" + "<html>");
         welcome.setBounds(190, 50, 150, 85);
         welcome.setFont(new Font(null,Font.PLAIN, 17));
         welcome.setBackground(Color.darkGray);
         welcome.setForeground(Color.white);
 
+        ImageIcon packageIcon = new ImageIcon("src/bear1.png");
+        JLabel packageIconLabel = new JLabel(packageIcon);
         packageIconLabel.setBounds(90,50,85,85);
+        ImageIcon user = new ImageIcon("src/user-24.png");
+        JLabel userIDLabel = new JLabel(user);
         userIDLabel.setBounds(50, 170, 75, 25);
+        ImageIcon password = new ImageIcon("src/lock-24.png");
+        JLabel userPasswordLabel = new JLabel(password);
         userPasswordLabel.setBounds(50, 220, 75, 25);
 
         userIDField.setBounds(125,170,200,25);
@@ -113,10 +113,8 @@ public class LoginPage implements ActionListener {
             if (this.loginController.userLogin(userID, password)) {
                 frame.dispose();
                 try {
-                    MenuPage menuPage = new MenuPage(userID, this.pickupSystem, this.loginController);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                } catch (ClassNotFoundException ex) {
+                    new MenuPage(userID, this.pickupSystem, this.loginController);
+                } catch (IOException | ClassNotFoundException ex) {
                     ex.printStackTrace();
                 }
             } else {

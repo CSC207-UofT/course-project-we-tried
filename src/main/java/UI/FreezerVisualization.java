@@ -10,35 +10,13 @@ import java.io.IOException;
 import java.util.Map;
 
 public class FreezerVisualization implements ActionListener {
-    private JFrame frame = new JFrame();
-    private JButton Menu = new JButton("Menu");
-    private JButton Search = new JButton("Search");
-    private JButton Container = new JButton("Return");
-    private ImageIcon VImage = new ImageIcon("src/VerticalF.png");
-    private ImageIcon HImage = new ImageIcon("src/Horizontal.png");
-    private ImageIcon VerticalBorder = new ImageIcon("src/VerticalborderF.png");
-    private JLabel Vertivcalline1 = new JLabel(VImage);
-    private JLabel Vertivcalline2 = new JLabel(VImage);
-    private JLabel Horizontalline1 = new JLabel(HImage);
-    private JLabel Horizontalline3 = new JLabel(HImage);
-    private JLabel Horizontalline4 = new JLabel(HImage);
-    private JLabel VerticalBorder1 = new JLabel(VerticalBorder);
-    private JLabel VerticalBorder2 = new JLabel(VerticalBorder);
-    private PickupSystem pickupSystem;
-    private LoginController loginController;
-    private String userID = new String();
-    private JLabel L01 = new JLabel("F01");
-    private JLabel L02 = new JLabel("F02");
-    private JLabel L03 = new JLabel("F03");
-    private JLabel L04 = new JLabel("F04");
-    private JLabel L05 = new JLabel("F05");
-    private JLabel L06 = new JLabel("F06");
-    private JLabel L1 = new JLabel();
-    private JLabel L2 = new JLabel();
-    private JLabel L3 = new JLabel();
-    private JLabel L4 = new JLabel();
-    private JLabel L5 = new JLabel();
-    private JLabel L6 = new JLabel();
+    private final JFrame frame = new JFrame();
+    private final JButton Menu = new JButton("Menu");
+    private final JButton Search = new JButton("Search");
+    private final JButton Container = new JButton("Return");
+    private final PickupSystem pickupSystem;
+    private final LoginController loginController;
+    private final String userID;
 
 
     public FreezerVisualization(String username, PickupSystem pckSys, LoginController loginC) {
@@ -48,104 +26,120 @@ public class FreezerVisualization implements ActionListener {
 
         Map<String,String> f_list = pckSys.get_package("freezer");
 
-        Horizontalline1.setBounds(0, 20, 800, 20);
-        frame.add(Horizontalline1);
+        ImageIcon HImage = new ImageIcon("src/Horizontal.png");
+        JLabel horizontalline1 = new JLabel(HImage);
+        horizontalline1.setBounds(0, 20, 800, 20);
+        frame.add(horizontalline1);
 
-        VerticalBorder1.setBounds(29, 2, 40, 348);
-        frame.add(VerticalBorder1);
+        ImageIcon verticalBorder = new ImageIcon("src/VerticalborderF.png");
+        JLabel verticalBorder1 = new JLabel(verticalBorder);
+        verticalBorder1.setBounds(29, 2, 40, 348);
+        frame.add(verticalBorder1);
 
-        VerticalBorder2.setBounds(731, 2, 40, 348);
-        frame.add(VerticalBorder2);
+        JLabel verticalBorder2 = new JLabel(verticalBorder);
+        verticalBorder2.setBounds(731, 2, 40, 348);
+        frame.add(verticalBorder2);
 
-        Vertivcalline1.setBounds(263, 2, 40, 348);
-        frame.add(Vertivcalline1);
+        ImageIcon VImage = new ImageIcon("src/VerticalF.png");
+        JLabel vertivcalline1 = new JLabel(VImage);
+        vertivcalline1.setBounds(263, 2, 40, 348);
+        frame.add(vertivcalline1);
 
-        Vertivcalline2.setBounds(497, 2, 40, 348);
-        frame.add(Vertivcalline2);
+        JLabel vertivcalline2 = new JLabel(VImage);
+        vertivcalline2.setBounds(497, 2, 40, 348);
+        frame.add(vertivcalline2);
 
-        Horizontalline3.setBounds(0, 168, 800, 10);
-        frame.add(Horizontalline3);
+        JLabel horizontalline3 = new JLabel(HImage);
+        horizontalline3.setBounds(0, 168, 800, 10);
+        frame.add(horizontalline3);
 
-        Horizontalline4.setBounds(0, 316, 800, 12);
-        frame.add(Horizontalline4);
+        JLabel horizontalline4 = new JLabel(HImage);
+        horizontalline4.setBounds(0, 316, 800, 12);
+        frame.add(horizontalline4);
 
 
-        L01.setBounds(143, 4, 100, 100);
-        L01.setFont(new Font(null, Font.PLAIN, 30));
-        L01.setForeground(Color.white);
-        frame.add(L01);
+        JLabel l01 = new JLabel("F01");
+        l01.setBounds(143, 4, 100, 100);
+        l01.setFont(new Font(null, Font.PLAIN, 30));
+        l01.setForeground(Color.white);
+        frame.add(l01);
 
         if (f_list.get("F01") != null) {
-            L1 = new JLabel(f_list.get("F01"));
-            L1.setBounds(110, 63, 200, 100);
-            L1.setFont(new Font(null, Font.PLAIN, 20));
-            L1.setForeground(Color.white);
-            frame.add(L1);
+            JLabel l1 = new JLabel(f_list.get("F01"));
+            l1.setBounds(110, 63, 200, 100);
+            l1.setFont(new Font(null, Font.PLAIN, 20));
+            l1.setForeground(Color.white);
+            frame.add(l1);
         }
 
-        L02.setBounds(377, 4, 100, 100);
-        L02.setFont(new Font(null, Font.PLAIN, 30));
-        L02.setForeground(Color.white);
-        frame.add(L02);
+        JLabel l02 = new JLabel("F02");
+        l02.setBounds(377, 4, 100, 100);
+        l02.setFont(new Font(null, Font.PLAIN, 30));
+        l02.setForeground(Color.white);
+        frame.add(l02);
 
         if(f_list.get("F02") != null) {
-            L2 = new JLabel((String) f_list.get("F02"));
-            L2.setBounds(344, 63, 200, 100);
-            L2.setFont(new Font(null, Font.PLAIN, 20));
-            L2.setForeground(Color.white);
-            frame.add(L2);
+            JLabel l2 = new JLabel(f_list.get("F02"));
+            l2.setBounds(344, 63, 200, 100);
+            l2.setFont(new Font(null, Font.PLAIN, 20));
+            l2.setForeground(Color.white);
+            frame.add(l2);
 
         }
 
-        L03.setBounds(611, 4, 100, 100);
-        L03.setFont(new Font(null, Font.PLAIN, 30));
-        L03.setForeground(Color.white);
-        frame.add(L03);
+        JLabel l03 = new JLabel("F03");
+        l03.setBounds(611, 4, 100, 100);
+        l03.setFont(new Font(null, Font.PLAIN, 30));
+        l03.setForeground(Color.white);
+        frame.add(l03);
         if(f_list.get("F03") != null) {
-            L3 = new JLabel((String) f_list.get("F03"));
-            L3.setBounds(578, 63, 200, 100);
-            L3.setFont(new Font(null, Font.PLAIN, 20));
-            L3.setForeground(Color.white);
-            frame.add(L3);
+            JLabel l3 = new JLabel(f_list.get("F03"));
+            l3.setBounds(578, 63, 200, 100);
+            l3.setFont(new Font(null, Font.PLAIN, 20));
+            l3.setForeground(Color.white);
+            frame.add(l3);
         }
 
 
-        L04.setBounds(143, 152, 100, 100);
-        L04.setFont(new Font(null, Font.PLAIN, 30));
-        L04.setForeground(Color.white);
-        frame.add(L04);
+        JLabel l04 = new JLabel("F04");
+        l04.setBounds(143, 152, 100, 100);
+        l04.setFont(new Font(null, Font.PLAIN, 30));
+        l04.setForeground(Color.white);
+        frame.add(l04);
 
         if(f_list.get("F04") != null) {
-            L4 = new JLabel((String) f_list.get("F04"));
-            L4.setBounds(110, 211, 200, 100);
-            L4.setFont(new Font(null, Font.PLAIN, 20));
-            L4.setForeground(Color.white);
-            frame.add(L4);
+            JLabel l4 = new JLabel(f_list.get("F04"));
+            l4.setBounds(110, 211, 200, 100);
+            l4.setFont(new Font(null, Font.PLAIN, 20));
+            l4.setForeground(Color.white);
+            frame.add(l4);
         }
 
-        L05.setBounds(377, 152, 100, 100);
-        L05.setFont(new Font(null, Font.PLAIN, 30));
-        L05.setForeground(Color.white);
-        frame.add(L05);
+        JLabel l05 = new JLabel("F05");
+        l05.setBounds(377, 152, 100, 100);
+        l05.setFont(new Font(null, Font.PLAIN, 30));
+        l05.setForeground(Color.white);
+        frame.add(l05);
 
         if(f_list.get("F05") != null) {
-            L5 = new JLabel((String) f_list.get("F05"));
-            L5.setBounds(344, 211, 200, 100);
-            L5.setFont(new Font(null, Font.PLAIN, 20));
-            L5.setForeground(Color.white);
-            frame.add(L5);
+            JLabel l5 = new JLabel(f_list.get("F05"));
+            l5.setBounds(344, 211, 200, 100);
+            l5.setFont(new Font(null, Font.PLAIN, 20));
+            l5.setForeground(Color.white);
+            frame.add(l5);
         }
 
-        L06.setBounds(611, 152, 100, 100);
-        L06.setFont(new Font(null, Font.PLAIN, 30));
-        L06.setForeground(Color.white);
-        frame.add(L06);
+        JLabel l06 = new JLabel("F06");
+        l06.setBounds(611, 152, 100, 100);
+        l06.setFont(new Font(null, Font.PLAIN, 30));
+        l06.setForeground(Color.white);
+        frame.add(l06);
         if(f_list.get("F06") != null) {
-            L6 = new JLabel((String) f_list.get("F06"));
-            L6.setBounds(578, 211, 200, 100);
-            L6.setFont(new Font(null, Font.PLAIN, 20));
-            L6.setForeground(Color.white);
-            frame.add(L6);
+            JLabel l6 = new JLabel(f_list.get("F06"));
+            l6.setBounds(578, 211, 200, 100);
+            l6.setFont(new Font(null, Font.PLAIN, 20));
+            l6.setForeground(Color.white);
+            frame.add(l6);
 
         }
 
@@ -188,37 +182,7 @@ public class FreezerVisualization implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == Menu) {
-            frame.dispose();
-            try {
-                MenuPage menuPage = new MenuPage(userID, pickupSystem, loginController);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
-                ex.printStackTrace();
-            }
-        }
-        if (e.getSource() == Container){
-            frame.dispose();
-            try {
-                ContainerMap Cmap = new ContainerMap(userID, pickupSystem, loginController);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
-                ex.printStackTrace();
-            }
-
-        }
-        if (e.getSource() == Search) {
-            frame.dispose();
-            try {
-                OperationSearch operationSearch = new OperationSearch(userID, this.pickupSystem, this.loginController);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
-                ex.printStackTrace();
-            }
-        }
+        LockerVisualization.getsource(e, Menu, frame, userID, pickupSystem, loginController, Container, Search);
     }
 
 }
