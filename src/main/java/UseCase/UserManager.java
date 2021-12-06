@@ -129,9 +129,9 @@ public class UserManager implements Serializable{
      * @param username user's username
      * @return Return the ArrayList contains items' ids processed by this user.
      */
-    public ArrayList<String> getUserImap(String username){
+    public List<String> getUserImap(String username){
 
-        return (ArrayList<String>) imap.get(username);
+        return imap.get(username);
     }
 
 }
