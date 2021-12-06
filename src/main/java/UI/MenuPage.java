@@ -26,7 +26,7 @@ public class MenuPage implements ActionListener {
         this.pickupSystem = pckSys;
         this.loginController = loginC;
 
-        userLabel.setBounds(20,0,100,50);
+        userLabel.setBounds(20,0,300,50);
         userLabel.setFont(new Font(null, Font.PLAIN,15));
         userLabel.setText("Hello " + userID + "!");
         userLabel.setForeground(Color.white);
