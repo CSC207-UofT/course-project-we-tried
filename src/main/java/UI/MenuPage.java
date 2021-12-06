@@ -24,7 +24,7 @@ public class MenuPage implements ActionListener {
         this.userID = username;
         this.pickupSystem = pckSys;
         this.loginController = loginC;
-        JLabel userLabel = new JLabel();
+
         userLabel.setBounds(20,0,300,50);
         userLabel.setFont(new Font(null, Font.PLAIN,15));
         userLabel.setText("Hello " + userID + "!");
