@@ -11,12 +11,40 @@ import java.util.ArrayList;
 
 public class OperationExtraction implements ActionListener{
     private final JFrame frame = new JFrame();
-    private JButton Pickup = new JButton();
-    private JButton Menu = new JButton();
+    private final JButton Pickup;
+
+    static {
+        new JButton();
+    }
+
+    private final JButton Menu;
+
+    static {
+        new JButton();
+    }
+
     private final String id;
-    private PickupSystem pckSys = new PickupSystem();
-    private LoginController logincontrol = new LoginController();
-    private ArrayList<String> SearchInfoList = new ArrayList<>();
+    private final PickupSystem pckSys;
+
+    static {
+        try {
+            new PickupSystem();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private final LoginController logincontrol;
+
+    static {
+        try {
+            new LoginController();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private final ArrayList<String> SearchInfoList;
 
     public OperationExtraction(String id, String pkgId,PickupSystem pckSys, LoginController lgctrol) throws IOException {
         this.id = id;
@@ -124,10 +152,8 @@ public class OperationExtraction implements ActionListener{
         if (e.getSource()==Menu) {
             frame.dispose();
             try {
-                MenuPage menu = new MenuPage(id, pckSys, logincontrol);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
+                new MenuPage(id, pckSys, logincontrol);
+            } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
         }

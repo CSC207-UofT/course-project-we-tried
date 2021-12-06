@@ -2,11 +2,11 @@ package UI;
 
 import Controller.LoginController;
 import Controller.PickupSystem;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.Map;
 
 public class FreezerVisualization implements ActionListener {
