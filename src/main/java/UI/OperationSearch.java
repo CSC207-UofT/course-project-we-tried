@@ -11,15 +11,37 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class OperationSearch implements ActionListener{
-    private JFrame frame = new JFrame();
-    private JLabel Instruction = new JLabel();
-    private JLabel pkgID = new JLabel();
-    private JButton Search = new JButton();
-    private JButton Menu = new JButton();
-    private JTextField EnterID = new JTextField();
-    private PickupSystem pckSys;
-    private LoginController loginController = new LoginController();
-    private String userID = new String();
+    private final JFrame frame = new JFrame();
+    private final JButton Search;
+
+    static {
+        new JButton();
+    }
+
+    private final JButton Menu;
+
+    static {
+        new JButton();
+    }
+
+    private final JTextField EnterID;
+
+    static {
+        new JTextField();
+    }
+
+    private final PickupSystem pckSys;
+    private final LoginController loginController;
+
+    static {
+        try {
+            new LoginController();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private final String userID;
 
 
     public OperationSearch(String username, PickupSystem pckSys, LoginController loginC) throws IOException, ClassNotFoundException {
@@ -27,12 +49,12 @@ public class OperationSearch implements ActionListener{
         this.loginController = loginC;
         this.userID = username;
 
-        Instruction = new JLabel("Enter the ID of the package you want to search for...");
-        Instruction.setBounds(30, 100, 420, 50);
-        Instruction.setFont(new Font(null, Font.PLAIN, 14));
-        Instruction.setForeground(Color.white);
+        JLabel instruction = new JLabel("Enter the ID of the package you want to search for...");
+        instruction.setBounds(30, 100, 420, 50);
+        instruction.setFont(new Font(null, Font.PLAIN, 14));
+        instruction.setForeground(Color.white);
 
-        pkgID = new JLabel("ID:");
+        JLabel pkgID = new JLabel("ID:");
         pkgID.setBounds(135, 150, 75, 25);
         pkgID.setFont(new Font(null,Font.PLAIN, 13));
         pkgID.setForeground(Color.lightGray);
@@ -56,7 +78,7 @@ public class OperationSearch implements ActionListener{
         Menu.setFocusable(false);
         Menu.addActionListener(this);
 
-        frame.add(Instruction);
+        frame.add(instruction);
         frame.add(pkgID);
         frame.add(EnterID);
         frame.add(Search);
@@ -83,9 +105,8 @@ public class OperationSearch implements ActionListener{
             }
             else{
                 frame.dispose();
-                OperationExtraction operationExtraction = null;
                 try {
-                    operationExtraction = new OperationExtraction(userID, id, pckSys, loginController);
+                    new OperationExtraction(userID, id, pckSys, loginController);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
@@ -94,10 +115,8 @@ public class OperationSearch implements ActionListener{
         if (e.getSource()==Menu){
             frame.dispose();
             try {
-                MenuPage menuPage = new MenuPage(userID, pckSys, loginController);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
+                new MenuPage(userID, pckSys, loginController);
+            } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
         }

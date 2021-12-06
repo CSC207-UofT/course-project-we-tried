@@ -16,11 +16,11 @@ public class Item implements Serializable{
     /**
      * The id of the item.
      */
-    private String id;
+    private final String id;
     /**
      * a list of string of itemInfo of the item
      */
-    private List<String> itemInfo; // From txt
+    private final List<String> itemInfo; // From txt
     /**
      * The location where the item is stored
      */
@@ -32,7 +32,7 @@ public class Item implements Serializable{
     /**
      * The storage requirement of the item, L/F/R
      */
-    private String storageRequirement;
+    private final String storageRequirement;
 
     /**
      * Create a item object

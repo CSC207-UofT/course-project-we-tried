@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.*;
 
 public class ItemManager implements Serializable{
-    private final Map<String, Item> imap = new HashMap<String, Item>();
+    private final Map<String, Item> imap = new HashMap<>();
     private final ItemStorer storer;
     private final ItemSearcher searcher;
     private final ItemPicker picker;
@@ -31,9 +31,9 @@ public class ItemManager implements Serializable{
         this.picker = picker;
         this.timer = timer;
         ContainerFactory cf = new ContainerFactory();
-        Locker l = (Locker)cf.get_container("Locker");
-        Freezer f = (Freezer)cf.get_container("Freezer");
-        Refrigerator r = (Refrigerator)cf.get_container("Refrigerator");
+        Locker l = (Locker)cf.getContainer("Locker");
+        Freezer f = (Freezer)cf.getContainer("Freezer");
+        Refrigerator r = (Refrigerator)cf.getContainer("Refrigerator");
         storer.setup(imap, l, f, r);
         picker.setup(imap, l, f, r);
     }
@@ -44,9 +44,9 @@ public class ItemManager implements Serializable{
         this.picker = picker;
         this.timer = timer;
         ContainerFactory cf = new ContainerFactory();
-        Locker l = (Locker)cf.get_container("Locker");
-        Freezer f = (Freezer)cf.get_container("Freezer");
-        Refrigerator r = (Refrigerator)cf.get_container("Refrigerator");
+        Locker l = (Locker)cf.getContainer("Locker");
+        Freezer f = (Freezer)cf.getContainer("Freezer");
+        Refrigerator r = (Refrigerator)cf.getContainer("Refrigerator");
         storer.setup(imap, l, f, r);
         picker.setup(imap, l, f, r);
     }
@@ -63,7 +63,6 @@ public class ItemManager implements Serializable{
      * @param currentUser the user's username, of whom that adds this item.
      * @return return the location where the item is stored; if an item of the same id already exists, return a special
      * string "*"; if the item cannot be stored, return null.
-     * @throws IOException
      */
     public String addItem(String id, List<String> info, String storageRequirement, String currentUser) throws IOException {
         Item i = storer.create(id, info, storageRequirement);
@@ -134,7 +133,7 @@ public class ItemManager implements Serializable{
 
         if (Objects.equals(container, "refrigerator")){
             for(int x = 1; x <= REFRIGERATOR_SIZE; x=x+1) {
-                String loc = null;
+                String loc;
                 if (x <= 9) {
                     loc = "R" + "0" + x;
                 } else {
@@ -152,7 +151,7 @@ public class ItemManager implements Serializable{
 
         if (Objects.equals(container, "locker")){
             for (int x = 1; x <= LOCKER_SIZE; x = x + 1) {
-                String loc = null;
+                String loc;
                 if (x <= 9) {
                     loc = "L" + "0" + x;
                 } else {

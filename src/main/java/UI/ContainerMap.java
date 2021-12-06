@@ -10,14 +10,14 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class ContainerMap implements ActionListener {
-    private JFrame frame = new JFrame();
-    private JButton lockerMap = new JButton("Locker");
-    private JButton refrigeratorMap = new JButton("Refrigerator");
-    private JButton freezerMap = new JButton("Freezer");
-    private JButton menu = new JButton("》Menu");
-    private String userID;
-    private PickupSystem pickupSystem;
-    private LoginController loginController;
+    private final JFrame frame = new JFrame();
+    private final JButton lockerMap = new JButton("Locker");
+    private final JButton refrigeratorMap = new JButton("Refrigerator");
+    private final JButton freezerMap = new JButton("Freezer");
+    private final JButton menu = new JButton("》Menu");
+    private final String userID;
+    private final PickupSystem pickupSystem;
+    private final LoginController loginController;
 
     ContainerMap(String username, PickupSystem pckSys, LoginController loginC) throws IOException, ClassNotFoundException{
         this.userID = username;
@@ -74,24 +74,21 @@ public class ContainerMap implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==lockerMap){
             frame.dispose();
-            LockerVisualization lockerVisualization = new LockerVisualization(userID,this.pickupSystem,this.loginController);
+            new LockerVisualization(userID, this.pickupSystem, this.loginController);
         }
         if (e.getSource()==refrigeratorMap){
             frame.dispose();
-            RefridgeratorVisualization refridgeratorVisualization =
-                    new RefridgeratorVisualization(userID,this.pickupSystem,this.loginController);
+            new RefridgeratorVisualization(userID, this.pickupSystem, this.loginController);
         }
         if (e.getSource()==freezerMap){
             frame.dispose();
-            FreezerVisualization freezerVisualization = new FreezerVisualization(userID,this.pickupSystem,this.loginController);
+            new FreezerVisualization(userID, this.pickupSystem, this.loginController);
         }
         if (e.getSource()==menu){
             frame.dispose();
             try {
-                MenuPage menuPage = new MenuPage(userID, this.pickupSystem,this.loginController);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
+                new MenuPage(userID, this.pickupSystem, this.loginController);
+            } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
         }

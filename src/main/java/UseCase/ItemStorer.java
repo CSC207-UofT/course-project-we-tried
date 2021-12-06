@@ -35,15 +35,14 @@ public class ItemStorer implements Serializable{
      * @param i the given item.
      */
     public void findContainer(Item i){
-        if (i.getStorageRequirement().equals("L")){
-            c = L;
-        } else if (i.getStorageRequirement().equals("F")){
-            c = F;
-        } else if (i.getStorageRequirement().equals("R")){
-            c = R;
-        } else {
-            c = null;}
+        switch (i.getStorageRequirement()) {
+            case "L" -> c = L;
+            case "F" -> c = F;
+            case "R" -> c = R;
+            default -> c = null;
+        }
     }
+
 
     /**
      * Create an item, with its info, and its storage requirement.
@@ -68,7 +67,6 @@ public class ItemStorer implements Serializable{
      * @param id Add an item with its id.
      * @param currentUser the user's username, of whom that adds this item.
      * @return return the location where the item is stored; if the item cannot be stored, return null.
-     * @throws IOException
      */
     public String add(String id, String currentUser) throws IOException {
         Item i1 = Imap.get(id);

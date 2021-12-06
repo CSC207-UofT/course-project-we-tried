@@ -5,12 +5,12 @@ public class User implements Serializable{
     /**
      * The string of the username
      */
-    private String username;
+    private final String username;
 
     /**
      * The string of the user's password
      */
-    private String password;
+    private final String password;
 
     /**
      * create a user of the system

@@ -16,7 +16,7 @@ public class ContainerFactory {
      * type is "Refrigerator", return a Locker container if the type is "Locker"; return null if type is not
      * any of above three.
      */
-    public Container get_container(String type) throws IOException {
+    public Container getContainer(String type) throws IOException {
         if (type.equalsIgnoreCase("Freezer")){
             Map<String, Boolean> fmap = new LinkedHashMap<>(FREEZER_SIZE);
             for(int x = 1; x <= FREEZER_SIZE; x=x+1){
@@ -28,7 +28,7 @@ public class ContainerFactory {
         if (type.equalsIgnoreCase("Refrigerator")){
             Map<String, Boolean> rmap = new LinkedHashMap<>(REFRIGERATOR_SIZE);
             for(int x = 1; x <= REFRIGERATOR_SIZE; x=x+1){
-                String loc = null;
+                String loc;
                 if(x <= 9){
                     loc = "R"+"0" + x;
                 }else{
@@ -41,7 +41,7 @@ public class ContainerFactory {
         if (type.equalsIgnoreCase("Locker")) {
             Map<String, Boolean> lmap = new LinkedHashMap<>(LOCKER_SIZE);
             for (int x = 1; x <= LOCKER_SIZE; x = x + 1) {
-                String loc = null;
+                String loc;
                 if (x <= 9) {
                     loc = "L" + "0" + x;
                 } else {
