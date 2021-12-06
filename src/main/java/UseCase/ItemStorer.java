@@ -68,7 +68,6 @@ public class ItemStorer implements Serializable{
      * @param id Add an item with its id.
      * @param currentUser the user's username, of whom that adds this item.
      * @return return the location where the item is stored; if the item cannot be stored, return null.
-     * @throws IOException
      */
     public String add(String id, String currentUser) throws IOException {
         Item i1 = Imap.get(id);

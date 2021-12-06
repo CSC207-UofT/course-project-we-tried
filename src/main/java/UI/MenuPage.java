@@ -9,24 +9,24 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class MenuPage implements ActionListener {
-    private JFrame frame = new JFrame();
-    private JButton depositButton = new JButton( "<html>" + "DEPOSIT" + "<br>" + "PACKAGE" + "<html>" );
-    private JButton pickupButton = new JButton("<html>" + "PICKUP" + "<br>" + "PACKAGE" + "<html>");
-    private JButton logoutButton = new JButton("》logout");
-    private JLabel userLabel = new JLabel();
-    private String userID;
-    private PickupSystem pickupSystem;
-    private LoginController loginController;
-    private JButton lookupButton = new JButton("Lookup Processed Items");
-    private JButton deleteUserButton = new JButton("Delete Current User");
-    private JButton Allclosets = new JButton("Lookup Containers");
+    private final JFrame frame = new JFrame();
+    private final JButton depositButton = new JButton( "<html>" + "DEPOSIT" + "<br>" + "PACKAGE" + "<html>" );
+    private final JButton pickupButton = new JButton("<html>" + "PICKUP" + "<br>" + "PACKAGE" + "<html>");
+    private final JButton logoutButton = new JButton("》logout");
+    private final String userID;
+    private final PickupSystem pickupSystem;
+    private final LoginController loginController;
+    private final JButton lookupButton = new JButton("Lookup Processed Items");
+    private final JButton deleteUserButton = new JButton("Delete Current User");
+    private final JButton Allclosets = new JButton("Lookup Containers");
 
     MenuPage(String username, PickupSystem pckSys, LoginController loginC) throws IOException, ClassNotFoundException {
         this.userID = username;
         this.pickupSystem = pckSys;
         this.loginController = loginC;
 
-        userLabel.setBounds(20,0,300,50);
+        JLabel userLabel = new JLabel();
+        userLabel.setBounds(20,0,100,50);
         userLabel.setFont(new Font(null, Font.PLAIN,15));
         userLabel.setText("Hello " + userID + "!");
         userLabel.setForeground(Color.white);
@@ -98,22 +98,17 @@ public class MenuPage implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==depositButton) {
             frame.dispose();
-            OperationStore operationStore = null;
             try {
-                operationStore = new OperationStore(userID, this.pickupSystem, this.loginController);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
+                new OperationStore(userID, this.pickupSystem, this.loginController);
+            } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
         }
         if(e.getSource()==pickupButton) {
             frame.dispose();
             try {
-                OperationSearch operationSearch = new OperationSearch(userID, this.pickupSystem, this.loginController);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
+                new OperationSearch(userID, this.pickupSystem, this.loginController);
+            } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
         }
@@ -121,20 +116,16 @@ public class MenuPage implements ActionListener {
             this.loginController.userLogout();
             frame.dispose();
             try {
-                LoginPage loginPage = new LoginPage(this.pickupSystem, this.loginController);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
+                new LoginPage(this.pickupSystem, this.loginController);
+            } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
         }
         if(e.getSource()==Allclosets){
             frame.dispose();
             try {
-                ContainerMap containerMap = new ContainerMap(userID, this.pickupSystem, this.loginController);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
+                new ContainerMap(userID, this.pickupSystem, this.loginController);
+            } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
         }
@@ -153,10 +144,8 @@ public class MenuPage implements ActionListener {
             JOptionPane.showMessageDialog(null, "User Deleted");
             frame.dispose();
             try {
-                LoginPage loginPage = new LoginPage(this.pickupSystem, this.loginController);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
+                new LoginPage(this.pickupSystem, this.loginController);
+            } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
         }

@@ -13,7 +13,7 @@ public class ItemTimer implements Serializable {
      * A map, recording the id of an item and a list of dates; the first date is when the item is stored.
      * The second date is when the free storage expires.
      */
-    private Map<String, List<Calendar>> timer_map = new HashMap<String, List<Calendar>>();
+    private final Map<String, List<Calendar>> timer_map = new HashMap<>();
 
     /**
      * Record the current time when item i is added and automatically calculate when the free storage time ends.
@@ -22,7 +22,7 @@ public class ItemTimer implements Serializable {
     public void RecordStart(Item i) {
         String id = i.getId();
         Calendar c_start = Calendar.getInstance();
-        List<Calendar> t_list = new ArrayList<Calendar>();
+        List<Calendar> t_list = new ArrayList<>();
         t_list.add(START_INDEX,c_start);
 
         int freeStorageTime = 2; // usual free storage time = 2 days
