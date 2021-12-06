@@ -106,7 +106,7 @@ public class UserManagerTest {
         List<String> i_info = Arrays.asList("Sender: t_sender", "Receiver: t_receiver", "Description: !");
         Item i = new Item("test_i1", i_info,"F");
         uman.record_item_processor("207project", "test_i1");
-        ArrayList<String> item_map = uman.getUserImap("207project");
+        List<String> item_map = uman.getUserImap("207project");
         assertEquals(Arrays.asList("test_i1"), item_map);
         assertTrue(item_map.contains("test_i1"));
     }
