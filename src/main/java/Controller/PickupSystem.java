@@ -14,7 +14,6 @@ public class PickupSystem {
     ItemTimer timer = new ItemTimer();
     private ItemManager iman = new ItemManager(storer, searcher, picker, timer);
     private UserManager uman = new UserManager();
-    private final Map<String, String> item_location = new HashMap<>();
     /**
      * An empty constructor.
      */
@@ -37,8 +36,7 @@ public class PickupSystem {
     public void pickup(String id) throws IOException {
         // this will interact with the UI layer
         if (iman.searchItem(id) != null){
-            String loca = iman.removeItem(id);
-            item_location.remove(loca);
+            iman.removeItem(id);
         }
         save_file();
     }
@@ -68,7 +66,6 @@ public class PickupSystem {
         String str = iman.addItem(id, info, storageRequirement, name);
         if (str != null){
             uman.record_item_processor(name, id);
-            item_location.put(str,id);
         }
         save_file();
         return str;
