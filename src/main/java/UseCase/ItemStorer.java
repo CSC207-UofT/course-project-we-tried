@@ -35,13 +35,16 @@ public class ItemStorer implements Serializable{
      * @param i the given item.
      */
     public void findContainer(Item i){
-        switch (i.getStorageRequirement()) {
-            case "L" -> c = L;
-            case "F" -> c = F;
-            case "R" -> c = R;
-            default -> c = null;
-        }
+        if (i.getStorageRequirement().equals("L")){
+            c = L;
+        } else if (i.getStorageRequirement().equals("F")){
+            c = F;
+        } else if (i.getStorageRequirement().equals("R")){
+            c = R;
+        } else {
+            c = null;}
     }
+
 
 
     /**
