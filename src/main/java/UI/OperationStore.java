@@ -33,6 +33,12 @@ public class OperationStore implements ActionListener {
     private final String[] Choice = {"Locker", "Refrigerator", "Freezer"};
     private final JComboBox<String> Choices = new JComboBox<>(Choice);
 
+    /**
+     * Construct the OperationStore UI.
+     * @param userID input username.
+     * @param pckSys input PickupSystem.
+     * @param lgcontrol input LoginController.
+     */
     public OperationStore(String userID, PickupSystem pckSys, LoginController lgcontrol) throws IOException, ClassNotFoundException {
         this.pckSys = pckSys;
         this.UserID = userID;
@@ -115,6 +121,10 @@ public class OperationStore implements ActionListener {
         frame.setTitle("Store");
 
     }
+    /**
+     * Make correspondent response toward different button click.
+     * @param e input button click
+     */
 
     @Override
     public void actionPerformed(ActionEvent e) {
