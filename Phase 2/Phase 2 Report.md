@@ -102,6 +102,7 @@ In this way we separate the responsibility of creating containers from `ItemMana
 
 **Martin**: GUI for basic functions: Search, Extraction, Store, Menu, Login.\
 [Merge UI 2.5 by QI777Q · Pull Request #22 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/22)
+[Vis closets by QI777Q · Pull Request #77 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/77)
 
 
 ### Code Organization
