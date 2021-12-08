@@ -2,6 +2,9 @@
 
 ### Get to know our team
 
+Jane [@GJJJJJANE](https://github.com/GJJJJJANE)
+
+
 
 ### Design Documents
 #### Phase 0
