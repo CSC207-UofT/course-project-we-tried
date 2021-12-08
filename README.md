@@ -2,12 +2,12 @@
 
 ### Get to know our team
 
-Jane [@GJJJJJANE](https://github.com/GJJJJJANE)
-Alan [@alanchen34](https://github.com/alanchen34)
-Everett [@Everett02](https://github.com/Everett02)
-Queenie [@Waannng](https://github.com/Waannng)
-Martin [@QI777Q](https://github.com/QI777Q)
-Juliet [@teiluj](https://github.com/teiluj)
+Jane [@GJJJJJANE](https://github.com/GJJJJJANE)\
+Alan [@alanchen34](https://github.com/alanchen34)\
+Everett [@Everett02](https://github.com/Everett02)\
+Queenie [@Waannng](https://github.com/Waannng)\
+Martin [@QI777Q](https://github.com/QI777Q)\
+Juliet [@teiluj](https://github.com/teiluj)\
 
 ### Design Documents
 #### Phase 0
