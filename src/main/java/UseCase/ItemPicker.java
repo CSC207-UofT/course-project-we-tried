@@ -20,18 +20,14 @@ public class ItemPicker implements Serializable{
      * @param i the given item.
      */
     public void findContainer(Item i){
-        switch (i.getStorageRequirement()) {
-            case "L":
-                c = L;
-                break;
-            case "F":
-                c = F;
-                break;
-            case "R":
-                c = R;
-                break;
-            default: c = null;
-        }
+        if (i.getStorageRequirement().equals("L")){
+            c = L;
+        } else if (i.getStorageRequirement().equals("F")){
+            c = F;
+        } else if (i.getStorageRequirement().equals("R")){
+            c = R;
+        } else {
+            c = null;}
     }
 
     /**
