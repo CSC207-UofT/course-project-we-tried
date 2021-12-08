@@ -18,7 +18,7 @@ A brief scenario walk-through that demonstrates clean architecture:
   - PickupSystem set the processor to current user by UserManager and store the item by ItemManager
   - UserManager will record the item id to the user’s processed item list
   - ItemManager and ItemStorer
-reads package information, checks storage requirement, set store time and expiration time
-creates a new item by info
-calls AddItem to store the item in nextVacantLocation provided by specific container
-The system information is stored in database
+    - reads package information, checks storage requirement, set store time and expiration time
+    - creates a new item by info
+    - calls AddItem to store the item in nextVacantLocation provided by specific container
+  - The system information is stored in database
