@@ -22,4 +22,4 @@
 
 #### Phase 2
 
-1. [Specification](https://github.com/CSC207-UofT/course-project-we-tried/blob/5e85b88aad5fc17e02f05ae9186c27762d522ac9/Phase%202/Phase%202%20Report.md)
+1. [Phase 2 Design Document](https://github.com/CSC207-UofT/course-project-we-tried/blob/5e85b88aad5fc17e02f05ae9186c27762d522ac9/Phase%202/Phase%202%20Report.md)
