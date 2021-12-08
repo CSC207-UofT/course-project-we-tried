@@ -1,6 +1,6 @@
 ## CSC207 Project Team \<We Tried>
 
-### Get to know our team
+### Get to know our team! :)
 
 Jane [@GJJJJJANE](https://github.com/GJJJJJANE)
 
