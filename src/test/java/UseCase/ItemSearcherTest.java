@@ -16,7 +16,7 @@ public class ItemSearcherTest {
       ItemSearcher searchi = new ItemSearcher();
       List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
       Item il = new Item("a", info, "L");
-      Map<String, Item> imap = new HashMap<String, Item>();
+      Map<String, Item> imap = new HashMap<>();
       imap.put("a", il);
       List<String>  actual = Arrays.asList("a","Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!","","", "L");
       assertEquals(searchi.search("a", imap), actual);
@@ -26,9 +26,8 @@ public class ItemSearcherTest {
     @Test
     public void search_null(){
         ItemSearcher searchi = new ItemSearcher();
-        List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
-        Item il = new Item("a", info, "L");
-        Map<String, Item> imap = new HashMap<String, Item>();
+        Map<String, Item> imap;
+        imap = new HashMap<>();
         assertNull(searchi.search("a", imap));
 
     }

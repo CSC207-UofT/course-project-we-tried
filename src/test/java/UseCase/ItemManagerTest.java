@@ -1,9 +1,5 @@
 package UseCase;
 
-import Entities.Item;
-import Entities.User;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import java.io.IOException;
 import java.util.*;
@@ -15,25 +11,16 @@ import static org.junit.Assert.assertNull;
 public class ItemManagerTest {
 
 
-    private ItemStorer storer = new ItemStorer();
-    private ItemSearcher searcher = new ItemSearcher();
-    private ItemPicker picker = new ItemPicker();
-    private ItemTimer timer = new ItemTimer();
+    private final ItemStorer storer = new ItemStorer();
+    private final ItemSearcher searcher = new ItemSearcher();
+    private final ItemPicker picker = new ItemPicker();
+    private final ItemTimer timer = new ItemTimer();
 
-    @Before
-    public void setUp() throws Exception {
-
-    }
-
-    @After
-    public void tearDown() throws Exception {
-
-    }
 
     @Test
     public void testAddItem_L() throws IOException {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
-        User u = new User("queenie", "123456");
+        //User u = new User("queenie", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
         try {
             iman.addItem("test_id", i_info,"L","queenie");
@@ -47,7 +34,7 @@ public class ItemManagerTest {
     @Test
     public void testAddItem_R_two_item() throws IOException {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
-        User u = new User("queenie", "123456");
+        //User u = new User("queenie", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
         iman.addItem("test_id1",i_info,"R", "queenie");
         assertEquals("R01", iman.getItemMap().get("test_id1").getLocation());
@@ -60,7 +47,6 @@ public class ItemManagerTest {
     @Test
     public void testAddItem_F() throws IOException {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
-        User u = new User("queenie", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
         iman.addItem("test_id", i_info, "F","queenie");
         assertEquals("F01", iman.getItemMap().get("test_id").getLocation());
@@ -69,7 +55,6 @@ public class ItemManagerTest {
     @Test
     public void testAddItem_right_container_mixed() throws IOException {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
-        User u = new User("queenie", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
         iman.addItem("test_id_L", i_info,"L","queenie");
         iman.addItem("test_id_F", i_info,"F","queenie");
@@ -80,7 +65,6 @@ public class ItemManagerTest {
     @Test
     public void testAddItem_Full() throws IOException {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
-        User u = new User("queenie", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
         iman.addItem("test_id", i_info, "F","queenie");
         assertEquals("F01", iman.getItemMap().get("test_id").getLocation());
@@ -96,7 +80,6 @@ public class ItemManagerTest {
     @Test
     public void testAddItem_repetitive() throws IOException {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
-        User u = new User("jane", "123456");
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
         iman.addItem("test_id", i_info, "L","jane");
         assertEquals("L01", iman.getItemMap().get("test_id").getLocation());
@@ -107,19 +90,15 @@ public class ItemManagerTest {
     @Test(timeout = 10000)
     public void testRemoveItem_exist_item() throws IOException {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
-        User u = new User("test_user", "123456");
         List<String> i_info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
         iman.addItem("a",i_info,"L","alan");
         assertEquals("L01", iman.removeItem("a"));
-        List<String> result = iman.searchItem("a");
         assertNull(iman.searchItem("a"));
     }
 
     @Test
     public void testSearchItem_no_item() throws IOException {
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
-        List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
-        Item i = new Item("a", info, "L");
         assertNull(iman.searchItem("a"));
 
     }
@@ -136,7 +115,6 @@ public class ItemManagerTest {
 
         ItemManager iman = new ItemManager(storer, searcher, picker, timer);
         List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
-        User u = new User("test_user", "123456");
         String location =  iman.addItem("a", info,"L","test_user" );
         List<String> expected = new ArrayList<>(Arrays.asList("a","Sender: test_sender","Receiver: test_receiver",
                 "Description: This is a test!",location, "test_user","L", s_1, s_2,"0"));
@@ -170,8 +148,8 @@ public class ItemManagerTest {
         List<String> i_info = Arrays.asList("Sender: test_s", "Receiver: test_receiver", "Description: Test!");
         i.addItem("id1",i_info,"L", "queenie");
         i.addItem("id2",i_info,"F", "queenie");
-        ArrayList<String> id1 = new ArrayList<String>(Arrays.asList(s_1, s_2, "0"));
-        ArrayList<String> id2 = new ArrayList<String>(Arrays.asList(s_1, s_3, "0"));
+        ArrayList<String> id1 = new ArrayList<>(Arrays.asList(s_1, s_2, "0"));
+        ArrayList<String> id2 = new ArrayList<>(Arrays.asList(s_1, s_3, "0"));
         assertEquals(id1, i.checkFee("id1"));
         assertEquals(id2, i.checkFee("id2"));
     }
@@ -194,7 +172,7 @@ public class ItemManagerTest {
             idm_f.put(loc,null);
         }
         for(int x = 1; x <= 12; x=x+1) {
-            String loc = null;
+            String loc;
             if (x <= 9) {
                 loc = "R" + "0" + x;
             } else {
@@ -203,7 +181,7 @@ public class ItemManagerTest {
             idm_r.put(loc,null);
         }
         for (int x = 1; x <= 15; x = x + 1) {
-            String loc = null;
+            String loc;
             if (x <= 9) {
                 loc = "L" + "0" + x;
             } else {
