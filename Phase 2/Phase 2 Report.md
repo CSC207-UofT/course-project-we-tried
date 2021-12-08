@@ -68,19 +68,19 @@ In this way we separate the responsibility of creating containers from `ItemMana
 ### Progress Report
 
 #### Summary of work since phase 1:
-Everett: Fix some bugs relating to file storage functions remaining in Phase 1. Add a new storing logic(don’t need to close the program to create new files). Find the bugs & logic problems among use cases, controller, and UI and fix them.
+**Everett**: Fix some bugs relating to file storage functions remaining in Phase 1. Add a new storing logic(don’t need to close the program to create new files). Find the bugs & logic problems among use cases, controller, and UI and fix them.
 
-Juliet: Added new functionalities (delete user, processed items, and lookup container) to GUI (login page, menu page, and container map). Optimized and integrated GUI appearance and added logo. 
+**Juliet**: Added new functionalities (delete user, processed items, and lookup container) to GUI (login page, menu page, and container map). Optimized and integrated GUI appearance and added logo. 
 
-Alan: Fixing the controller class pickup system which has functionalities like pick up, remove, search items,  user login, user log out etc.Then split one controller class pick up system into two controller classes, pickup system and login controller. Also write tests for some entities, use case and controller classes.
+**Alan**: Fixing the controller class pickup system which has functionalities like pick up, remove, search items,  user login, user log out etc.Then split one controller class pick up system into two controller classes, pickup system and login controller. Also write tests for some entities, use case and controller classes.
 
-Queenie: Implementing new functionalities (look up processor’s processed item history, delete user) in use cases and controllers. Writing test for use case classes, controller classes and some entity classes
+**Queenie**: Implementing new functionalities (look up processor’s processed item history, delete user) in use cases and controllers. Writing test for use case classes, controller classes and some entity classes
 
-Jane: Implement the timer function of our system. (This method will keep track of the time an item is processed and calculate when its free storage expires.) Fix errors, update use cases and entities as required.
+**Jane**: Implement the timer function of our system. (This method will keep track of the time an item is processed and calculate when its free storage expires.) Fix errors, update use cases and entities as required.
 
-Martin: Added three visualization classes for three containers (Freezer, Refrigerator, Locker). Optimized and integrated GUI appearance.
+**Martin**: Added three visualization classes for three containers (Freezer, Refrigerator, Locker). Optimized and integrated GUI appearance.
 
-#### Link to significant pull request with explanation:
+#### Link to significant pull request:
 
 Jane: Implementing Timer function\
 [Timer 1.0 by GJJJJJANE · Pull Request #50 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/50)\
