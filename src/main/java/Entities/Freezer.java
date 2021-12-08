@@ -104,6 +104,9 @@ public class Freezer implements Container, Serializable{
         }
         return null;
     }
+    /**
+     * generate a freezer map
+     */
 
     @Override
     public Map<String, Boolean> generateMap() {
