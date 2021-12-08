@@ -20,6 +20,14 @@ public class MenuPage implements ActionListener {
     private final JButton deleteUserButton = new JButton("Delete Current User");
     private final JButton Allclosets = new JButton("Lookup Containers");
 
+    /**
+     * Construct the LoginPage UI.
+     * @param username input username.
+     * @param pckSys input PickupSystem.
+     * @param loginC input LoginController.
+     */
+
+
     MenuPage(String username, PickupSystem pckSys, LoginController loginC) throws IOException, ClassNotFoundException {
         this.userID = username;
         this.pickupSystem = pckSys;
@@ -92,6 +100,11 @@ public class MenuPage implements ActionListener {
         frame.setTitle("Main Menu");
 
     }
+
+    /**
+     * Make correspondent response toward different button click.
+     * @param e input button click
+     */
 
     @Override
     public void actionPerformed(ActionEvent e) {

@@ -43,6 +43,13 @@ public class OperationSearch implements ActionListener{
 
     private final String userID;
 
+    /**
+     * Construct the OperationSearch UI.
+     * @param username input username.
+     * @param pckSys input PickupSystem.
+     * @param loginC input LoginController.
+     */
+
 
     public OperationSearch(String username, PickupSystem pckSys, LoginController loginC) throws IOException, ClassNotFoundException {
         this.pckSys = pckSys;
@@ -92,6 +99,10 @@ public class OperationSearch implements ActionListener{
         frame.setVisible(true);
         frame.setTitle("Search");
     }
+    /**
+     * Make correspondent response toward different button click.
+     * @param e input button click
+     */
 
     @Override
     public void actionPerformed(ActionEvent e) {

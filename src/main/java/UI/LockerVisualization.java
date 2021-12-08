@@ -18,6 +18,13 @@ public class LockerVisualization implements ActionListener{
     private final LoginController loginController;
     private final String userID;
 
+    /**
+     * Construct the LockerVisualization UI.
+     * @param username input username.
+     * @param pckSys input PickupSystem.
+     * @param loginC input LoginController.
+     */
+
     public LockerVisualization(String username, PickupSystem pckSys, LoginController loginC) {
         this.pickupSystem = pckSys;
         this.loginController = loginC;
@@ -320,12 +327,27 @@ public class LockerVisualization implements ActionListener{
         frame.setVisible(true);
         frame.setTitle("Locker");
     }
-
+    /**
+     * Record correspondent response toward different button click.
+     * @param e input button click
+     */
     public void actionPerformed(ActionEvent e) {
         getsource(e, Menu, frame, userID, pickupSystem, loginController, Container, Search);
     }
+    /**
+     * Make correspondent response toward different button click.
+     * @param e input button click.
+     * @param container input click on container.
+     * @param frame input frame.
+     * @param userID input user ID.
+     * @param loginController input LoginController.
+     * @param menu input click on menu.
+     * @param pickupSystem input PickupSystem.
+     * @param search input click on search.
+     */
 
-    static void getsource(ActionEvent e, JButton menu, JFrame frame, String userID, PickupSystem pickupSystem, LoginController loginController, JButton container, JButton search) {
+    static void getsource(ActionEvent e, JButton menu, JFrame frame, String userID, PickupSystem pickupSystem,
+                          LoginController loginController, JButton container, JButton search) {
         RefridgeratorVisualization.actionperfomed(e, menu, frame, userID, pickupSystem, loginController, container);
         if (e.getSource() == search) {
             frame.dispose();
