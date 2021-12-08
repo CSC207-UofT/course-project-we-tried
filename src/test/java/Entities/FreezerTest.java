@@ -22,7 +22,7 @@ public class FreezerTest {
     }
 
     @Test
-    public void freezer_constructor_2() throws IOException{
+    public void freezer_constructor_2() {
         Map<String, Boolean> fmap = new LinkedHashMap<>(1);
         fmap.put("f01", false);
         Freezer f = new Freezer(fmap);
@@ -32,7 +32,7 @@ public class FreezerTest {
     }
 
     @Test
-    public void freezer_3() throws IOException{
+    public void freezer_3() {
         Map<String, Boolean> fmap = new LinkedHashMap<>(1);
         fmap.put("f01", false);
         fmap.put("fo2",true);

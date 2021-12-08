@@ -22,7 +22,7 @@ public class RefrigeratorTest {
     }
 
     @Test
-    public void refrigerator_constructor_2() throws IOException{
+    public void refrigerator_constructor_2() {
         Map<String, Boolean> rmap = new LinkedHashMap<>(1);
         rmap.put("r01", false);
         Refrigerator r = new Refrigerator(rmap);
@@ -33,7 +33,7 @@ public class RefrigeratorTest {
     }
 
     @Test
-    public void refrigerator_3() throws IOException{
+    public void refrigerator_3() {
         Map<String, Boolean> rmap = new LinkedHashMap<>(1);
         rmap.put("r01", false);
         rmap.put("ro2",true);
@@ -54,7 +54,7 @@ public class RefrigeratorTest {
 
     @Test
     public void nextVacantLocation_no_location() throws IOException {
-        Map<String, Boolean> rmap = new HashMap<String, Boolean>();
+        Map<String, Boolean> rmap = new HashMap<>();
         Refrigerator r = new Refrigerator(3,rmap);
         Map<String, Boolean> p = r.generateMap();
         p.put("a",true);
@@ -65,7 +65,7 @@ public class RefrigeratorTest {
 
     @Test
     public void nextVacantLocation_exists_location_at_first() throws IOException {
-        Map<String, Boolean> rmap = new HashMap<String, Boolean>();
+        Map<String, Boolean> rmap = new HashMap<>();
         Refrigerator r = new Refrigerator(3,rmap);
         Map<String, Boolean> p = r.generateMap();
         p.put("a",false);
@@ -78,7 +78,7 @@ public class RefrigeratorTest {
 
     @Test
     public void nextVacantLocation_exists_location_at_end() throws IOException {
-        Map<String, Boolean> rmap = new HashMap<String, Boolean>();
+        Map<String, Boolean> rmap = new HashMap<>();
         Refrigerator r = new Refrigerator(3,rmap);
         Map<String, Boolean> p = r.generateMap();
         p.put("a",true);
@@ -111,7 +111,7 @@ public class RefrigeratorTest {
 
     @Test
     public void nextVacantLocation_exists_location_at_middle() throws IOException {
-        Map<String, Boolean> rmap = new HashMap<String, Boolean>();
+        Map<String, Boolean> rmap = new HashMap<>();
         Refrigerator r = new Refrigerator(3,rmap);
         Map<String, Boolean> p = r.generateMap();
         p.put("a",true);

@@ -1,8 +1,7 @@
 package UseCase;
 import Entities.Item;
 import java.util.*;
-import org.junit.After;
-import org.junit.Before;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -103,11 +102,9 @@ public class UserManagerTest {
     public void record_item_processor() {
         UserManager uman = new UserManager();
         uman.userRegister("207project", "test1");
-        List<String> i_info = Arrays.asList("Sender: t_sender", "Receiver: t_receiver", "Description: !");
-        Item i = new Item("test_i1", i_info,"F");
         uman.record_item_processor("207project", "test_i1");
         List<String> item_map = uman.getUserImap("207project");
-        assertEquals(Arrays.asList("test_i1"), item_map);
+        assertEquals(List.of("test_i1"), item_map);
         assertTrue(item_map.contains("test_i1"));
     }
 

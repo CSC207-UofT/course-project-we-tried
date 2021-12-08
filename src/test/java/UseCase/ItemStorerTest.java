@@ -36,7 +36,7 @@ public class ItemStorerTest {
         lmap.put("L02", false);
         lmap.put("L03", false);
         Locker l = new Locker(3, lmap);
-        Map<String, Item> imap = new HashMap<String, Item>();
+        Map<String, Item> imap = new HashMap<>();
         imap.put("a", il);
         imap.put("b", ir);
         imap.put("c", ifr);
@@ -48,7 +48,7 @@ public class ItemStorerTest {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         il =null;
         ir = null;
         ifr = null;
@@ -58,7 +58,7 @@ public class ItemStorerTest {
 
     @Test
     public void setup() throws IOException {
-        Map<String, Item> imap = new HashMap<String, Item>();
+        Map<String, Item> imap = new HashMap<>();
         Map<String, Boolean> fmap = new LinkedHashMap<>(2);
         Freezer f = new Freezer(2,fmap);
         Map<String, Boolean> rmap = new LinkedHashMap<>(3);
@@ -118,7 +118,7 @@ public class ItemStorerTest {
 
     @Test
     public void add_success_L() throws IOException {
-        User alan = new User("Alan", "1234");
+        //User alan = new User("Alan", "1234");
         String location = istore.add("a","Alan");
         assertEquals(location, "L01");
         assertEquals(il.getLocation(), "L01");
@@ -127,7 +127,6 @@ public class ItemStorerTest {
 
     @Test
     public void add_success_R() throws IOException {
-        User alan = new User("Alan", "1234");
         String location = istore.add("b","Alan");
         assertEquals(location, "r01");
         assertEquals(ir.getLocation(), "r01");
@@ -136,7 +135,6 @@ public class ItemStorerTest {
 
     @Test
     public void add_success_F() throws IOException {
-        User alan = new User("Alan", "1234");
         String location = istore.add("c","Alan");
         assertEquals(location, "f01");
         assertEquals(ifr.getLocation(), "f01");
@@ -145,7 +143,6 @@ public class ItemStorerTest {
 
     @Test
     public void add_fail_wrong_item() throws IOException{
-        User alan = new User("Alan", "1234");
         String location = istore.add("d","Alan");
         assertNull(location);
         assertNull(istore.Imap.get("d"));
@@ -154,7 +151,6 @@ public class ItemStorerTest {
 
     @Test
     public void add_fail_no_space() throws IOException{
-        User alan = new User("Alan", "1234");
         List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
         Item ifr2 = new Item("j", info, "F");
         istore.Imap.put("j", ifr2);

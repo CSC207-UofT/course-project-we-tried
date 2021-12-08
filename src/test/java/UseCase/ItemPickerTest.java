@@ -42,7 +42,7 @@ public class ItemPickerTest {
         lmap.put("L02", false);
         lmap.put("L03", false);
         Locker l = new Locker(3, lmap);
-        Map<String, Item> imap = new HashMap<String, Item>();
+        Map<String, Item> imap = new HashMap<>();
         imap.put("a", il);
         imap.put("b", ir);
         imap.put("c", ifr);
@@ -59,7 +59,7 @@ public class ItemPickerTest {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
        il =null;
        ir = null;
        ifr = null;
@@ -97,7 +97,7 @@ public class ItemPickerTest {
 
     @Test
     public void setup() throws IOException {
-        Map<String, Item> imap = new HashMap<String, Item>();
+        Map<String, Item> imap = new HashMap<>();
         Map<String, Boolean> fmap = new LinkedHashMap<>(2);
         Freezer f = new Freezer(2,fmap);
         Map<String, Boolean> rmap = new LinkedHashMap<>(3);
@@ -131,8 +131,6 @@ public class ItemPickerTest {
 
     @Test
     public void remove_null() {
-        List<String> info = Arrays.asList("Sender: test_sender", "Receiver: test_receiver", "Description: This is a test!");
-        Item not_here = new Item("g", info, "g");
         assertNull(ip.remove("g"));
     }
 

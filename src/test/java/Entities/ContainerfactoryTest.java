@@ -3,7 +3,7 @@ package Entities;
 import org.junit.Test;
 import java.io.IOException;
 import static org.junit.Assert.*;
-public class ContainerfacotryTest {
+public class ContainerfactoryTest {
 
     @Test
     public void get_container_freezer() throws IOException {

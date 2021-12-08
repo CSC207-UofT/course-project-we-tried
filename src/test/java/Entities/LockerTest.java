@@ -22,7 +22,7 @@ public class LockerTest {
     }
 
     @Test
-    public void locker_constructor_2() throws IOException{
+    public void locker_constructor_2() {
         Map<String, Boolean> lmap = new LinkedHashMap<>(1);
         lmap.put("f01", false);
         Locker l = new Locker(lmap);
@@ -32,7 +32,7 @@ public class LockerTest {
     }
 
     @Test
-    public void locker_3() throws IOException{
+    public void locker_3() {
         Map<String, Boolean> lmap = new LinkedHashMap<>(1);
         lmap.put("l01", false);
         lmap.put("lo2",true);
