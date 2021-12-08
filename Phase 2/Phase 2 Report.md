@@ -31,4 +31,6 @@ A brief scenario walk-through that demonstrates clean architecture:
   - PickupSystem calls the pickup method
   - Then ItemManager and ItemPicker will call removeItem to remove it from the system and database.     
 
+The UI is dependent on LoginController and PickupSystem from the outer layer to the inner layer, and these two controllers are dependent on use cases UserManager and ItemManager. ItemManager is dependent on the entities item, freezer, locker, and refrigerator, whereas UserManager is dependent on the entity user. As a result, each layer is dependent on the layer above it; the Dependency Rule is consistently followed.
+
 
