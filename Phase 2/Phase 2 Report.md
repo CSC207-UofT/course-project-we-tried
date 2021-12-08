@@ -9,7 +9,7 @@ When someone comes to pick up their package, the user uses the item identificati
 ### Design Decision
 We made several important decisions during the process of designing our program. Firstly, we worked together, scanned the skeleton of the project and decided the workload of each part. After that, we assigned each part of the work to each person. This decision made our whole work in a methodical way. A second important decision is about our design pattern. We initially decided to use an iterator as our design pattern. However, when we designed our project, we found that the Iterator pattern could not fit our project. In this case, we decided to change our design pattern from Iterator to facade pattern. The third important decision is that we decided to separate our controller into two parts. The aim of this operation is that we want our project to be concise. This could be helpful in case there are some bugs in the future. Another important decision is to reduce some functions of our project for Phase 1. Our group designed lots of possible functions of our project at the very beginning, but found some of them are hard to realize. As a result, we decided to reduce some functions of the project and aimed at completing the basic function of the delivery system. During Phase 2 period, the most important decision that our group has made is we upgraded the way of searching. We added a user-friendly function that can easily find the situation of every single location. For example, it may contain which item or they may be empty.
 
-### Clean Architecture (Queenie)
+### Clean Architecture
 A brief scenario walk-through that demonstrates clean architecture:
 - Receive and store package
   - UI register and login user by input username and password
@@ -22,3 +22,13 @@ A brief scenario walk-through that demonstrates clean architecture:
     - creates a new item by info
     - calls AddItem to store the item in nextVacantLocation provided by specific container
   - The system information is stored in database
+
+- Pick up package
+  - UI reads the item ID provided by people who come in to pick up packages and command “pick up item” by user.
+  - PickupSystem calls the search method and creates an ItemManager
+  - The ItemManager and ItemSearcher search the item by its ID and return item info, item storage location and required fee.
+  - UI receives “pick up the item” command
+  - PickupSystem calls the pickup method
+  - Then ItemManager and ItemPicker will call removeItem to remove it from the system and database.     
+
+
