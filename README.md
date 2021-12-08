@@ -17,7 +17,8 @@ Juliet [@teiluj](https://github.com/teiluj)
 
 ### Team Project
 
-![avatar](https://images.app.goo.gl/Y2LxsV7radLg5K4x8)
+![image](https://github.com/CSC207-UofT/course-project-we-tried/blob/main/src/bear1.png)
+
 **Polar Bear Delivery Pick-up Station**
 
 This is a system for a delivery pickup station.
