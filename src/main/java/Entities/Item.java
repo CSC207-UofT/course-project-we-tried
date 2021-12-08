@@ -63,33 +63,70 @@ public class Item implements Serializable{
         this.storageRequirement = storageRequirement;
     }
 
+    /**
+     * set the location of the item
+     * @param location the location of where the item stored
+     */
     public void setLocation(String location){
         this.location = location;
     }
 
+    /**
+     * set the processor the item
+     * @param username the username of the processor
+     */
     public void setProcessor(String username){
         this.processor = username;
     }
 
+    /**
+     *
+     * @return the id of the item
+     */
     public String getId() {
         return id;
     }
+
+    /**
+     *
+     * @return a list of item information
+     */
 
     public List<String> getItemInfo() {
         return itemInfo;
     }
 
+    /**
+     *
+     * @return return a string of the location of the item
+     */
+
     public String getLocation(){
         return this.location;
     }
+
+    /**
+     *
+     * @return return a string of the processor name
+     */
 
     public String getProcessor() {
         return processor;
     }
 
+    /**
+     *
+     * @return return a string of storage requirement of the item
+     */
+
     public String getStorageRequirement() {
         return storageRequirement;
     }
+
+    /**
+     *
+     * @return return a list of item information
+     */
 
     public List<String> getInfo(){
         List<String> ltlt = new ArrayList<>(INFO_CAPACITY);

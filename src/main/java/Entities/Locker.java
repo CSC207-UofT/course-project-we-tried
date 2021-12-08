@@ -105,6 +105,10 @@ public class Locker implements Container, Serializable{
         return null;
     }
 
+    /**
+     *
+     * @return a map with key string and value boolean for the locker
+     */
     @Override
     public Map<String, Boolean> generateMap() {
         return lmap;

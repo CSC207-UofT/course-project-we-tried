@@ -19,6 +19,11 @@ public class LoginPage implements ActionListener {
     private final PickupSystem pickupSystem;
     private final LoginController loginController;
 
+    /**
+     * Construct the LoginPage UI.
+     * @param pckSys input PickupSystem.
+     * @param lgcontrol input LoginController.
+     */
 
 
     public LoginPage(PickupSystem pckSys, LoginController lgcontrol) throws IOException, ClassNotFoundException {
@@ -80,6 +85,10 @@ public class LoginPage implements ActionListener {
         frame.setVisible(true);
         frame.setTitle("Please Login");
     }
+    /**
+     * Make correspondent response toward different button click.
+     * @param e input button click
+     */
 
     @Override
     public void actionPerformed(ActionEvent e) {

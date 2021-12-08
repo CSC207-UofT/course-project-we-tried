@@ -38,6 +38,13 @@ public class ItemManager implements Serializable{
         picker.setup(imap, l, f, r);
     }
 
+    /**
+     * Constructor of ItemManager.
+     * @param storer A class that contains different containers.
+     * @param searcher The class that is designed for searching items.
+     * @param picker The class that is designed for picking items.
+     * @param timer The class that is designed for calculating the time that the item been stored.
+     */
     public ItemManager(ItemStorer storer, ItemSearcher searcher, ItemPicker picker, ItemTimer timer) throws IOException {
         this.storer = storer;
         this.searcher = searcher;
@@ -116,6 +123,11 @@ public class ItemManager implements Serializable{
     }
 
 
+    /**
+     * Return a particular container's map which key is location and value is Item's id.
+     * @param container The name of container.
+     * @return The map that represent the situation of the container.
+     */
     public Map<String, String> get_package_id(String container){
         Map<String, String> idm = new LinkedHashMap<>();
         if (Objects.equals(container, "freezer")){

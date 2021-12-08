@@ -77,6 +77,10 @@ public class ItemTimer implements Serializable {
         return s_list;
     }
 
+    /**
+     * Get the map of a certain item's timing map which key is the item's id and value is a list of Calendar types.
+     * @return The timing map.
+     */
     public Map<String, List<Calendar>> getTimer_map() {
         return timer_map;
     }
