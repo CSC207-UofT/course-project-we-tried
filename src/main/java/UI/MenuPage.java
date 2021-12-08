@@ -25,8 +25,12 @@ public class MenuPage implements ActionListener {
         this.pickupSystem = pckSys;
         this.loginController = loginC;
 
+<<<<<<<<< Temporary merge branch 1
+        userLabel.setBounds(20,0,300,50);
+=========
         JLabel userLabel = new JLabel();
         userLabel.setBounds(20,0,100,50);
+>>>>>>>>> Temporary merge branch 2
         userLabel.setFont(new Font(null, Font.PLAIN,15));
         userLabel.setText("Hello " + userID + "!");
         userLabel.setForeground(Color.white);

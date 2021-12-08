@@ -45,6 +45,8 @@ public class ItemStorer implements Serializable{
             c = null;}
     }
 
+
+
     /**
      * Create an item, with its info, and its storage requirement.
      * @param id the identification number of this item.
