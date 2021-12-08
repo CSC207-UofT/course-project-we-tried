@@ -44,26 +44,65 @@ A brief scenario walk-through that demonstrates clean architecture:
 The `UI` is dependent on `LoginController` and `PickupSystem` from the outer layer to the inner layer, and these two controllers are dependent on use cases `UserManager` and `ItemManager`. `ItemManager` is dependent on the entities item, freezer, locker, and refrigerator, whereas `UserManager` is dependent on the entity user. As a result, each layer is dependent on the layer above it; the Dependency Rule is consistently followed.
 
 ### SOLID
-We have satisfied the single responsibility for most of our classes. For example, before we put all operations methods such as add, search, store, item all in the ItemManager class. Then we use a façade design pattern to adhere to the single responsibility. We create a single class for each responsibility and a façade front called ItemManager to keep those responsibilities.  For example, we have a new class, ItemPicker, which has a single responsibility for pick-up package operation.
+We have satisfied the single responsibility for most of our classes. For example, before we put all operations methods such as add, search, store, item all in the `ItemManager` class. Then we use a façade design pattern to adhere to the single responsibility. We create a single class for each responsibility and a façade front called `ItemManager` to keep those responsibilities.  For example, we have a new class, `ItemPicker`, which has a single responsibility for pick-up package operation.
 
-Also, our entity class satisfies the interface segregation principle. The interface inside the entity class package is called Container. The interface is small and contains all relevant methods to entity classes. Therefore, the interface is easy to extend and modify.
+Also, our entity class satisfies the interface segregation principle. The interface inside the entity class package is called `Container`. The interface is small and contains all relevant methods to entity classes. Therefore, the interface is easy to extend and modify.
 
 ### Design Pattern
-Our group uses a Facade design pattern in our use cases. This is mainly implemented in phase 1 (pull request #17). In phase 0, all responsibilities to operate on items are fulfilled in the ItemManager use case. However, this violates the single responsibility principle, as all the responsibilities such as storing items, picking up items and searching items are all in the same class.
+Our group uses a Facade design pattern in our use cases. This is mainly implemented in phase 1 (pull request #17). In phase 0, all responsibilities to operate on items are fulfilled in the `ItemManager` use case. However, this violates the single responsibility principle, as all the responsibilities such as storing items, picking up items and searching items are all in the same class.
 
-To solve this problem, we make the original ItemManager class a Facade front. It then delegates its original responsibilities to four classes: ItemStorer, ItemSearcher, ItemPicker, and ItemTimer. 
+To solve this problem, we make the original `ItemManager` class a Facade front. It then delegates its original responsibilities to four classes: `ItemStorer`, `ItemSearcher`, `ItemPicker`, and `ItemTimer`. 
 
-ItemStorer is responsible for storing an item. It has the create and add methods, along with several helpers, to fulfill the original responsibility to add items in itemManager. Then the addItem method in ItemManger simply calls the create and add methods to add an item. All implementations of the process to add an item are hidden in the ItemStorer. 
+`ItemStorer` is responsible for storing an item. It has the create and add methods, along with several helpers, to fulfill the original responsibility to add items in `ItemManager`. Then the addItem method in `ItemManger` simply calls the create and add methods to add an item. All implementations of the process to add an item are hidden in the `ItemStorer`. 
 
-ItemTimer, which is one of our new functions of Phase 2, use calendars to track the time when the item is processed. It automatically calculate the expiration date of an item’s free storage and calculate extra fee. ItemManager will call the checkFee method to get the information regarding the timer.
-In this case, the complex ItemManager is simplified. 
+`ItemTimer`, which is one of our new functions of Phase 2, use calendars to track the time when the item is processed. It automatically calculate the expiration date of an item’s free storage and calculate extra fee. `ItemManager` will call the checkFee method to get the information regarding the timer.
+In this case, the complex `ItemManager` is simplified. 
 
-ItemSearcher has the search method, and ItemPicker has the remove method and several helpers. The searchItem method in ItemManager will call search method in ItemSearcher, and the removeItem method in ItemManager will call search method in ItemSearcher and remove method in ItemPicker. 
-In this way, the complex ItemManager is simplified and adheres to the single responsibility principle.
+`ItemSearcher` has the search method, and `ItemPicker` has the remove method and several helpers. The searchItem method in `ItemManager` will call search method in `ItemSearcher`, and the removeItem method in `ItemManager` will call search method in `ItemSearcher` and remove method in `ItemPicker`. 
+In this way, the complex `ItemManager` is simplified and adheres to the single responsibility principle.
 
 Another design pattern we use is a Simple Factory to create our container classes, the 3 entities. 
-Before we implement this pattern, all creations of the instances are done in the ItemManager. Now, the ItemManager will ask the container factory to create an instance of the entity via the getContainer method. The method will then create the entity based on the input accordingly. 
-In this way we separate the responsibility of creating containers from itemManager.
+Before we implement this pattern, all creations of the instances are done in the `ItemManager`. Now, the `ItemManager` will ask the container factory to create an instance of the entity via the getContainer method. The method will then create the entity based on the input accordingly. 
+In this way we separate the responsibility of creating containers from `ItemManager`.
+
+### Progress Report
+
+#### Summary of work since phase 1:
+Everett: Fix some bugs relating to file storage functions remaining in Phase 1. Add a new storing logic(don’t need to close the program to create new files). Find the bugs & logic problems among use cases, controller, and UI and fix them.
+
+Juliet: Added new functionalities (delete user, processed items, and lookup container) to GUI (login page, menu page, and container map). Optimized and integrated GUI appearance and added logo. 
+
+Alan: Fixing the controller class pickup system which has functionalities like pick up, remove, search items,  user login, user log out etc.Then split one controller class pick up system into two controller classes, pickup system and login controller. Also write tests for some entities, use case and controller classes.
+
+Queenie: Implementing new functionalities (look up processor’s processed item history, delete user) in use cases and controllers. Writing test for use case classes, controller classes and some entity classes
+
+Jane: Implement the timer function of our system. (This method will keep track of the time an item is processed and calculate when its free storage expires.) Fix errors, update use cases and entities as required.
+
+Martin: Added three visualization classes for three containers (Freezer, Refrigerator, Locker). Optimized and integrated GUI appearance.
+
+#### Link to significant pull request with explanation:
+
+Jane: Implementing Timer function\
+[Timer 1.0 by GJJJJJANE · Pull Request #50 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/50)\
+[Timer 1.3 - Bug fixed by GJJJJJANE · Pull Request #52 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/52)
+
+Everett: Add the file storage function & refine its logic\
+[File 3.333 by Everett02 · Pull Request #28 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/28)\
+[File storage logic changed by Everett02 · Pull Request #73 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/73)
+
+Queenie: Implementing look up processor’s processed item functionality, delete user functionality & test for use case classes and some entity classes\
+[UM+Test x.0 by Waannng · Pull Request #47 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/47)\
+[UserManager4.0 and Test by Waannng · Pull Request #14 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/14)
+
+Juliet: GUI updated for all new functionalities in phase 2\
+[UI update by teiluj · Pull Request #70 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/70)
+
+Alan: Both two login and pickup system controller classes.Also some tests of entity classes and controller classes.\
+[Alan phase1 branch by alanchen34 · Pull Request #18 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/18)
+
+Martin: GUI for basic functions: Search, Extraction, Store, Menu, Login.\
+[Merge UI 2.5 by QI777Q · Pull Request #22 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/22)
+
 
 ### Code Organization
 Our packaging strategy is by layer. The Repository is the data of the closets (Refrigerator, Freezer, Locker), which contains the items that already exist. It also contains the users’ usernames and passwords. Both data is stored outside the service sector (in a txt file). 
