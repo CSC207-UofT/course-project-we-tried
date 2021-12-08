@@ -82,25 +82,25 @@ In this way we separate the responsibility of creating containers from `ItemMana
 
 #### Link to significant pull request:
 
-Jane: Implementing Timer function\
+**Jane**: Implementing Timer function\
 [Timer 1.0 by GJJJJJANE · Pull Request #50 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/50)\
 [Timer 1.3 - Bug fixed by GJJJJJANE · Pull Request #52 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/52)
 
-Everett: Add the file storage function & refine its logic\
+**Everett**: Add the file storage function & refine its logic\
 [File 3.333 by Everett02 · Pull Request #28 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/28)\
 [File storage logic changed by Everett02 · Pull Request #73 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/73)
 
-Queenie: Implementing look up processor’s processed item functionality, delete user functionality & test for use case classes and some entity classes\
+**Queenie**: Implementing look up processor’s processed item functionality, delete user functionality & test for use case classes and some entity classes\
 [UM+Test x.0 by Waannng · Pull Request #47 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/47)\
 [UserManager4.0 and Test by Waannng · Pull Request #14 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/14)
 
-Juliet: GUI updated for all new functionalities in phase 2\
+**Juliet**: GUI updated for all new functionalities in phase 2\
 [UI update by teiluj · Pull Request #70 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/70)
 
-Alan: Both two login and pickup system controller classes.Also some tests of entity classes and controller classes.\
+**Alan**: Both two login and pickup system controller classes.Also some tests of entity classes and controller classes.\
 [Alan phase1 branch by alanchen34 · Pull Request #18 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/18)
 
-Martin: GUI for basic functions: Search, Extraction, Store, Menu, Login.\
+**Martin**: GUI for basic functions: Search, Extraction, Store, Menu, Login.\
 [Merge UI 2.5 by QI777Q · Pull Request #22 · CSC207-UofT/course-project-we-tried (github.com)](https://github.com/CSC207-UofT/course-project-we-tried/pull/22)
 
 
