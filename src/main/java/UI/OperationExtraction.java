@@ -45,6 +45,12 @@ public class OperationExtraction implements ActionListener{
     }
 
     private final ArrayList<String> SearchInfoList;
+    /**
+     * Construct the OperationExtraction UI.
+     * @param id input package ID.
+     * @param pckSys input PickupSystem.
+     * @param lgctrol input LoginController.
+     */
 
     public OperationExtraction(String id, String pkgId,PickupSystem pckSys, LoginController lgctrol) throws IOException {
         this.id = id;
@@ -136,7 +142,10 @@ public class OperationExtraction implements ActionListener{
         frame.setVisible(true);
         frame.setTitle("Pick-up");
     }
-
+    /**
+     * Make correspondent response toward different button click.
+     * @param e input button click
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==Pickup){

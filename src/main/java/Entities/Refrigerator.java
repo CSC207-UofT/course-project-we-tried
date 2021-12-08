@@ -92,6 +92,10 @@ public class Refrigerator implements Container, Serializable {
         return this.Vacancy;
     }
 
+    /**
+     *
+     * @return the next empty location for the refrigerator
+     */
     @Override
     public String nextVacantLocation() {
         for (String location: rmap.keySet()){
@@ -102,6 +106,10 @@ public class Refrigerator implements Container, Serializable {
         return null;
     }
 
+    /**
+     *
+     * @return a map with key string and value boolean for the refrigerator
+     */
     @Override
     public Map<String, Boolean> generateMap() {
         return rmap;

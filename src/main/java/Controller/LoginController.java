@@ -8,6 +8,9 @@ public class LoginController {
     private UserManager uman = new UserManager();
     private static String currentUser = "";
 
+    /**
+     * An empty constructor.
+     */
     public LoginController() throws IOException {
     }
 

@@ -18,6 +18,13 @@ public class RefridgeratorVisualization implements ActionListener{
     private final LoginController loginController;
     private final String userID;
 
+    /**
+     * Construct the RefrigeratorVisualization UI.
+     * @param username input username.
+     * @param pckSys input PickupSystem.
+     * @param loginC input LoginController.
+     */
+
     public RefridgeratorVisualization(String username, PickupSystem pckSys, LoginController loginC) {
         this.pickupSystem = pckSys;
         this.loginController = loginC;
@@ -273,6 +280,10 @@ public class RefridgeratorVisualization implements ActionListener{
         frame.setVisible(true);
         frame.setTitle("Refrigerator");
     }
+    /**
+     * Record correspondent response toward different button click.
+     * @param e input button click
+     */
 
     public void actionPerformed(ActionEvent e) {
         actionperfomed(e, Menu, frame, userID, pickupSystem, loginController, Container);
@@ -285,7 +296,16 @@ public class RefridgeratorVisualization implements ActionListener{
             }
         }
     }
-
+    /**
+     * Make correspondent response toward different button click.
+     * @param e input button click.
+     * @param container input click on container.
+     * @param frame input frame.
+     * @param userID input user ID.
+     * @param loginController input LoginController.
+     * @param menu input click on menu.
+     * @param pickupSystem input PickupSystem.
+     */
     static void actionperfomed(ActionEvent e, JButton menu, JFrame frame, String userID, PickupSystem pickupSystem, LoginController loginController, JButton container) {
         if (e.getSource() == menu) {
             frame.dispose();

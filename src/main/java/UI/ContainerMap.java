@@ -19,6 +19,13 @@ public class ContainerMap implements ActionListener {
     private final PickupSystem pickupSystem;
     private final LoginController loginController;
 
+    /**
+     * Construct the ContainerMap UI.
+     * @param username input username.
+     * @param pckSys input PickupSystem.
+     * @param loginC input LoginController.
+     */
+
     ContainerMap(String username, PickupSystem pckSys, LoginController loginC) throws IOException, ClassNotFoundException{
         this.userID = username;
         this.pickupSystem = pckSys;
@@ -69,6 +76,10 @@ public class ContainerMap implements ActionListener {
         frame.setVisible(true);
         frame.setTitle("Closet Menu");
     }
+    /**
+     * Make correspondent response toward different button click.
+     * @param e input button click
+     */
 
     @Override
     public void actionPerformed(ActionEvent e) {

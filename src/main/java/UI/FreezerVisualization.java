@@ -18,6 +18,13 @@ public class FreezerVisualization implements ActionListener {
     private final LoginController loginController;
     private final String userID;
 
+    /**
+     * Construct the FreezerVisualization UI.
+     * @param username input username.
+     * @param pckSys input PickupSystem.
+     * @param loginC input LoginController.
+     */
+
 
     public FreezerVisualization(String username, PickupSystem pckSys, LoginController loginC) {
         this.pickupSystem = pckSys;
@@ -180,7 +187,10 @@ public class FreezerVisualization implements ActionListener {
         frame.setVisible(true);
         frame.setTitle("Freezer");
     }
-
+    /**
+     * Make correspondent response toward different button click.
+     * @param e input button click
+     */
     public void actionPerformed(ActionEvent e) {
         LockerVisualization.getsource(e, Menu, frame, userID, pickupSystem, loginController, Container, Search);
     }

@@ -1,0 +1,36 @@
+## Phase 2 - Design Document
+### Updated specification
+Our program is a system for a delivery pickup station that receives and holds packages in storage until pickup. The station employees are users of the system, each with a unique username and password to log in,  both of which are restricted between 4-12 numbers or letters. Each package (item) comes with an identification number, information about its sender and receiver, as well as the type of storage it requires. The employee will input this information in the system and store the package in the vacant location returned. 
+
+We have three types of containers: locker, refrigerator and freezer, depending on the package type. The locker is for package storage at room temperature. The refrigerator stores grocery items under lower temperatures to keep them fresh. The freezer stores frozen items whose storage temperature is under 0 °C. The system has a pre-set series of containers for use.
+
+When someone comes to pick up their package, the user uses the item identification number to look up the location of its container and removes it from the system. During the process, the user must also check the credentials of the receiver and match it to the receiver information attached with the package. In addition, the system will also display whether the receiver needs to pay any storage fees, which only happens if the package has been in storage too long that it has passed its free storage period. Our program also has functionalities to delete the current user, considering employees may resign or for some reason need a new account. A lookup processed item function is included for any inquiries or unexpected situations, this will show all the packages this employee has handled. Finally, there are visualizations for each type of container to see what packages are in each one.
+
+### Design Decision
+We made several important decisions during the process of designing our program. Firstly, we worked together, scanned the skeleton of the project and decided the workload of each part. After that, we assigned each part of the work to each person. This decision made our whole work in a methodical way. A second important decision is about our design pattern. We initially decided to use an iterator as our design pattern. However, when we designed our project, we found that the Iterator pattern could not fit our project. In this case, we decided to change our design pattern from Iterator to facade pattern. The third important decision is that we decided to separate our controller into two parts. The aim of this operation is that we want our project to be concise. This could be helpful in case there are some bugs in the future. Another important decision is to reduce some functions of our project for Phase 1. Our group designed lots of possible functions of our project at the very beginning, but found some of them are hard to realize. As a result, we decided to reduce some functions of the project and aimed at completing the basic function of the delivery system. During Phase 2 period, the most important decision that our group has made is we upgraded the way of searching. We added a user-friendly function that can easily find the situation of every single location. For example, it may contain which item or they may be empty.
+
+### Clean Architecture
+A brief scenario walk-through that demonstrates clean architecture:
+- Receive and store package
+  - UI register and login user by input username and password
+  - LoginController initializes UserManager and uses username and password from UI to register and login user in usermanager and record currentUser.
+  - UI receives “Deposit item” command and item ID, info and storage requirement, then activates the controller PickupSystem
+  - PickupSystem set the processor to current user by UserManager and store the item by ItemManager
+  - UserManager will record the item id to the user’s processed item list
+  - ItemManager and ItemStorer
+    - reads package information, checks storage requirement, set store time and expiration time
+    - creates a new item by info
+    - calls AddItem to store the item in nextVacantLocation provided by specific container
+  - The system information is stored in database
+
+- Pick up package
+  - UI reads the item ID provided by people who come in to pick up packages and command “pick up item” by user.
+  - PickupSystem calls the search method and creates an ItemManager
+  - The ItemManager and ItemSearcher search the item by its ID and return item info, item storage location and required fee.
+  - UI receives “pick up the item” command
+  - PickupSystem calls the pickup method
+  - Then ItemManager and ItemPicker will call removeItem to remove it from the system and database.     
+
+The UI is dependent on LoginController and PickupSystem from the outer layer to the inner layer, and these two controllers are dependent on use cases UserManager and ItemManager. ItemManager is dependent on the entities item, freezer, locker, and refrigerator, whereas UserManager is dependent on the entity user. As a result, each layer is dependent on the layer above it; the Dependency Rule is consistently followed.
+
+
