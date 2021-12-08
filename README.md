@@ -15,7 +15,13 @@ Martin [@QI777Q](https://github.com/QI777Q)
 Juliet [@teiluj](https://github.com/teiluj)
 
 
-### Team Project - Polar Bear Delivery Pick-up Station
+### Team Project
+
+![avatar](https://images.app.goo.gl/Y2LxsV7radLg5K4x8)
+**Polar Bear Delivery Pick-up Station**
+
+This is a system for a delivery pickup station.
+
 
 
 ### Design Documents
